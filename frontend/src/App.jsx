@@ -11,25 +11,54 @@ function App() {
   const loaderRef = useRef(null)
 
   useEffect(() => {
-    const sessionLoaded = sessionStorage.getItem('loaderShown')
+    const sessionLoaded = sessionStorage.getItem("loaderShown");
 
     if (sessionLoaded) {
-      setIsLoading(false)
+      setIsLoading(false);
     } else {
       const timer = setTimeout(() => {
-        // Animate fade out of loader
-        gsap.to(loaderRef.current, {
-          opacity: 0,
-          duration: 1, // 1 second fade
-          ease: 'power2.out',
+        const tl = gsap.timeline({
           onComplete: () => {
-            setIsLoading(false)
-            sessionStorage.setItem('loaderShown', 'true')
+            setIsLoading(false);
+            sessionStorage.setItem("loaderShown", "true");
           }
-        })
-      }, 3300) // match your loader duration
+        });
 
-      return () => clearTimeout(timer)
+        // Step 1: Fade in blackout
+        tl.to(loaderRef.current.querySelector(".blackout"), {
+          opacity: 1,
+          duration: 1.5,
+          ease: "power2.inOut"
+        });
+
+        // Step 2: Exit left images
+        tl.to(
+          loaderRef.current.querySelectorAll(".left-img"),
+          {
+            x: "-150%",
+            opacity: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power3.in"
+          },
+          "<" // sync with blackout
+        );
+
+        // Step 3: Exit right images
+        tl.to(
+          loaderRef.current.querySelectorAll(".right-img"),
+          {
+            x: "150%",
+            opacity: 0,
+            duration: 1.5,
+            stagger: 0.3,
+            ease: "power3.in"
+          },
+          "<" // sync with blackout
+        );
+      }, 3300); // match loader animations
+
+      return () => clearTimeout(timer);
     }
   }, [])
 
