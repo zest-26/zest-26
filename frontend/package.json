@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/sour-gummy": "^5.2.6",
     "@tailwindcss/vite": "^4.1.12",
     "lucide-react": "^0.539.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.8.0",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.12",
+    "three": "^0.179.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
