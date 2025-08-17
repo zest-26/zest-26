@@ -24,39 +24,32 @@ function App() {
           }
         });
 
-        // Step 1: Fade in blackout
-        tl.to(loaderRef.current.querySelector(".blackout"), {
-          opacity: 1,
-          duration: 1.5,
-          ease: "power2.inOut"
-        });
+        
+// Step 1: Exit left images
+tl.to(loaderRef.current.querySelectorAll(".left-img"), {
+  x: "-150%",
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.3,
+  ease: "power3.in"
+});
 
-        // Step 2: Exit left images
-        tl.to(
-          loaderRef.current.querySelectorAll(".left-img"),
-          {
-            x: "-150%",
-            opacity: 0,
-            duration: 1.5,
-            stagger: 0.3,
-            ease: "power3.in"
-          },
-          "<" // sync with blackout
-        );
+// Step 2: Exit right images (in sync with left)
+tl.to(loaderRef.current.querySelectorAll(".right-img"), {
+  x: "150%",
+  opacity: 0,
+  duration: 0.8,
+  stagger: 0.3,
+  ease: "power3.in"
+}, "<"); // start at same time as left images
 
-        // Step 3: Exit right images
-        tl.to(
-          loaderRef.current.querySelectorAll(".right-img"),
-          {
-            x: "150%",
-            opacity: 0,
-            duration: 1.5,
-            stagger: 0.3,
-            ease: "power3.in"
-          },
-          "<" // sync with blackout
-        );
-      }, 3300); // match loader animations
+// Step 3: Fade in blackout after 2 images (≈1.1s delay)
+tl.to(loaderRef.current.querySelector(".blackout"), {
+  opacity: 1,
+  duration: 1.3,
+  ease: "power2.inOut"
+}, 1.1); // <-- exact start time in timeline
+      }, 2300); // match loader animations
 
       return () => clearTimeout(timer);
     }

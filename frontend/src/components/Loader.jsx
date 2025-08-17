@@ -13,7 +13,7 @@ const Loader = forwardRef((props, ref) => {
     gsap.fromTo(
       overlayRef.current,
       { x: "0%" },
-      { x: "100%", duration: 2.5, ease: "power2.inOut" }
+      { x: "100%", duration: 2, ease: "power2.inOut" }
     );
 
     // Animate text after a small delay
@@ -23,7 +23,7 @@ const Loader = forwardRef((props, ref) => {
       y: 0,
       duration: 0.5,
       stagger: 0.05,
-      delay: 2,
+      delay: 1.0, // delay before text animation starts
       ease: "power2.out"
     });
 
