@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
+import About from './pages/about'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
@@ -60,13 +61,14 @@ tl.to(loaderRef.current.querySelector(".blackout"), {
   }
 
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <div className='h-screen w-screen'>
+      <Header/>
+     <main className='mt-13 min-h-screen w-full scroll-smooth'>
+      <section id="home"><Home /></section> 
+        
+      </main>
+      <Footer/>
+    </div>
   )
 }
 
