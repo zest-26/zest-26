@@ -1,9 +1,10 @@
 import React from "react";
+import Tabs from "../components/resultsTab";
 const CoordinatorResults = () => {
   return (
-    <div className="relative h-[1000px] flex items-center justify-center bg-black">
+    <div className="relative h-[1490px] flex items-center justify-center bg-gradient-to-b from-black to-[#0a1936]">
       <div
-        className=" w-[800px] h-[900px] top-[10px] bg-cover bg-center absolute rounded-2xl shadow-lg"
+        className=" w-[1200px] h-[1460px] top-[10px] bg-cover bg-center absolute rounded-2xl shadow-lg"
         style={{ backgroundImage: "url('/bg2.avif')" }} // put bg2.avif in /public folder
       >
         {/* Dark overlay for better text visibility */}
@@ -17,7 +18,9 @@ const CoordinatorResults = () => {
           </div>
 
           <h1 className="absolute sm:top-[135px] text-4xl font-bold ">Coordinator Results</h1>
-          <div className="absolute border-[1px] top-[345px] w-[700px] h-[520px] rounded-2xl  backdrop-blur-xs shadow-md"></div>
+          <div className="absolute  top-[345px] w-[700px] h-[520px] rounded-2xl  backdrop-blur-xs shadow-md">
+            <Tabs />
+          </div>
           
         </div>
       </div>
