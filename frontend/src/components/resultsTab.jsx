@@ -59,7 +59,7 @@ const Tabs = () => {
               <div className="mt-0 p-4 bg-white/10 w-[290px] border-2 rounded-xl shadow-md transition-all duration-500 absolute left-[631px]">
                 <ul className="list-disc list-inside text-sm">
                   {tab.people.map((person, index) => (
-                    <li key={index}>{person}</li>
+                    <p key={index} className="font-bold">{person}</p>
                   ))}
                 </ul>
               </div>
