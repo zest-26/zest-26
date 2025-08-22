@@ -23,7 +23,8 @@ const CoordinatorResults = () => {
   }, []);
 
   return (
-    <div className="relative h-[1490px] flex items-center justify-center bg-gradient-to-b from-black to-[#0a1936]">
+    <div className=" relative h-[1490px] flex items-center justify-center bg-gradient-to-b from-black to-[#0a1936]">
+      
       <div
         className=" w-[1200px] h-[1460px] top-[10px] bg-cover bg-center absolute rounded-2xl shadow-lg"
         style={{ backgroundImage: "url('/bg2.avif')" }} // put bg2.avif in /public folder
@@ -38,8 +39,8 @@ const CoordinatorResults = () => {
             <img src="/ZEST-26.png" alt="Logo" className="w-full h-full object-contain" />
           </div>
 
-          <h1 className="absolute sm:top-[135px] text-4xl font-bold " ref={textRef}>
-            {"Coordinator Results 2025".split("").map((char, index) => (
+          <h1 className="absolute top-[120px] sm:top-[135px]  sm:text-4xl font-bold " ref={textRef}>
+            {"Coordinator Results".split("").map((char, index) => (
           <span
             key={index}
             className="inline-block opacity-0 translate-y-[-20px]"
@@ -47,7 +48,7 @@ const CoordinatorResults = () => {
             {char === " " ? "\u00A0" : char}
           </span>
         ))}</h1>
-          <div className="absolute  top-[345px] w-[700px] h-[520px] rounded-2xl  backdrop-blur-xs shadow-md">
+          <div className="absolute  top-[345px] w-[400px]  rounded-2xl  backdrop-blur-xs shadow-md">
             <Tabs />
           </div>
           
