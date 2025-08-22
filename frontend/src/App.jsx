@@ -1,60 +1,56 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
 import Home from './pages/Home'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
 import About from './pages/about'
+import CoordinatorResults from './pages/coordinatorResults'
 
-function App() {
+function AnimatedRoutes() {
   const [isLoading, setIsLoading] = useState(true)
   const loaderRef = useRef(null)
+  const location = useLocation()
 
   useEffect(() => {
-    const sessionLoaded = sessionStorage.getItem("loaderShown");
+    setIsLoading(true) // show loader on every route change
 
-    if (sessionLoaded) {
-      setIsLoading(false);
-    } else {
-      const timer = setTimeout(() => {
-        const tl = gsap.timeline({
-          onComplete: () => {
-            setIsLoading(false);
-            sessionStorage.setItem("loaderShown", "true");
-          }
-        });
+    const timer = setTimeout(() => {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setIsLoading(false)  // hide loader when done
+        }
+      });
 
-        
-// Step 1: Exit left images
-tl.to(loaderRef.current.querySelectorAll(".left-img"), {
-  x: "-150%",
-  opacity: 0,
-  duration: 0.8,
-  stagger: 0.3,
-  ease: "power3.in"
-});
+      // Step 1: Exit left images
+      tl.to(loaderRef.current.querySelectorAll(".left-img"), {
+        x: "-150%",
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.3,
+        ease: "power3.in"
+      });
 
-// Step 2: Exit right images (in sync with left)
-tl.to(loaderRef.current.querySelectorAll(".right-img"), {
-  x: "150%",
-  opacity: 0,
-  duration: 0.8,
-  stagger: 0.3,
-  ease: "power3.in"
-}, "<"); // start at same time as left images
+      // Step 2: Exit right images
+      tl.to(loaderRef.current.querySelectorAll(".right-img"), {
+        x: "150%",
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.3,
+        ease: "power3.in"
+      }, "<");
 
-// Step 3: Fade in blackout after 2 images (≈1.1s delay)
-tl.to(loaderRef.current.querySelector(".blackout"), {
-  opacity: 1,
-  duration: 1.3,
-  ease: "power2.inOut"
-}, 1.1); // <-- exact start time in timeline
-      }, 2300); // match loader animations
+      // Step 3: Fade in blackout
+      tl.to(loaderRef.current.querySelector(".blackout"), {
+        opacity: 1,
+        duration: 1.3,
+        ease: "power2.inOut"
+      }, 1.1);
+    }, 2000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [])
+    return () => clearTimeout(timer)
+  }, [location.pathname])
 
   if (isLoading) {
     return <Loader ref={loaderRef} />
@@ -62,13 +58,31 @@ tl.to(loaderRef.current.querySelector(".blackout"), {
 
   return (
     <div className='h-screen w-screen'>
-      <Header/>
-     <main className='mt-13 min-h-screen w-full scroll-smooth'>
-      <section id="home"><Home /></section> 
-        
+    
+      <main className='mt-0 min-h-screen w-full scroll-smooth'>
+        <Routes location={location} key={location.pathname}>
+          <Route 
+            path="/" 
+            element={
+              <>
+                <section id="home"><Home /></section>
+                <section id="about"><About /></section>
+              </>
+            }
+          />
+          <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+        </Routes>
       </main>
-      <Footer/>
+      <Footer />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AnimatedRoutes />
+    </BrowserRouter>
   )
 }
 
