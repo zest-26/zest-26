@@ -39,9 +39,9 @@ const Tabs = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center w-full h-full" ref={containerRef}>
+    <div className="flex flex-col  pr-2 sm:pr-0 items-center w-full h-full" ref={containerRef}>
       {/* Loop through tabs */}
-      <div className="flex flex-col w-full gap-3 relative">
+      <div className="flex flex-col top-[-140px] sm:top-[10px] pl-15 pr-3 sm:pl-0 sm:pr-0 sm:ml-15 sm:mr-0 w-full gap-3 relative">
         {tabs.map((tab) => (
           <div key={tab.id} className="flex items-start gap-4 w-full">
             {/* Tab Button */}
@@ -52,14 +52,14 @@ const Tabs = () => {
     ${activeTab === tab.id ? "border-2" : "bg-white/10 hover:bg-white/40 hover:scale-105"}`}
 >
   {tab.title}
-  <tab.icon className="w-7 h-7 absolute left-[350px] top-[10px]" />  {/* Icon here */}
+  <tab.icon className="w-7 h-7 absolute left-[270px] top-[10px] sm:left-[350px] sm:top-[10px]" />  {/* Icon here */}
 </button>
         
             {/* Tab Content */}
             {activeTab === tab.id  && [1, 3, 5,7,9,11,13,15,17].includes(tab.id) && (
                 <>
-             <div className="absolute mt-[22px] left-[400px] w-[120px] h-[2px] bg-white"></div>
-              <div className="mt-0 p-4 bg-white/20 w-[280px] border-2 rounded-xl shadow-md transition-all duration-500 absolute left-[519px]">
+             <div className="absolute hidden sm:block mt-[22px] left-[400px] w-[120px] h-[2px] bg-white"></div>
+              <div className="mt-0 p-4 hidden sm:block bg-white/20 w-[280px] border-2 rounded-xl shadow-md transition-all duration-500 absolute left-[519px]">
                 <ul className="list-disc list-inside font-bold">
                   {tab.people.map((person, index) => (
                     <p key={index} className="font-bold">{person}</p>
@@ -70,9 +70,9 @@ const Tabs = () => {
             )}
             {activeTab === tab.id  && [2,4,6,8,10,12,14,16,18].includes(tab.id) && (
                 <>
-             <div className="absolute mt-[22px] left-[-120px] w-[120px] h-[2px] bg-white"></div>
+             <div className="absolute hidden sm:block mt-[22px] left-[-120px] w-[120px] h-[2px] bg-white"></div>
              
-              <div className="mt-0 p-4 bg-white/10 w-[280px] border-2 rounded-xl shadow-md transition-all duration-500 absolute left-[-400px]">
+              <div className="mt-0 p-4 hidden sm:block bg-white/10 w-[280px] border-2 rounded-xl shadow-md transition-all duration-500 absolute left-[-400px]">
                 <ul className="list-disc list-inside font-bold">
                   {tab.people.map((person, index) => (
                     <p key={index}>{person}</p>
@@ -81,6 +81,18 @@ const Tabs = () => {
               </div>
               </>
             )}
+            {/* Mobile tab content */}
+{/* Mobile tab content */}
+{activeTab === tab.id && (
+  <div className="block relative sm:hidden mt-16 ml-[-335px]">
+    <div className="p-4 bg-white/20 w-[320px] border-2 rounded-xl shadow-md transition-all duration-500">
+      <ul className="list-disc list-inside font-bold">
+        {tab.people.map((person, index) => <p key={index}>{person}</p>)}
+      </ul>
+    </div>
+  </div>
+)}
+            
           </div>
         ))}
       </div>

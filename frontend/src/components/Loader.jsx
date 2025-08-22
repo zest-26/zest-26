@@ -55,7 +55,7 @@ const Loader = forwardRef((props, ref) => {
       <img
         ref={leftImgRefs[0]}
         src="/footballLoader.avif"
-        className="left-img w-40 h-40 top-[35px] left-[1px]  absolute sm:top-[-1px] sm:left-[15px] sm:w-70 sm:h-70 rotate-[-25deg] opacity-70"
+        className="left-img w-35 h-35 z-10 top-[35px] left-[1px]  absolute sm:top-[-1px] sm:left-[15px] sm:w-70 sm:h-70 rotate-[-25deg] opacity-70"
       />
 
       <img
@@ -67,14 +67,14 @@ const Loader = forwardRef((props, ref) => {
       <img
         ref={leftImgRefs[2]}
         src="/cricketLoader.avif"
-        className="left-img absolute w-40 h-40 top-[665px] left-[1px] sm:top-[500px] sm:left-[15px] sm:w-70 sm:h-70 rotate-[-25deg] opacity-70"
+        className="left-img absolute w-35 h-35 top-[500px] left-[1px] sm:top-[500px] sm:left-[15px] sm:w-70 sm:h-70 rotate-[-25deg] opacity-70"
       />
 
       {/* Floating Images - Right Side */}
       <img
         ref={rightImgRefs[0]}
         src="/basketballLoader.png"
-        className="right-img absolute  w-40 h-40 top-[35px] right-[1px] sm:top-[-1px] sm:right-[15px] sm:w-70 sm:h-80 rotate-[25deg] opacity-80"
+        className="right-img absolute z-10  w-35 h-35 top-[35px] right-[1px] sm:top-[-1px] sm:right-[15px] sm:w-70 sm:h-80 rotate-[25deg] opacity-80"
       />
 
       <img
@@ -86,7 +86,7 @@ const Loader = forwardRef((props, ref) => {
       <img
         ref={rightImgRefs[2]}
         src="/fencngLoader.jpg"
-        className="right-img absolute w-40 h-40  top-[665px] right-[1px] sm:top-[500px] sm:right-[15px] sm:w-80 sm:h-80 rotate-[25deg] opacity-75"
+        className="right-img absolute w-35 h-35  top-[500px] right-[1px] sm:top-[500px] sm:right-[15px] sm:w-80 sm:h-80 rotate-[25deg] opacity-75"
       />
 
       {/* Video */}
@@ -98,11 +98,11 @@ const Loader = forwardRef((props, ref) => {
         playsInline
         onContextMenu={(e) => e.preventDefault()}
         disablePictureInPicture
-        className="w-50 h-50 sm:w-80 sm:h-80 object-cover rounded-2xl shadow-lg sm:mb-5 z-10"
+        className="w-40 h-40 absolute z-0 sm:static top-[170px]   sm:w-80 sm:h-80 object-cover rounded-2xl shadow-lg sm:mb-5 "
       />
 
       {/* Logo */}
-      <div className="relative top-[10px] w-[230px] h-[70px] sm:w-[230px] sm:h-[70px] overflow-hidden z-10">
+      <div className="relative top-[-20px] sm:top-[-19px] w-[230px] h-[70px] sm:w-[230px] sm:h-[70px] overflow-hidden z-10">
         <img src="./ZEST-26.png" className="w-full h-full object-contain" />
         <div
           ref={overlayRef}
@@ -113,7 +113,7 @@ const Loader = forwardRef((props, ref) => {
       {/* Coming Soon Text */}
       <div
         ref={textRef}
-        className="flex mt-4 text-[25px] text-white font-bold z-10"
+        className="flex mt-4 absolute top-[380px] sm:top-[580px] text-[25px] text-white font-bold z-10"
       >
         {"Coming Soon".split("").map((char, index) => (
           <span
