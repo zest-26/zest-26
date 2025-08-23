@@ -23,11 +23,11 @@ const CoordinatorResults = () => {
   }, []);
 
   return (
-    <div className=" relative h-[1650px] sm:h-[1490px] flex items-center justify-center bg-gradient-to-b from-black to-[#0a1936]">
-      
+    <div className=" relative h-[1650px] sm:h-[1840px] flex items-center justify-center bg-gradient-to-b from-black to-[#03122f]">
+    
       <div
-        className="w-full h-full sm:w-[1200px] sm:h-[1460px] top-[10px] bg-cover bg-center absolute rounded-2xl shadow-lg"
-        style={{ backgroundImage: "url('/bg2.avif')" }} // put bg2.avif in /public folder
+        className="w-full h-full sm:w-[620px] sm:h-[1740px] top-[10px] bg-repeat  bg-center absolute rounded-2xl shadow-lg"
+        style={{ backgroundImage: "url('/bg-2.avif')" }} // put bg2.avif in /public folder
       >
         {/* Dark overlay for better text visibility */}
         <div className="absolute inset-0 bg-black/40 rounded-2xl"></div>
@@ -48,12 +48,13 @@ const CoordinatorResults = () => {
             {char === " " ? "\u00A0" : char}
           </span>
         ))}</h1>
-          <div className="absolute mr-13 sm:mr-13  top-[345px] w-[400px]  rounded-2xl  backdrop-blur-xs shadow-md">
+          <div className="absolute mr-10 sm:mr-13 sm:top-[270px]  top-[345px] w-[400px]  rounded-2xl   shadow-md">
             <Tabs />
           </div>
           
         </div>
       </div>
+    
     </div>
   );
 };

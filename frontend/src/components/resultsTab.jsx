@@ -6,11 +6,11 @@ const Tabs = () => {
   const containerRef = useRef(null); // ref for detecting outside clicks
 
   const tabs = [
-    { id: 1,icon: BadgeDollarSign,  title: "Finance and Markerting", people: ["Paul", "Quincy", "Rachel", "Steve", "Tina","Quincy", "Rachel", "Steve", "Tina","Quincy", "Rachel", "Steve", "Tina","Quincy"] },
-    { id: 2,icon: CalendarSync, title: "Events", people: ["Uma", "Victor", "Wendy", "Xavier", "Yara","Victor", "Wendy", "Xavier", "Yara","Victor", "Wendy", "Xavier", "Yara","Yara"] },
-    { id: 3,icon: Users, title: "CRN", people: ["Zane", "Abby", "Blake", "Cody", "Diana", "Abby", "Blake", "Cody", "Diana", "Abby", "Blake", "Cody"] },
-    { id: 4,icon: GraduationCap, title: "AOG", people: ["Paul", "Quincy", "Rachel", "Steve", "Tina", "Quincy", "Rachel", "Steve", "Tina", "Quincy", "Rachel", "Steve"] },
-    { id: 5,icon: Palette, title: "Campus", people: ["Uma", "Victor", "Wendy", "Xavier", "Yara","Uma", "Victor", "Wendy", "Xavier", "Yara"] },
+    { id: 1,icon: BadgeDollarSign,  title: "Finance and Markerting", people: ["1. Paul", "2. Quincy", "3. Rachel", "4. Steve", "5. Tina","6. Quincy", "7. Rachel", "8. Steve", "9. Tina","10. Quincy", "11. Rachel", "12. Steve", "13. Tina","14. Quincy"] },
+    { id: 2,icon: CalendarSync, title: "Events", people: ["1. Paul", "2. Quincy", "3. Rachel", "4. Steve", "5. Tina","6. Quincy", "7. Rachel", "8. Steve", "9. Tina","10. Quincy", "11. Rachel", "12. Steve", "13. Tina","14. Quincy"] },
+    { id: 3,icon: Users, title: "CRN", people: ["1. Paul", "2. Quincy", "3. Rachel", "4. Steve", "5. Tina","6. Quincy", "7. Rachel", "8. Steve", "9. Tina","10. Quincy", "11. Rachel", "12. Steve", "13. Tina","14. Quincy"] },
+    { id: 4,icon: GraduationCap, title: "AOG", people: ["1. Paul", "2. Quincy", "3. Rachel", "4. Steve", "5. Tina","6. Quincy", "7. Rachel", "8. Steve", "9. Tina","10. Quincy", "11. Rachel", "12. Steve", "13. Tina","14. Quincy"] },
+    { id: 5,icon: Palette, title: "Campus", people: ["1. Paul", "2. Quincy", "3. Rachel", "4. Steve", "5. Tina","6. Quincy", "7. Rachel", "8. Steve", "9. Tina","10. Quincy", "11. Rachel", "12. Steve", "13. Tina","14. Quincy"] },
     { id: 6,icon: Hotel, title: "Hospitality", people: ["Zane", "Abby", "Blake", "Cody", "Diana", "Diana"] },
     { id: 7,icon: Video, title: "VFX", people: ["Ethan", "Fiona", "George", "Holly", "Ian", "Ian"] },
     { id: 8,icon: Trophy, title: "Championship", people: ["Jack", "Kara", "Liam", "Mona", "Noah"] },
@@ -55,37 +55,12 @@ const Tabs = () => {
   <tab.icon className="w-7 h-7 absolute left-[270px] top-[10px] sm:left-[350px] sm:top-[10px]" />  {/* Icon here */}
 </button>
         
-            {/* Tab Content */}
-            {activeTab === tab.id  && [1, 3, 5,7,9,11,13,15,17].includes(tab.id) && (
-                <>
-             <div className="absolute hidden sm:block mt-[22px] left-[400px] w-[120px] h-[2px] bg-white"></div>
-              <div className="mt-0 p-4 hidden sm:block bg-white/20 w-[280px] border-2 rounded-xl shadow-md transition-all duration-500 absolute left-[519px]">
-                <ul className="list-disc list-inside font-bold">
-                  {tab.people.map((person, index) => (
-                    <p key={index} className="font-bold">{person}</p>
-                  ))}
-                </ul>
-              </div>
-              </>
-            )}
-            {activeTab === tab.id  && [2,4,6,8,10,12,14,16,18].includes(tab.id) && (
-                <>
-             <div className="absolute hidden sm:block mt-[22px] left-[-120px] w-[120px] h-[2px] bg-white"></div>
-             
-              <div className="mt-0 p-4 hidden sm:block bg-white/10 w-[280px] border-2 rounded-xl shadow-md transition-all duration-500 absolute left-[-400px]">
-                <ul className="list-disc list-inside font-bold">
-                  {tab.people.map((person, index) => (
-                    <p key={index}>{person}</p>
-                  ))}
-                </ul>
-              </div>
-              </>
-            )}
-            {/* Mobile tab content */}
-{/* Mobile tab content */}
+            
+           
+    
 {activeTab === tab.id && (
-  <div className="block relative sm:hidden mt-16 ml-[-335px]">
-    <div className="p-4 bg-white/20 w-[320px] border-2 rounded-xl shadow-md transition-all duration-500">
+  <div className=" relative mt-16  ml-[-335px] sm:ml-[-410px]">
+    <div className="p-4  w-[320px] sm:w-[400px] shadow-md transition-all duration-500">
       <ul className="list-disc list-inside font-bold">
         {tab.people.map((person, index) => <p key={index}>{person}</p>)}
       </ul>
