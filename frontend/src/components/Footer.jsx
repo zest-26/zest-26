@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className='bg-black  min-h-1/3'>
       <h1 className='text-5xl font-bold text-center py-6 '>
-  <span className='bg-gradient-to-r from-blue-950 to-white text-transparent bg-clip-text'>Get In</span><span className='bg-gradient-to-r from-white to-blue-950 text-transparent bg-clip-text'> Touch</span>
+  <span className='bg-gradient-to-r from-orange-600 to-white text-transparent bg-clip-text'>Get In</span><span className='bg-gradient-to-r from-white to-orange-600 text-transparent bg-clip-text'> Touch</span>
 </h1>
   <div className='flex relative justify-evenly ml-[60px] mr-[60px] sm:px-15 sm:mt-6 sm:ml-150 sm:mr-150'>
               <a href='https://www.instagram.com/coepzest/' target="_blank" 
