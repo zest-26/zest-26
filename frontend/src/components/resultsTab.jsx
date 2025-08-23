@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { BadgeDollarSign,CalendarSync,Users,GraduationCap,Palette,Hotel,Video,Trophy,Boxes,Building2,IndianRupee,FileText, PenTool, CircuitBoard,Laptop, Share2, ShieldCheck } from "lucide-react";
-
+import gsap from "gsap";
 const Tabs = () => {
   const [activeTab, setActiveTab] = useState(null);
   const containerRef = useRef(null); // ref for detecting outside clicks
-
+  const peopleRefs = useRef([]); // refs for each tab's people
   const tabs = [
     { id: 1,icon: BadgeDollarSign,  title: "Finance and Markerting", people: ["1. Paul", "2. Quincy", "3. Rachel", "4. Steve", "5. Tina","6. Quincy", "7. Rachel", "8. Steve", "9. Tina","10. Quincy", "11. Rachel", "12. Steve", "13. Tina","14. Quincy"] },
     { id: 2,icon: CalendarSync, title: "Events", people: ["1. Paul", "2. Quincy", "3. Rachel", "4. Steve", "5. Tina","6. Quincy", "7. Rachel", "8. Steve", "9. Tina","10. Quincy", "11. Rachel", "12. Steve", "13. Tina","14. Quincy"] },
@@ -38,6 +38,17 @@ const Tabs = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Animate people list when tab opens
+  useEffect(() => {
+    if (activeTab !== null && peopleRefs.current.length > 0) {
+      gsap.fromTo(
+        peopleRefs.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, stagger: 0.1, duration: 0.1 }
+      );
+    }
+  }, [activeTab]);
+
   return (
     <div className="flex flex-col  pr-2 sm:pr-0 items-center w-full h-full" ref={containerRef}>
       {/* Loop through tabs */}
@@ -62,7 +73,7 @@ const Tabs = () => {
   <div className=" relative mt-16  ml-[-335px] sm:ml-[-410px]">
     <div className="p-4  w-[320px] sm:w-[400px] shadow-md transition-all duration-500">
       <ul className="list-disc list-inside font-bold">
-        {tab.people.map((person, index) => <p key={index}>{person}</p>)}
+        {tab.people.map((person, index) => <p key={index} ref={(el) => (peopleRefs.current[index] = el)} className="opacity-0">{person}</p>)}
       </ul>
     </div>
   </div>
