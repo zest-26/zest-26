@@ -89,7 +89,8 @@ const Tabs = () => {
 "6. Sanchita Nangare",
 "7. Aditya Sarda",
 "8. Prathmesh Murdande",
-"9. Pratik Hande"] },
+"9. Pratik Hande",
+"10. Krishna Bamnote"] },
     { id: 8,icon: Trophy, title: "Championship", people: ["1. Bhavik Pawar",
 "2. Shlok Sanap",
 "3. Palak Chandankhede",
@@ -139,12 +140,11 @@ const Tabs = () => {
 "3. Arpita Wagh",
 "4. Mayuresh Bhalerao",
 "5. Shreyas Patil"] },
-    { id: 18,icon: Coffee, title: "Refreshment", people: ["1. Viraj Borse",
-"2. Kartikey Sharma",
-"3. Abhishek Gajulwar",
-"4. Abhijit More",
-"5. Shubham Dada",
-"6. Chetan Gomase"] },
+    { id: 18,icon: Coffee, title: "Refreshment", people: ["1. Om Haral",
+"2. Dhananjay Jirekar",
+"3. Sanket Khedkar",
+"4. Jayesh Sadafule",
+"5. Rushikesh Vikhe"] },
   ];
 
   // 🔹 Close tab when clicking outside
