@@ -24,7 +24,7 @@ const CoordinatorResults = () => {
 
   return (
     <div className=" relative h-[1650px] sm:h-[1840px] flex items-center justify-center bg-gradient-to-b from-black to-[#03122f]">
-    
+      <div className="absolute hidden sm:block h-[930px] bg-gradient-to-b from-[#30064e] to-black w-full mt-[-910px]"></div>
       <div
         className="w-full h-full sm:w-[620px] sm:h-[1740px] top-[10px] bg-repeat  bg-center absolute rounded-2xl shadow-lg"
         style={{ backgroundImage: "url('/bg-2.avif')" }} // put bg2.avif in /public folder
