@@ -63,7 +63,7 @@ const CoordinatorResults = () => {
         style={{ backgroundImage: "url('/bg-6.png')" }} // put bg2.avif in /public folder
       >
         {/* Dark overlay */}
-  <div className="absolute inset-0 bg-black/40 h-[1270px] sm:h-[1400px] rounded-2xl z-0"></div>
+  <div className="absolute inset-0 bg-black/40 h-[1670px] sm:h-[1700px] rounded-2xl z-0"></div>
 
 
         {/* Content goes on top of image */}
