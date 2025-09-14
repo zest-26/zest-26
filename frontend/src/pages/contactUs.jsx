@@ -1,13 +1,13 @@
 import React from 'react'
 
-const about = () => {
+const contactUs = () => {
   return (
     <div >
       <h1 className='mt-40'>
-       About Us
+       Contact Us
      </h1>
     </div>
   )
 }
 
-export default about
+export default contactUs
