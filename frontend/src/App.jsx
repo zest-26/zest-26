@@ -7,6 +7,12 @@ import Footer from './components/Footer'
 import Loader from './components/Loader'
 import About from './pages/about'
 import CoordinatorResults from './pages/coordinatorResults'
+import ContactUs from './pages/contactUs'
+import Gallery from './pages/Gallery'
+import CoreTeam from './pages/coreTeam'
+import Sports from './pages/Sports'
+import Accomodations from './pages/Accomodations'
+import Sponsers from './pages/Sponsers'
 
 function AnimatedRoutes() {
   const [isLoading, setIsLoading] = useState(true)
@@ -58,6 +64,7 @@ function AnimatedRoutes() {
 
   return (
     <div className='h-screen w-screen'>
+      <Header />
       <main className='mt-0 min-h-screen w-full scroll-smooth'>
         <Routes location={location} key={location.pathname}>
           <Route 
@@ -65,11 +72,18 @@ function AnimatedRoutes() {
             element={
               <>
                 <section id="home"><Home /></section>
-                <section id="about"><About /></section>
+                
               </>
             }
           />
           <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contactUs" element={<ContactUs />} />
+          <Route path="/Gallery" element={<Gallery />} />
+          <Route path="/coreTeam" element={<CoreTeam />} />
+          <Route path="/Sports" element={<Sports />} />
+          <Route path="/Accomodations" element={<Accomodations />} />
+          <Route path="/Sponsers" element={<Sponsers />} />
         </Routes>
       </main>
       <Footer />
