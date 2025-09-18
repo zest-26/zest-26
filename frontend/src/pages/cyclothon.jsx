@@ -1,5 +1,6 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, useGLTF } from "@react-three/drei";
+import { Bounds, OrbitControls, useGLTF, Center } from "@react-three/drei";
+
 import { useRef, useState } from "react";
 
 function Cycle() {
@@ -35,13 +36,11 @@ function Cycle() {
 // 🪖 Helmet model
 function Helmet() {
   const { scene } = useGLTF("/3DModels/cycle_helmet.glb");
+  console.log(scene)
   return (
-    <primitive
-      object={scene}
-      scale={1}             // adjust size
-      position={[-10, -5, 0]}  // adjust position
-      rotation={[0, Math.PI / 4, 0]} // adjust rotation
-    />
+    <Center position={[50, 0, 0]} rotation={[0, -(Math.PI) * 2.5, 0]} scale={0.8}>
+  <primitive object={scene}  />
+</Center>
   );
 }
 
@@ -50,19 +49,24 @@ export default function cyclothon() {
     <div className="h-screen w-screen relative bg-[#b94d05]">
 
      {/* Helmet box */}
-      <div className="h-[300px] w-[300px] absolute rounded-xl shadow-lg ml-[580px] mt-[100px]">
-        <Canvas camera={{ position: [0, 2, 10], fov: 50 }}>
-          <ambientLight intensity={0.5} />
+      <div className="h-[300px] w-[300px] absolute rounded-xl  ml-[600px] mt-[40px]">
+        <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
+          <ambientLight intensity={0.8} />
           <directionalLight position={[5, 5, 5]} />
-          <Helmet />
-          <OrbitControls enableDamping dampingFactor={0.1} />
+
+          {/* Auto-fit helmet inside view */}
+          <Bounds fit clip observe margin={1.2}>
+            <Helmet />
+          </Bounds>
+
+          <OrbitControls makeDefault />
         </Canvas>
       </div>
 
 
       <div className="h-[590px] w-[590px] absolute mt-[200px] ml-[480px]">
       <Canvas camera={{ position: [-27, 25, 43], fov: 50 }}>
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} />
         <Cycle />
        <OrbitControls 
@@ -74,6 +78,7 @@ export default function cyclothon() {
 
       </Canvas>
       </div>
+      
     </div>
   );
 }
