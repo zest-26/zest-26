@@ -1,22 +1,42 @@
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
+import { useRef, useState } from "react";
 
 function Model() {
   const { scene } = useGLTF("/3DModels/cycle.glb"); // your downloaded model
-  scene.traverse((obj) => {
-  if (obj.isMesh) {
-    console.log("Mesh found:", obj.name);
-  }
-});
 
-   return <primitive object={scene} scale={0.2} position={[4, -10, 0]} rotation={[Math.PI, 1.3, 0]} />;
+  const modelRef = useRef();
+  const [rotated, setRotated] = useState(false); // track if animation finished
+
+  useFrame(() => {
+    if (modelRef.current && !rotated) {
+      // Rotate smoothly until 360° (2 * Math.PI radians)
+      modelRef.current.rotation.y += 0.07;
+
+      if (modelRef.current.rotation.y >= 2 * Math.PI + 1.3) {
+        // 1.3 is your default rotation.y
+        modelRef.current.rotation.y = 1.3; // reset to default
+        setRotated(true); // stop animation
+      }
+    }
+  });
+
+    return (
+    <primitive
+      ref={modelRef}
+      object={scene}
+      scale={0.18}
+      position={[1, -14, 0]}
+      rotation={[Math.PI, 1.5, 0]} // default rotation
+    />
+  );
 }
 
 export default function cyclothon() {
   return (
     <div className="h-screen w-screen relative bg-[#b94d05]">
-      <div className="h-[550px] w-[550px] absolute mt-[350px] ml-[500px]">
-      <Canvas camera={{ position: [0, 30, 50], fov: 50 }}>
+      <div className="h-[590px] w-[590px] absolute mt-[200px] ml-[480px]">
+      <Canvas camera={{ position: [-27, 25, 43], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} />
         <Model />
