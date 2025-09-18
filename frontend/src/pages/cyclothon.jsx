@@ -2,7 +2,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef, useState } from "react";
 
-function Model() {
+function Cycle() {
   const { scene } = useGLTF("/3DModels/cycle.glb"); // your downloaded model
 
   const modelRef = useRef();
@@ -32,14 +32,39 @@ function Model() {
   );
 }
 
+// 🪖 Helmet model
+function Helmet() {
+  const { scene } = useGLTF("/3DModels/cycle_helmet.glb");
+  return (
+    <primitive
+      object={scene}
+      scale={1}             // adjust size
+      position={[-10, -5, 0]}  // adjust position
+      rotation={[0, Math.PI / 4, 0]} // adjust rotation
+    />
+  );
+}
+
 export default function cyclothon() {
   return (
     <div className="h-screen w-screen relative bg-[#b94d05]">
+
+     {/* Helmet box */}
+      <div className="h-[300px] w-[300px] absolute rounded-xl shadow-lg ml-[580px] mt-[100px]">
+        <Canvas camera={{ position: [0, 2, 10], fov: 50 }}>
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[5, 5, 5]} />
+          <Helmet />
+          <OrbitControls enableDamping dampingFactor={0.1} />
+        </Canvas>
+      </div>
+
+
       <div className="h-[590px] w-[590px] absolute mt-[200px] ml-[480px]">
       <Canvas camera={{ position: [-27, 25, 43], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} />
-        <Model />
+        <Cycle />
        <OrbitControls 
   minPolarAngle={0}
   maxPolarAngle={Math.PI * 2}
