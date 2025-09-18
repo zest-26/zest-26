@@ -13,6 +13,7 @@ import CoreTeam from './pages/coreTeam'
 import Sports from './pages/Sports'
 import Accomodations from './pages/Accomodations'
 import Sponsers from './pages/Sponsers'
+import Cyclothon from './pages/cyclothon'
 
 function AnimatedRoutes() {
   const [isLoading, setIsLoading] = useState(true)
@@ -64,7 +65,7 @@ function AnimatedRoutes() {
 
   return (
     <div className='h-screen w-screen'>
-      <Header />
+      {location.pathname === "/" && <Header />}
       <main className='mt-0 min-h-screen w-full scroll-smooth'>
         <Routes location={location} key={location.pathname}>
           <Route 
@@ -84,6 +85,7 @@ function AnimatedRoutes() {
           <Route path="/Sports" element={<Sports />} />
           <Route path="/Accomodations" element={<Accomodations />} />
           <Route path="/Sponsers" element={<Sponsers />} />
+          <Route path="/cyclothon" element={<Cyclothon />} />
         </Routes>
       </main>
       <Footer />
