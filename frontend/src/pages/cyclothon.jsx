@@ -1,7 +1,10 @@
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Bounds, OrbitControls, useGLTF, Center } from "@react-three/drei";
 import gsap from "gsap";
+import { SplitText } from "gsap/all";
 import { useRef, useState,useEffect } from "react";
+
+gsap.registerPlugin(SplitText);
 
 function Cycle() {
   const { scene } = useGLTF("/3DModels/cycle.glb"); // your downloaded model
@@ -47,28 +50,58 @@ function Helmet() {
 export default function cyclothon() {
 
    const helmetBoxRef = useRef();
+   const textRef = useRef();
+    const sloganRef = useRef();
 
   useEffect(() => {
-  // start hidden above
-  gsap.set(helmetBoxRef.current, { opacity: 0, y: -30 });
+    gsap.set(helmetBoxRef.current, { opacity: 0, y: -30 });
+    gsap.set(textRef.current, { opacity: 0 });
+    gsap.set(sloganRef.current, { opacity: 0, y: 20 }); // hide slogan initially
 
-  // helmet drop-in animation
-  gsap.to(helmetBoxRef.current, {
-    y: 0,
-    opacity: 1,
-    duration: 1.2,
-    delay: 2.5,
-    ease: "elastic.out(1, 0.3)",
-    onComplete: () => {
-      // when helmet finishes, move both helmet + cycle canvases to RHS
-      gsap.to(".movable", {
-        x: 390, // shift to right
-        duration: 1,
-        ease: "power3.inOut",
-      });
-    },
-  });
-}, []);
+    gsap.to(helmetBoxRef.current, {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      delay: 2.5,
+      ease: "elastic.out(1, 0.3)",
+      onComplete: () => {
+        gsap.to(".movable", {
+          x: 390,
+          duration: 1,
+          ease: "power3.inOut",
+          onComplete: () => {
+            const heroSplit = new SplitText(textRef.current, {
+              type: "chars, words",
+            });
+
+            heroSplit.chars.forEach((char) =>
+              char.classList.add("text-gradient")
+            );
+
+            gsap.set(textRef.current, { opacity: 1 });
+
+            // Cyclothon'25 text animation
+            gsap.from(heroSplit.chars, {
+              yPercent: 15,
+              duration: 1,
+              ease: "expo.out",
+              stagger: 0.04,
+              onComplete: () => {
+                // After heading animation, fade-in slogan
+                gsap.to(sloganRef.current, {
+                  opacity: 1,
+                  y: 0,
+                  duration: 1,
+                  ease: "power3.out",
+                });
+              },
+            });
+          },
+        });
+      },
+    });
+  }, []);
+
   return (
     <div className="h-screen w-screen relative bg-[#40342c]">
 
@@ -104,8 +137,15 @@ export default function cyclothon() {
       </div>
 
       <div className=" absolute h-[600px] w-[800px] mt-[70px] ml-[100px]">
-        <div style={{ fontFamily: 'cyclothonFont',transform: 'scaleY(1.3)', }} className="text-white text-[100px] ml-[10px] mt-[10px] ">
-          <p>Cyclothon'25</p>
+        <div  ref={textRef} style={{ fontFamily: 'cyclothonFont',transform: 'scaleY(1.3)', }} className="title text-white text-[100px] ml-[10px] mt-[10px] ">
+          Cyclothon'25
+        </div>
+        <div ref={sloganRef} style={{ fontFamily: 'cyclothonSloganFont',transform: 'scaleY(1.3)', }} className="absolute text-[30px] text-white">- Every Mile, A Salute, Ride for those who Stood for Us</div>
+        <div style={{ fontFamily: 'cyclothonSloganFont',transform: 'scaleY(1.3)', }} className="absolute mt-[150px] ml-[220px] text-[30px] text-white"> Ride for Operation Sindoor</div>
+        <div style={{ fontFamily: 'cyclothonSloganFont',transform: 'scaleY(1.3)', }}  className="absolute text-[25px] text-white mt-[260px] ml-[320px]">
+          <div>12th October</div>
+          <div>5:30 am</div>
+          <div>COEP Ground</div>
         </div>
       </div>
       
