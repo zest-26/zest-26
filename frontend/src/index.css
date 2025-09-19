@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'cyclothonFont'; /* name you'll use in CSS */
+  src: url('/fonts/cyclothonFont.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

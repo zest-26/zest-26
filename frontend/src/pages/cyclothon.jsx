@@ -102,6 +102,12 @@ export default function cyclothon() {
 
       </Canvas>
       </div>
+
+      <div className=" absolute h-[600px] w-[800px] mt-[70px] ml-[100px]">
+        <div style={{ fontFamily: 'cyclothonFont',transform: 'scaleY(1.3)', }} className="text-white text-[100px] ml-[10px] mt-[10px] ">
+          <p>Cyclothon'25</p>
+        </div>
+      </div>
       
     </div>
   );
