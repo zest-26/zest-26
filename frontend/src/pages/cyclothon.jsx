@@ -48,6 +48,67 @@ function Helmet() {
   );
 }
 
+// Background infinite scrolling rows
+function InfiniteRow({ images, reverse = false, speed = 30 }) {
+  const rowRef = useRef();
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const row = rowRef.current;
+      const totalWidth = row.scrollWidth / 2; // since we duplicate images
+
+      gsap.fromTo(
+        row,
+        { x: reverse ? -totalWidth : 0 },
+        {
+          x: reverse ? 0 : -totalWidth,
+          duration: speed,
+          ease: "none",
+          repeat: -1, // loop forever
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, [reverse, speed]);
+
+  return (
+    <div className="overflow-hidden w-full">
+      <div ref={rowRef} className="flex" style={{ width: "max-content" }}>
+        {[...images, ...images].map((img, i) => (
+          <div
+            key={i}
+            className="min-w-[250px] h-[210px] mx-2 rounded-xl shadow-lg overflow-hidden"
+          >
+            <img
+              src={img}
+              alt="row-img"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function BackgroundScroller() {
+  // 🔹 Replace with your real images
+  const row1 = ["/OS/OS-2.png", "/OS/OS-3.webp", "/OS/OS-5.webp","/OS/OS-6.jpg","/OS/OS-7.avif","/OS/OS-8.jpg"];
+  const row2 = ["/OS/OS-1.webp", "/OS/OS-6.jpg", "/OS/OS-7.avif","/OS/OS-8.jpg","/OS/OS-9.jpg","/OS/OS-3.webp"];
+  const row3 = ["/OS/OS-2.png","/OS/OS-7.avif","/OS/OS-8.jpg","/OS/OS-9.jpg","/OS/OS-3.webp", "/OS/OS-5.webp"];
+  const row4 = ["/OS/OS-1.webp","/OS/OS-8.jpg","/OS/OS-9.jpg","/OS/OS-3.webp", "/OS/OS-5.webp","/OS/OS-6.jpg"];
+
+  return (
+    <div className="absolute  inset-0 z-0 flex flex-col gap-6 opacity-30">
+      <InfiniteRow images={row1} reverse={false} speed={40} />
+      <InfiniteRow images={row2} reverse={true} speed={50} />
+      <InfiniteRow images={row3} reverse={false} speed={35} />
+      <InfiniteRow images={row4} reverse={true} speed={45} />
+    </div>
+  );
+}
+
 export default function cyclothon() {
 
    const helmetBoxRef = useRef();
@@ -125,10 +186,13 @@ export default function cyclothon() {
   return (
     <div className="h-screen w-screen relative bg-[#40342c]">
 
+      {/* 🌌 Background infinite scrolling rows */}
+      <BackgroundScroller />
+
      {/* Helmet box */}
-      <div ref={helmetBoxRef} className="movable h-[300px] w-[300px] absolute rounded-xl  ml-[600px] mt-[40px]">
+      <div ref={helmetBoxRef} className="z-10 movable h-[300px] w-[300px] absolute rounded-xl  ml-[600px] mt-[40px]">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
-          <ambientLight intensity={0.8} />
+          <ambientLight intensity={1} />
           <directionalLight position={[5, 5, 5]} />
 
           {/* Auto-fit helmet inside view */}
@@ -141,9 +205,9 @@ export default function cyclothon() {
       </div>
 
 
-      <div className="movable h-[590px] w-[590px] absolute mt-[200px] ml-[480px]">
+      <div className="z-10 movable h-[590px] w-[590px] absolute mt-[200px] ml-[480px]">
       <Canvas camera={{ position: [-27, 25, 43], fov: 50 }}>
-        <ambientLight intensity={0.7} />
+        <ambientLight intensity={1.7} />
         <directionalLight position={[5, 5, 5]} />
         <Cycle />
        <OrbitControls 
@@ -156,7 +220,7 @@ export default function cyclothon() {
       </Canvas>
       </div>
 
-      <div className=" absolute h-[600px] w-[800px] mt-[70px] ml-[100px]">
+      <div className=" absolute h-[600px] w-[800px] mt-[70px] ml-[100px] z-10">
         <div  ref={textRef} style={{ fontFamily: 'cyclothonFont',transform: 'scaleY(1.3)', }} className="title text-white text-[100px] ml-[10px] mt-[10px] ">
           Cyclothon'25
         </div>
