@@ -234,7 +234,9 @@ export default function cyclothon() {
             <Helmet enableSwaying={enableSwaying} />
           </Bounds>
 
-          <OrbitControls makeDefault />
+          <OrbitControls enableZoom={false}   
+  enableRotate={false}
+  enablePan={false}   />
         </Canvas>
       </div>
 
@@ -244,6 +246,9 @@ export default function cyclothon() {
           <directionalLight position={[27, 40, -43]} />
           <Cycle enableSwaying={enableSwaying} />
           <OrbitControls
+             enableZoom={false}   
+  enableRotate={false}
+  enablePan={false}
             minPolarAngle={0}
             maxPolarAngle={Math.PI * 2}
             enableDamping={true}
