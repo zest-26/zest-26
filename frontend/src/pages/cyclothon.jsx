@@ -207,8 +207,8 @@ export default function cyclothon() {
 
       <div className="z-10 movable h-[590px] w-[590px] absolute mt-[200px] ml-[480px]">
       <Canvas camera={{ position: [-27, 25, 43], fov: 50 }}>
-        <ambientLight intensity={1.7} />
-        <directionalLight position={[5, 5, 5]} />
+        <ambientLight intensity={1.6} />
+        <directionalLight position={[27, 40, -43]} />
         <Cycle />
        <OrbitControls 
   minPolarAngle={0}
