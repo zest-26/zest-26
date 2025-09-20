@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Search, Filter } from 'lucide-react';
 import TeamCard from '../components/TeamCard';
 
-// Real team member data
 const coreTeamMembers = [
   { 
     role: "Secretary", 
@@ -23,42 +22,42 @@ const coreTeamMembers = [
 ];
 
 const portfolioMembers = [
-  { role: "Accounts Head", name: "Rajesh Kumar", image: "#", bio: "Managing financial operations.", email: "rajesh.kumar@zest.com", instagram: "https://instagram.com/rajeshkumar", portfolio: "Accounts" },
-  { role: "Accounts Head", name: "Sneha Reddy", image: "#", bio: "Financial planning specialist.", email: "sneha.reddy@zest.com", portfolio: "Accounts" },
-  { role: "AOG Head", name: "Vikram Singh", image: "#", bio: "AOG operations manager.", email: "vikram.singh@zest.com", portfolio: "AOG" },
-  { role: "AOG Head", name: "Ananya Gupta", image: "#", bio: "AOG coordination expert.", email: "ananya.gupta@zest.com", portfolio: "AOG" },
-  { role: "Campus Head", name: "Rohit Mehta", image: "#", bio: "Campus activities coordinator.", email: "rohit.mehta@zest.com", portfolio: "Campus" },
-  { role: "Campus Head", name: "Kavya Nair", image: "#", bio: "Campus engagement specialist.", email: "kavya.nair@zest.com", portfolio: "Campus" },
-  { role: "Championship Head", name: "Arjun Sharma", image: "#", bio: "Championship event manager.", email: "arjun.sharma@zest.com", portfolio: "Championship" },
-  { role: "Championship Head", name: "Priya Patel", image: "#", bio: "Sports competition coordinator.", email: "priya.patel@zest.com", portfolio: "Championship" },
-  { role: "CRN Head", name: "Ravi Kumar", image: "#", bio: "CRN operations lead.", email: "ravi.kumar@zest.com", portfolio: "CRN" },
-  { role: "CRN Head", name: "Sita Sharma", image: "#", bio: "CRN coordination expert.", email: "sita.sharma@zest.com", portfolio: "CRN" },
-  { role: "Design Head", name: "Amit Singh", image: "#", bio: "Creative design lead.", email: "amit.singh@zest.com", portfolio: "Design" },
-  { role: "Design Head", name: "Neha Gupta", image: "#", bio: "Visual design specialist.", email: "neha.gupta@zest.com", portfolio: "Design" },
-  { role: "Document Head", name: "Suresh Mehta", image: "#", bio: "Documentation manager.", email: "suresh.mehta@zest.com", portfolio: "Document" },
-  { role: "Document Head", name: "Pooja Nair", image: "#", bio: "Content documentation lead.", email: "pooja.nair@zest.com", portfolio: "Document" },
-  { role: "ESM Head", name: "Kiran Sharma", image: "#", bio: "ESM operations coordinator.", email: "kiran.sharma@zest.com", portfolio: "ESM" },
-  { role: "ESM Head", name: "Meera Patel", image: "#", bio: "ESM management expert.", email: "meera.patel@zest.com", portfolio: "ESM" },
-  { role: "Event Head", name: "Raj Kumar", image: "#", bio: "Event planning specialist.", email: "raj.kumar@zest.com", portfolio: "Event" },
-  { role: "Event Head", name: "Asha Singh", image: "#", bio: "Event coordination lead.", email: "asha.singh@zest.com", portfolio: "Event" },
-  { role: "Finance and Marketing Head", name: "Dev Gupta", image: "#", bio: "Finance and marketing expert.", email: "dev.gupta@zest.com", portfolio: "Finance and Marketing" },
-  { role: "Finance and Marketing Head", name: "Riya Mehta", image: "#", bio: "Marketing strategy lead.", email: "riya.mehta@zest.com", portfolio: "Finance and Marketing" },
-  { role: "Hospitality Head", name: "Anil Nair", image: "#", bio: "Hospitality management expert.", email: "anil.nair@zest.com", portfolio: "Hospitality" },
-  { role: "Hospitality Head", name: "Sunita Sharma", image: "#", bio: "Guest services coordinator.", email: "sunita.sharma@zest.com", portfolio: "Hospitality" },
-  { role: "Infra Head", name: "Manoj Patel", image: "#", bio: "Infrastructure planning lead.", email: "manoj.patel@zest.com", portfolio: "Infra" },
-  { role: "Infra Head", name: "Lata Kumar", image: "#", bio: "Infrastructure management expert.", email: "lata.kumar@zest.com", portfolio: "Infra" },
-  { role: "Logistics Head", name: "Vinod Singh", image: "#", bio: "Logistics coordination specialist.", email: "vinod.singh@zest.com", portfolio: "Logistics" },
-  { role: "Logistics Head", name: "Geeta Gupta", image: "#", bio: "Supply chain management lead.", email: "geeta.gupta@zest.com", portfolio: "Logistics" },
-  { role: "Media Head", name: "Rahul Mehta", image: "#", bio: "Media operations coordinator.", email: "rahul.mehta@zest.com", portfolio: "Media" },
-  { role: "Media Head", name: "Kavita Nair", image: "#", bio: "Media content specialist.", email: "kavita.nair@zest.com", portfolio: "Media" },
-  { role: "Refreshment Head", name: "Sunil Sharma", image: "#", bio: "Refreshment services manager.", email: "sunil.sharma@zest.com", portfolio: "Refreshment" },
-  { role: "Refreshment Head", name: "Rekha Patel", image: "#", bio: "Food and beverage coordinator.", email: "rekha.patel@zest.com", portfolio: "Refreshment" },
-  { role: "Safety and Dispute Head", name: "Ajay Kumar", image: "#", bio: "Safety and security expert.", email: "ajay.kumar@zest.com", portfolio: "Safety and Dispute" },
-  { role: "Safety and Dispute Head", name: "Nisha Singh", image: "#", bio: "Dispute resolution specialist.", email: "nisha.singh@zest.com", portfolio: "Safety and Dispute" },
-  { role: "VFX Head", name: "Rohit Gupta", image: "#", bio: "Visual effects coordinator.", email: "rohit.gupta@zest.com", portfolio: "VFX" },
-  { role: "VFX Head", name: "Priya Mehta", image: "#", bio: "VFX production lead.", email: "priya.mehta@zest.com", portfolio: "VFX" },
-  { role: "Web Head", name: "Sanjay Nair", image: "#", bio: "Web development specialist.", email: "sanjay.nair@zest.com", portfolio: "Web" },
-  { role: "Web Head", name: "Deepa Sharma", image: "#", bio: "Web technology lead.", email: "deepa.sharma@zest.com", portfolio: "Web" }
+  { role: "Accounts Head", name: "Rajesh Kumar", image: "#", bio: "Managing financial operations.", email: "rajesh.kumar@zest.com", linkedin: "https://linkedin.com/in/rajeshkumar", instagram: "https://instagram.com/rajeshkumar", portfolio: "Accounts" },
+  { role: "Accounts Head", name: "Sneha Reddy", image: "#", bio: "Financial planning specialist.", email: "sneha.reddy@zest.com", linkedin: "https://linkedin.com/in/snehareddy", instagram: "https://instagram.com/snehareddy", portfolio: "Accounts" },
+  { role: "AOG Head", name: "Vikram Singh", image: "#", bio: "AOG operations manager.", email: "vikram.singh@zest.com", linkedin: "https://linkedin.com/in/vikramsingh", instagram: "https://instagram.com/vikramsingh", portfolio: "AOG" },
+  { role: "AOG Head", name: "Ananya Gupta", image: "#", bio: "AOG coordination expert.", email: "ananya.gupta@zest.com", linkedin: "https://linkedin.com/in/ananyagupta", instagram: "https://instagram.com/ananyagupta", portfolio: "AOG" },
+  { role: "Campus Head", name: "Rohit Mehta", image: "#", bio: "Campus activities coordinator.", email: "rohit.mehta@zest.com", linkedin: "https://linkedin.com/in/rohitmehta", instagram: "https://instagram.com/rohitmehta", portfolio: "Campus" },
+  { role: "Campus Head", name: "Kavya Nair", image: "#", bio: "Campus engagement specialist.", email: "kavya.nair@zest.com", linkedin: "https://linkedin.com/in/kavyanair", instagram: "https://instagram.com/kavyanair", portfolio: "Campus" },
+  { role: "Championship Head", name: "Arjun Sharma", image: "#", bio: "Championship event manager.", email: "arjun.sharma@zest.com", linkedin: "https://linkedin.com/in/arjunsharma", instagram: "https://instagram.com/arjunsharma", portfolio: "Championship" },
+  { role: "Championship Head", name: "Priya Patel", image: "#", bio: "Sports competition coordinator.", email: "priya.patel@zest.com", linkedin: "https://linkedin.com/in/priyapatel", instagram: "https://instagram.com/priyapatel", portfolio: "Championship" },
+  { role: "CRN Head", name: "Ravi Kumar", image: "#", bio: "CRN operations lead.", email: "ravi.kumar@zest.com", linkedin: "https://linkedin.com/in/ravikumar", instagram: "https://instagram.com/ravikumar", portfolio: "CRN" },
+  { role: "CRN Head", name: "Sita Sharma", image: "#", bio: "CRN coordination expert.", email: "sita.sharma@zest.com", linkedin: "https://linkedin.com/in/sitasharma", instagram: "https://instagram.com/sitasharma", portfolio: "CRN" },
+  { role: "Design Head", name: "Amit Singh", image: "#", bio: "Creative design lead.", email: "amit.singh@zest.com", linkedin: "https://linkedin.com/in/amitsingh", instagram: "https://instagram.com/amitsingh", portfolio: "Design" },
+  { role: "Design Head", name: "Neha Gupta", image: "#", bio: "Visual design specialist.", email: "neha.gupta@zest.com", linkedin: "https://linkedin.com/in/nehagupta", instagram: "https://instagram.com/nehagupta", portfolio: "Design" },
+  { role: "Document Head", name: "Suresh Mehta", image: "#", bio: "Documentation manager.", email: "suresh.mehta@zest.com", linkedin: "https://linkedin.com/in/sureshmehta", instagram: "https://instagram.com/sureshmehta", portfolio: "Document" },
+  { role: "Document Head", name: "Pooja Nair", image: "#", bio: "Content documentation lead.", email: "pooja.nair@zest.com", linkedin: "https://linkedin.com/in/poojanair", instagram: "https://instagram.com/poojanair", portfolio: "Document" },
+  { role: "ESM Head", name: "Kiran Sharma", image: "#", bio: "ESM operations coordinator.", email: "kiran.sharma@zest.com", linkedin: "https://linkedin.com/in/kiransharma", instagram: "https://instagram.com/kiransharma", portfolio: "ESM" },
+  { role: "ESM Head", name: "Meera Patel", image: "#", bio: "ESM management expert.", email: "meera.patel@zest.com", linkedin: "https://linkedin.com/in/meerapatel", instagram: "https://instagram.com/meerapatel", portfolio: "ESM" },
+  { role: "Event Head", name: "Raj Kumar", image: "#", bio: "Event planning specialist.", email: "raj.kumar@zest.com", linkedin: "https://linkedin.com/in/rajkumar", instagram: "https://instagram.com/rajkumar", portfolio: "Event" },
+  { role: "Event Head", name: "Asha Singh", image: "#", bio: "Event coordination lead.", email: "asha.singh@zest.com", linkedin: "https://linkedin.com/in/ashasingh", instagram: "https://instagram.com/ashasingh", portfolio: "Event" },
+  { role: "Finance and Marketing Head", name: "Dev Gupta", image: "#", bio: "Finance and marketing expert.", email: "dev.gupta@zest.com", linkedin: "https://linkedin.com/in/devgupta", instagram: "https://instagram.com/devgupta", portfolio: "Finance and Marketing" },
+  { role: "Finance and Marketing Head", name: "Riya Mehta", image: "#", bio: "Marketing strategy lead.", email: "riya.mehta@zest.com", linkedin: "https://linkedin.com/in/riyamehta", instagram: "https://instagram.com/riyamehta", portfolio: "Finance and Marketing" },
+  { role: "Hospitality Head", name: "Anil Nair", image: "#", bio: "Hospitality management expert.", email: "anil.nair@zest.com", linkedin: "https://linkedin.com/in/anilnair", instagram: "https://instagram.com/anilnair", portfolio: "Hospitality" },
+  { role: "Hospitality Head", name: "Sunita Sharma", image: "#", bio: "Guest services coordinator.", email: "sunita.sharma@zest.com", linkedin: "https://linkedin.com/in/sunitasharma", instagram: "https://instagram.com/sunitasharma", portfolio: "Hospitality" },
+  { role: "Infra Head", name: "Manoj Patel", image: "#", bio: "Infrastructure planning lead.", email: "manoj.patel@zest.com", linkedin: "https://linkedin.com/in/manojpatel", instagram: "https://instagram.com/manojpatel", portfolio: "Infra" },
+  { role: "Infra Head", name: "Lata Kumar", image: "#", bio: "Infrastructure management expert.", email: "lata.kumar@zest.com", linkedin: "https://linkedin.com/in/latakumar", instagram: "https://instagram.com/latakumar", portfolio: "Infra" },
+  { role: "Logistics Head", name: "Vinod Singh", image: "#", bio: "Logistics coordination specialist.", email: "vinod.singh@zest.com", linkedin: "https://linkedin.com/in/vinodsingh", instagram: "https://instagram.com/vinodsingh", portfolio: "Logistics" },
+  { role: "Logistics Head", name: "Geeta Gupta", image: "#", bio: "Supply chain management lead.", email: "geeta.gupta@zest.com", linkedin: "https://linkedin.com/in/geetagupta", instagram: "https://instagram.com/geetagupta", portfolio: "Logistics" },
+  { role: "Media Head", name: "Rahul Mehta", image: "#", bio: "Media operations coordinator.", email: "rahul.mehta@zest.com", linkedin: "https://linkedin.com/in/rahulmehta", instagram: "https://instagram.com/rahulmehta", portfolio: "Media" },
+  { role: "Media Head", name: "Kavita Nair", image: "#", bio: "Media content specialist.", email: "kavita.nair@zest.com", linkedin: "https://linkedin.com/in/kavitanair", instagram: "https://instagram.com/kavitanair", portfolio: "Media" },
+  { role: "Refreshment Head", name: "Sunil Sharma", image: "#", bio: "Refreshment services manager.", email: "sunil.sharma@zest.com", linkedin: "https://linkedin.com/in/sunilsharma", instagram: "https://instagram.com/sunilsharma", portfolio: "Refreshment" },
+  { role: "Refreshment Head", name: "Rekha Patel", image: "#", bio: "Food and beverage coordinator.", email: "rekha.patel@zest.com", linkedin: "https://linkedin.com/in/rekhapatel", instagram: "https://instagram.com/rekhapatel", portfolio: "Refreshment" },
+  { role: "Safety and Dispute Head", name: "Ajay Kumar", image: "#", bio: "Safety and security expert.", email: "ajay.kumar@zest.com", linkedin: "https://linkedin.com/in/ajaykumar", instagram: "https://instagram.com/ajaykumar", portfolio: "Safety and Dispute" },
+  { role: "Safety and Dispute Head", name: "Nisha Singh", image: "#", bio: "Dispute resolution specialist.", email: "nisha.singh@zest.com", linkedin: "https://linkedin.com/in/nishasingh", instagram: "https://instagram.com/nishasingh", portfolio: "Safety and Dispute" },
+  { role: "VFX Head", name: "Rohit Gupta", image: "#", bio: "Visual effects coordinator.", email: "rohit.gupta@zest.com", linkedin: "https://linkedin.com/in/rohitgupta", instagram: "https://instagram.com/rohitgupta", portfolio: "VFX" },
+  { role: "VFX Head", name: "Priya Mehta", image: "#", bio: "VFX production lead.", email: "priya.mehta@zest.com", linkedin: "https://linkedin.com/in/priyamehta", instagram: "https://instagram.com/priyamehta", portfolio: "VFX" },
+  { role: "Web Head", name: "Sanjay Nair", image: "#", bio: "Web development specialist.", email: "sanjay.nair@zest.com", linkedin: "https://linkedin.com/in/sanjaynair", instagram: "https://instagram.com/sanjaynair", portfolio: "Web" },
+  { role: "Web Head", name: "Deepa Sharma", image: "#", bio: "Web technology lead.", email: "deepa.sharma@zest.com", linkedin: "https://linkedin.com/in/deepasharma", instagram: "https://instagram.com/deepasharma", portfolio: "Web" }
 ]
 
 
@@ -126,69 +125,12 @@ const EnhancedTeamPage = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-orange-100">
-      {/* Sticky Navbar */}
-      <nav className="sticky top-0 z-40 bg-gradient-to-r from-black via-gray-900 to-black shadow-2xl border-b-4 border-orange-500 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold">
-                Z
-              </div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">Zest2026</div>
-            </div>
-            
-            {/* Search and Filter Controls */}
-            <div className="hidden md:flex items-center space-x-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
-                <input
-                  type="text"
-                  placeholder="Search team members..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 bg-white bg-opacity-10 border border-orange-300 rounded-full text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
-                />
-              </div>
-              
-              <div className="relative">
-                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
-                <select
-                  value={selectedPortfolio}
-                  onChange={(e) => setSelectedPortfolio(e.target.value)}
-                  className="pl-10 pr-8 py-2 bg-white bg-opacity-10 border border-orange-300 rounded-full text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 appearance-none cursor-pointer"
-                >
-                  <option value="all" className="text-black">All Portfolios</option>
-                  {portfolioNames.map((portfolio) => (
-                    <option key={portfolio} value={portfolio} className="text-black">
-                      {portfolio}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-          
-          {/* Mobile Filter */}
-          <div className="md:hidden pb-4">
-            <div className="relative">
-              <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
-              <select
-                value={selectedPortfolio}
-                onChange={(e) => setSelectedPortfolio(e.target.value)}
-                className="w-full pl-10 pr-8 py-2 bg-white bg-opacity-10 border border-orange-300 rounded-full text-white focus:outline-none focus:ring-2 focus:ring-orange-500 appearance-none"
-              >
-                <option value="all" className="text-black">All Portfolios</option>
-                {portfolioNames.map((portfolio) => (
-                  <option key={portfolio} value={portfolio} className="text-black">
-                    {portfolio}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+      {/* Page Header */}
+      <div className="text-center py-16">
+        <h1 className="text-6xl font-bold text-white mb-4">Core Team</h1>
+        <div className="w-32 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
+      </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -196,9 +138,7 @@ const EnhancedTeamPage = () => {
         {/* Core Team Section */}
         <section className="mb-20">
           <div className="text-center mb-12">
-            <h2 className="text-5xl font-bold text-black mb-4 animate-in fade-in slide-in-from-bottom-4 duration-1000">Core Team</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full animate-in fade-in slide-in-from-left-4 duration-1000 delay-200"></div>
-            <p className="text-gray-700 mt-4 text-lg animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">Leading with passion and excellence</p>
+            <p className="text-gray-300 text-lg animate-in fade-in slide-in-from-bottom-4 duration-1000">Leading with passion and excellence</p>
           </div>
           <div className="flex flex-wrap justify-center gap-12 max-w-4xl mx-auto">
             {coreTeamMembers.map((member, index) => (
@@ -221,7 +161,7 @@ const EnhancedTeamPage = () => {
         {/* Portfolio Section with Enhanced Sliding Effect */}
         <section className="mb-20">
           {totalSlides > 0 ? (
-            <div className="relative max-w-5xl mx-auto">
+            <div className="relative max-w-4xl mx-auto">
               {/* Navigation Buttons - Only show if there are multiple slides */}
               {totalSlides > 1 && (
                 <>
@@ -241,7 +181,7 @@ const EnhancedTeamPage = () => {
                 </>
               )}
               
-              <div className="bg-gradient-to-br from-white via-orange-50 to-white rounded-3xl shadow-2xl border-4 border-orange-200 p-12 relative overflow-hidden">
+              <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 rounded-3xl shadow-2xl border-4 border-orange-500 p-8 relative overflow-hidden">
                 {/* Portfolio Name Header */}
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
@@ -251,8 +191,8 @@ const EnhancedTeamPage = () => {
                 </div>
                 
                 {/* Decorative background elements */}
-                <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-orange-200 to-orange-300 opacity-20 rounded-full -translate-x-16 -translate-y-16 animate-pulse"></div>
-                <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-orange-200 to-orange-300 opacity-20 rounded-full translate-x-20 translate-y-20 animate-pulse"></div>
+                <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-orange-500 to-orange-600 opacity-10 rounded-full -translate-x-16 -translate-y-16 animate-pulse"></div>
+                <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-orange-500 to-orange-600 opacity-10 rounded-full translate-x-20 translate-y-20 animate-pulse"></div>
                 
                 {/* Sliding Container with Touch Support */}
                 <div 
@@ -300,7 +240,7 @@ const EnhancedTeamPage = () => {
                       className={`w-4 h-4 rounded-full transition-all duration-300 ${
                         index === currentSlide 
                           ? 'bg-gradient-to-r from-orange-500 to-orange-600 scale-125 shadow-lg' 
-                          : 'bg-gray-300 hover:bg-orange-200 hover:scale-110'
+                          : 'bg-gray-600 hover:bg-orange-400 hover:scale-110'
                       }`}
                     />
                   ))}
@@ -309,7 +249,7 @@ const EnhancedTeamPage = () => {
             </div>
           ) : (
             <div className="text-center py-20">
-              <div className="text-gray-500 text-xl">No team members found matching your criteria</div>
+              <div className="text-gray-400 text-xl">No team members found matching your criteria</div>
               <button 
                 onClick={() => {
                   setSearchTerm('');
