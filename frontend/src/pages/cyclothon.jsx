@@ -224,6 +224,8 @@ export default function cyclothon() {
     <div className="h-screen w-screen relative bg-[#40342c]">
       <BackgroundScroller />
 
+      <div><img src="/CoepLogo.png" className="h-[200px] w-[200px] absolute ml-[260px] mt-[90px]"/></div>
+      <div><img src="/ZEST-26.png" className="h-[200px] w-[290px] absolute ml-[480px] mt-[90px]"/></div>
       {/* Helmet box */}
       <div ref={helmetBoxRef} className="z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
@@ -242,11 +244,13 @@ export default function cyclothon() {
 
       <div className="z-10 movable h-[690px] w-[690px] absolute mt-[70px] ml-[480px]">
         <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
-          <ambientLight intensity={1.6} />
+          <ambientLight intensity={1.3} />
           <directionalLight position={[27, 40, -43]} />
           <Cycle enableSwaying={enableSwaying} />
           <OrbitControls
-             
+             enableZoom={false}   
+  enableRotate={false}
+  enablePan={false}
             minPolarAngle={0}
             maxPolarAngle={Math.PI * 2}
             enableDamping={true}
@@ -256,32 +260,13 @@ export default function cyclothon() {
       </div>
 
       <div className="absolute h-[600px] w-[800px] mt-[70px] ml-[100px] z-10">
-        <div ref={textRef} style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[100px] ml-[10px] mt-[10px]">
+        <div ref={textRef} style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[100px] ml-[10px] mt-[250px]">
           Cyclothon'25
         </div>
         <div ref={sloganRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute text-[30px] text-white">- Every Mile, A Salute, Ride for those who Stood for Us</div>
         <div ref={sindoorRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute mt-[150px] ml-[220px] text-[30px] text-white"> Ride for Operation Sindoor</div>
         
-        {/* Event Info */}
-        <div
-          style={{ fontFamily: "cyclothonSloganFont", transform: "scaleY(1.3)" }}
-          className="absolute text-[25px] text-white mt-[260px] ml-[300px]"
-        >
-          {[
-            { icon: <Calendar size={22} className="mr-2 h-[30px] w-[30px]" />, text: "12th October" },
-            { icon: <Clock size={22} className="mr-2 h-[30px] w-[30px]" />, text: "5:30 am" },
-            { icon: <MapPin size={22} className="mr-2 h-[30px] w-[30px]" />, text: "COEP Ground" },
-          ].map((item, i) => (
-            <div
-              key={i}
-              ref={(el) => (infoRefs.current[i] = el)}
-              className="flex items-center gap-2 opacity-0 mb-2"
-            >
-              {item.icon}
-              <span>{item.text}</span>
-            </div>
-          ))}
-        </div>
+       
       </div>
     </div>
   );
