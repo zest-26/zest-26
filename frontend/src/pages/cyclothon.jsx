@@ -8,7 +8,7 @@ import { Calendar, Clock, MapPin } from "lucide-react";
 gsap.registerPlugin(SplitText);
 
 function Cycle({ enableSwaying = false }) {
-  const { scene } = useGLTF("/3DModels/cycle.glb");
+  const { scene } = useGLTF("/3DModels/cyclist.glb");
 
   const modelRef = useRef();
   const [rotated, setRotated] = useState(false);
@@ -22,7 +22,7 @@ function Cycle({ enableSwaying = false }) {
       // Initial rotation animation
       modelRef.current.rotation.y += 0.08;
 
-      if (modelRef.current.rotation.y >= 2 * Math.PI + 1.3) {
+      if (modelRef.current.rotation.y >= 2* Math.PI +1.3) {
         modelRef.current.rotation.y = 1.3;
         setRotated(true);
       }
@@ -34,7 +34,7 @@ function Cycle({ enableSwaying = false }) {
       
       // Smooth pendulum-like swaying motion along Y-axis (±30 degrees)
       const swayAmplitude = -Math.PI / 6; // 30 degrees in radians (π/6)
-      const swaySpeed = 1.2; // Adjust speed (how fast it sways)
+      const swaySpeed = 1.1; // Adjust speed (how fast it sways)
       
       const swayOffset = Math.sin(swayTimeRef.current * swaySpeed) * swayAmplitude;
       modelRef.current.rotation.y = baseRotationY + swayOffset;
@@ -45,9 +45,9 @@ function Cycle({ enableSwaying = false }) {
     <primitive
       ref={modelRef}
       object={scene}
-      scale={0.18}
-      position={[1, -14, 0]}
-      rotation={[Math.PI, 1.5, 0]}
+      scale={7}
+      position={[1, 0, 0]}
+      rotation={[Math.PI, Math.PI / 6, Math.PI]}
     />
   );
 }
@@ -163,9 +163,9 @@ export default function cyclothon() {
 
     gsap.to(helmetBoxRef.current, {
       y: 0,
-      opacity: 1,
+      opacity: 0,
       duration: 1,
-      delay: 2.5,
+      delay: 2,
       ease: "elastic.out(1, 0.3)",
       onComplete: () => {
         gsap.to(".movable", {
@@ -240,15 +240,13 @@ export default function cyclothon() {
         </Canvas>
       </div>
 
-      <div className="z-10 movable h-[590px] w-[590px] absolute mt-[200px] ml-[480px]">
-        <Canvas camera={{ position: [-27, 25, 43], fov: 50 }}>
+      <div className="z-10 movable h-[690px] w-[690px] absolute mt-[70px] ml-[480px]">
+        <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
           <ambientLight intensity={1.6} />
           <directionalLight position={[27, 40, -43]} />
           <Cycle enableSwaying={enableSwaying} />
           <OrbitControls
-             enableZoom={false}   
-  enableRotate={false}
-  enablePan={false}
+             
             minPolarAngle={0}
             maxPolarAngle={Math.PI * 2}
             enableDamping={true}
