@@ -148,7 +148,8 @@ export default function cyclothon() {
   const textRef = useRef();
   const sloganRef = useRef();
   const sindoorRef = useRef();
-  const infoRefs = useRef([]);
+  const coepLogoRef = useRef();
+ const zestLogoRef = useRef();
   
   // State to control when swaying should start
   const [enableSwaying, setEnableSwaying] = useState(false);
@@ -159,73 +160,64 @@ export default function cyclothon() {
     gsap.set(textRef.current, { opacity: 0 });
     gsap.set(sloganRef.current, { opacity: 0, y: 20 });
     gsap.set(sindoorRef.current, { opacity: 0, y: 20 });
-    gsap.set(infoRefs.current, { opacity: 0, y: 20 });
+    gsap.set(coepLogoRef.current, { opacity: 0, y: -30 });
+    gsap.set(zestLogoRef.current, { opacity: 0, y: -30 });
+  
 
-    gsap.to(helmetBoxRef.current, {
-      y: 0,
-      opacity: 0,
-      duration: 1,
-      delay: 2,
-      ease: "elastic.out(1, 0.3)",
-      onComplete: () => {
-        gsap.to(".movable", {
-          x: 390,
-          duration: 0.7,
-          ease: "power3.inOut",
-          onComplete: () => {
-            // Enable swaying after GSAP animation completes
-            setEnableSwaying(true);
-            
-            const heroSplit = new SplitText(textRef.current, {
-              type: "chars, words",
-            });
+  const tl = gsap.timeline();
 
-            heroSplit.chars.forEach((char) =>
-              char.classList.add("text-gradient")
-            );
+  // Move animation for .movable
+  tl.to(".movable", {
+    x: 390,
+    delay: 2.9,
+    duration: 0.7,
+    ease: "power3.inOut",
+    onComplete: ()=>{
+      setEnableSwaying(true);
+    }
+  })
 
-            gsap.set(textRef.current, { opacity: 1 });
+  .to([coepLogoRef.current, zestLogoRef.current], {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power2.out"
+  })
 
-            gsap.from(heroSplit.chars, {
-              yPercent: 15,
-              duration: 0.4,
-              ease: "expo.out",
-              stagger: 0.03,
-              onComplete: () => {
-                const tl = gsap.timeline();
-                tl.to(sloganRef.current, {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.4,
-                  ease: "power3.out",
-                })
-                  .to(sindoorRef.current, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.4,
-                    ease: "power3.out",
-                  })
-                  .to(infoRefs.current, {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.4,
-                    ease: "power3.out",
-                    stagger: 0.2,
-                  });
-              },
-            });
-          },
-        });
-      },
+  .add(() => {
+    const heroSplit = new SplitText(textRef.current, { type: "chars, words" });
+    gsap.set(textRef.current, { opacity: 1 }); // make text container visible
+    gsap.from(heroSplit.chars, {
+      yPercent: 15,
+      duration: 0.4,
+      ease: "expo.out",
+      stagger: 0.03
     });
-  }, []);
+  })
+
+   .to(sloganRef.current, {
+    opacity: 1,
+    y: 0,
+    delay:0.5,
+    duration: 0.4,
+    ease: "power3.out"
+  })
+
+  .to(sindoorRef.current, {
+    opacity: 1,
+    y: 0,
+    duration: 0.4,
+    ease: "power3.out"
+  });
+
+}, []);
 
   return (
     <div className="h-screen w-screen relative bg-[#40342c]">
       <BackgroundScroller />
 
-      <div><img src="/CoepLogo.png" className="h-[200px] w-[200px] absolute ml-[260px] mt-[90px]"/></div>
-      <div><img src="/ZEST-26.png" className="h-[200px] w-[290px] absolute ml-[480px] mt-[90px]"/></div>
+      <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-[200px] w-[200px] absolute ml-[260px] mt-[90px]"/></div>
+      <div ref={zestLogoRef}><img src="/ZEST-26.png" className="h-[200px] w-[290px] absolute ml-[480px] mt-[90px]"/></div>
       {/* Helmet box */}
       <div ref={helmetBoxRef} className="z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
