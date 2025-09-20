@@ -213,7 +213,8 @@ export default function cyclothon() {
 }, []);
 
   return (
-    <div className="h-screen w-screen relative bg-[#40342c]">
+    <div>
+    <div className="h-screen w-screen relative bg-black">
       <BackgroundScroller />
 
       <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-[200px] w-[200px] absolute ml-[260px] mt-[90px]"/></div>
@@ -260,6 +261,15 @@ export default function cyclothon() {
         
        
       </div>
+    </div>
+    <div className="w-scrren h-[600px] bg-black">
+      <div>“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
+         This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
+         to keep moving forward. As wheels spin and paths stretch, we carry <br/>
+         their courage with every stride, turning our ride into a journey of <br/> 
+         respect, strength, and solidarity. Ride not just for speed, but for a <br/>
+         cause that stands tall, just like the heroes we honor.”</div>
+    </div>
     </div>
   );
 }
