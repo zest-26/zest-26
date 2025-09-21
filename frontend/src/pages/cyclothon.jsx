@@ -306,26 +306,49 @@ export default function cyclothon() {
       </div>
 
     </div>
-    <div className="bg-black relative w-scrren h-[1000px]">
+    <div className="bg-black relative w-screen h-[1000px]">
       <div className="absolute h-[200px] w-[200px]  mt-[60px] ml-[644px]"><img src="/categoryTab.jpg"/></div>
       <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="absloute text-white text-[25px] ml-[662px] w-[300px] h-[200px] pt-[100px]">CATEGORIES</div>
       <div className=" w-[350px] h-[250px] ml-[310px] mt-[50px] absolute z-10">
         <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[120px] mt-[20px]">15 KM</h1>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">499</h2>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">449</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">₹499</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">₹449</h2>
+        <div className="h-[40px] w-[150px] mt-[-52px] ml-[-12px] absolute"><img src="redLine.png"/></div>
+        <div className=" w-[400px] h-[400px] mt-[45px]"><img src="RegisterTab1.png"/></div>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[140px] mt-[-311px]">Register</h2>
       </div>
       <div className=" w-[350px] h-[250px] ml-[850px] mt-[50px] absolute z-10">
         <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[120px] mt-[20px]">15 KM</h1>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">499</h2>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">449</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">₹649</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">₹549</h2>
+        <div className="h-[40px] w-[150px] mt-[-52px] ml-[00px] absolute"><img src="redLine.png"/></div>
+        <div className=" w-[400px] h-[400px] mt-[45px]"><img src="RegisterTab1.png"/></div>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[140px] mt-[-311px]">Register</h2>
       </div>
       <div className="absolute h-[500px] w-[500px]  mt-[20px] ml-[244px] z-0"><img src="/categoryTab.jpg"/> </div>
       <div className=" w-[350px] h-[250px] ml-[850px] mt-[50px] absolute z-10"></div>
       <div className="absolute h-[500px] w-[500px]  mt-[20px] ml-[774px]"><img src="/categoryTab.jpg"/></div>
-      <div className="absolute h-[500px] w-[1300px] mt-[290px] ml-[230px] opacity-50">
+      <div className="absolute h-[500px] w-[1300px] mt-[480px] ml-[230px] opacity-50">
+        
       <img src='/Jet.png'/>   
       </div>
       
+      
+    </div>
+
+    <div className="bg-black h-[900px] w-screen realtive">
+      <div className="w-[500px] h-[500px] ml-[580px] mt-[100px] absolute"><img src="useGoodies.png"/></div>
+      <div className="w-[300px] h-[300px] mt-[450px] ml-[70px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div className="w-[300px] h-[300px] mt-[450px] ml-[420px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div className="w-[300px] h-[300px] mt-[450px] ml-[770px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div className="w-[300px] h-[300px] mt-[450px] ml-[1120px] absolute"><img src="useGoodies1.jpg"/></div>
+    </div>
+    
+    <div className="bg-black h-[900px] w-screen relative">
+      <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title absolute z-10 text-white text-[50px] ml-[650px] mt-[30px]">
+          FAQs
+        </div>
+        <div className="absolute z-0 ml-[400px]"><img src="FAQTab.jpg"/></div>
     </div>
     </div>
   );
