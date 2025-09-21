@@ -262,13 +262,22 @@ export default function cyclothon() {
        
       </div>
     </div>
-    <div className="w-scrren h-[600px] bg-black">
-      <div>“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
+    <div className="relative w-scrren h-[1000px]  bg-[#070811]">
+      <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] mt-[370px] z-0" alt="cloud" /></div>
+      <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
+                  
+      <div style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-xl absolute ml-[450px] mt-[300px]">“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
          This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
          to keep moving forward. As wheels spin and paths stretch, we carry <br/>
          their courage with every stride, turning our ride into a journey of <br/> 
          respect, strength, and solidarity. Ride not just for speed, but for a <br/>
          cause that stands tall, just like the heroes we honor.”</div>
+         
+    </div>
+    <div className="relative w-scrren h-[1000px]  bg-[#070811]">
+      <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
+      <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
+        
     </div>
     </div>
   );
