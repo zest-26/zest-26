@@ -226,6 +226,9 @@ export default function cyclothon() {
   const coepLogoRef = useRef();
  const zestLogoRef = useRef();
  const discriptionRef = useRef();
+  const dtlContainerRef = useRef(null);
+  const dtlRef = useRef(null);
+  const dtlOtherRef = useRef([]); // holds all other elements
 
   
   // State to control when swaying should start
@@ -239,6 +242,7 @@ export default function cyclothon() {
     gsap.set(sindoorRef.current, { opacity: 0, y: 20 });
     gsap.set(coepLogoRef.current, { opacity: 0, y: -30 });
     gsap.set(zestLogoRef.current, { opacity: 0, y: -30 });
+     gsap.set(dtlOtherRef.current, { opacity: 0, y: 50 });
   
 
   const tl = gsap.timeline();
@@ -300,6 +304,35 @@ export default function cyclothon() {
         start: "top 85%",
       },
     });
+
+
+    const t2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: dtlContainerRef.current,
+        start: "top 20%", // Start when top of element hits bottom of viewport
+        end: "bottom top",
+        toggleActions: "play none none reverse",
+        markers: true,
+        onRefresh: () => console.log("ScrollTrigger refreshed"),
+        onEnter: () => console.log("ScrollTrigger entered"),
+      },
+    });
+
+    // Rotate DTL.png 360 degrees
+    t2.to(dtlRef.current, { rotation: 720, duration: 1, ease: "power2.inOut" });
+
+    // Fade in and slide up other elements
+    t2.to(
+      dtlOtherRef.current,
+      {
+        opacity: 1,
+        y: 0,
+        delay: 0.5,
+        duration: 0.8,
+        ease: "power3.out",
+      },
+      "-=0.5"
+    );
 
 }, []);
 
@@ -365,32 +398,32 @@ export default function cyclothon() {
          cause that stands tall, just like the heroes we honor.”</div>
          
     </div>
-    <div className="relative w-scrren h-[800px]  bg-[#070811]">
+    <div  ref={dtlContainerRef} className="relative w-scrren h-[800px]  bg-[#070811]">
       <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
       <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
-      <div className="h-[350px] w-[350px]  mt-[300px] ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
-      <div className="h-[95px] w-[80px] mt-[295px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[350px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[95px] w-[80px] mt-[550px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[608px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[550px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[95px] w-[80px] mt-[395px] ml-[402px] absolute rotate-90"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[450px] ml-[458px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[392px] ml-[352px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[80px] w-[220px] mt-[320px] ml-[160px] absolute"><img src="/DTLTab.png"/>
+      <div  ref={dtlRef} className="h-[350px] w-[350px]  mt-[300px] ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
+      <div ref={(el) => (dtlOtherRef.current[0] = el)} className="h-[95px] w-[80px] mt-[295px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[1] = el)} className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[2] = el)} className="h-[20px] w-[150px] mt-[350px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[3] = el)} className="h-[95px] w-[80px] mt-[550px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[4] = el)} className="h-[20px] w-[150px] mt-[608px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[5] = el)} className="h-[20px] w-[150px] mt-[550px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[6] = el)} className="h-[95px] w-[80px] mt-[395px] ml-[402px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[7] = el)} className="h-[20px] w-[150px] mt-[450px] ml-[458px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[8] = el)} className="h-[20px] w-[150px] mt-[392px] ml-[352px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[9] = el)} className="h-[80px] w-[220px] mt-[320px] ml-[160px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[35px] ml-[26px] mt-[-105px]">
             12th Oct
         </div>
       </div>
 
-      <div className="h-[80px] w-[220px] mt-[220px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
+      <div ref={(el) => (dtlOtherRef.current[10] = el)} className="h-[80px] w-[220px] mt-[220px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[35px] ml-[26px] mt-[-105px]">
             5:00 AM
         </div>
       </div>
 
-      <div className="h-[80px] w-[220px] mt-[535px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
+      <div ref={(el) => (dtlOtherRef.current[11] = el)} className="h-[80px] w-[220px] mt-[535px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[30px] ml-[42px] mt-[-122px]">
             COEP GROUND
         </div>
