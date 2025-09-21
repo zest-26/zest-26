@@ -306,7 +306,14 @@ export default function cyclothon() {
       </div>
 
     </div>
-    <div className="bg-black relative w-scrren h-[1000px]"></div>
+    <div className="bg-black relative w-scrren h-[1000px]">
+      <div className="absolute h-[200px] w-[200px]  mt-[60px] ml-[644px]"><img src="/categoryTab.jpg"/></div>
+      <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="absloute text-white text-[25px] ml-[662px] w-[300px] h-[200px] pt-[100px]">CATEGORIES</div>
+      <div className="absolute h-[500px] w-[1300px] mt-[290px] ml-[230px] opacity-50">
+      <img src='/Jet.png'/>
+      </div>
+      
+    </div>
     </div>
   );
 }
