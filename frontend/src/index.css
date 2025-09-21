@@ -1,5 +1,32 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'cyclothonFont'; /* name you'll use in CSS */
+  src: url('/fonts/cyclothonFont.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cyclothonSloganFont'; /* name you'll use in CSS */
+  src: url('/fonts/cyclothonSloganFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Energan'; /* name you'll use in CSS */
+  src: url('/fonts/Energan.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Borcer'; /* name you'll use in CSS */
+  src: url('/fonts/Borcer.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
