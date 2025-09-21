@@ -4,8 +4,11 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import { useRef, useState, useEffect } from "react";
 import { Calendar, Clock, MapPin } from "lucide-react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 gsap.registerPlugin(SplitText);
+ gsap.registerPlugin(ScrollTrigger);
 
 function Cycle({ enableSwaying = false }) {
   const { scene } = useGLTF("/3DModels/cyclist.glb");
@@ -222,6 +225,8 @@ export default function cyclothon() {
   const sindoorRef = useRef();
   const coepLogoRef = useRef();
  const zestLogoRef = useRef();
+ const discriptionRef = useRef();
+
   
   // State to control when swaying should start
   const [enableSwaying, setEnableSwaying] = useState(false);
@@ -282,6 +287,20 @@ export default function cyclothon() {
     ease: "power3.out"
   });
 
+    const split = new SplitText(discriptionRef.current, { type: "lines" });
+
+    gsap.from(split.lines, {
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      stagger: 0.3,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: discriptionRef.current,
+        start: "top 85%",
+      },
+    });
+
 }, []);
 
   return (
@@ -338,7 +357,7 @@ export default function cyclothon() {
       <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] mt-[370px] z-0" alt="cloud" /></div>
       <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
                   
-      <div style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-xl absolute ml-[450px] mt-[300px]">“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
+      <div ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-xl absolute ml-[450px] mt-[300px]">“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
          This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
          to keep moving forward. As wheels spin and paths stretch, we carry <br/>
          their courage with every stride, turning our ride into a journey of <br/> 
