@@ -204,7 +204,7 @@ function FAQSection() {
             className="bg-[#1a1a1a] rounded-lg p-4 cursor-pointer shadow-md transition"
             onClick={() => toggleFAQ(index)}
           >
-            <div className="flex justify-between items-center text-white font-semibold text-lg">
+            <div style={{ fontFamily: "cyclothonSlogan", transform: "scaleY(1.3)" }} className="flex justify-between items-center text-white font-semibold text-lg">
               <span>{faq.question}</span>
               <span className="text-gray-400">{openIndex === index ? "−" : "+"}</span>
             </div>
@@ -438,19 +438,23 @@ export default function cyclothon() {
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">₹499</h2>
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">₹449</h2>
         <div className="h-[40px] w-[150px] mt-[-52px] ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" w-[400px] h-[400px] mt-[45px]"><img src="RegisterTab1.png"/></div>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[140px] mt-[-311px]">Register</h2>
+        <div className=" w-[400px] h-[400px] mt-[45px] "><div className="
+                transform transition-all duration-300 
+                hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[140px] mt-[-121px]">Register</h2></div></div>
+        
       </div>
       <div className=" w-[350px] h-[250px] ml-[850px] mt-[50px] absolute z-10">
         <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[120px] mt-[20px]">15 KM</h1>
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">₹649</h2>
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">₹549</h2>
         <div className="h-[40px] w-[150px] mt-[-52px] ml-[00px] absolute"><img src="redLine.png"/></div>
-        <div className=" w-[400px] h-[400px] mt-[45px]"><img src="RegisterTab1.png"/></div>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[140px] mt-[-311px]">Register</h2>
+        <div className=" w-[400px] h-[400px] mt-[45px]"><div className="
+                transform transition-all duration-300 
+                hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[140px] mt-[-121px]">Register</h2></div></div>
+        
       </div>
       <div className="absolute h-[500px] w-[500px]  mt-[20px] ml-[244px] z-0"><img src="/categoryTab.jpg"/> </div>
-      <div className=" w-[350px] h-[250px] ml-[850px] mt-[50px] absolute z-10"></div>
+      
       <div className="absolute h-[500px] w-[500px]  mt-[20px] ml-[774px]"><img src="/categoryTab.jpg"/></div>
       <div className="absolute h-[500px] w-[1300px] mt-[480px] ml-[230px] opacity-50">
         
@@ -461,7 +465,7 @@ export default function cyclothon() {
     </div>
 
     <div className="bg-black h-[900px] w-screen realtive">
-      <div className="w-[500px] h-[500px] ml-[580px] mt-[100px] absolute"><img src="useGoodies.png"/>
+      <div className="w-[500px] h-[500px] ml-[580px] mt-[100px] absolute"><img src="useGoodies.png" />
         <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[100px] mt-[-80px]">
           Goodies
         </div>
@@ -485,6 +489,8 @@ export default function cyclothon() {
     </div>
     
     <div className="bg-black h-[700px] w-screen relative">
+      <div className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1190px] rotate-15"><img src="/soldier.png"/></div>
+      <div className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-80px] rotate-345"><img src="/soldierLHS.png"/></div>
       <FAQSection />
     </div>
 
