@@ -143,6 +143,78 @@ function BackgroundScroller() {
   );
 }
 
+const faqs = [
+  {
+    question: "What should I bring for the Cyclothon?",
+    answer:
+      "Bring your own bicycle, helmet (mandatory), water bottle, and comfortable cycling attire. We'll provide the rest!",
+  },
+  {
+    question: "Is there an age limit for participation?",
+    answer:
+      "Participants must be at least 16 years old. Minors (16-18) need parental consent forms.",
+  },
+  {
+    question: "What happens if it rains on the event day?",
+    answer:
+      "The event will proceed unless there are severe weather conditions. We'll notify all participants 24 hours in advance if there are any changes.",
+  },
+  {
+    question: "Are there medical facilities available during the ride?",
+    answer:
+      "Yes, we have medical support teams stationed at multiple points along the route and a dedicated ambulance following the group.",
+  },
+  {
+    question: "Can I switch between 15km and 30km routes on the day of the event?",
+    answer:
+      "Route changes on the event day are not permitted due to logistics and safety reasons. Please choose your preferred distance during registration.",
+  },
+];
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className="bg-black h-[900px] w-screen relative">
+      {/* Title */}
+      <div
+        style={{ fontFamily: "cyclothonFont", transform: "scaleY(1.3)" }}
+        className="title absolute z-10 text-white text-[50px] ml-[700px] mt-[30px]"
+      >
+        FAQs
+      </div>
+
+      {/* Background image */}
+      <div className="absolute z-0 ml-[440px]">
+        <img src="FAQTab.jpg" alt="FAQ Background" />
+      </div>
+
+      {/* Red FAQ container */}
+      <div className=" w-[1000px] h-[500px] absolute mt-[200px] ml-[270px] rounded-xl overflow-y-auto p-6 space-y-4 z-20">
+        {faqs.map((faq, index) => (
+          <div
+            key={index}
+            className="bg-[#1a1a1a] rounded-lg p-4 cursor-pointer shadow-md transition"
+            onClick={() => toggleFAQ(index)}
+          >
+            <div className="flex justify-between items-center text-white font-semibold text-lg">
+              <span>{faq.question}</span>
+              <span className="text-gray-400">{openIndex === index ? "−" : "+"}</span>
+            </div>
+            {openIndex === index && (
+              <div className="mt-2 text-gray-300 text-[20px]">{faq.answer}</div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function cyclothon() {
   const helmetBoxRef = useRef();
   const textRef = useRef();
@@ -337,18 +409,55 @@ export default function cyclothon() {
     </div>
 
     <div className="bg-black h-[900px] w-screen realtive">
-      <div className="w-[500px] h-[500px] ml-[580px] mt-[100px] absolute"><img src="useGoodies.png"/></div>
-      <div className="w-[300px] h-[300px] mt-[450px] ml-[70px] absolute"><img src="useGoodies1.jpg"/></div>
-      <div className="w-[300px] h-[300px] mt-[450px] ml-[420px] absolute"><img src="useGoodies1.jpg"/></div>
-      <div className="w-[300px] h-[300px] mt-[450px] ml-[770px] absolute"><img src="useGoodies1.jpg"/></div>
-      <div className="w-[300px] h-[300px] mt-[450px] ml-[1120px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div className="w-[500px] h-[500px] ml-[580px] mt-[100px] absolute"><img src="useGoodies.png"/>
+        <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[100px] mt-[-80px]">
+          Goodies
+        </div>
+      </div>
+      <div className="w-[250px] h-[250px] mt-[470px] ml-[70px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[60px] mt-[570px]">
+          Welcome Kit
+        </div>
+      <div className="w-[250px] h-[250px] mt-[470px] ml-[420px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[460px] mt-[570px]">
+          T-Shirt
+        </div>
+      <div className="w-[250px] h-[250px] mt-[470px] ml-[850px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[910px] mt-[570px]">
+          Medal
+        </div>
+      <div className="w-[250px] h-[250px] mt-[470px] ml-[1200px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[1190px] mt-[570px]">
+          Refreshment
+        </div>
     </div>
     
-    <div className="bg-black h-[900px] w-screen relative">
-      <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title absolute z-10 text-white text-[50px] ml-[650px] mt-[30px]">
-          FAQs
+    <div className="bg-black h-[700px] w-screen relative">
+      <FAQSection />
+    </div>
+
+    <div className=" bg-black h-[700px] w-screen relative">
+      <div className="absolute w-[400px] h-[400px] mt-[200px] ml-[550px]"><img src="/cycloContact.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title absolute text-white text-[50px] ml-[600px] mt-[130px]">
+          Contact Us
         </div>
-        <div className="absolute z-0 ml-[400px]"><img src="FAQTab.jpg"/></div>
+        <div className="absolute w-[350px] mt-[350px] ml-[40px]"><img src="/cycloContact1.jpg"/></div>
+        <div className="absolute w-[350px] mt-[350px] ml-[570px]"><img src="/cycloContact1.jpg"/></div>
+        <div className="absolute w-[350px] mt-[350px] ml-[1070px]"><img src="/cycloContact1.jpg"/></div>
+        <div className=" w-[250px] h-[200px] mt-[400px] ml-[80px] absolute ">
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
+          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+        </div>
+
+        <div className=" w-[250px] h-[200px] mt-[400px] ml-[620px] absolute ">
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
+          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+        </div>
+
+        <div className=" w-[250px] h-[200px] mt-[400px] ml-[1120px] absolute ">
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
+          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+        </div>
     </div>
     </div>
   );
