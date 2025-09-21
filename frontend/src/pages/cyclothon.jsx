@@ -274,11 +274,39 @@ export default function cyclothon() {
          cause that stands tall, just like the heroes we honor.”</div>
          
     </div>
-    <div className="relative w-scrren h-[1000px]  bg-[#070811]">
+    <div className="relative w-scrren h-[800px]  bg-[#070811]">
       <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
       <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
-        
+      <div className="h-[350px] w-[350px]  mt-[300px] ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
+      <div className="h-[95px] w-[80px] mt-[295px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
+      <div className="h-[20px] w-[150px] mt-[350px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
+      <div className="h-[95px] w-[80px] mt-[550px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div className="h-[20px] w-[150px] mt-[608px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
+      <div className="h-[20px] w-[150px] mt-[550px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
+      <div className="h-[95px] w-[80px] mt-[395px] ml-[402px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div className="h-[20px] w-[150px] mt-[450px] ml-[458px] absolute"><img src="whiteLine.png"/></div>
+      <div className="h-[20px] w-[150px] mt-[392px] ml-[352px] absolute"><img src="whiteLine.png"/></div>
+      <div className="h-[80px] w-[220px] mt-[320px] ml-[160px] absolute"><img src="/DTLTab.png"/>
+         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[35px] ml-[26px] mt-[-105px]">
+            12th Oct
+        </div>
+      </div>
+
+      <div className="h-[80px] w-[220px] mt-[220px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
+         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[35px] ml-[26px] mt-[-105px]">
+            6:00 AM
+        </div>
+      </div>
+
+      <div className="h-[80px] w-[220px] mt-[535px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
+         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[30px] ml-[42px] mt-[-122px]">
+            COEP GROUND
+        </div>
+      </div>
+
     </div>
+    <div className="bg-black relative w-scrren h-[1000px]"></div>
     </div>
   );
 }
