@@ -229,6 +229,8 @@ export default function cyclothon() {
   const dtlContainerRef = useRef(null);
   const dtlRef = useRef(null);
   const dtlOtherRef = useRef([]); // holds all other elements
+   const soldierRHS = useRef(null);
+  const soldierLHS = useRef(null);
 
   
   // State to control when swaying should start
@@ -303,6 +305,8 @@ export default function cyclothon() {
         trigger: discriptionRef.current,
         start: "top 85%",
       },
+
+      
     });
 
 
@@ -333,6 +337,8 @@ export default function cyclothon() {
       },
       "-=0.5"
     );
+
+    
 
 }, []);
 
@@ -489,8 +495,8 @@ export default function cyclothon() {
     </div>
     
     <div className="bg-black h-[700px] w-screen relative">
-      <div className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1190px] rotate-15"><img src="/soldier.png"/></div>
-      <div className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-80px] rotate-345"><img src="/soldierLHS.png"/></div>
+      <div ref={soldierRHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1000px] rotate-15"><img src="/soldier.png"/></div>
+      <div ref={soldierLHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-80px] rotate-345"><img src="/soldierLHS.png"/></div>
       <FAQSection />
     </div>
 
