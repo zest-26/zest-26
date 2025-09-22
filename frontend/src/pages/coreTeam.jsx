@@ -1,4 +1,68 @@
 import React, { useState, useEffect, useRef } from 'react';
+
+// Advanced animations and effects
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes grid-move {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+  }
+  * { cursor: none !important; }
+  
+  .cursor-dot {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: #f97316;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+  }
+  
+  .cursor-circle {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    z-index: 9998;
+    transition: all 0.3s ease;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(60px) scale(0.8); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(2deg); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.6), 0 0 60px rgba(249, 115, 22, 0.3); }
+  }
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  }
+  .animate-fade-in-up { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+  .animate-grid { animation: grid-move 20s linear infinite; }
+  .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+  .sparkle::before {
+    content: '✨';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    animation: sparkle 2s ease-in-out infinite;
+    font-size: 20px;
+  }
+`;
+document.head.appendChild(style);
 import { ChevronLeft, ChevronRight, Search, Filter } from 'lucide-react';
 import TeamCard from '../components/TeamCard';
 
@@ -20,8 +84,8 @@ const coreTeamMembers = [
     linkedin: "https://linkedin.com/in/priyapatel"
   }
 ];
-
-const portfolioMembers = [
+//real data to be updated
+const portfolioHeads = [
   { role: "Accounts Head", name: "Rajesh Kumar", image: "#", bio: "Managing financial operations.", email: "rajesh.kumar@zest.com", linkedin: "https://linkedin.com/in/rajeshkumar", instagram: "https://instagram.com/rajeshkumar", portfolio: "Accounts" },
   { role: "Accounts Head", name: "Sneha Reddy", image: "#", bio: "Financial planning specialist.", email: "sneha.reddy@zest.com", linkedin: "https://linkedin.com/in/snehareddy", instagram: "https://instagram.com/snehareddy", portfolio: "Accounts" },
   { role: "AOG Head", name: "Vikram Singh", image: "#", bio: "AOG operations manager.", email: "vikram.singh@zest.com", linkedin: "https://linkedin.com/in/vikramsingh", instagram: "https://instagram.com/vikramsingh", portfolio: "AOG" },
@@ -59,16 +123,98 @@ const portfolioMembers = [
   { role: "Web Head", name: "Sanjay Nair", image: "#", bio: "Web development specialist.", email: "sanjay.nair@zest.com", linkedin: "https://linkedin.com/in/sanjaynair", instagram: "https://instagram.com/sanjaynair", portfolio: "Web" },
   { role: "Web Head", name: "Deepa Sharma", image: "#", bio: "Web technology lead.", email: "deepa.sharma@zest.com", linkedin: "https://linkedin.com/in/deepasharma", instagram: "https://instagram.com/deepasharma", portfolio: "Web" }
 ]
-
-
-
-
 const EnhancedTeamPage = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedPortfolio, setSelectedPortfolio] = useState('all');
+  const [visibleCards, setVisibleCards] = useState(new Set());
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const cardRefs = useRef([]);
+  const cursorRef = useRef(null);
+  const trailRefs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const cardId = entry.target.dataset.cardId;
+          if (entry.isIntersecting) {
+            setVisibleCards(prev => new Set([...prev, cardId]));
+          } else {
+            setVisibleCards(prev => {
+              const newSet = new Set(prev);
+              newSet.delete(cardId);
+              return newSet;
+            });
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: '0px' }
+    );
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+    cursorRef.current = cursor;
+
+    const circle = document.createElement('div');
+    circle.className = 'cursor-circle';
+    circle.innerHTML = '⚽';
+    document.body.appendChild(circle);
+
+    cursor.className = 'cursor-dot';
+    let mouseX = 0, mouseY = 0;
+    let circleX = 0, circleY = 0;
+
+    const handleMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      cursor.style.left = mouseX - 4 + 'px';
+      cursor.style.top = mouseY - 4 + 'px';
+
+      // Hover effect
+      const hoverElement = document.elementFromPoint(e.clientX, e.clientY);
+      if (hoverElement && (hoverElement.closest('.sparkle') || hoverElement.tagName === 'BUTTON' || hoverElement.tagName === 'H1' || hoverElement.tagName === 'H2')) {
+        circle.style.transform = 'scale(1.5) rotate(180deg)';
+      } else {
+        circle.style.transform = 'scale(1) rotate(0deg)';
+      }
+    };
+
+    const animateCircle = () => {
+      circleX += (mouseX - circleX) * 0.1;
+      circleY += (mouseY - circleY) * 0.1;
+      circle.style.left = circleX - 20 + 'px';
+      circle.style.top = circleY - 20 + 'px';
+      requestAnimationFrame(animateCircle);
+    };
+    animateCircle();
+
+    const handleClick = () => {
+      circle.style.transform = 'scale(0.8)';
+      setTimeout(() => circle.style.transform = 'scale(1)', 150);
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('click', handleClick);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('click', handleClick);
+      cursor.remove();
+      circle.remove();
+    };
+  }, []);
 
   const portfolioNames = [
     "Accounts", "AOG", "Campus", "Championship", "CRN", "Design", "Document", "ESM", "Event", "Finance and Marketing", "Hospitality", "Infra", "Logistics", "Media", "Refreshment", "Safety and Dispute", "VFX", "Web"
@@ -77,7 +223,7 @@ const EnhancedTeamPage = () => {
   const cardsPerSlide = 2;
 
   // Filter portfolio members based on search and portfolio filter
-  const filteredPortfolioMembers = portfolioMembers.filter(member => {
+  const filteredportfolioHeads = portfolioHeads.filter(member => {
     const matchesSearch = member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          member.role.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesPortfolio = selectedPortfolio === 'all' || 
@@ -85,7 +231,7 @@ const EnhancedTeamPage = () => {
     return matchesSearch && matchesPortfolio;
   });
 
-  const totalSlides = Math.ceil(filteredPortfolioMembers.length / cardsPerSlide);
+  const totalSlides = Math.ceil(filteredportfolioHeads.length / cardsPerSlide);
 
   // Reset slide when filters change
   useEffect(() => {
@@ -125,148 +271,157 @@ const EnhancedTeamPage = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden" style={{cursor: 'none'}}>
+      {/* Animated Grid Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(249,115,22,0.3) 1px, transparent 0)',
+          backgroundSize: '50px 50px',
+          animation: 'grid-move 20s linear infinite'
+        }}></div>
+      </div>
+      
+      {/* Floating Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-float"></div>
+        <div className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-r from-orange-400 to-orange-700 rounded-full mix-blend-screen filter blur-xl opacity-15 animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-orange-300 to-orange-800 rounded-full mix-blend-screen filter blur-xl opacity-10 animate-float" style={{animationDelay: '4s'}}></div>
+        
+        {/* Geometric Shapes */}
+        <div className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-orange-500/20 rotate-45 animate-spin" style={{animationDuration: '20s'}}></div>
+        <div className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-gradient-to-r from-orange-600/10 to-transparent transform rotate-12 animate-pulse"></div>
+        <div className="absolute top-3/4 right-1/3 w-16 h-16 border border-orange-400/30 rounded-full animate-bounce" style={{animationDuration: '3s'}}></div>
+        
+        {/* Diagonal Lines */}
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-1/4 -left-20 w-96 h-0.5 bg-gradient-to-r from-transparent via-orange-500/20 to-transparent rotate-12 animate-pulse"></div>
+          <div className="absolute bottom-1/3 -right-20 w-80 h-0.5 bg-gradient-to-r from-transparent via-orange-400/15 to-transparent -rotate-12 animate-pulse" style={{animationDelay: '1s'}}></div>
+        </div>
+      </div>
+      
       {/* Page Header */}
-      <div className="text-center py-16">
-        <h1 className="text-6xl font-bold text-white mb-4">Core Team</h1>
-        <div className="w-32 h-1 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto rounded-full"></div>
+      <div className="text-center py-8 sm:py-16 relative z-10">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent mb-4 animate-pulse-glow">Core Team</h1>
+        <div className="w-24 sm:w-32 h-1 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto rounded-full animate-pulse"></div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         
         {/* Core Team Section */}
-        <section className="mb-20">
+        <section className="mb-12 sm:mb-20">
           <div className="text-center mb-12">
             <p className="text-gray-300 text-lg animate-in fade-in slide-in-from-bottom-4 duration-1000">Leading with passion and excellence</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-12 max-w-4xl mx-auto">
-            {coreTeamMembers.map((member, index) => (
-              <div key={index} className="animate-in fade-in slide-in-from-bottom-4 duration-1000" style={{ animationDelay: String((index + 1) * 200) + 'ms' }}>
-                <TeamCard
-                  cardId={`core-${index}`}
-                  role={member.role}
-                  name={member.name}
-                  image={member.image}
-                  bio={member.bio}
-                  email={member.email}
-                  linkedin={member.linkedin}
-                  instagram={member.instagram}
-                />
-              </div>
-            ))}
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12 max-w-4xl mx-auto">
+            {coreTeamMembers.map((member, index) => {
+              const cardId = `core-${index}`;
+              const isVisible = visibleCards.has(cardId);
+              
+              return (
+                <div 
+                  key={index}
+                  ref={(el) => {
+                    if (el && !cardRefs.current.includes(el)) {
+                      cardRefs.current.push(el);
+                    }
+                  }}
+                  data-card-id={cardId}
+                  className={`transform transition-all duration-1000 hover:scale-125 hover:-translate-y-4 ${index % 2 === 0 ? 'hover:-rotate-6' : 'hover:rotate-6'} group relative sparkle ${
+                    isVisible 
+                      ? 'opacity-100 translate-x-0 translate-y-0 scale-100 rotate-0' 
+                      : `opacity-0 scale-75 ${index % 2 === 0 ? '-translate-x-20 -rotate-12' : 'translate-x-20 rotate-12'} translate-y-10`
+                  }`}
+                  style={{ 
+                    transitionDelay: `${index * 100}ms`,
+                    filter: isVisible ? 'none' : 'blur(3px)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(249,115,22,0.2), rgba(251,146,60,0.1), rgba(254,215,170,0.05))';
+                    e.currentTarget.style.borderRadius = '20px';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent';
+                  }}
+                >
+                  <TeamCard
+                    cardId={cardId}
+                    role={member.role}
+                    name={member.name}
+                    image={member.image}
+                    bio={member.bio}
+                    email={member.email}
+                    linkedin={member.linkedin}
+                    instagram={member.instagram}
+                  />
+                </div>
+              );
+            })}
           </div>
         </section>
 
-        {/* Portfolio Section with Enhanced Sliding Effect */}
-        <section className="mb-20">
-          {totalSlides > 0 ? (
-            <div className="relative max-w-4xl mx-auto">
-              {/* Navigation Buttons - Only show if there are multiple slides */}
-              {totalSlides > 1 && (
-                <>
-                  <button 
-                    onClick={prevSlide}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-14 h-14 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-2xl hover:scale-110 border-2 border-white hover:rotate-12"
-                  >
-                    <ChevronLeft size={28} />
-                  </button>
-                  
-                  <button 
-                    onClick={nextSlide}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-14 h-14 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-2xl hover:scale-110 border-2 border-white hover:rotate-12"
-                  >
-                    <ChevronRight size={28} />
-                  </button>
-                </>
-              )}
-              
-              <div className="bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800 rounded-3xl shadow-2xl border-4 border-orange-500 p-8 relative overflow-hidden">
-                {/* Portfolio Name Header */}
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                    {portfolioNames[currentSlide] || 'Team Portfolio'}
-                  </h3>
-                  <div className="w-16 h-0.5 bg-gradient-to-r from-orange-500 to-orange-600 mx-auto mt-2 rounded-full"></div>
-                </div>
-                
-                {/* Decorative background elements */}
-                <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-orange-500 to-orange-600 opacity-10 rounded-full -translate-x-16 -translate-y-16 animate-pulse"></div>
-                <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-orange-500 to-orange-600 opacity-10 rounded-full translate-x-20 translate-y-20 animate-pulse"></div>
-                
-                {/* Sliding Container with Touch Support */}
-                <div 
-                  className="relative overflow-hidden"
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={handleTouchEnd}
-                >
-                  <div 
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
-                    {Array.from({ length: totalSlides }, (_, slideIndex) => (
-                      <div key={slideIndex} className="w-full flex-shrink-0 px-2">
-                        <div className="flex flex-wrap justify-center gap-8">
-                          {filteredPortfolioMembers
-                            .slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide)
-                            .map((member, memberIndex) => (
-                              <TeamCard
-                                key={memberIndex}
-                                cardId={`portfolio-${slideIndex}-${memberIndex}`}
-                                role={member.role}
-                                name={member.name}
-                                image={member.image}
-                                bio={member.bio}
-                                email={member.email}
-                                linkedin={member.linkedin}
-                                instagram={member.instagram}
-                              />
-                            ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+        {/* Portfolio Sections */}
+        {portfolioNames.map((portfolioName, portfolioIndex) => {
+          const portfolioMembers = portfolioHeads.filter(member => member.portfolio === portfolioName);
+          
+          if (portfolioMembers.length === 0) return null;
+          
+          return (
+            <section key={portfolioName} className="mb-10 sm:mb-16 relative">
+              <div className="text-center mb-8 sm:mb-12">
+                <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent mb-4 hover:scale-105 transition-transform duration-300">{portfolioName}</h2>
+                <div className="w-12 sm:w-16 h-0.5 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto rounded-full animate-pulse"></div>
               </div>
-
-              {/* Slide Indicators - Only show if there are multiple slides */}
-              {totalSlides > 1 && (
-                <div className="flex justify-center space-x-3 mt-8">
-                  {Array.from({ length: totalSlides }, (_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentSlide(index)}
-                      className={`w-4 h-4 rounded-full transition-all duration-300 ${
-                        index === currentSlide 
-                          ? 'bg-gradient-to-r from-orange-500 to-orange-600 scale-125 shadow-lg' 
-                          : 'bg-gray-600 hover:bg-orange-400 hover:scale-110'
+              
+              <div className="flex flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12 max-w-7xl mx-auto">
+                {portfolioMembers.map((member, index) => {
+                  const cardId = `${portfolioName}-${index}`;
+                  const isVisible = visibleCards.has(cardId);
+                  
+                  return (
+                    <div 
+                      key={cardId}
+                      ref={(el) => {
+                        if (el && !cardRefs.current.includes(el)) {
+                          cardRefs.current.push(el);
+                        }
+                      }}
+                      data-card-id={cardId}
+                      className={`transform transition-all duration-1000 hover:scale-125 hover:-translate-y-4 ${index % 2 === 0 ? 'hover:-rotate-6' : 'hover:rotate-6'} group relative sparkle ${
+                        isVisible 
+                          ? 'opacity-100 translate-x-0 translate-y-0 scale-100 rotate-0' 
+                          : `opacity-0 scale-75 ${index % 2 === 0 ? '-translate-x-20 -rotate-12' : 'translate-x-20 rotate-12'} translate-y-10`
                       }`}
+                      style={{ 
+                        transitionDelay: `${index * 100}ms`,
+                        filter: isVisible ? 'none' : 'blur(3px)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(249,115,22,0.2), rgba(251,146,60,0.1), rgba(254,215,170,0.05))';
+                        e.currentTarget.style.borderRadius = '20px';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent';
+                      }}
+                    >
+                    <TeamCard
+                      cardId={`${portfolioName}-${index}`}
+                      role={member.role}
+                      name={member.name}
+                      image={member.image}
+                      bio={member.bio}
+                      email={member.email}
+                      linkedin={member.linkedin}
+                      instagram={member.instagram}
                     />
-                  ))}
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="text-center py-20">
-              <div className="text-gray-400 text-xl">No team members found matching your criteria</div>
-              <button 
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedPortfolio('all');
-                }}
-                className="mt-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-200"
-              >
-                Clear Filters
-              </button>
-            </div>
-          )}
-        </section>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          );
+        })}
       </div>
-
-
-
-
     </div>
   );
 };

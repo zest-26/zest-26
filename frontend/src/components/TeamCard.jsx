@@ -88,14 +88,6 @@ const TeamCard = ({
       ) : (
         /* Back Side */
         <div className="w-full h-full bg-gradient-to-br from-orange-500 to-orange-600 flex flex-col items-center justify-center p-6 relative">
-          {/* Back button */}
-          <button
-            onClick={handleBack}
-            className="absolute top-3 left-3 p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors"
-          >
-            <ArrowLeft size={20} className="text-white" />
-          </button>
-
           {/* Profile info */}
           <div className="text-center mb-8">
             <h3 className="text-xl font-bold text-white mb-2">{name}</h3>
@@ -108,7 +100,7 @@ const TeamCard = ({
           </div>
 
           {/* Social icons */}
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 mb-6">
             {email && (
               <a
                 href={`mailto:${email}`}
@@ -141,6 +133,15 @@ const TeamCard = ({
               </a>
             )}
           </div>
+
+          {/* Back button */}
+          <button
+            onClick={handleBack}
+            className="absolute bottom-3 left-3 right-3 bg-white/20 hover:bg-white/30 text-white font-semibold py-2 px-4 rounded-lg transition-colors flex items-center justify-center gap-2"
+          >
+            <ArrowLeft size={16} />
+            Back
+          </button>
         </div>
       )}
     </div>
