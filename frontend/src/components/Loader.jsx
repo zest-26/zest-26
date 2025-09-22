@@ -49,7 +49,7 @@ const Loader = forwardRef((props, ref) => {
   return (
     <div
       ref={ref} // This ref will be used to fade out
-      className="relative h-screen w-screen bg-black flex flex-col items-center justify-center"
+      className="relative overflow-x-hidden overflow-y-hidden h-screen w-screen bg-black flex flex-col items-center justify-center"
     >
       {/* Floating Images - Left Side */}
       <img

@@ -182,7 +182,7 @@ function FAQSection() {
   };
 
   return (
-    <div className="bg-black h-[900px] w-screen relative">
+    <div className="bg-black h-[900px] w-full relative">
       {/* Title */}
       <div
         style={{ fontFamily: "cyclothonFont", transform: "scaleY(1.3)" }}
@@ -373,8 +373,8 @@ export default function cyclothon() {
 }, []);
 
   return (
-    <div>
-    <div className="h-screen w-screen relative bg-black">
+    <div className="w-full min-h-screen overflow-x-hidden">
+    <div className="h-screen w-full relative bg-black">
       <BackgroundScroller />
 
       <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-[200px] w-[200px] absolute ml-[260px] mt-[90px]"/></div>
@@ -466,7 +466,7 @@ export default function cyclothon() {
       </div>
 
     </div>
-    <div className="bg-black relative w-screen h-[1000px]">
+    <div className="bg-black relative w-full h-[1000px]">
       <div className="absolute h-[200px] w-[200px]  mt-[60px] ml-[644px]"><img src="/categoryTab.jpg"/></div>
       <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="absloute text-white text-[25px] ml-[662px] w-[300px] h-[200px] pt-[100px]">CATEGORIES</div>
       <div className=" w-[350px] h-[250px] ml-[310px] mt-[50px] absolute z-10">
@@ -500,7 +500,7 @@ export default function cyclothon() {
       
     </div>
 
-    <div className="bg-black h-[900px] w-screen realtive">
+    <div className="bg-black h-[900px] w-full realtive">
       <div className="w-[500px] h-[500px] ml-[580px] mt-[100px] absolute"><img src="useGoodies.png" />
         <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[100px] mt-[-80px]">
           Goodies
@@ -524,13 +524,13 @@ export default function cyclothon() {
         </div>
     </div>
     
-    <div className="bg-black h-[700px] w-screen relative">
+    <div className="bg-black h-[700px] w-full relative">
       <div ref={soldierRHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1160px] rotate-15"><img src="/soldier.png"/></div>
       <div ref={soldierLHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-50px] rotate-345"><img src="/soldierLHS.png"/></div>
       <FAQSection />
     </div>
 
-    <div className=" bg-black h-[700px] w-screen relative">
+    <div className=" bg-black h-[700px] w-full relative">
       <div className="absolute w-[400px] h-[400px] mt-[200px] ml-[550px]"><img src="/cycloContact.jpg"/></div>
       <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title absolute text-white text-[50px] ml-[600px] mt-[130px]">
           Contact Us
