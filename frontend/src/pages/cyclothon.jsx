@@ -424,14 +424,15 @@ export default function cyclothon() {
         </Canvas>
       </div>
 
-      <div className="z-10 movable h-[300px] w-[300px] mt-[210px] ml-[45px] sm:h-[690px] sm:w-[690px] absolute sm:mt-[70px] sm:ml-[480px]">
-        <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
-          <ambientLight intensity={1.3} />
-          <directionalLight position={[27, 40, -43]} />
-          <Cycle enableSwaying={enableSwaying} />
-          
-        </Canvas>
-      </div>
+      <div className="absolute inset-0 flex items-center justify-center z-10">
+  <div className="movable h-[300px] w-[300px] sm:h-[690px] sm:w-[690px]">
+    <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
+      <ambientLight intensity={1.3} />
+      <directionalLight position={[27, 40, -43]} />
+      <Cycle enableSwaying={enableSwaying} />
+    </Canvas>
+  </div>
+</div>
 
       
       <div className="absolute z-10 w-full flex flex-col items-center sm:block sm:h-[600px] sm:w-[800px] sm:mt-[70px] sm:ml-[100px]">
