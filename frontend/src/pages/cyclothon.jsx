@@ -433,15 +433,37 @@ export default function cyclothon() {
         </Canvas>
       </div>
 
-      <div className="absolute  sm:h-[600px] sm:w-[800px] sm:mt-[70px] sm:ml-[100px] z-10">
-        <div ref={textRef} style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[40px] mt-[140px] ml-[30px] sm:text-[100px] sm:ml-[10px] sm:mt-[250px]">
-          Cyclothon'25
-        </div>
-        <div ref={sloganRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute text-[20px] mt-[330px] ml-[50px] sm:ml-[0px] sm:mt-[0px] sm:text-[30px] text-white">- Every Mile, A Salute, Ride for those who Stood for Us</div>
-        <div ref={sindoorRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="hidden sm:block absolute text-[20px] ml-[60px] mt-[500px] sm:mt-[150px] sm:ml-[220px] sm:text-[30px] text-white"> Ride for Operation Sindoor</div>
-        
-       
-      </div>
+      
+      <div className="absolute z-10 w-full flex flex-col items-center sm:block sm:h-[600px] sm:w-[800px] sm:mt-[70px] sm:ml-[100px]">
+  {/* Main title */}
+  <div
+    ref={textRef}
+    style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }}
+    className="text-white text-[40px] mt-[20vh] sm:text-[100px] sm:ml-[10px] sm:mt-[250px]"
+  >
+    Cyclothon'25
+  </div>
+
+  {/* Slogan */}
+  <div
+    ref={sloganRef}
+    style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }}
+    className="text-white text-[20px] mt-[350px] text-center sm:absolute sm:ml-[0px] sm:mt-[0px] sm:text-[30px]"
+  >
+    - Every Mile, A Salute, Ride for those who Stood for Us
+  </div>
+
+  {/* Sindoor text, only for sm+ */}
+  <div
+    ref={sindoorRef}
+    style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }}
+    className="hidden sm:block absolute text-[20px] ml-[220px] mt-[150px] sm:text-[30px] text-white"
+  >
+    Ride for Operation Sindoor
+  </div>
+</div>
+      
+
     </div>
     <div className="relative w-scrren h-[1000px]  bg-[#070811]">
       <div className="absolute"><img src="/cloud.png" className="h-[400px] mt-[250px]  sm:h-[500px] sm:w-[761px] sm:mt-[370px] z-0" alt="cloud" /></div>
