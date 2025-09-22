@@ -338,7 +338,37 @@ export default function cyclothon() {
       "-=0.5"
     );
 
-    
+     gsap.fromTo(
+      soldierRHS.current,
+      { x: 0, rotation: 35, opacity: 0 },
+      {
+        x: -150,
+        rotation: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: soldierRHS.current,
+          start: "top 40%",
+          end: "top 10%",
+          scrub: true, // smooth animation linked to scroll
+        },
+      }
+    );
+
+    gsap.fromTo(
+      soldierLHS.current,
+      { x: 0, rotation: -35, opacity: 0 },
+      {
+        x: 150,
+        rotation: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: soldierLHS.current,
+          start: "top 40%",
+          end: "top 10%",
+          scrub: true,
+        },
+      }
+    );
 
 }, []);
 
@@ -495,8 +525,8 @@ export default function cyclothon() {
     </div>
     
     <div className="bg-black h-[700px] w-screen relative">
-      <div ref={soldierRHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1000px] rotate-15"><img src="/soldier.png"/></div>
-      <div ref={soldierLHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-80px] rotate-345"><img src="/soldierLHS.png"/></div>
+      <div ref={soldierRHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1160px] rotate-15"><img src="/soldier.png"/></div>
+      <div ref={soldierLHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-50px] rotate-345"><img src="/soldierLHS.png"/></div>
       <FAQSection />
     </div>
 
