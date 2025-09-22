@@ -87,7 +87,7 @@ function Helmet({ enableSwaying = false }) {
 }
 
 // Background infinite scrolling rows
-function InfiniteRow({ images, reverse = false, speed = 30 }) {
+function InfiniteRow({ images, reverse = false, speed = 30,className }) {
   const rowRef = useRef();
 
   useEffect(() => {
@@ -110,13 +110,13 @@ function InfiniteRow({ images, reverse = false, speed = 30 }) {
     return () => ctx.revert();
   }, [reverse, speed]);
 
-  return (
-    <div className="overflow-hidden w-full">
+   return (
+    <div className={`overflow-hidden w-full ${className || ""}`}>
       <div ref={rowRef} className="flex" style={{ width: "max-content" }}>
         {[...images, ...images].map((img, i) => (
           <div
             key={i}
-            className="min-w-[250px] h-[210px] mx-2 rounded-xl shadow-lg overflow-hidden"
+            className="h-[100px] sm:min-w-[250px] sm:h-[210px] mx-2 rounded-xl shadow-lg overflow-hidden"
           >
             <img
               src={img}
@@ -142,6 +142,8 @@ function BackgroundScroller() {
       <InfiniteRow images={row2} reverse={true} speed={50} />
       <InfiniteRow images={row3} reverse={false} speed={35} />
       <InfiniteRow images={row4} reverse={true} speed={45} />
+      <InfiniteRow images={row1} reverse={true} speed={45} className="block sm:hidden"/>
+       <InfiniteRow images={row2} reverse={true} speed={45} className="block sm:hidden"/>
     </div>
   );
 }
@@ -182,7 +184,7 @@ function FAQSection() {
   };
 
   return (
-    <div className="bg-black h-[900px] w-screen relative">
+    <div className="bg-black h-[900px] w-full relative">
       {/* Title */}
       <div
         style={{ fontFamily: "cyclothonFont", transform: "scaleY(1.3)" }}
@@ -245,22 +247,32 @@ export default function cyclothon() {
     gsap.set(coepLogoRef.current, { opacity: 0, y: -30 });
     gsap.set(zestLogoRef.current, { opacity: 0, y: -30 });
      gsap.set(dtlOtherRef.current, { opacity: 0, y: 50 });
+
+      const isSmallScreen = window.matchMedia("(max-width: 639px)").matches;
+
   
 
   const tl = gsap.timeline();
 
-  // Move animation for .movable
-  tl.to(".movable", {
-    x: 390,
-    delay: 2.9,
-    duration: 0.7,
-    ease: "power3.inOut",
-    onComplete: ()=>{
-      setEnableSwaying(true);
-    }
-  })
+ if (!isSmallScreen) {
+    // Run animation only for sm and larger
+    tl.to(".movable", {
+      x: 390,
+      delay: 2.9,
+      duration: 0.7,
+      ease: "power3.inOut",
+      onComplete: () => {
+        setEnableSwaying(true);
+      }
+    });
+  } else {
+    // Make sure .movable stays in place for small screens
+    gsap.set(".movable", { x: 0 });
+     setEnableSwaying(true);
+     tl.to({}, { duration: 3 });
+  }
 
-  .to([coepLogoRef.current, zestLogoRef.current], {
+  tl.to([coepLogoRef.current, zestLogoRef.current], {
     opacity: 1,
     y: 0,
     duration: 1,
@@ -338,19 +350,49 @@ export default function cyclothon() {
       "-=0.5"
     );
 
-    
+     gsap.fromTo(
+      soldierRHS.current,
+      { x: 0, rotation: 35, opacity: 0 },
+      {
+        x: -150,
+        rotation: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: soldierRHS.current,
+          start: "top 40%",
+          end: "top 10%",
+          scrub: true, // smooth animation linked to scroll
+        },
+      }
+    );
+
+    gsap.fromTo(
+      soldierLHS.current,
+      { x: 0, rotation: -35, opacity: 0 },
+      {
+        x: 150,
+        rotation: 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: soldierLHS.current,
+          start: "top 40%",
+          end: "top 10%",
+          scrub: true,
+        },
+      }
+    );
 
 }, []);
 
   return (
-    <div>
-    <div className="h-screen w-screen relative bg-black">
+    <div className="w-full min-h-screen overflow-x-hidden">
+    <div className="h-screen w-full relative bg-black">
       <BackgroundScroller />
 
-      <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-[200px] w-[200px] absolute ml-[260px] mt-[90px]"/></div>
-      <div ref={zestLogoRef}><img src="/ZEST-26.png" className="h-[200px] w-[290px] absolute ml-[480px] mt-[90px]"/></div>
+      <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-80px] w-[80px] ml-[50px] mt-[40px] sm:h-[200px] sm:w-[200px] absolute sm:ml-[260px] sm:mt-[90px]"/></div>
+      <div ref={zestLogoRef}><img src="/ZEST-26.png" className="h-[80px] w-[130px] ml-[170px] mt-[40px] sm:h-[200px] sm:w-[290px] absolute sm:ml-[480px] sm:mt-[90px]"/></div>
       {/* Helmet box */}
-      <div ref={helmetBoxRef} className="z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
+      <div ref={helmetBoxRef} className=" z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
           <ambientLight intensity={1} />
           <directionalLight position={[5, 5, 5]} />
@@ -361,52 +403,55 @@ export default function cyclothon() {
 
           <OrbitControls enableZoom={false}   
   enableRotate={false}
-  enablePan={false}   />
+  enablePan={false}
+     />
         </Canvas>
       </div>
 
-      <div className="z-10 movable h-[690px] w-[690px] absolute mt-[70px] ml-[480px]">
+      <div className="z-10 movable h-[300px] w-[300px] mt-[210px] ml-[45px] sm:h-[690px] sm:w-[690px] absolute sm:mt-[70px] sm:ml-[480px]">
         <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
           <ambientLight intensity={1.3} />
           <directionalLight position={[27, 40, -43]} />
           <Cycle enableSwaying={enableSwaying} />
-          <OrbitControls
-             enableZoom={false}   
-  enableRotate={false}
-  enablePan={false}
-            minPolarAngle={0}
-            maxPolarAngle={Math.PI * 2}
-            enableDamping={true}
-            dampingFactor={0.1}
-          />
+          
         </Canvas>
       </div>
 
-      <div className="absolute h-[600px] w-[800px] mt-[70px] ml-[100px] z-10">
-        <div ref={textRef} style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[100px] ml-[10px] mt-[250px]">
+      <div className="absolute  sm:h-[600px] sm:w-[800px] sm:mt-[70px] sm:ml-[100px] z-10">
+        <div ref={textRef} style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[40px] mt-[140px] ml-[30px] sm:text-[100px] sm:ml-[10px] sm:mt-[250px]">
           Cyclothon'25
         </div>
-        <div ref={sloganRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute text-[30px] text-white">- Every Mile, A Salute, Ride for those who Stood for Us</div>
-        <div ref={sindoorRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute mt-[150px] ml-[220px] text-[30px] text-white"> Ride for Operation Sindoor</div>
+        <div ref={sloganRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute text-[20px] mt-[330px] ml-[50px] sm:ml-[0px] sm:mt-[0px] sm:text-[30px] text-white">- Every Mile, A Salute, Ride for those who Stood for Us</div>
+        <div ref={sindoorRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="hidden sm:block absolute text-[20px] ml-[60px] mt-[500px] sm:mt-[150px] sm:ml-[220px] sm:text-[30px] text-white"> Ride for Operation Sindoor</div>
         
        
       </div>
     </div>
     <div className="relative w-scrren h-[1000px]  bg-[#070811]">
-      <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] mt-[370px] z-0" alt="cloud" /></div>
-      <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
+      <div className="absolute"><img src="/cloud.png" className="h-[400px] mt-[250px]  sm:h-[500px] sm:w-[761px] sm:mt-[370px] z-0" alt="cloud" /></div>
+      <div className="absolute hidden sm:block"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
                   
-      <div ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-xl absolute ml-[450px] mt-[300px]">“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
-         This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
-         to keep moving forward. As wheels spin and paths stretch, we carry <br/>
-         their courage with every stride, turning our ride into a journey of <br/> 
-         respect, strength, and solidarity. Ride not just for speed, but for a <br/>
-         cause that stands tall, just like the heroes we honor.”</div>
+      <div ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-white mt-[200px] ml-[10px] sm:text-xl absolute sm:ml-[450px] sm:mt-[300px]">{/* Desktop / sm and above */}
+  <span className="hidden sm:block">
+    “Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
+    This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
+    to keep moving forward. As wheels spin and paths stretch, we carry <br/>
+    their courage with every stride, turning our ride into a journey of <br/> 
+    respect, strength, and solidarity. Ride not just for speed, but for a <br/>
+    cause that stands tall, just like the heroes we honor.”
+  </span>
+
+  {/* Mobile */}
+  <span className="block sm:hidden px-6 text-center">
+    “Every mile you ride is a salute,<br/> every turn of the pedal a tribute.<br/>
+    This Cyclothon is for those who<br/> stood for us—brave hearts who inspire<br/> us
+    to keep moving forward.<br/> 
+  </span></div>
          
     </div>
     <div  ref={dtlContainerRef} className="relative w-scrren h-[800px]  bg-[#070811]">
-      <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
-      <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
+      <div className="absolute hidden sm:block"><img src="/cloud.png" className=" h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
+      <div className="absolute"><img src="/cloud-1.png" className=" h-[400px] mt-[-350px] sm:h-[500px] sm:w-[761px] sm:mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
       <div  ref={dtlRef} className="h-[350px] w-[350px]  mt-[300px] ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
       <div ref={(el) => (dtlOtherRef.current[0] = el)} className="h-[95px] w-[80px] mt-[295px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[1] = el)} className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
@@ -436,7 +481,7 @@ export default function cyclothon() {
       </div>
 
     </div>
-    <div className="bg-black relative w-screen h-[1000px]">
+    <div className="bg-black relative w-full h-[1000px]">
       <div className="absolute h-[200px] w-[200px]  mt-[60px] ml-[644px]"><img src="/categoryTab.jpg"/></div>
       <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="absloute text-white text-[25px] ml-[662px] w-[300px] h-[200px] pt-[100px]">CATEGORIES</div>
       <div className=" w-[350px] h-[250px] ml-[310px] mt-[50px] absolute z-10">
@@ -470,7 +515,7 @@ export default function cyclothon() {
       
     </div>
 
-    <div className="bg-black h-[900px] w-screen realtive">
+    <div className="bg-black h-[900px] w-full realtive">
       <div className="w-[500px] h-[500px] ml-[580px] mt-[100px] absolute"><img src="useGoodies.png" />
         <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[100px] mt-[-80px]">
           Goodies
@@ -494,13 +539,13 @@ export default function cyclothon() {
         </div>
     </div>
     
-    <div className="bg-black h-[700px] w-screen relative">
-      <div ref={soldierRHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1000px] rotate-15"><img src="/soldier.png"/></div>
-      <div ref={soldierLHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-80px] rotate-345"><img src="/soldierLHS.png"/></div>
+    <div className="bg-black h-[700px] w-full relative">
+      <div ref={soldierRHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1160px] rotate-15"><img src="/soldier.png"/></div>
+      <div ref={soldierLHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-50px] rotate-345"><img src="/soldierLHS.png"/></div>
       <FAQSection />
     </div>
 
-    <div className=" bg-black h-[700px] w-screen relative">
+    <div className=" bg-black h-[700px] w-full relative">
       <div className="absolute w-[400px] h-[400px] mt-[200px] ml-[550px]"><img src="/cycloContact.jpg"/></div>
       <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title absolute text-white text-[50px] ml-[600px] mt-[130px]">
           Contact Us
