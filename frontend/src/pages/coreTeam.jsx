@@ -1,68 +1,72 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Advanced animations and effects
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes grid-move {
-    0% { transform: translate(0, 0); }
-    100% { transform: translate(50px, 50px); }
-  }
-  * { cursor: none !important; }
-  
-  .cursor-dot {
-    position: fixed;
-    width: 8px;
-    height: 8px;
-    background: #f97316;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transition: transform 0.1s ease;
-  }
-  
-  .cursor-circle {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    pointer-events: none;
-    z-index: 9998;
-    transition: all 0.3s ease;
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(60px) scale(0.8); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(2deg); }
-  }
-  @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.6), 0 0 60px rgba(249, 115, 22, 0.3); }
-  }
-  @keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
-    50% { opacity: 1; transform: scale(1) rotate(180deg); }
-  }
-  .animate-fade-in-up { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
-  .animate-float { animation: float 6s ease-in-out infinite; }
-  .animate-grid { animation: grid-move 20s linear infinite; }
-  .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-  .sparkle::before {
-    content: '✨';
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    animation: sparkle 2s ease-in-out infinite;
-    font-size: 20px;
-  }
-`;
-document.head.appendChild(style);
+// Custom cursor hook
+const useCustomCursor = () => {
+  useEffect(() => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      * { cursor: none !important; }
+      
+      .cursor-dot {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: #f97316;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+      }
+      
+      .cursor-circle {
+        position: fixed;
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(249, 115, 22, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+      }
+    `;
+    document.head.appendChild(styleElement);
+
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor-dot';
+    document.body.appendChild(cursor);
+
+    const circle = document.createElement('div');
+    circle.className = 'cursor-circle';
+    document.body.appendChild(circle);
+
+    let mouseX = 0, mouseY = 0;
+    let circleX = 0, circleY = 0;
+
+    const handleMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      cursor.style.left = mouseX - 4 + 'px';
+      cursor.style.top = mouseY - 4 + 'px';
+    };
+
+    const animateCircle = () => {
+      circleX += (mouseX - circleX) * 0.1;
+      circleY += (mouseY - circleY) * 0.1;
+      circle.style.left = circleX - 20 + 'px';
+      circle.style.top = circleY - 20 + 'px';
+      requestAnimationFrame(animateCircle);
+    };
+    animateCircle();
+
+    document.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      cursor.remove();
+      circle.remove();
+      styleElement.remove();
+    };
+  }, []);
+};
 import { ChevronLeft, ChevronRight, Search, Filter } from 'lucide-react';
 import TeamCard from '../components/TeamCard';
 
@@ -131,8 +135,8 @@ const EnhancedTeamPage = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const cardRefs = useRef([]);
-  const cursorRef = useRef(null);
-  const trailRefs = useRef([]);
+  // Use custom cursor
+  useCustomCursor();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -161,58 +165,45 @@ const EnhancedTeamPage = () => {
   }, []);
 
   useEffect(() => {
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    document.body.appendChild(cursor);
-    cursorRef.current = cursor;
-
-    const circle = document.createElement('div');
-    circle.className = 'cursor-circle';
-    circle.innerHTML = '⚽';
-    document.body.appendChild(circle);
-
-    cursor.className = 'cursor-dot';
-    let mouseX = 0, mouseY = 0;
-    let circleX = 0, circleY = 0;
-
-    const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      
-      cursor.style.left = mouseX - 4 + 'px';
-      cursor.style.top = mouseY - 4 + 'px';
-
-      // Hover effect
-      const hoverElement = document.elementFromPoint(e.clientX, e.clientY);
-      if (hoverElement && (hoverElement.closest('.sparkle') || hoverElement.tagName === 'BUTTON' || hoverElement.tagName === 'H1' || hoverElement.tagName === 'H2')) {
-        circle.style.transform = 'scale(1.5) rotate(180deg)';
-      } else {
-        circle.style.transform = 'scale(1) rotate(0deg)';
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      @keyframes grid-move {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(50px, 50px); }
       }
-    };
-
-    const animateCircle = () => {
-      circleX += (mouseX - circleX) * 0.1;
-      circleY += (mouseY - circleY) * 0.1;
-      circle.style.left = circleX - 20 + 'px';
-      circle.style.top = circleY - 20 + 'px';
-      requestAnimationFrame(animateCircle);
-    };
-    animateCircle();
-
-    const handleClick = () => {
-      circle.style.transform = 'scale(0.8)';
-      setTimeout(() => circle.style.transform = 'scale(1)', 150);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('click', handleClick);
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(60px) scale(0.8); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-10px) rotate(2deg); }
+      }
+      @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(249, 115, 22, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(249, 115, 22, 0.6), 0 0 60px rgba(249, 115, 22, 0.3); }
+      }
+      @keyframes sparkle {
+        0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+        50% { opacity: 1; transform: scale(1) rotate(180deg); }
+      }
+      .animate-fade-in-up { animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+      .animate-float { animation: float 6s ease-in-out infinite; }
+      .animate-grid { animation: grid-move 20s linear infinite; }
+      .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+      .sparkle::before {
+        content: '✨';
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        animation: sparkle 2s ease-in-out infinite;
+        font-size: 20px;
+      }
+    `;
+    document.head.appendChild(styleElement);
 
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('click', handleClick);
-      cursor.remove();
-      circle.remove();
+      styleElement.remove();
     };
   }, []);
 
@@ -271,7 +262,7 @@ const EnhancedTeamPage = () => {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden" style={{cursor: 'none'}}>
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-gray-800 relative overflow-hidden">
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
