@@ -540,8 +540,8 @@ export default function cyclothon() {
     </div>
     
     <div className=" bg-black sm:h-[700px] h-[800px] w-full relative">
-      <div ref={soldierRHS} className="absolute hidden sm:block h-[400px] z-10 w-[400px] mt-[-150px] ml-[1160px] rotate-15"><img src="/soldier.png"/></div>
-      <div ref={soldierLHS} className="absolute hidden sm:block h-[400px] z-10 w-[400px] mt-[-150px] ml-[-50px] rotate-345"><img src="/soldierLHS.png"/></div>
+      <div ref={soldierRHS} className="absolute h-[200px] w-[200px] ml-[350px] sm:h-[400px] z-10 sm:w-[400px] sm:mt-[-150px] sm:ml-[1160px] rotate-15"><img src="/soldier.png"/></div>
+      <div ref={soldierLHS} className="absolute h-[200px] w-[200px] ml-[-180px]  sm:h-[400px] z-10 sm:w-[400px] sm:mt-[-150px] sm:ml-[-50px] rotate-345"><img src="/soldierLHS.png"/></div>
       <FAQSection />
     </div>
 
