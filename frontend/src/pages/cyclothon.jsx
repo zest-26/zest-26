@@ -428,20 +428,30 @@ export default function cyclothon() {
       </div>
     </div>
     <div className="relative w-scrren h-[1000px]  bg-[#070811]">
-      <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] mt-[370px] z-0" alt="cloud" /></div>
-      <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
+      <div className="absolute"><img src="/cloud.png" className="h-[400px] mt-[250px]  sm:h-[500px] sm:w-[761px] sm:mt-[370px] z-0" alt="cloud" /></div>
+      <div className="absolute hidden sm:block"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
                   
-      <div ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-xl absolute ml-[450px] mt-[300px]">“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
-         This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
-         to keep moving forward. As wheels spin and paths stretch, we carry <br/>
-         their courage with every stride, turning our ride into a journey of <br/> 
-         respect, strength, and solidarity. Ride not just for speed, but for a <br/>
-         cause that stands tall, just like the heroes we honor.”</div>
+      <div ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-white mt-[200px] ml-[10px] sm:text-xl absolute sm:ml-[450px] sm:mt-[300px]">{/* Desktop / sm and above */}
+  <span className="hidden sm:block">
+    “Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
+    This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
+    to keep moving forward. As wheels spin and paths stretch, we carry <br/>
+    their courage with every stride, turning our ride into a journey of <br/> 
+    respect, strength, and solidarity. Ride not just for speed, but for a <br/>
+    cause that stands tall, just like the heroes we honor.”
+  </span>
+
+  {/* Mobile */}
+  <span className="block sm:hidden px-6 text-center">
+    “Every mile you ride is a salute,<br/> every turn of the pedal a tribute.<br/>
+    This Cyclothon is for those who<br/> stood for us—brave hearts who inspire<br/> us
+    to keep moving forward.<br/> 
+  </span></div>
          
     </div>
     <div  ref={dtlContainerRef} className="relative w-scrren h-[800px]  bg-[#070811]">
-      <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
-      <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
+      <div className="absolute hidden sm:block"><img src="/cloud.png" className=" h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
+      <div className="absolute"><img src="/cloud-1.png" className=" h-[400px] mt-[-350px] sm:h-[500px] sm:w-[761px] sm:mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
       <div  ref={dtlRef} className="h-[350px] w-[350px]  mt-[300px] ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
       <div ref={(el) => (dtlOtherRef.current[0] = el)} className="h-[95px] w-[80px] mt-[295px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[1] = el)} className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
