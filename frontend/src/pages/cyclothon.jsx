@@ -188,18 +188,18 @@ function FAQSection() {
       {/* Title */}
       <div
         style={{ fontFamily: "cyclothonFont", transform: "scaleY(1.3)" }}
-        className="title absolute z-10 text-white text-[50px] ml-[700px] mt-[30px]"
+        className="title absolute z-10 text-white sm:text-[50px] text-[30px] ml-[140px] mt-[240px] sm:ml-[700px] sm:mt-[30px]"
       >
         FAQs
       </div>
 
       {/* Background image */}
-      <div className="absolute z-0 ml-[440px]">
+      <div className="absolute z-0 ml-[20px] sm:mt-[0px] mt-[240px] sm:ml-[440px]">
         <img src="FAQTab.jpg" alt="FAQ Background" />
       </div>
 
       {/* Red FAQ container */}
-      <div className=" w-[1000px] h-[500px] absolute mt-[200px] ml-[270px] rounded-xl overflow-y-auto p-6 space-y-4 z-20">
+      <div className=" sm:w-[1000px] mt-[400px] sm:h-[500px] absolute sm:mt-[200px] sm:ml-[270px] rounded-xl overflow-y-auto p-6 space-y-4 z-20">
         {faqs.map((faq, index) => (
           <div
             key={index}
@@ -539,9 +539,9 @@ export default function cyclothon() {
         </div>
     </div>
     
-    <div className="bg-black h-[700px] w-full relative">
-      <div ref={soldierRHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1160px] rotate-15"><img src="/soldier.png"/></div>
-      <div ref={soldierLHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-50px] rotate-345"><img src="/soldierLHS.png"/></div>
+    <div className=" bg-black sm:h-[700px] h-[800px] w-full relative">
+      <div ref={soldierRHS} className="absolute hidden sm:block h-[400px] z-10 w-[400px] mt-[-150px] ml-[1160px] rotate-15"><img src="/soldier.png"/></div>
+      <div ref={soldierLHS} className="absolute hidden sm:block h-[400px] z-10 w-[400px] mt-[-150px] ml-[-50px] rotate-345"><img src="/soldierLHS.png"/></div>
       <FAQSection />
     </div>
 
