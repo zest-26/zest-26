@@ -392,7 +392,7 @@ export default function cyclothon() {
       <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-80px] w-[80px] ml-[50px] mt-[40px] sm:h-[200px] sm:w-[200px] absolute sm:ml-[260px] sm:mt-[90px]"/></div>
       <div ref={zestLogoRef}><img src="/ZEST-26.png" className="h-[80px] w-[130px] ml-[170px] mt-[40px] sm:h-[200px] sm:w-[290px] absolute sm:ml-[480px] sm:mt-[90px]"/></div>
       {/* Helmet box */}
-      <div ref={helmetBoxRef} className="z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
+      <div ref={helmetBoxRef} className=" z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
           <ambientLight intensity={1} />
           <directionalLight position={[5, 5, 5]} />
@@ -403,7 +403,8 @@ export default function cyclothon() {
 
           <OrbitControls enableZoom={false}   
   enableRotate={false}
-  enablePan={false}   />
+  enablePan={false}
+     />
         </Canvas>
       </div>
 
@@ -412,15 +413,7 @@ export default function cyclothon() {
           <ambientLight intensity={1.3} />
           <directionalLight position={[27, 40, -43]} />
           <Cycle enableSwaying={enableSwaying} />
-          <OrbitControls
-             enableZoom={false}   
-  enableRotate={false}
-  enablePan={false}
-            minPolarAngle={0}
-            maxPolarAngle={Math.PI * 2}
-            enableDamping={true}
-            dampingFactor={0.1}
-          />
+          
         </Canvas>
       </div>
 
