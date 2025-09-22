@@ -35,7 +35,7 @@ const CoordinatorResults = () => {
   }, []);
 
   return (
-    <div className=" relative h-[700px] sm:h-[1090px] flex items-center justify-center bg-gradient-to-b from-black to-[#361701]">
+    <div className="overflow-x-hidden relative h-[700px] sm:h-[1090px] flex items-center justify-center bg-gradient-to-b from-black to-[#361701]">
       <div className="absolute h-[950px] sm:h-[930px] bg-gradient-to-b from-[#b94d05] to-black w-full mt-[-900px] sm:mt-[-980px]"></div>
       
       <img src='/football.png' className="football brightness-90 absolute h-[100px] w-[100px] top-[18px] left-[-20px] sm:h-[300px] sm:w-[300px] sm:top-[-40px] sm:left-[-40px]"/>
