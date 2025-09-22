@@ -4,8 +4,11 @@ import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import { useRef, useState, useEffect } from "react";
 import { Calendar, Clock, MapPin } from "lucide-react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 gsap.registerPlugin(SplitText);
+ gsap.registerPlugin(ScrollTrigger);
 
 function Cycle({ enableSwaying = false }) {
   const { scene } = useGLTF("/3DModels/cyclist.glb");
@@ -143,6 +146,78 @@ function BackgroundScroller() {
   );
 }
 
+const faqs = [
+  {
+    question: "What should I bring for the Cyclothon?",
+    answer:
+      "Bring your own bicycle, helmet (mandatory), water bottle, and comfortable cycling attire. We'll provide the rest!",
+  },
+  {
+    question: "Is there an age limit for participation?",
+    answer:
+      "Participants must be at least 16 years old. Minors (16-18) need parental consent forms.",
+  },
+  {
+    question: "What happens if it rains on the event day?",
+    answer:
+      "The event will proceed unless there are severe weather conditions. We'll notify all participants 24 hours in advance if there are any changes.",
+  },
+  {
+    question: "Are there medical facilities available during the ride?",
+    answer:
+      "Yes, we have medical support teams stationed at multiple points along the route and a dedicated ambulance following the group.",
+  },
+  {
+    question: "Can I switch between 15km and 30km routes on the day of the event?",
+    answer:
+      "Route changes on the event day are not permitted due to logistics and safety reasons. Please choose your preferred distance during registration.",
+  },
+];
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <div className="bg-black h-[900px] w-screen relative">
+      {/* Title */}
+      <div
+        style={{ fontFamily: "cyclothonFont", transform: "scaleY(1.3)" }}
+        className="title absolute z-10 text-white text-[50px] ml-[700px] mt-[30px]"
+      >
+        FAQs
+      </div>
+
+      {/* Background image */}
+      <div className="absolute z-0 ml-[440px]">
+        <img src="FAQTab.jpg" alt="FAQ Background" />
+      </div>
+
+      {/* Red FAQ container */}
+      <div className=" w-[1000px] h-[500px] absolute mt-[200px] ml-[270px] rounded-xl overflow-y-auto p-6 space-y-4 z-20">
+        {faqs.map((faq, index) => (
+          <div
+            key={index}
+            className="bg-[#1a1a1a] rounded-lg p-4 cursor-pointer shadow-md transition"
+            onClick={() => toggleFAQ(index)}
+          >
+            <div style={{ fontFamily: "cyclothonSlogan", transform: "scaleY(1.3)" }} className="flex justify-between items-center text-white font-semibold text-lg">
+              <span>{faq.question}</span>
+              <span className="text-gray-400">{openIndex === index ? "−" : "+"}</span>
+            </div>
+            {openIndex === index && (
+              <div className="mt-2 text-gray-300 text-[20px]">{faq.answer}</div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function cyclothon() {
   const helmetBoxRef = useRef();
   const textRef = useRef();
@@ -150,6 +225,13 @@ export default function cyclothon() {
   const sindoorRef = useRef();
   const coepLogoRef = useRef();
  const zestLogoRef = useRef();
+ const discriptionRef = useRef();
+  const dtlContainerRef = useRef(null);
+  const dtlRef = useRef(null);
+  const dtlOtherRef = useRef([]); // holds all other elements
+   const soldierRHS = useRef(null);
+  const soldierLHS = useRef(null);
+
   
   // State to control when swaying should start
   const [enableSwaying, setEnableSwaying] = useState(false);
@@ -162,6 +244,7 @@ export default function cyclothon() {
     gsap.set(sindoorRef.current, { opacity: 0, y: 20 });
     gsap.set(coepLogoRef.current, { opacity: 0, y: -30 });
     gsap.set(zestLogoRef.current, { opacity: 0, y: -30 });
+     gsap.set(dtlOtherRef.current, { opacity: 0, y: 50 });
   
 
   const tl = gsap.timeline();
@@ -209,6 +292,53 @@ export default function cyclothon() {
     duration: 0.4,
     ease: "power3.out"
   });
+
+    const split = new SplitText(discriptionRef.current, { type: "lines" });
+
+    gsap.from(split.lines, {
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      stagger: 0.3,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: discriptionRef.current,
+        start: "top 85%",
+      },
+
+      
+    });
+
+
+    const t2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: dtlContainerRef.current,
+        start: "top 20%", // Start when top of element hits bottom of viewport
+        end: "bottom top",
+        toggleActions: "play none none reverse",
+        markers: true,
+        onRefresh: () => console.log("ScrollTrigger refreshed"),
+        onEnter: () => console.log("ScrollTrigger entered"),
+      },
+    });
+
+    // Rotate DTL.png 360 degrees
+    t2.to(dtlRef.current, { rotation: 720, duration: 1, ease: "power2.inOut" });
+
+    // Fade in and slide up other elements
+    t2.to(
+      dtlOtherRef.current,
+      {
+        opacity: 1,
+        y: 0,
+        delay: 0.5,
+        duration: 0.8,
+        ease: "power3.out",
+      },
+      "-=0.5"
+    );
+
+    
 
 }, []);
 
@@ -266,7 +396,7 @@ export default function cyclothon() {
       <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] mt-[370px] z-0" alt="cloud" /></div>
       <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
                   
-      <div style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-xl absolute ml-[450px] mt-[300px]">“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
+      <div ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-xl absolute ml-[450px] mt-[300px]">“Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
          This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
          to keep moving forward. As wheels spin and paths stretch, we carry <br/>
          their courage with every stride, turning our ride into a journey of <br/> 
@@ -274,58 +404,124 @@ export default function cyclothon() {
          cause that stands tall, just like the heroes we honor.”</div>
          
     </div>
-    <div className="relative w-scrren h-[800px]  bg-[#070811]">
+    <div  ref={dtlContainerRef} className="relative w-scrren h-[800px]  bg-[#070811]">
       <div className="absolute"><img src="/cloud.png" className="h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
       <div className="absolute"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
-      <div className="h-[350px] w-[350px]  mt-[300px] ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
-      <div className="h-[95px] w-[80px] mt-[295px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[350px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[95px] w-[80px] mt-[550px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[608px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[550px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[95px] w-[80px] mt-[395px] ml-[402px] absolute rotate-90"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[450px] ml-[458px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[20px] w-[150px] mt-[392px] ml-[352px] absolute"><img src="whiteLine.png"/></div>
-      <div className="h-[80px] w-[220px] mt-[320px] ml-[160px] absolute"><img src="/DTLTab.png"/>
+      <div  ref={dtlRef} className="h-[350px] w-[350px]  mt-[300px] ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
+      <div ref={(el) => (dtlOtherRef.current[0] = el)} className="h-[95px] w-[80px] mt-[295px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[1] = el)} className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[2] = el)} className="h-[20px] w-[150px] mt-[350px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[3] = el)} className="h-[95px] w-[80px] mt-[550px] ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[4] = el)} className="h-[20px] w-[150px] mt-[608px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[5] = el)} className="h-[20px] w-[150px] mt-[550px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[6] = el)} className="h-[95px] w-[80px] mt-[395px] ml-[402px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[7] = el)} className="h-[20px] w-[150px] mt-[450px] ml-[458px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[8] = el)} className="h-[20px] w-[150px] mt-[392px] ml-[352px] absolute"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[9] = el)} className="h-[80px] w-[220px] mt-[320px] ml-[160px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[35px] ml-[26px] mt-[-105px]">
             12th Oct
         </div>
       </div>
 
-      <div className="h-[80px] w-[220px] mt-[220px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
+      <div ref={(el) => (dtlOtherRef.current[10] = el)} className="h-[80px] w-[220px] mt-[220px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[35px] ml-[26px] mt-[-105px]">
             5:00 AM
         </div>
       </div>
 
-      <div className="h-[80px] w-[220px] mt-[535px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
+      <div ref={(el) => (dtlOtherRef.current[11] = el)} className="h-[80px] w-[220px] mt-[535px] ml-[1030px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[30px] ml-[42px] mt-[-122px]">
             COEP GROUND
         </div>
       </div>
 
     </div>
-    <div className="bg-black relative w-scrren h-[1000px]">
+    <div className="bg-black relative w-screen h-[1000px]">
       <div className="absolute h-[200px] w-[200px]  mt-[60px] ml-[644px]"><img src="/categoryTab.jpg"/></div>
       <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="absloute text-white text-[25px] ml-[662px] w-[300px] h-[200px] pt-[100px]">CATEGORIES</div>
       <div className=" w-[350px] h-[250px] ml-[310px] mt-[50px] absolute z-10">
         <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[120px] mt-[20px]">15 KM</h1>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">499</h2>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">449</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">₹499</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">₹449</h2>
+        <div className="h-[40px] w-[150px] mt-[-52px] ml-[-12px] absolute"><img src="redLine.png"/></div>
+        <div className=" w-[400px] h-[400px] mt-[45px] "><div className="
+                transform transition-all duration-300 
+                hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[140px] mt-[-121px]">Register</h2></div></div>
+        
       </div>
       <div className=" w-[350px] h-[250px] ml-[850px] mt-[50px] absolute z-10">
         <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[120px] mt-[20px]">15 KM</h1>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">499</h2>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">449</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[20px] mt-[31px]">₹649</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[247px] mt-[-42px]">₹549</h2>
+        <div className="h-[40px] w-[150px] mt-[-52px] ml-[00px] absolute"><img src="redLine.png"/></div>
+        <div className=" w-[400px] h-[400px] mt-[45px]"><div className="
+                transform transition-all duration-300 
+                hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[30px] ml-[140px] mt-[-121px]">Register</h2></div></div>
+        
       </div>
       <div className="absolute h-[500px] w-[500px]  mt-[20px] ml-[244px] z-0"><img src="/categoryTab.jpg"/> </div>
-      <div className=" w-[350px] h-[250px] ml-[850px] mt-[50px] absolute z-10"></div>
+      
       <div className="absolute h-[500px] w-[500px]  mt-[20px] ml-[774px]"><img src="/categoryTab.jpg"/></div>
-      <div className="absolute h-[500px] w-[1300px] mt-[290px] ml-[230px] opacity-50">
+      <div className="absolute h-[500px] w-[1300px] mt-[480px] ml-[230px] opacity-50">
+        
       <img src='/Jet.png'/>   
       </div>
       
+      
+    </div>
+
+    <div className="bg-black h-[900px] w-screen realtive">
+      <div className="w-[500px] h-[500px] ml-[580px] mt-[100px] absolute"><img src="useGoodies.png" />
+        <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[100px] mt-[-80px]">
+          Goodies
+        </div>
+      </div>
+      <div className="w-[250px] h-[250px] mt-[470px] ml-[70px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[60px] mt-[570px]">
+          Welcome Kit
+        </div>
+      <div className="w-[250px] h-[250px] mt-[470px] ml-[420px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[460px] mt-[570px]">
+          T-Shirt
+        </div>
+      <div className="w-[250px] h-[250px] mt-[470px] ml-[850px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[910px] mt-[570px]">
+          Medal
+        </div>
+      <div className="w-[250px] h-[250px] mt-[470px] ml-[1200px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[40px] ml-[1190px] mt-[570px]">
+          Refreshment
+        </div>
+    </div>
+    
+    <div className="bg-black h-[700px] w-screen relative">
+      <div ref={soldierRHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[1000px] rotate-15"><img src="/soldier.png"/></div>
+      <div ref={soldierLHS} className="absolute h-[400px] z-10 w-[400px] mt-[-150px] ml-[-80px] rotate-345"><img src="/soldierLHS.png"/></div>
+      <FAQSection />
+    </div>
+
+    <div className=" bg-black h-[700px] w-screen relative">
+      <div className="absolute w-[400px] h-[400px] mt-[200px] ml-[550px]"><img src="/cycloContact.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title absolute text-white text-[50px] ml-[600px] mt-[130px]">
+          Contact Us
+        </div>
+        <div className="absolute w-[350px] mt-[350px] ml-[40px]"><img src="/cycloContact1.jpg"/></div>
+        <div className="absolute w-[350px] mt-[350px] ml-[570px]"><img src="/cycloContact1.jpg"/></div>
+        <div className="absolute w-[350px] mt-[350px] ml-[1070px]"><img src="/cycloContact1.jpg"/></div>
+        <div className=" w-[250px] h-[200px] mt-[400px] ml-[80px] absolute ">
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
+          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+        </div>
+
+        <div className=" w-[250px] h-[200px] mt-[400px] ml-[620px] absolute ">
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
+          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+        </div>
+
+        <div className=" w-[250px] h-[200px] mt-[400px] ml-[1120px] absolute ">
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
+          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+        </div>
     </div>
     </div>
   );
