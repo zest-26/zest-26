@@ -137,7 +137,7 @@ function BackgroundScroller() {
   const row4 = ["/OS/OS-1.webp", "/OS/OS-8.jpg", "/OS/OS-9.jpg", "/OS/OS-3.webp", "/OS/OS-5.webp", "/OS/OS-6.jpg"];
 
   return (
-    <div className="absolute inset-0 z-0 flex flex-col gap-6 opacity-30">
+    <div className="absolute inset-0 z-0 flex flex-col gap-6 opacity-30 ">
       <InfiniteRow images={row1} reverse={false} speed={40} />
       <InfiniteRow images={row2} reverse={true} speed={50} />
       <InfiniteRow images={row3} reverse={false} speed={35} />
@@ -388,8 +388,25 @@ export default function cyclothon() {
     <div className="h-screen w-full relative bg-black">
       <BackgroundScroller />
 
-      <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-80px] w-[80px] ml-[50px] mt-[40px] sm:h-[200px] sm:w-[200px] absolute sm:ml-[260px] sm:mt-[90px]"/></div>
-      <div ref={zestLogoRef}><img src="/ZEST-26.png" className="h-[80px] w-[130px] ml-[170px] mt-[40px] sm:h-[200px] sm:w-[290px] absolute sm:ml-[480px] sm:mt-[90px]"/></div>
+      <div className="absolute top-[5%] left-0 w-full flex flex-wrap justify-center gap-[15vw] sm:gap-0 items-start sm:justify-start sm:space-x-10 sm:ml-[200px] sm:mt-[20px]">
+  {/* COEP Logo */}
+  <div ref={coepLogoRef}>
+    <img
+      src="/CoepLogo.png"
+      className="h-[80px] w-[80px] sm:h-[200px] sm:w-[200px]"
+      alt="COEP Logo"
+    />
+  </div>
+
+  {/* ZEST Logo */}
+  <div ref={zestLogoRef}>
+    <img
+      src="/ZEST-26.png"
+      className="h-[80px] w-[110px] sm:h-[200px] sm:w-[290px]"
+      alt="ZEST Logo"
+    />
+  </div>
+</div>
       {/* Helmet box */}
       <div ref={helmetBoxRef} className=" z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
