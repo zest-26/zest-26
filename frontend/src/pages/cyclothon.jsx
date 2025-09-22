@@ -466,12 +466,12 @@ export default function cyclothon() {
       
 
     </div>
-    <div className="relative w-scrren h-[1000px]  bg-[#070811]">
-       <div className="absolute w-full">
+    <div className="relative w-scrren h-[800px] sm:h-[1000px] bg-[#070811]" >
+       <div className="absolute bottom-0 sm:bottom-auto w-full">
   <img 
     src="/cloud.png" 
     alt="cloud" 
-    className="w-full h-auto mt-[250px] sm:mt-[370px] z-0 sm:h-[500px] sm:w-[761px]" 
+    className="w-full h-auto  sm:mt-[370px] z-0 sm:h-[500px] sm:w-[761px]" 
   />
 </div>
       <div className="absolute hidden sm:block"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
@@ -496,13 +496,13 @@ export default function cyclothon() {
   </span></div></div>
          
     </div>
-    <div  ref={dtlContainerRef} className="relative w-scrren h-[500px] sm:h-[800px]  bg-[#070811]">
+    <div  ref={dtlContainerRef} className="relative w-scrren h-[500px] sm:h-[800px] bg-[#070811]">
       <div className="absolute hidden sm:block"><img src="/cloud.png" className=" h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
-     <div className="absolute w-full">
-  <img
+     <div className="absolute top-0 sm:top-auto w-full">
+    <img
     src="/cloud-1.png"
     alt="cloud"
-    className="w-full  h-auto mt-[-350px] sm:mt-[-130px] sm:h-[500px] sm:w-[761px] rotate-180 z-0 "
+    className="w-full  h-auto  sm:mt-[-130px] sm:h-[500px] sm:w-[761px] rotate-180 z-0 "
   />
 </div>
       <div  ref={dtlRef} className="sm:h-[350px] h-[200px] w-[200px] ml-[80px] mt-[50px]  sm:w-[350px]  sm:mt-[300px] sm:ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
