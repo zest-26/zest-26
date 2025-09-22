@@ -325,10 +325,9 @@ export default function cyclothon() {
     const t2 = gsap.timeline({
       scrollTrigger: {
         trigger: dtlContainerRef.current,
-        start: "top 20%", // Start when top of element hits bottom of viewport
+         start: isSmallScreen ? "top 30%" : "top 20%", // Start when top of element hits bottom of viewport
         end: "bottom top",
         toggleActions: "play none none reverse",
-        markers: true,
         onRefresh: () => console.log("ScrollTrigger refreshed"),
         onEnter: () => console.log("ScrollTrigger entered"),
       },
@@ -452,29 +451,29 @@ export default function cyclothon() {
     <div  ref={dtlContainerRef} className="relative w-scrren h-[500px] sm:h-[800px]  bg-[#070811]">
       <div className="absolute hidden sm:block"><img src="/cloud.png" className=" h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
       <div className="absolute"><img src="/cloud-1.png" className=" h-[400px] mt-[-350px] sm:h-[500px] sm:w-[761px] sm:mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
-      <div  ref={dtlRef} className="sm:h-[350px] h-[200px] w-[200px] ml-[80px] mt-[80px]  sm:w-[350px]  sm:mt-[300px] sm:ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
-      <div ref={(el) => (dtlOtherRef.current[0] = el)} className="mt-[47px] ml-[40px] h-[95px] w-[80px] sm:mt-[295px] sm:ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div  ref={dtlRef} className="sm:h-[350px] h-[200px] w-[200px] ml-[80px] mt-[50px]  sm:w-[350px]  sm:mt-[300px] sm:ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
+      <div ref={(el) => (dtlOtherRef.current[0] = el)} className="mt-[17px] ml-[40px] h-[95px] w-[80px] sm:mt-[295px] sm:ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[1] = el)} className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[2] = el)} className="h-[20px] w-[150px] mt-[350px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
-      <div ref={(el) => (dtlOtherRef.current[3] = el)} className="h-[95px] w-[80px] mt-[49px] ml-[170px] sm:mt-[550px] sm:ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[3] = el)} className="h-[95px] w-[80px] mt-[19px] ml-[170px] sm:mt-[550px] sm:ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[4] = el)} className="h-[20px] w-[150px] mt-[608px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[5] = el)} className="h-[20px] w-[150px] mt-[550px] ml-[808px] absolute"><img src="whiteLine.png"/></div>
-      <div ref={(el) => (dtlOtherRef.current[6] = el)} className="h-[95px] w-[80px] ml-[100px] mt-[230px] sm:mt-[395px] sm:ml-[402px] absolute rotate-90"><img src="whiteLine.png"/></div>
+      <div ref={(el) => (dtlOtherRef.current[6] = el)} className="h-[95px] w-[80px] ml-[100px] mt-[200px] sm:mt-[395px] sm:ml-[402px] absolute rotate-90"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[7] = el)} className="h-[20px] w-[150px] mt-[450px] ml-[458px] absolute"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[8] = el)} className="h-[20px] w-[150px] mt-[392px] ml-[352px] absolute"><img src="whiteLine.png"/></div>
-      <div ref={(el) => (dtlOtherRef.current[9] = el)} className="sm:h-[80px] h-[40px] w-[140px] mt-[-25px] ml-[50px] sm:w-[220px] sm:mt-[320px] sm:ml-[160px] absolute"><img src="/DTLTab.png"/>
+      <div ref={(el) => (dtlOtherRef.current[9] = el)} className="sm:h-[80px] h-[40px] w-[140px] mt-[-55px] ml-[50px] sm:w-[220px] sm:mt-[320px] sm:ml-[160px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[22px] mt-[-60px] ml-[15px] sm:text-[35px] sm:ml-[26px] sm:mt-[-105px]">
             12th Oct
         </div>
       </div>
 
-      <div ref={(el) => (dtlOtherRef.current[10] = el)} className="sm:h-[80px] h-[40px] w-[140px] mt-[-25px] ml-[180px] sm:w-[220px]  sm:mt-[220px] sm:ml-[1030px] absolute"><img src="/DTLTab.png"/>
+      <div ref={(el) => (dtlOtherRef.current[10] = el)} className="sm:h-[80px] h-[40px] w-[140px] mt-[-55px] ml-[180px] sm:w-[220px]  sm:mt-[220px] sm:ml-[1030px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[22px] mt-[-60px] ml-[20px] sm:text-[35px] sm:ml-[26px] sm:mt-[-105px]">
             5:00 AM
         </div>
       </div>
 
-      <div ref={(el) => (dtlOtherRef.current[11] = el)} className="sm:h-[80px] h-[40px] w-[150px] ml-[110px] mt-[280px]  sm:w-[220px] sm:mt-[535px] sm:ml-[1030px] absolute"><img src="/DTLTab.png"/>
+      <div ref={(el) => (dtlOtherRef.current[11] = el)} className="sm:h-[80px] h-[40px] w-[150px] ml-[110px] mt-[250px]  sm:w-[220px] sm:mt-[535px] sm:ml-[1030px] absolute"><img src="/DTLTab.png"/>
          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white ml-[20px] mt-[-80px] text-[22px] sm:text-[30px] sm:ml-[42px] sm:mt-[-122px]">
             COEP GROUND
         </div>
