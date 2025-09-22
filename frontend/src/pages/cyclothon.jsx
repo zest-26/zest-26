@@ -87,7 +87,7 @@ function Helmet({ enableSwaying = false }) {
 }
 
 // Background infinite scrolling rows
-function InfiniteRow({ images, reverse = false, speed = 30 }) {
+function InfiniteRow({ images, reverse = false, speed = 30,className }) {
   const rowRef = useRef();
 
   useEffect(() => {
@@ -110,13 +110,13 @@ function InfiniteRow({ images, reverse = false, speed = 30 }) {
     return () => ctx.revert();
   }, [reverse, speed]);
 
-  return (
-    <div className="overflow-hidden w-full">
+   return (
+    <div className={`overflow-hidden w-full ${className || ""}`}>
       <div ref={rowRef} className="flex" style={{ width: "max-content" }}>
         {[...images, ...images].map((img, i) => (
           <div
             key={i}
-            className="min-w-[250px] h-[210px] mx-2 rounded-xl shadow-lg overflow-hidden"
+            className="h-[100px] sm:min-w-[250px] sm:h-[210px] mx-2 rounded-xl shadow-lg overflow-hidden"
           >
             <img
               src={img}
@@ -142,6 +142,8 @@ function BackgroundScroller() {
       <InfiniteRow images={row2} reverse={true} speed={50} />
       <InfiniteRow images={row3} reverse={false} speed={35} />
       <InfiniteRow images={row4} reverse={true} speed={45} />
+      <InfiniteRow images={row1} reverse={true} speed={45} className="block sm:hidden"/>
+       <InfiniteRow images={row2} reverse={true} speed={45} className="block sm:hidden"/>
     </div>
   );
 }
@@ -245,22 +247,32 @@ export default function cyclothon() {
     gsap.set(coepLogoRef.current, { opacity: 0, y: -30 });
     gsap.set(zestLogoRef.current, { opacity: 0, y: -30 });
      gsap.set(dtlOtherRef.current, { opacity: 0, y: 50 });
+
+      const isSmallScreen = window.matchMedia("(max-width: 639px)").matches;
+
   
 
   const tl = gsap.timeline();
 
-  // Move animation for .movable
-  tl.to(".movable", {
-    x: 390,
-    delay: 2.9,
-    duration: 0.7,
-    ease: "power3.inOut",
-    onComplete: ()=>{
-      setEnableSwaying(true);
-    }
-  })
+ if (!isSmallScreen) {
+    // Run animation only for sm and larger
+    tl.to(".movable", {
+      x: 390,
+      delay: 2.9,
+      duration: 0.7,
+      ease: "power3.inOut",
+      onComplete: () => {
+        setEnableSwaying(true);
+      }
+    });
+  } else {
+    // Make sure .movable stays in place for small screens
+    gsap.set(".movable", { x: 0 });
+     setEnableSwaying(true);
+     tl.to({}, { duration: 3 });
+  }
 
-  .to([coepLogoRef.current, zestLogoRef.current], {
+  tl.to([coepLogoRef.current, zestLogoRef.current], {
     opacity: 1,
     y: 0,
     duration: 1,
@@ -377,8 +389,8 @@ export default function cyclothon() {
     <div className="h-screen w-full relative bg-black">
       <BackgroundScroller />
 
-      <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-[200px] w-[200px] absolute ml-[260px] mt-[90px]"/></div>
-      <div ref={zestLogoRef}><img src="/ZEST-26.png" className="h-[200px] w-[290px] absolute ml-[480px] mt-[90px]"/></div>
+      <div ref={coepLogoRef}><img src="/CoepLogo.png" className="h-80px] w-[80px] ml-[50px] mt-[40px] sm:h-[200px] sm:w-[200px] absolute sm:ml-[260px] sm:mt-[90px]"/></div>
+      <div ref={zestLogoRef}><img src="/ZEST-26.png" className="h-[80px] w-[130px] ml-[170px] mt-[40px] sm:h-[200px] sm:w-[290px] absolute sm:ml-[480px] sm:mt-[90px]"/></div>
       {/* Helmet box */}
       <div ref={helmetBoxRef} className="z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
@@ -395,7 +407,7 @@ export default function cyclothon() {
         </Canvas>
       </div>
 
-      <div className="z-10 movable h-[690px] w-[690px] absolute mt-[70px] ml-[480px]">
+      <div className="z-10 movable h-[300px] w-[300px] mt-[210px] ml-[45px] sm:h-[690px] sm:w-[690px] absolute sm:mt-[70px] sm:ml-[480px]">
         <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
           <ambientLight intensity={1.3} />
           <directionalLight position={[27, 40, -43]} />
@@ -412,12 +424,12 @@ export default function cyclothon() {
         </Canvas>
       </div>
 
-      <div className="absolute h-[600px] w-[800px] mt-[70px] ml-[100px] z-10">
-        <div ref={textRef} style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[100px] ml-[10px] mt-[250px]">
+      <div className="absolute  sm:h-[600px] sm:w-[800px] sm:mt-[70px] sm:ml-[100px] z-10">
+        <div ref={textRef} style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title text-white text-[40px] mt-[140px] ml-[30px] sm:text-[100px] sm:ml-[10px] sm:mt-[250px]">
           Cyclothon'25
         </div>
-        <div ref={sloganRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute text-[30px] text-white">- Every Mile, A Salute, Ride for those who Stood for Us</div>
-        <div ref={sindoorRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute mt-[150px] ml-[220px] text-[30px] text-white"> Ride for Operation Sindoor</div>
+        <div ref={sloganRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="absolute text-[20px] mt-[330px] ml-[50px] sm:ml-[0px] sm:mt-[0px] sm:text-[30px] text-white">- Every Mile, A Salute, Ride for those who Stood for Us</div>
+        <div ref={sindoorRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }} className="hidden sm:block absolute text-[20px] ml-[60px] mt-[500px] sm:mt-[150px] sm:ml-[220px] sm:text-[30px] text-white"> Ride for Operation Sindoor</div>
         
        
       </div>
