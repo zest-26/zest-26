@@ -545,25 +545,25 @@ export default function cyclothon() {
       <FAQSection />
     </div>
 
-    <div className=" bg-black h-[700px] w-full relative">
-      <div className="absolute w-[400px] h-[400px] mt-[200px] ml-[550px]"><img src="/cycloContact.jpg"/></div>
-      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title absolute text-white text-[50px] ml-[600px] mt-[130px]">
+    <div className=" bg-black sm:h-[700px] h-[1200px] w-full relative">
+      <div className="absolute w-[300px] h-[300px] mt-[300px] ml-[30px] sm:w-[400px] sm:h-[400px] sm:mt-[200px] sm:ml-[550px]"><img src="/cycloContact.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="title absolute text-white sm:text-[50px] text-[30px] mt-[250px] ml-[90px] sm:ml-[600px] sm:mt-[130px]">
           Contact Us
         </div>
-        <div className="absolute w-[350px] mt-[350px] ml-[40px]"><img src="/cycloContact1.jpg"/></div>
-        <div className="absolute w-[350px] mt-[350px] ml-[570px]"><img src="/cycloContact1.jpg"/></div>
-        <div className="absolute w-[350px] mt-[350px] ml-[1070px]"><img src="/cycloContact1.jpg"/></div>
-        <div className=" w-[250px] h-[200px] mt-[400px] ml-[80px] absolute ">
+        <div className="absolute sm:w-[350px] sm:mt-[350px] mt-[400px] w-[300px] ml-[25px] sm:ml-[40px]"><img src="/cycloContact1.jpg"/></div>
+        <div className="absolute sm:w-[350px] sm:mt-[350px] sm:ml-[570px] mt-[600px] ml-[25px] w-[300px]"><img src="/cycloContact1.jpg"/></div>
+        <div className="absolute sm:w-[350px] sm:mt-[350px] sm:ml-[1070px] mt-[800px] ml-[25px] w-[300px]"><img src="/cycloContact1.jpg"/></div>
+        <div className=" w-[250px] text-white h-[200px] sm:mt-[400px] mt-[480px] ml-[50px] sm:ml-[80px] absolute ">
           <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
           <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
         </div>
 
-        <div className=" w-[250px] h-[200px] mt-[400px] ml-[620px] absolute ">
+        <div className=" w-[250px] h-[200px] sm:mt-[400px] sm:ml-[620px] mt-[680px] ml-[50px] text-white  absolute ">
           <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
           <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
         </div>
 
-        <div className=" w-[250px] h-[200px] mt-[400px] ml-[1120px] absolute ">
+        <div className=" w-[250px] h-[200px] sm:mt-[400px] sm:ml-[1120px] mt-[880px] ml-[50px] text-white absolute ">
           <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
           <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
         </div>
