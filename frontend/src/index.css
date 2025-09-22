@@ -21,6 +21,13 @@
 }
 
 @font-face {
+  font-family: 'SharpAxe'; /* name you'll use in CSS */
+  src: url('/fonts/SharpAxe.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Borcer'; /* name you'll use in CSS */
   src: url('/fonts/Borcer.ttf') format('truetype');
   font-weight: normal;
