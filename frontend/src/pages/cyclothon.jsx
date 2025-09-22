@@ -467,11 +467,18 @@ export default function cyclothon() {
 
     </div>
     <div className="relative w-scrren h-[1000px]  bg-[#070811]">
-      <div className="absolute"><img src="/cloud.png" className="h-[400px] mt-[250px]  sm:h-[500px] sm:w-[761px] sm:mt-[370px] z-0" alt="cloud" /></div>
+       <div className="absolute w-full">
+  <img 
+    src="/cloud.png" 
+    alt="cloud" 
+    className="w-full h-auto mt-[250px] sm:mt-[370px] z-0 sm:h-[500px] sm:w-[761px]" 
+  />
+</div>
       <div className="absolute hidden sm:block"><img src="/cloud-1.png" className="h-[500px] w-[761px] mt-[370px] ml-[761px] z-0" alt="cloud" /></div>
                   
-      <div ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-white mt-[200px] ml-[10px] sm:text-xl absolute sm:ml-[450px] sm:mt-[300px]">{/* Desktop / sm and above */}
-  <span className="hidden sm:block">
+      <div ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }} className="text-white mt-[200px] w-full ml-[10px] sm:text-xl absolute sm:ml-[450px] sm:mt-[300px]">{/* Desktop / sm and above */}
+     
+  <span className="hidden sm:block text-center mr-[900px]">
     “Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
     This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
     to keep moving forward. As wheels spin and paths stretch, we carry <br/>
@@ -481,16 +488,23 @@ export default function cyclothon() {
   </span>
 
   {/* Mobile */}
-  <span className="block sm:hidden px-6 text-center">
+  <div className="w-full flex justify-center sm:hidden">
+   <span className="block sm:hidden px-6 text-center">
     “Every mile you ride is a salute,<br/> every turn of the pedal a tribute.<br/>
     This Cyclothon is for those who<br/> stood for us—brave hearts who inspire<br/> us
     to keep moving forward.<br/> 
-  </span></div>
+  </span></div></div>
          
     </div>
     <div  ref={dtlContainerRef} className="relative w-scrren h-[500px] sm:h-[800px]  bg-[#070811]">
       <div className="absolute hidden sm:block"><img src="/cloud.png" className=" h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
-      <div className="absolute"><img src="/cloud-1.png" className=" h-[400px] mt-[-350px] sm:h-[500px] sm:w-[761px] sm:mt-[-130px] rotate-180 z-0" alt="cloud" /></div>
+     <div className="absolute w-full">
+  <img
+    src="/cloud-1.png"
+    alt="cloud"
+    className="w-full  h-auto mt-[-350px] sm:mt-[-130px] sm:h-[500px] sm:w-[761px] rotate-180 z-0 "
+  />
+</div>
       <div  ref={dtlRef} className="sm:h-[350px] h-[200px] w-[200px] ml-[80px] mt-[50px]  sm:w-[350px]  sm:mt-[300px] sm:ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
       <div ref={(el) => (dtlOtherRef.current[0] = el)} className="mt-[17px] ml-[40px] h-[95px] w-[80px] sm:mt-[295px] sm:ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
       <div ref={(el) => (dtlOtherRef.current[1] = el)} className="h-[20px] w-[150px] mt-[292px] ml-[915px] absolute"><img src="whiteLine.png"/></div>
