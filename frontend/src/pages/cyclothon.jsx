@@ -583,14 +583,25 @@ export default function cyclothon() {
    </div>
 
     <div  ref={dtlContainerRef} className="relative w-full h-[800px] sm:h-[800px] bg-[#070811]">
-      <div className="absolute  sm:block"><img src="/cloud.png" className=" h-[500px] w-[761px] hidden ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
+      <div className="absolute  sm:block"><img src="/cloud.png" className=" h-[500px] block sm:hidden w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
      <div className="absolute mt-[-1px] sm:mt-[0px] w-full">
     <img
     src="/cloud-1.png"
     alt="cloud"
-    className="w-full hidden  h-auto  sm:mt-[-130px] sm:h-[500px] sm:w-[761px] rotate-180 z-0 "
+    className="w-full block sm:hidden   h-auto  sm:mt-[-130px] sm:h-[500px] sm:w-[761px] rotate-180 z-0 "
   />
 </div>
+   
+   <div className="hidden sm:flex   w-full h-2/3 absolute top-0">
+          
+           <div className="h-full w-1/2 "><img src="/cloud-1.png" className="w-full rotate-180 h-full z-0" alt="cloud" /></div>
+            <div className="h-full w-1/2 "><img 
+    src="/cloud.png" 
+    alt="cloud" 
+    className="w-full h-full rotate-180  z-0 " 
+  /></div>
+         </div>
+
     <div className=" w-[300px] h-[400px] 
                   absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-2/12
                   sm:top-auto sm:left-auto sm:translate-x-0 sm:translate-y-0 sm:w-[0px] sm:h-[0px]">
@@ -623,6 +634,8 @@ export default function cyclothon() {
       </div>
       </div>
     </div>
+
+    
 
     <div className="bg-black relative w-full sm:h-[1500px] h-[1000px]">
     
