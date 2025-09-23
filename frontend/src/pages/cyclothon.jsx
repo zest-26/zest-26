@@ -206,7 +206,9 @@ function FAQSection() {
             className="bg-[#1a1a1a] rounded-lg p-4 cursor-pointer shadow-md transition"
             onClick={() => toggleFAQ(index)}
           >
+
             <div style={{ fontFamily: "SharpAxe", transform: "scaleY(1.3)" }} className="flex items-center justify-between text-xl font-semibold text-white sm:text-2xl">
+
               <span>{faq.question}</span>
               <span className="text-gray-400">{openIndex === index ? "−" : "+"}</span>
             </div>
@@ -488,8 +490,10 @@ export default function cyclothon() {
   </span>
 
   {/* Mobile */}
+
   <div className="flex justify-center w-full sm:hidden">
    <span className="block px-6 text-center sm:hidden">
+
     “Every mile you ride is a salute,<br/> every turn of the pedal a tribute.<br/>
     This Cyclothon is for those who<br/> stood for us—brave hearts who inspire<br/> us
     to keep moving forward.<br/> 
@@ -537,6 +541,7 @@ export default function cyclothon() {
       </div>
       </div>
     </div>
+
     <div className="bg-black relative w-full sm:h-[1500px] h-[1000px]">
     
       <div className="absolute 
@@ -572,7 +577,7 @@ export default function cyclothon() {
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹549</h2>
         <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-30px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
         <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></a></div>
-        
+
       </div>
       <div className="absolute sm:h-[500px] sm:w-[500px] h-[300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  mt-[180px] w-[300px]  sm:mt-[280px] sm:ml-[244px] z-0"><img src="/categoryTab.jpg"/> </div>
       
@@ -625,6 +630,7 @@ export default function cyclothon() {
       <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="left-1/2 text-center -translate-x-1/2 sm:left-auto sm:translate-x-0 title absolute text-white sm:text-[50px] text-[30px] mt-[250px]  sm:ml-[630px] sm:mt-[130px]">
           Contact
         </div>
+
         <div className="absolute sm:w-[350px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:mt-[350px] mt-[400px] w-[300px]  sm:ml-[40px]"><img src="/cycloContact1.jpg"/></div>
         <div className="absolute sm:w-[350px] sm:mt-[350px] sm:ml-[570px] mt-[620px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 w-[300px]"><img src="/cycloContact1.jpg"/></div>
         <div className="absolute sm:w-[350px] sm:mt-[350px] sm:ml-[1070px] mt-[820px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 w-[300px]"><img src="/cycloContact1.jpg"/></div>
@@ -641,6 +647,7 @@ export default function cyclothon() {
         <div className=" w-[250px] h-[200px] sm:mt-[400px] sm:ml-[1120px] mt-[880px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 text-white absolute ">
           <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] text-center sm:ml-[10px]">Deep Vaidya</h1>
           <a href="tel:8308468234" style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px] block">8308468234</a>
+
         </div>
 
     </div>
