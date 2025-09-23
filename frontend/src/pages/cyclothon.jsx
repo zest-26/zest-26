@@ -527,7 +527,7 @@ export default function cyclothon() {
      
  
     </div>
-    <div className="relative w-scrren h-[800px] sm:h-[1000px] bg-[#070811]" >
+    <div className="relative block sm:hidden w-screen h-[800px] sm:h-[1000px] bg-[#070811]" >
        <div className="absolute bottom-0 w-full sm:bottom-auto">
   <img 
     src="/cloud.png" 
@@ -559,13 +559,36 @@ export default function cyclothon() {
   </span></div></div>
          
     </div>
+
+   <div className="relative hidden sm:block w-screen h-[800px] sm:h-[1000px] bg-[#070811]" >
+         <div className=" flex w-full h-2/3 absolute bottom-0">
+           <div className="h-full w-1/2 "><img 
+    src="/cloud.png" 
+    alt="cloud" 
+    className="w-full h-full   z-0 " 
+  /></div>
+           <div className="h-full w-1/2 "><img src="/cloud-1.png" className="w-full h-full z-0" alt="cloud" /></div>
+         </div>
+         <div className="w-full h-full flex justify-center items-center">
+         <div className="w-1/2 h-1/2  ">
+         <p className="text-center" ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }}>
+    “Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
+    This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
+    to keep moving forward. As wheels spin and paths stretch, we carry <br/>
+    their courage with every stride, turning our ride into a journey of <br/> 
+    respect, strength, and solidarity. Ride not just for speed, but for a <br/>
+    cause that stands tall, just like the heroes we honor.”
+  </p>
+         </div></div>
+   </div>
+
     <div  ref={dtlContainerRef} className="relative w-full h-[800px] sm:h-[800px] bg-[#070811]">
-      <div className="absolute hidden sm:block"><img src="/cloud.png" className=" h-[500px] w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
+      <div className="absolute  sm:block"><img src="/cloud.png" className=" h-[500px] w-[761px] hidden ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
      <div className="absolute mt-[-1px] sm:mt-[0px] w-full">
     <img
     src="/cloud-1.png"
     alt="cloud"
-    className="w-full  h-auto  sm:mt-[-130px] sm:h-[500px] sm:w-[761px] rotate-180 z-0 "
+    className="w-full hidden  h-auto  sm:mt-[-130px] sm:h-[500px] sm:w-[761px] rotate-180 z-0 "
   />
 </div>
     <div className=" w-[300px] h-[400px] 
@@ -664,12 +687,12 @@ export default function cyclothon() {
       <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[900px] sm:ml-[440px] sm:mt-[570px]">
           T-Shirt
         </div>
-      <div className="w-[250px] h-[250px] sm:mt-[470px] mt-[1050px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[850px] absolute"><img src="useGoodies1.jpg"/></div>
-      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[1150px] sm:ml-[905px] sm:mt-[570px]">
+      <div className="w-[250px] hidden h-[250px] sm:mt-[470px] mt-[1050px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[850px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="hidden absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[1150px] sm:ml-[905px] sm:mt-[570px]">
           Medal
         </div>
-       <div className="w-[250px] h-[250px] sm:mt-[470px] mt-[1300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[1170px] absolute"><img src="useGoodies1.jpg"/></div>
-      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[1400px] sm:ml-[1155px] sm:mt-[570px]">
+       <div className="w-[250px] hidden h-[250px] sm:mt-[470px] mt-[1300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[1170px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="hidden absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[1400px] sm:ml-[1155px] sm:mt-[570px]">
           Refreshment
         </div>
     </div>
