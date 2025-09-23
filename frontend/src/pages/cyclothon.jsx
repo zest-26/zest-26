@@ -418,7 +418,7 @@ export default function cyclothon() {
   </div>
 </div>
 
-      <div className="absolute top-[5%] left-0 w-full flex flex-wrap justify-center gap-[15vw] sm:gap-0 items-start sm:justify-start sm:space-x-10 sm:ml-[200px] sm:mt-[20px]">
+      <div className="absolute sm:hidden top-[5%] left-0 w-full flex flex-wrap justify-center gap-[15vw] sm:gap-0 items-start sm:justify-start sm:space-x-10 sm:ml-[200px] sm:mt-[20px]">
   {/* COEP Logo */}
   <div ref={coepLogoRef}>
     <img
@@ -438,7 +438,7 @@ export default function cyclothon() {
   </div>
 </div>
       
-      <div className="absolute z-10 w-full flex flex-col items-center sm:block sm:h-[600px] sm:w-[800px] sm:mt-[70px] sm:ml-[100px]">
+      <div className="absolute z-10 w-full flex flex-col items-center sm:hidden sm:h-[600px] sm:w-[800px] sm:mt-[70px] sm:ml-[100px]">
   {/* Main title */}
   <div
     ref={textRef}
@@ -452,7 +452,7 @@ export default function cyclothon() {
   <div
     ref={sloganRef}
     style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }}
-    className="text-white text-[20px] mt-[350px] text-center sm:absolute sm:ml-[0px] sm:mt-[0px] sm:text-[30px]"
+    className="text-white block sm:hidden text-[20px] mt-[350px] text-center sm:absolute sm:ml-[0px] sm:mt-[0px] sm:text-[30px]"
   >
     - Every Mile, A Salute, Ride for those who Stood for Us
   </div>
@@ -465,6 +465,63 @@ export default function cyclothon() {
   >
     Ride for Operation Sindoor
   </div>
+</div>
+
+<div className="hidden sm:block absolute h-full w-4/7">
+    <div className="h-full w-full grid grid-rows-12">
+        <div className="row-start-2 row-span-2 flex items-center justify-center">
+     <div ref={coepLogoRef}>
+    <img
+      src="/CoepLogo.png"
+      className="h-[80px] w-[80px] sm:h-[15vw] sm:w-[15vw] max-h-[180px] max-w-[180px]"
+      alt="COEP Logo"
+    />
+  </div>
+
+  {/* ZEST Logo */}
+  <div ref={zestLogoRef}>
+    <img
+      src="/ZEST-26.png"
+      className="h-[80px] w-[110px] sm:h-[15vw] sm:w-[20vw] max-h-[180px] max-w-[250px]"
+      alt="ZEST Logo"
+    />
+  </div>
+  </div>
+
+  {/* Rows 4–5 empty */}
+  <div className="row-start-5 row-span-2 flex items-center justify-center">
+    <div
+    ref={textRef}
+    style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }}
+    className="text-white sm:text-[clamp(40px,8vw,80px)] "
+  >
+    Cyclothon'25
+  </div>
+  </div>
+
+  {/* You can keep going like this */}
+  <div className="row-start-7 row-span-1 flex items-center justify-center">
+    <div
+    ref={sloganRef}
+    style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }}
+    className="text-white   text-center  sm:text-[30px]"
+  >
+    - Every Mile, A Salute, Ride for those who Stood for Us
+  </div>
+
+  </div>
+
+  <div className="row-start-10 row-span-1 flex items-center justify-center">
+         <div
+    ref={sindoorRef}
+    style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }}
+    className=" sm:text-[30px] text-white"
+  >
+    Ride for Operation Sindoor
+  </div>
+  </div>
+
+    </div>
 </div>
       
 
