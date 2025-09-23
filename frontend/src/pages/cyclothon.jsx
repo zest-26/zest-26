@@ -121,7 +121,7 @@ function InfiniteRow({ images, reverse = false, speed = 30,className }) {
             <img
               src={img}
               alt="row-img"
-              className="w-full h-full object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
         ))}
@@ -206,7 +206,7 @@ function FAQSection() {
             className="bg-[#1a1a1a] rounded-lg p-4 cursor-pointer shadow-md transition"
             onClick={() => toggleFAQ(index)}
           >
-            <div style={{ fontFamily: "SharpAxe", transform: "scaleY(1.3)" }} className="flex justify-between items-center text-white font-semibold text-xl sm:text-2xl">
+            <div style={{ fontFamily: "SharpAxe", transform: "scaleY(1.3)" }} className="flex items-center justify-between text-xl font-semibold text-white sm:text-2xl">
               <span>{faq.question}</span>
               <span className="text-gray-400">{openIndex === index ? "−" : "+"}</span>
             </div>
@@ -385,7 +385,7 @@ export default function cyclothon() {
 
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
-    <div className="h-screen w-full relative bg-black">
+    <div className="relative w-full h-screen bg-black">
       <BackgroundScroller />
 
       <div className="absolute top-[5%] left-0 w-full flex flex-wrap justify-center gap-[15vw] sm:gap-0 items-start sm:justify-start sm:space-x-10 sm:ml-[200px] sm:mt-[20px]">
@@ -424,7 +424,7 @@ export default function cyclothon() {
         </Canvas>
       </div>
 
-      <div className="absolute inset-0 flex items-center justify-center z-10">
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
   <div className="movable h-[300px] w-[300px] sm:h-[690px] sm:w-[690px]">
     <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
       <ambientLight intensity={1.3} />
@@ -467,7 +467,7 @@ export default function cyclothon() {
 
     </div>
     <div className="relative w-scrren h-[800px] sm:h-[1000px] bg-[#070811]" >
-       <div className="absolute bottom-0 sm:bottom-auto w-full">
+       <div className="absolute bottom-0 w-full sm:bottom-auto">
   <img 
     src="/cloud.png" 
     alt="cloud" 
@@ -488,8 +488,8 @@ export default function cyclothon() {
   </span>
 
   {/* Mobile */}
-  <div className="w-full flex justify-center sm:hidden">
-   <span className="block sm:hidden px-6 text-center">
+  <div className="flex justify-center w-full sm:hidden">
+   <span className="block px-6 text-center sm:hidden">
     “Every mile you ride is a salute,<br/> every turn of the pedal a tribute.<br/>
     This Cyclothon is for those who<br/> stood for us—brave hearts who inspire<br/> us
     to keep moving forward.<br/> 
@@ -555,9 +555,7 @@ export default function cyclothon() {
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
         <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-30px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><div className="
-                transform transition-all duration-300 
-                hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></a></div>
         
       </div>
       <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  sm:w-[350px] w-[250px] h-[250px] mt-[450px] sm:h-[250px] sm:ml-[850px] text-white sm:mt-[310px] absolute z-10">
@@ -565,19 +563,15 @@ export default function cyclothon() {
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[15px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-35px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
         <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-35px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-35px] sm:mt-[-5px] "><div className="
-                transform transition-all duration-300 
-                hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-35px] sm:mt-[-5px] "><a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></a></div>
         
       </div>
       <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:w-[350px] w-[250px] h-[250px] mt-[795px] sm:h-[250px] sm:ml-[570px] text-white sm:mt-[710px] absolute z-10">
-        <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] ml-[90px] mt-[110px] sm:ml-[120px] sm:mt-[20px]">15 KM</h1>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
+        <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] ml-[90px] mt-[110px] sm:ml-[120px] sm:mt-[20px]">30 KM</h1>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹699</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹549</h2>
         <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-30px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><div className="
-                transform transition-all duration-300 
-                hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></a></div>
         
       </div>
       <div className="absolute sm:h-[500px] sm:w-[500px] h-[300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  mt-[180px] w-[300px]  sm:mt-[280px] sm:ml-[244px] z-0"><img src="/categoryTab.jpg"/> </div>
@@ -629,25 +623,26 @@ export default function cyclothon() {
     <div className=" bg-black sm:h-[700px] h-[1200px] w-full relative">
       <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 absolute w-[300px] h-[300px] mt-[300px] sm:w-[400px] sm:h-[400px] sm:mt-[200px] sm:ml-[550px]"><img src="/cycloContact.jpg"/></div>
       <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="left-1/2 text-center -translate-x-1/2 sm:left-auto sm:translate-x-0 title absolute text-white sm:text-[50px] text-[30px] mt-[250px]  sm:ml-[600px] sm:mt-[130px]">
-          Contact Us
+          Contact
         </div>
         <div className="absolute sm:w-[350px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:mt-[350px] mt-[400px] w-[300px]  sm:ml-[40px]"><img src="/cycloContact1.jpg"/></div>
         <div className="absolute sm:w-[350px] sm:mt-[350px] sm:ml-[570px] mt-[600px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 w-[300px]"><img src="/cycloContact1.jpg"/></div>
         <div className="absolute sm:w-[350px] sm:mt-[350px] sm:ml-[1070px] mt-[800px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 w-[300px]"><img src="/cycloContact1.jpg"/></div>
         <div className=" w-[250px] text-white h-[200px] sm:mt-[400px] mt-[480px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[80px] absolute ">
-          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
-          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Sahil Watharkar</h1>
+          <a href="tel:9021916354" style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px] block">9021916354</a>
         </div>
 
         <div className=" w-[250px] h-[200px] sm:mt-[400px] sm:ml-[620px] mt-[680px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 text-white  absolute ">
-          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
-          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Yash Wankhede</h1>
+          <a href="tel:7972105985" style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px] block">7972105985</a>
         </div>
 
         <div className=" w-[250px] h-[200px] sm:mt-[400px] sm:ml-[1120px] mt-[880px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 text-white absolute ">
-          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Palak</h1>
-          <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px]">8329355527</h2>
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[35px] ml-[70px]">Deep Vaidya</h1>
+          <a href="tel:8308468234" style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="text-[25px] ml-[41px] mt-[5px] block">8308468234</a>
         </div>
+
     </div>
     </div>
   );
