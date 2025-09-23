@@ -21,6 +21,11 @@ function AnimatedRoutes() {
   const location = useLocation()
 
   useEffect(() => {
+     if (location.pathname === "/cyclothon") {
+    setIsLoading(false);
+    return;
+  }
+
     setIsLoading(true) // show loader on every route change
 
     const timer = setTimeout(() => {
