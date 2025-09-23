@@ -408,7 +408,7 @@ export default function cyclothon() {
         </Canvas>
       </div>
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center">
+      <div className=" absolute inset-0 z-10 flex items-center justify-center">
   <div className="movable h-[300px] w-[300px] sm:h-[690px] sm:w-[690px]">
     <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
       <ambientLight intensity={1.3} />
@@ -523,8 +523,9 @@ export default function cyclothon() {
 
     </div>
 </div>
-      
 
+     
+ 
     </div>
     <div className="relative w-scrren h-[800px] sm:h-[1000px] bg-[#070811]" >
        <div className="absolute bottom-0 w-full sm:bottom-auto">
