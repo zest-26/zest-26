@@ -390,25 +390,7 @@ export default function cyclothon() {
     <div className="relative w-full h-screen bg-black">
       <BackgroundScroller />
 
-      <div className="absolute top-[5%] left-0 w-full flex flex-wrap justify-center gap-[15vw] sm:gap-0 items-start sm:justify-start sm:space-x-10 sm:ml-[200px] sm:mt-[20px]">
-  {/* COEP Logo */}
-  <div ref={coepLogoRef}>
-    <img
-      src="/CoepLogo.png"
-      className="h-[80px] w-[80px] sm:h-[200px] sm:w-[200px]"
-      alt="COEP Logo"
-    />
-  </div>
 
-  {/* ZEST Logo */}
-  <div ref={zestLogoRef}>
-    <img
-      src="/ZEST-26.png"
-      className="h-[80px] w-[110px] sm:h-[200px] sm:w-[290px]"
-      alt="ZEST Logo"
-    />
-  </div>
-</div>
       {/* Helmet box */}
       <div ref={helmetBoxRef} className=" z-10 movable h-[300px] w-[300px] absolute rounded-xl ml-[600px] mt-[40px]">
         <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
@@ -436,13 +418,32 @@ export default function cyclothon() {
   </div>
 </div>
 
+      <div className="absolute top-[5%] left-0 w-full flex flex-wrap justify-center gap-[15vw] sm:gap-0 items-start sm:justify-start sm:space-x-10 sm:ml-[200px] sm:mt-[20px]">
+  {/* COEP Logo */}
+  <div ref={coepLogoRef}>
+    <img
+      src="/CoepLogo.png"
+      className="h-[80px] w-[80px] sm:h-[15vw] sm:w-[15vw] max-h-[200px] max-w-[200px]"
+      alt="COEP Logo"
+    />
+  </div>
+
+  {/* ZEST Logo */}
+  <div ref={zestLogoRef}>
+    <img
+      src="/ZEST-26.png"
+      className="h-[80px] w-[110px] sm:h-[15vw] sm:w-[20vw] max-h-[200px] max-w-[290px]"
+      alt="ZEST Logo"
+    />
+  </div>
+</div>
       
       <div className="absolute z-10 w-full flex flex-col items-center sm:block sm:h-[600px] sm:w-[800px] sm:mt-[70px] sm:ml-[100px]">
   {/* Main title */}
   <div
     ref={textRef}
     style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }}
-    className="text-white text-[40px] mt-[20vh] sm:text-[100px] sm:ml-[10px] sm:mt-[250px]"
+    className="text-white text-[40px] mt-[20vh] sm:text-[clamp(40px,8vw,100px)] sm:ml-[10px] sm:mt-[250px]"
   >
     Cyclothon'25
   </div>
