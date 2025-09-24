@@ -387,27 +387,23 @@ export default function cyclothon() {
 
  const [showArrow, setShowArrow] = useState(true);
   const lastSectionRef = useRef(null);
+  const footerRef = useRef(null);
 
-  useEffect(() => {
+   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setShowArrow(false); // hide arrow in last section
-        } else {
-          setShowArrow(true); // show arrow elsewhere
-        }
+        const isAnyVisible = entries.some((entry) => entry.isIntersecting);
+        setShowArrow(!isAnyVisible); // hide if last section OR footer visible
       },
-      { threshold: 0.5 } // trigger when 50% of last section is visible
+      { threshold: 0.3 }
     );
 
-    if (lastSectionRef.current) {
-      observer.observe(lastSectionRef.current);
-    }
+    if (lastSectionRef.current) observer.observe(lastSectionRef.current);
+    if (footerRef.current) observer.observe(footerRef.current);
 
     return () => {
-      if (lastSectionRef.current) {
-        observer.unobserve(lastSectionRef.current);
-      }
+      if (lastSectionRef.current) observer.unobserve(lastSectionRef.current);
+      if (footerRef.current) observer.unobserve(footerRef.current);
     };
   }, []);
 
