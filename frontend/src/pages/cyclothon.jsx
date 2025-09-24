@@ -524,8 +524,147 @@ export default function cyclothon() {
     </div>
 </div>
 
-     
- 
+      </div>
+
+       <div className="bg-black block sm:hidden relative w-full sm:h-[1500px] h-[1000px]">
+    
+      <div className="absolute 
+                sm:h-[200px] h-[130px] 
+                w-[150px] sm:w-[200px] 
+                sm:ml-[644px] ml-0 
+                sm:mt-[60px] mt-[20px]
+                left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0"><img src="/categoryTab.jpg"/></div>
+      <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="absolute text-white 
+             left-1/2 -translate-x-1/2 ml-0 pt-[50px]
+             sm:ml-[662px] sm:left-auto sm:translate-x-0 
+             sm:text-[25px] sm:w-[300px] sm:mt-[55px] sm:h-[200px]">CATEGORIES</div>
+    
+      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  sm:w-[350px] w-[250px] h-[250px]  text-white sm:h-[250px] sm:ml-[310px] sm:mt-[310px] mt-[100px] absolute z-10">
+        <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] ml-[90px] mt-[110px] sm:ml-[120px] sm:mt-[20px]">15 KM</h1>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
+        <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-35px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
+        
+      </div>
+      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  sm:w-[350px] w-[250px] h-[250px] mt-[450px] sm:h-[250px] sm:ml-[850px] text-white sm:mt-[310px] absolute z-10">
+          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] ml-[15px] mt-[110px] text-center sm:ml-[50px] sm:mt-[20px]">15 KM [Corporate]</h1>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[15px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-35px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
+        <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-35px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-35px] sm:mt-[-5px] "><a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
+        
+      </div>
+      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:w-[350px] w-[250px] h-[250px] mt-[795px] sm:h-[250px] sm:ml-[570px] text-white sm:mt-[710px] absolute z-10">
+        <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] ml-[90px] mt-[110px] sm:ml-[120px] sm:mt-[20px]">30 KM</h1>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹699</h2>
+        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹549</h2>
+        <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-30px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
+
+      </div>
+      <div className="absolute sm:h-[500px] sm:w-[500px] h-[300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  mt-[180px] w-[300px]  sm:mt-[280px] sm:ml-[244px] z-0"><img src="/categoryTab.jpg"/> </div>
+      
+      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 absolute sm:h-[500px] sm:w-[500px] h-[300px]  mt-[530px] w-[300px]  sm:mt-[280px] sm:ml-[790px] z-0"><img src="/categoryTab.jpg"/></div>
+      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 absolute sm:h-[500px] sm:w-[500px] h-[300px]  mt-[880px] w-[300px]  sm:mt-[680px] sm:ml-[510px] z-0"><img src="/categoryTab.jpg"/></div>
+      <div className="absolute sm:h-[500px] sm:w-[1300px] sm:mt-[1080px] mt-[1210px] sm:ml-[230px] opacity-50">
+        
+      <img src='/Jet.png'/>   
+      </div>
+      
+      
+    </div>
+
+      <div className="bg-black hidden sm:block relative w-full  h-[1500px]">
+      <div className="w-full h-full  absolute grid grid-rows-30">
+        <div className=" row-start-2 row-span-2 flex justify-center">
+          <div className=" relative h-full w-2/11"><img src="/categoryTab.jpg" className="w-full z-0  absolute h-full"/>
+          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,28px)] flex justify-center absolute items-center z-10">CATEGORIES</div>
+          </div>
+        </div>
+        <div className=" row-start-5 flex gap-[8vw] justify-center row-span-9 ">
+             <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
+                  <div className="w-full h-full absolute grid grid-rows-10">
+                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] flex justify-center items-center row-span-3 ">
+                     15 KM
+                    </div>
+                    <div className=" row-start-7 flex row-span-3 ">
+                       <div className="h-full w-1/2 relative  ">
+                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">499</div>
+                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                       </div>
+                       <div className="h-full w-1/2 ">
+                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 449</div>
+                       </div>
+                    </div>
+                  </div>
+             </div> 
+             <div className="row-start-5  row-span-1 flex justify-center">
+                
+                <div  className="w-1/2  h-full  border-2  rounded-4xl">
+                <a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer ">
+                  
+                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
+                 </a>
+                </div>
+             </div>
+             </div>
+             <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
+                  <div className="w-full h-full absolute grid grid-rows-10">
+                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] text-center flex justify-center items-center row-span-3 ">
+                     15 KM [Corporate]
+                    </div>
+                    <div className=" row-start-7 flex row-span-3 ">
+                       <div className="h-full w-1/2 relative  ">
+                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">499</div>
+                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                       </div>
+                       <div className="h-full w-1/2 ">
+                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 449</div>
+                       </div>
+                    </div>
+                  </div>
+             </div> 
+             <div className="row-start-5  row-span-1 flex justify-center">
+                
+                <div  className="w-1/2  h-full  border-2  rounded-4xl">
+                <a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
+                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
+                 </a>
+                </div>
+             </div>
+             </div>
+        </div>
+        <div className=" row-start-15 row-span-9 flex justify-center">
+         <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
+                  <div className="w-full h-full absolute grid grid-rows-10">
+                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] flex justify-center items-center row-span-3 ">
+                     30 KM
+                    </div>
+                    <div className=" row-start-7 flex row-span-3 ">
+                       <div className="h-full w-1/2 relative  ">
+                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">699</div>
+                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                       </div>
+                       <div className="h-full w-1/2 ">
+                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 549</div>
+                       </div>
+                    </div>
+                  </div>
+             </div> 
+             <div className="row-start-5  row-span-1 flex justify-center">
+                
+                <div  className="w-1/2  h-full  border-2  rounded-4xl">
+                <a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
+                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
+                 </a>
+                </div>
+             </div>
+             </div></div>
+        <div className="  row-start-24  row-span-7 flex justify-center">
+          <div className="w-5/9 h-full "><img src='/Jet.png' className="w-full h-full"/>   </div>
+        </div>
+      </div>
     </div>
     <div className="relative block sm:hidden w-screen h-[800px] sm:h-[1000px] bg-[#070811]" >
        <div className="absolute bottom-0 w-full sm:bottom-auto">
@@ -637,148 +776,12 @@ export default function cyclothon() {
 
     
 
-    <div className="bg-black block sm:hidden relative w-full sm:h-[1500px] h-[1000px]">
-    
-      <div className="absolute 
-                sm:h-[200px] h-[130px] 
-                w-[150px] sm:w-[200px] 
-                sm:ml-[644px] ml-0 
-                sm:mt-[60px] mt-[20px]
-                left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0"><img src="/categoryTab.jpg"/></div>
-      <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="absolute text-white 
-             left-1/2 -translate-x-1/2 ml-0 pt-[50px]
-             sm:ml-[662px] sm:left-auto sm:translate-x-0 
-             sm:text-[25px] sm:w-[300px] sm:mt-[55px] sm:h-[200px]">CATEGORIES</div>
-    
-      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  sm:w-[350px] w-[250px] h-[250px]  text-white sm:h-[250px] sm:ml-[310px] sm:mt-[310px] mt-[100px] absolute z-10">
-        <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] ml-[90px] mt-[110px] sm:ml-[120px] sm:mt-[20px]">15 KM</h1>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
-        <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-35px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
-        
-      </div>
-      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  sm:w-[350px] w-[250px] h-[250px] mt-[450px] sm:h-[250px] sm:ml-[850px] text-white sm:mt-[310px] absolute z-10">
-          <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] ml-[15px] mt-[110px] text-center sm:ml-[50px] sm:mt-[20px]">15 KM [Corporate]</h1>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[15px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-35px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
-        <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-35px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-35px] sm:mt-[-5px] "><a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
-        
-      </div>
-      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:w-[350px] w-[250px] h-[250px] mt-[795px] sm:h-[250px] sm:ml-[570px] text-white sm:mt-[710px] absolute z-10">
-        <h1 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[35px] text-[25px] ml-[90px] mt-[110px] sm:ml-[120px] sm:mt-[20px]">30 KM</h1>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹699</h2>
-        <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹549</h2>
-        <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-30px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
+   
 
-      </div>
-      <div className="absolute sm:h-[500px] sm:w-[500px] h-[300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  mt-[180px] w-[300px]  sm:mt-[280px] sm:ml-[244px] z-0"><img src="/categoryTab.jpg"/> </div>
-      
-      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 absolute sm:h-[500px] sm:w-[500px] h-[300px]  mt-[530px] w-[300px]  sm:mt-[280px] sm:ml-[790px] z-0"><img src="/categoryTab.jpg"/></div>
-      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 absolute sm:h-[500px] sm:w-[500px] h-[300px]  mt-[880px] w-[300px]  sm:mt-[680px] sm:ml-[510px] z-0"><img src="/categoryTab.jpg"/></div>
-      <div className="absolute sm:h-[500px] sm:w-[1300px] sm:mt-[1080px] mt-[1210px] sm:ml-[230px] opacity-50">
-        
-      <img src='/Jet.png'/>   
-      </div>
-      
-      
-    </div>
-
-    <div className="bg-black hidden sm:block relative w-full  h-[1500px]">
-      <div className="w-full h-full  absolute grid grid-rows-30">
-        <div className=" row-start-2 row-span-2 flex justify-center">
-          <div className=" relative h-full w-2/11"><img src="/categoryTab.jpg" className="w-full z-0  absolute h-full"/>
-          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,28px)] flex justify-center absolute items-center z-10">CATEGORIES</div>
-          </div>
-        </div>
-        <div className=" row-start-5 flex gap-[8vw] justify-center row-span-9 ">
-             <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
-                  <div className="w-full h-full absolute grid grid-rows-10">
-                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] flex justify-center items-center row-span-3 ">
-                     15 KM
-                    </div>
-                    <div className=" row-start-7 flex row-span-3 ">
-                       <div className="h-full w-1/2 relative  ">
-                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">499</div>
-                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
-                       </div>
-                       <div className="h-full w-1/2 ">
-                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 449</div>
-                       </div>
-                    </div>
-                  </div>
-             </div> 
-             <div className="row-start-5  row-span-1 flex justify-center">
-                
-                <div  className="w-1/2  h-full  border-2  rounded-4xl">
-                <a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
-                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
-                 </a>
-                </div>
-             </div>
-             </div>
-             <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
-                  <div className="w-full h-full absolute grid grid-rows-10">
-                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] text-center flex justify-center items-center row-span-3 ">
-                     15 KM [Corporate]
-                    </div>
-                    <div className=" row-start-7 flex row-span-3 ">
-                       <div className="h-full w-1/2 relative  ">
-                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">499</div>
-                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
-                       </div>
-                       <div className="h-full w-1/2 ">
-                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 449</div>
-                       </div>
-                    </div>
-                  </div>
-             </div> 
-             <div className="row-start-5  row-span-1 flex justify-center">
-                
-                <div  className="w-1/2  h-full  border-2  rounded-4xl">
-                <a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
-                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
-                 </a>
-                </div>
-             </div>
-             </div>
-        </div>
-        <div className=" row-start-15 row-span-9 flex justify-center">
-         <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
-                  <div className="w-full h-full absolute grid grid-rows-10">
-                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] flex justify-center items-center row-span-3 ">
-                     30 KM
-                    </div>
-                    <div className=" row-start-7 flex row-span-3 ">
-                       <div className="h-full w-1/2 relative  ">
-                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">699</div>
-                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
-                       </div>
-                       <div className="h-full w-1/2 ">
-                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 549</div>
-                       </div>
-                    </div>
-                  </div>
-             </div> 
-             <div className="row-start-5  row-span-1 flex justify-center">
-                
-                <div  className="w-1/2  h-full  border-2  rounded-4xl">
-                <a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
-                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
-                 </a>
-                </div>
-             </div>
-             </div></div>
-        <div className="  row-start-24  row-span-7 flex justify-center">
-          <div className="w-5/9 h-full "><img src='/Jet.png' className="w-full h-full"/>   </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div className="bg-black block sm:hidden sm:h-[900px] h-[1500px] w-full realtive">
-      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:w-[500px] w-[300px] h-[300px] mt-[350px] sm:h-[500px]  sm:ml-[580px] sm:mt-[100px] absolute"><img src="useGoodies.png" />
+      <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:w-[500px] w-[300px] h-[300px] mt-[250px] sm:h-[500px]  sm:ml-[580px] sm:mt-[100px] absolute"><img src="useGoodies.png" />
         <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute ml-[-5px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 text-white text-[30px] sm:text-[40px] sm:ml-[100px]  mt-[-55px] sm:mt-[-80px]">
           Goodies
         </div>
