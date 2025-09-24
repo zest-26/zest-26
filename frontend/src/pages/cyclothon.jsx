@@ -603,7 +603,7 @@ export default function cyclothon() {
          </div>
 
     <div className=" w-[300px] h-[400px] 
-                  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-2/12
+                  absolute top-1/2 left-1/2 sm:mt-[100px] sm:ml-[25px] -translate-x-1/2 -translate-y-2/12
                   sm:top-auto sm:left-auto sm:translate-x-0 sm:translate-y-0 sm:w-[0px] sm:h-[0px]">
       <div  ref={dtlRef} className="sm:h-[350px] h-[200px] w-[200px]  sm:w-[350px] ml-[45px] mt-[70px]  sm:mt-[300px] sm:ml-[550px] absolute"><img src="/DTL.png" className=""/></div>
       <div ref={(el) => (dtlOtherRef.current[0] = el)} className="mt-[37px] ml-[5px] h-[95px] w-[80px] sm:mt-[295px] sm:ml-[860px] absolute rotate-90"><img src="whiteLine.png"/></div>
@@ -637,7 +637,7 @@ export default function cyclothon() {
 
     
 
-    <div className="bg-black relative w-full sm:h-[1500px] h-[1000px]">
+    <div className="bg-black block sm:hidden relative w-full sm:h-[1500px] h-[1000px]">
     
       <div className="absolute 
                 sm:h-[200px] h-[130px] 
@@ -684,6 +684,97 @@ export default function cyclothon() {
       </div>
       
       
+    </div>
+
+    <div className="bg-black hidden sm:block relative w-full  h-[1500px]">
+      <div className="w-full h-full  absolute grid grid-rows-30">
+        <div className=" row-start-2 row-span-2 flex justify-center">
+          <div className=" relative h-full w-2/11"><img src="/categoryTab.jpg" className="w-full z-0  absolute h-full"/>
+          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,28px)] flex justify-center absolute items-center z-10">CATEGORIES</div>
+          </div>
+        </div>
+        <div className=" row-start-5 flex gap-[8vw] justify-center row-span-9 ">
+             <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
+                  <div className="w-full h-full absolute grid grid-rows-10">
+                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] flex justify-center items-center row-span-3 ">
+                     15 KM
+                    </div>
+                    <div className=" row-start-7 flex row-span-3 ">
+                       <div className="h-full w-1/2 relative  ">
+                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">499</div>
+                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                       </div>
+                       <div className="h-full w-1/2 ">
+                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 449</div>
+                       </div>
+                    </div>
+                  </div>
+             </div> 
+             <div className="row-start-5  row-span-1 flex justify-center">
+                
+                <div  className="w-1/2  h-full  border-2  rounded-2xl">
+                <a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
+                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
+                 </a>
+                </div>
+             </div>
+             </div>
+             <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
+                  <div className="w-full h-full absolute grid grid-rows-10">
+                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] text-center flex justify-center items-center row-span-3 ">
+                     15 KM [Corporate]
+                    </div>
+                    <div className=" row-start-7 flex row-span-3 ">
+                       <div className="h-full w-1/2 relative  ">
+                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">499</div>
+                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                       </div>
+                       <div className="h-full w-1/2 ">
+                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 449</div>
+                       </div>
+                    </div>
+                  </div>
+             </div> 
+             <div className="row-start-5  row-span-1 flex justify-center">
+                
+                <div  className="w-1/2  h-full  border-2  rounded-2xl">
+                <a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
+                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
+                 </a>
+                </div>
+             </div>
+             </div>
+        </div>
+        <div className=" row-start-15 row-span-9 flex justify-center">
+         <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
+                  <div className="w-full h-full absolute grid grid-rows-10">
+                    <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] flex justify-center items-center row-span-3 ">
+                     30 KM
+                    </div>
+                    <div className=" row-start-7 flex row-span-3 ">
+                       <div className="h-full w-1/2 relative  ">
+                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">699</div>
+                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                       </div>
+                       <div className="h-full w-1/2 ">
+                        <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 549</div>
+                       </div>
+                    </div>
+                  </div>
+             </div> 
+             <div className="row-start-5  row-span-1 flex justify-center">
+                
+                <div  className="w-1/2  h-full  border-2  rounded-2xl">
+                <a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
+                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
+                 </a>
+                </div>
+             </div>
+             </div></div>
+        <div className="  row-start-24  row-span-7 flex justify-center">
+          <div className="w-2/3 h-full "><img src='/Jet.png' className="w-full h-full"/>   </div>
+        </div>
+      </div>
     </div>
 
     <div className="bg-black sm:h-[900px] h-[1500px] w-full realtive">
