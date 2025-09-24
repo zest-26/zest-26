@@ -772,12 +772,12 @@ export default function cyclothon() {
              </div>
              </div></div>
         <div className="  row-start-24  row-span-7 flex justify-center">
-          <div className="w-2/3 h-full "><img src='/Jet.png' className="w-full h-full"/>   </div>
+          <div className="w-5/9 h-full "><img src='/Jet.png' className="w-full h-full"/>   </div>
         </div>
       </div>
     </div>
 
-    <div className="bg-black sm:h-[900px] h-[1500px] w-full realtive">
+    <div className="bg-black block sm:hidden sm:h-[900px] h-[1500px] w-full realtive">
       <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:w-[500px] w-[300px] h-[300px] mt-[350px] sm:h-[500px]  sm:ml-[580px] sm:mt-[100px] absolute"><img src="useGoodies.png" />
         <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute ml-[-5px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 text-white text-[30px] sm:text-[40px] sm:ml-[100px]  mt-[-55px] sm:mt-[-80px]">
           Goodies
@@ -791,14 +791,52 @@ export default function cyclothon() {
       <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[900px] sm:ml-[440px] sm:mt-[570px]">
           T-Shirt
         </div>
-      <div className="w-[250px] hidden h-[250px] sm:mt-[470px] mt-[1050px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[850px] absolute"><img src="useGoodies1.jpg"/></div>
-      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="hidden absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[1150px] sm:ml-[905px] sm:mt-[570px]">
+      <div className="w-[250px]  h-[250px] sm:mt-[470px] mt-[1050px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[850px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[1150px] sm:ml-[905px] sm:mt-[570px]">
           Medal
         </div>
-       <div className="w-[250px] hidden h-[250px] sm:mt-[470px] mt-[1300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[1170px] absolute"><img src="useGoodies1.jpg"/></div>
-      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="hidden absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[1400px] sm:ml-[1155px] sm:mt-[570px]">
+       <div className="w-[250px]  h-[250px] sm:mt-[470px] mt-[1300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:ml-[1170px] absolute"><img src="useGoodies1.jpg"/></div>
+      <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className=" absolute text-white text-[35px] sm:text-[40px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 mt-[1400px] sm:ml-[1155px] sm:mt-[570px]">
           Refreshment
         </div>
+    </div>
+
+    <div className="hidden sm:block bg-black h-[900px] w-full">
+      <div className="w-full h-full  grid grid-rows-10">
+        <div className="w-full row-start-2 relative flex justify-center row-span-1 ">
+              <div className="w-2/10 border-2 rounded-2xl relative h-full ">
+                
+                <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full absolute flex justify-center text-[clamp(10px,25vw,45px)] items-center"> goodies</div>
+              </div>
+        </div>
+
+        <div className=" row-start-5 row-span-3 flex justify-center gap-6 w-full h-full ">
+          <div className="w-1/5 h-full relative  ">
+                
+                  <img src="useGoodies1.jpg" className="w-full  absolute h-full"/>
+              
+                <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] absolute text-center flex justify-center items-center">Welcome Kit</div>
+          </div>
+           <div className="w-1/5 h-full relative  ">
+                
+                  <img src="useGoodies1.jpg" className="w-full  absolute h-full"/>
+              
+                <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] absolute text-center flex justify-center items-center">T-Shirt</div>
+          </div>
+          <div className="w-1/5 h-full relative">
+                
+                  <img src="useGoodies1.jpg" className="w-full  absolute h-full"/>
+              
+                <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full absolute text-[clamp(10px,25vw,35px)] flex justify-center text-center items-center">Medal</div>
+          </div>
+           <div className="w-1/5 h-full relative  ">
+                
+                  <img src="useGoodies1.jpg" className="w-full  absolute h-full"/>
+              
+                <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full absolute text-[clamp(10px,25vw,35px)] flex justify-center text-center items-center">Refreshment</div>
+          </div>
+        </div>
+      </div>
     </div>
     
     <div className=" bg-black sm:h-[700px] h-[1100px] w-full relative">
