@@ -526,7 +526,7 @@ export default function cyclothon() {
 
       </div>
 
-       <div className="bg-black block sm:hidden relative w-full sm:h-[1500px] h-[1000px]">
+       <div className="bg-black block sm:hidden relative w-full sm:h-[1500px] h-[1200px]">
     
       <div className="absolute 
                 sm:h-[200px] h-[130px] 
