@@ -3,7 +3,7 @@ import { Bounds, OrbitControls, useGLTF, Center } from "@react-three/drei";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
 import { useRef, useState, useEffect } from "react";
-import { Calendar, Clock, MapPin} from "lucide-react";
+import { Calendar, Clock, MapPin,ArrowDown} from "lucide-react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 
@@ -385,8 +385,39 @@ export default function cyclothon() {
 
 }, []);
 
+ const [showArrow, setShowArrow] = useState(true);
+  const lastSectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShowArrow(false); // hide arrow in last section
+        } else {
+          setShowArrow(true); // show arrow elsewhere
+        }
+      },
+      { threshold: 0.5 } // trigger when 50% of last section is visible
+    );
+
+    if (lastSectionRef.current) {
+      observer.observe(lastSectionRef.current);
+    }
+
+    return () => {
+      if (lastSectionRef.current) {
+        observer.unobserve(lastSectionRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
+      {showArrow && (
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 animate-bounce">
+          <ArrowDown size={45} className="text-white opacity-80" />
+        </div>
+      )}
     <div className="relative w-full h-screen bg-black">
       <BackgroundScroller />
 
@@ -852,7 +883,7 @@ export default function cyclothon() {
       <FAQSection />
     </div>
 
-    <div className=" bg-black sm:h-[700px] h-[1200px] w-full relative">
+    <div  ref={lastSectionRef} className=" bg-black sm:h-[700px] h-[1200px] w-full relative">
       <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 absolute w-[300px] h-[300px] mt-[300px] sm:w-[400px] sm:h-[400px] sm:mt-[200px] sm:ml-[550px]"><img src="/cycloContact.jpg"/></div>
       <div  style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="left-1/2 text-center -translate-x-1/2 sm:left-auto sm:translate-x-0 title absolute text-white sm:text-[50px] text-[30px] mt-[250px]  sm:ml-[630px] sm:mt-[130px]">
           Contact
