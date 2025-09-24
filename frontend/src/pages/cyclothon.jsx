@@ -655,7 +655,7 @@ export default function cyclothon() {
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
         <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-35px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></a></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
         
       </div>
       <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  sm:w-[350px] w-[250px] h-[250px] mt-[450px] sm:h-[250px] sm:ml-[850px] text-white sm:mt-[310px] absolute z-10">
@@ -663,7 +663,7 @@ export default function cyclothon() {
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[15px] sm:ml-[20px] sm:mt-[31px]">₹499</h2>
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-35px] sm:ml-[247px] sm:mt-[-42px]">₹449</h2>
         <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-35px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-35px] sm:mt-[-5px] "><a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></a></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-35px] sm:mt-[-5px] "><a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
         
       </div>
       <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:w-[350px] w-[250px] h-[250px] mt-[795px] sm:h-[250px] sm:ml-[570px] text-white sm:mt-[710px] absolute z-10">
@@ -671,7 +671,7 @@ export default function cyclothon() {
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[10px] mt-[30px] sm:ml-[20px] sm:mt-[31px]">₹699</h2>
         <h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] text-[25px] ml-[160px] mt-[-40px] sm:ml-[247px] sm:mt-[-42px]">₹549</h2>
         <div className="sm:h-[40px] h-[40px] w-[100px] ml-[-5px] mt-[-30px] sm:w-[150px] sm:mt-[-52px] sm:ml-[-12px] absolute"><img src="redLine.png"/></div>
-        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><img src="RegisterTab1.png"/><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[100px] mt-[-90px] sm:mt-[-121px]">Register</h2></div></a></div>
+        <div className=" sm:w-[400px] sm:h-[400px] sm:ml-[0px] ml-[5px] w-[300px] h-[300p] mt-[-5px] sm:mt-[45px] "><a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer"><div className="transition-all duration-300 transform hover:scale-105 hover:brightness-110"><h2 style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="sm:text-[30px] sm:ml-[140px] text-[25px] ml-[30px] mr-[70px] rounded-2xl flex justify-center mt-[60px] border-4 sm:mt-[-121px]">Register</h2></div></a></div>
 
       </div>
       <div className="absolute sm:h-[500px] sm:w-[500px] h-[300px] left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0  mt-[180px] w-[300px]  sm:mt-[280px] sm:ml-[244px] z-0"><img src="/categoryTab.jpg"/> </div>
@@ -712,7 +712,7 @@ export default function cyclothon() {
              </div> 
              <div className="row-start-5  row-span-1 flex justify-center">
                 
-                <div  className="w-1/2  h-full  border-2  rounded-2xl">
+                <div  className="w-1/2  h-full  border-2  rounded-4xl">
                 <a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
                  <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
                  </a>
@@ -737,7 +737,7 @@ export default function cyclothon() {
              </div> 
              <div className="row-start-5  row-span-1 flex justify-center">
                 
-                <div  className="w-1/2  h-full  border-2  rounded-2xl">
+                <div  className="w-1/2  h-full  border-2  rounded-4xl">
                 <a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
                  <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
                  </a>
@@ -764,7 +764,7 @@ export default function cyclothon() {
              </div> 
              <div className="row-start-5  row-span-1 flex justify-center">
                 
-                <div  className="w-1/2  h-full  border-2  rounded-2xl">
+                <div  className="w-1/2  h-full  border-2  rounded-4xl">
                 <a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
                  <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
                  </a>
