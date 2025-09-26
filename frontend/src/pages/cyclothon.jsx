@@ -737,7 +737,7 @@ export default function cyclothon() {
          </div>
          <div className="w-full h-full flex justify-center items-center">
          <div className="w-1/2 h-1/2  ">
-         <p className="text-center" ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }}>
+         <p className="text-center sm:text-[clamp(10px,8vw,17px)]" ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }}>
     “Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
     This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
     to keep moving forward. As wheels spin and paths stretch, we carry <br/>
@@ -878,6 +878,8 @@ export default function cyclothon() {
   }} ref={soldierLHS} className="absolute h-[200px] w-[200px]   sm:h-[400px] z-10 sm:w-[400px] sm:mt-[-150px] sm:ml-[-50px] rotate-345"><img src="/soldierLHS.png"/></div>
       <FAQSection />
     </div>
+
+    
 
     <div  ref={lastSectionRef} className=" bg-black sm:h-[700px] h-[1200px] w-full relative">
       <div className="left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 absolute w-[300px] h-[300px] mt-[300px] sm:w-[400px] sm:h-[400px] sm:mt-[200px] sm:ml-[550px]"><img src="/cycloContact.jpg"/></div>
