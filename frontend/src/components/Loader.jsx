@@ -67,7 +67,7 @@ const Loader = forwardRef((props, ref) => {
       <img
         ref={leftImgRefs[2]}
         src="/cricketLoader.avif"
-        className="left-img absolute z-10 w-35 h-35 top-[400px] left-[1px] sm:top-[520px] sm:left-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[-25deg] opacity-70"
+        className="left-img absolute z-10 w-35 h-35 bottom-[10px] sm:bottom-[0px] left-[1px] sm:top-[520px] sm:left-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[-25deg] opacity-70"
       />
 
       {/* Floating Images - Right Side */}
@@ -86,10 +86,10 @@ const Loader = forwardRef((props, ref) => {
       <img
         ref={rightImgRefs[2]}
         src="/fencngLoader.jpg"
-        className="right-img absolute w-35 h-35 z-10  top-[500px] right-[1px] sm:top-[520px] sm:right-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[25deg] opacity-75"
+        className="right-img absolute w-35 h-35 z-10  bottom-[10px] sm:bottom-[0px] right-[1px] sm:top-[520px] sm:right-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[25deg] opacity-75"
       />
-     <div className="w-full h-full  row-start-4 row-span-8 flex justify-center">
-        <div className="w-2/7 h-full ">
+     <div className="w-full h-full row-start-6 row-span-6 sm:row-start-4 sm:row-span-8 flex justify-center">
+        <div className="sm:w-2/7 w-full h-full flex justify-center items-center ">
           <video
         src="/videos/MashalVideo.mp4"
         autoPlay
@@ -98,13 +98,13 @@ const Loader = forwardRef((props, ref) => {
         playsInline
         onContextMenu={(e) => e.preventDefault()}
         disablePictureInPicture
-        className="w-40 h-40 absolute z-0 sm:static top-[170px]   sm:w-full sm:h-full object-cover rounded-2xl shadow-lg "
+        className="w-[50vw] h-[50vw] absolute z-0 sm:static    sm:w-full sm:h-full object-cover rounded-2xl shadow-lg "
       />
         </div>
      </div>
       
       <div className=" w-full h-full  row-start-12 z-0 row-span-3  flex justify-center">
-        <div className="w-2/7 h-full  relative">
+        <div className="sm:w-2/7 w-[50vw] h-full  relative">
          <img src="./ZEST-26.png" className="w-full absolute h-full object-contain" />
           <div
           ref={overlayRef}
@@ -114,8 +114,8 @@ const Loader = forwardRef((props, ref) => {
       </div>
 
       <div className=" w-full h-full   row-start-15 row-span-2 flex justify-center">
-        <div className="w-2/8 h-full ">
-              <div ref={textRef} className="w-full h-full sm:text-[clamp(10px,8vw,30px)] text-white flex justify-center items-center ">
+        <div className="sm:w-2/8 w-[50vw] h-full ">
+              <div ref={textRef} className="w-full h-full text-[clamp(10px,8vw,25px)] sm:text-[clamp(10px,8vw,30px)] text-white flex justify-center items-center ">
                     {"Coming Soon".split("").map((char, index) => (
           <span
             key={index}
