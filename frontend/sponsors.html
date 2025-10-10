@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Sponsors Elegant</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #2e3340;
+      font-family: system-ui, sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      color: #d1d5db;
+    }
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .hexagon {
+      position: absolute;
+      width: 6vw;
+      height: calc(6vw * 0.5774);
+      background-color: #1f2430;
+    }
+    .hexagon::after,
+    .hexagon::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      border-left: 3vw solid transparent;
+      border-right: 3vw solid transparent;
+    }
+    .hexagon::after {
+      top: 100%;
+      border-top: calc(3vw * 0.5774) solid #1f2430;
+    }
+    .hexagon::before {
+      bottom: 100%;
+      border-bottom: calc(3vw * 0.5774) solid #1f2430;
+    }
+    .cursor {
+      width: 25vw;
+      height: 25vw;
+      border-radius: 100%;
+      position: absolute;
+      box-shadow: 0 0 40px rgba(255, 140, 0, 0.15);
+      z-index: 0;
+      opacity: 0;
+      background: linear-gradient(45deg, #b36b00, #cc8400, #ff9c00, #ffb733);
+      background-size: 400%;
+      animation: glower 20s linear infinite;
+      filter: blur(50px);
+      pointer-events: none;
+    }
+    @keyframes glower {
+      0% { background-position: 0 0; }
+      50% { background-position: 400% 0; }
+      100% { background-position: 0 0; }
+    }
+    .card-shadow {
+      box-shadow: 0 10px 15px -3px rgba(255, 174, 66, 0.3), 0 4px 6px -2px rgba(255, 174, 66, 0.2);
+    }
+    .overlay-container {
+      position: relative;
+      z-index: 2;
+      padding: 2.5rem 1rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 10;
+      user-select: none;
+    }
+    header h1,
+    header p {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin: 0;
+      user-select: none;
+      background: linear-gradient(90deg, #f5f7fa, #dcdcdc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    header h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.125rem;
+      opacity: 0.85;
+    }
+    .sponsor-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+    .sponsor-card:hover {
+      background-color: #3b2c1a;
+      box-shadow: 0 10px 15px -3px rgba(255, 132, 0, 0.4), 0 4px 6px -2px rgba(255, 132, 0, 0.3);
+      transform: scale(1.05);
+    }
+    .sponsor-card:hover .company-name {
+      color: #ffae42;
+    }
+    .sponsor-card:hover p {
+      color: #fcd34d;
+    }
+    .company-name {
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    h2.uppercase {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #fbbf24;
+      background: linear-gradient(90deg, #ea580c, #facc15);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.75rem;
+    }
+    .sponsor-card p {
+      color: #fbbf24;
+      margin-bottom: 1rem;
+    }
+    .visit-btn {
+      position: relative;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      color: white;
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 2px solid transparent;
+      transition: border 0.3s ease, background-color 0.3s ease;
+      text-decoration: none;
+      font-weight: 500;
+      user-select: none;
+    }
+    .visit-btn:hover {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-image-slice: 1;
+      border-width: 2px;
+      border-style: solid;
+      border-image-source: linear-gradient(90deg, #38bdf8, #a5f3fc);
+      color: white;
+    }
+    #sponsors {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      #sponsors {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background" aria-hidden="true">
+    <div class="cursor"></div>
+  </div>
+  <div class="overlay-container" role="main" aria-label="Sponsors section">
+    <header>
+      <h1 class="font-semibold">Our Amazing Sponsors</h1>
+      <p class="font-medium">We proudly partner with these innovative organizations.</p>
+    </header>
+    <div id="sponsors" role="list">
+      <article class="sponsor-card" role="listitem" tabindex="0" aria-label="Sponsor JavaScript Inc. The Chief Sponsor">
+        <h3 class="company-name">JavaScript Inc.</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript logo" class="w-24 h-24 object-contain mb-4" loading="lazy"/>
+        <h2 class="uppercase">The Chief Sponsor</h2>
+        <p>Leading the way in tech innovation.</p>
+        <a href="https://example.com" target="_blank" rel="noopener" class="visit-btn" aria-label="Visit JavaScript Inc. website">Visit Website</a>
+      </article>
+      <article class="sponsor-card" role="listitem" tabindex="0" aria-label="Sponsor Google LLC Sustainability Partner">
+        <h3 class="company-name">Google LLC</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Logo_2013_Google.png" alt="Google logo" class="w-24 h-24 object-contain mb-4" loading="lazy"/>
+        <h2 class="uppercase">Sustainability Partner</h2>
+        <p>Committed to sustainable future solutions.</p>
+        <a href="https://example.com" target="_blank" rel="noopener" class="visit-btn" aria-label="Visit Google LLC website">Visit Website</a>
+      </article>
+      <article class="sponsor-card" role="listitem" tabindex="0" aria-label="Sponsor Netflix Entertainment Pioneer">
+        <h3 class="company-name">Netflix</h3>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix logo" class="w-24 h-24 object-contain mb-4 bg-white rounded p-2" loading="lazy"/>
+        <h2 class="uppercase">Entertainment Pioneer</h2>
+        <p>Streaming innovation and global content leader.</p>
+        <a href="https://www.netflix.com" target="_blank" rel="noopener" class="visit-btn" aria-label="Visit Netflix website">Visit Website</a>
+      </article>
+    </div>
+  </div>
+  <script>
+    const curs = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+      curs.style.left = (e.pageX - curs.offsetWidth / 2) + "px";
+      curs.style.top = (e.pageY - curs.offsetHeight / 2) + "px";
+      curs.style.opacity = "1";
+    });
+    function createHexagons() {
+      const bg = document.querySelector('.background');
+      document.querySelectorAll('.hexagon').forEach(h => h.remove());
+      const hexSize = window.innerWidth * 0.06;
+      const hexHeight = hexSize * 0.5774 * 2;
+      const hexWidth = hexSize * 1.1;
+      const vertDist = hexHeight * 0.8;
+      const rows = Math.ceil(window.innerHeight / vertDist) + 2;
+      const cols = Math.ceil(window.innerWidth / hexWidth) + 4;
+      for (let r = 0; r < rows; r++) {
+        for (let c = -1; c < cols; c++) {
+          const hex = document.createElement("div");
+          hex.className = "hexagon";
+          const x = c * hexWidth + (r % 2 === 0 ? 0 : hexWidth / 2);
+          const y = r * vertDist;
+          hex.style.left = x + "px";
+          hex.style.top = y + "px";
+          bg.appendChild(hex);
+        }
+      }
+    }
+    window.addEventListener('resize', createHexagons);
+    window.addEventListener('load', createHexagons);
+  </script>
+</body>
+</html>
