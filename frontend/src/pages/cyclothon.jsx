@@ -5,6 +5,8 @@ import { SplitText } from "gsap/all";
 import { useRef, useState, useEffect } from "react";
 import { Calendar, Clock, MapPin,ArrowDown} from "lucide-react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
+
 
 
 gsap.registerPlugin(SplitText);
@@ -476,13 +478,14 @@ export default function cyclothon() {
   </div>
 
   {/* Slogan */}
-  <div
-    ref={sloganRef}
+  <Link
+    to="/cycloCertificate"
+    ref={sindoorRef}
     style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }}
-    className="text-white block sm:hidden text-[20px] mt-[350px] text-center sm:absolute sm:ml-[0px] sm:mt-[0px] sm:text-[30px]"
+    className="text-white  rounded-2xl px-2 py-1 block sm:hidden border-2 text-[20px] mt-[350px] text-center sm:absolute sm:ml-[0px] sm:mt-[0px] sm:text-[30px]"
   >
-    - Every Mile, A Salute, Ride for those who Stood for Us
-  </div>
+    Get E-Certificate
+  </Link>
 
   {/* Sindoor text, only for sm+ */}
   <div
@@ -538,14 +541,15 @@ export default function cyclothon() {
 
   </div>
 
-  <div className="row-start-10 row-span-1 flex items-center justify-center">
-         <div
+  <div className="row-start-10 z-50 row-span-1 flex items-center justify-center">
+    <Link
+    to="/cycloCertificate"
     ref={sindoorRef}
     style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }}
-    className=" sm:text-[30px] text-white"
+    className=" sm:text-[30px] border-2 rounded-2xl px-2 text-white"
   >
-    Ride for Operation Sindoor
-  </div>
+    Get E-Certificate
+  </Link>
   </div>
 
     </div>

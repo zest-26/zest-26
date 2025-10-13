@@ -14,6 +14,7 @@ import Sports from './pages/Sports'
 import Accomodations from './pages/Accomodations'
 import Sponsers from './pages/Sponsers'
 import Cyclothon from './pages/cyclothon'
+import CycloCertificate from './pages/cycloCertificate'
 
 function AnimatedRoutes() {
   const [isLoading, setIsLoading] = useState(true)
@@ -22,7 +23,7 @@ function AnimatedRoutes() {
   const footerRef = useRef(null);
 
   useEffect(() => {
-     if (location.pathname === "/cyclothon") {
+     if (location.pathname === "/cyclothon" || location.pathname === "/cycloCertificate") {
     setIsLoading(false);
     return;
   }
@@ -60,7 +61,7 @@ function AnimatedRoutes() {
         duration: 1.3,
         ease: "power2.inOut"
       }, 1.1);
-    }, 2300000);
+    }, 2300);
 
     return () => clearTimeout(timer)
   }, [location.pathname])
@@ -92,6 +93,7 @@ function AnimatedRoutes() {
           <Route path="/Accomodations" element={<Accomodations />} />
           <Route path="/Sponsers" element={<Sponsers />} />
           <Route path="/cyclothon" footerRef={footerRef} element={<Cyclothon />} />
+          <Route path="/cycloCertificate" element={<CycloCertificate />} />
         </Routes>
       </main>
       <Footer ref={footerRef} />
