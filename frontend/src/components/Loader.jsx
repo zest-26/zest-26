@@ -49,48 +49,48 @@ const Loader = forwardRef((props, ref) => {
   return (
     <div
       ref={ref} // This ref will be used to fade out
-      className="relative overflow-x-hidden overflow-y-hidden h-screen w-screen bg-black flex flex-col items-center justify-center"
+      className="relative overflow-x-hidden overflow-y-hidden h-screen w-screen bg-black grid grid-rows-20"
     >
       {/* Floating Images - Left Side */}
       <img
         ref={leftImgRefs[0]}
         src="/footballLoader.avif"
-        className="left-img w-35 h-35 z-10 top-[35px] left-[1px]  absolute sm:top-[-1px] sm:left-[15px] sm:w-70 sm:h-70 rotate-[-25deg] opacity-70"
+        className="left-img w-35 h-35 z-10 top-[35px] left-[1px]  absolute sm:top-[-1px] sm:left-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[-25deg] opacity-70"
       />
 
       <img
         ref={leftImgRefs[1]}
         src="/badmintonLoader.avif"
-        className="left-img w-30 h-30 hidden sm:block top-[300px] left-[1px] absolute z-11 sm:z-0 sm:top-[250px] sm:left-[15px] sm:w-70 sm:h-70 rotate-[25deg] opacity-70"
+        className="left-img w-30 h-30 hidden sm:block top-[300px] left-[1px] absolute z-11 sm:z-0 sm:top-[250px] sm:left-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[25deg] opacity-70"
       />
       
       <img
         ref={leftImgRefs[2]}
         src="/cricketLoader.avif"
-        className="left-img absolute w-35 h-35 top-[500px] left-[1px] sm:top-[500px] sm:left-[15px] sm:w-70 sm:h-70 rotate-[-25deg] opacity-70"
+        className="left-img absolute z-10 w-35 h-35 bottom-[10px] sm:bottom-[0px] left-[1px] sm:top-[520px] sm:left-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[-25deg] opacity-70"
       />
 
       {/* Floating Images - Right Side */}
       <img
         ref={rightImgRefs[0]}
         src="/basketballLoader.png"
-        className="right-img absolute z-10  w-35 h-35 top-[35px] right-[1px] sm:top-[-1px] sm:right-[15px] sm:w-70 sm:h-80 rotate-[25deg] opacity-80"
+        className="right-img absolute z-10  w-35 h-35 top-[35px] right-[1px] sm:top-[-1px] sm:right-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[25deg] opacity-80"
       />
 
       <img
         ref={rightImgRefs[1]}
         src="/tabletennisLoader.avif"
-        className="right-img absolute hidden sm:block w-30 h-30 top-[300px] right-[1px] z-11 sm:z-0  sm:top-[250px] sm:right-[15px] sm:w-80 sm:h-80 rotate-[-21deg] opacity-70"
+        className="right-img absolute hidden  sm:block w-30 h-30 top-[300px] right-[1px] z-11 sm:z-10  sm:top-[250px] sm:right-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[-21deg] opacity-70"
       />
 
       <img
         ref={rightImgRefs[2]}
         src="/fencngLoader.jpg"
-        className="right-img absolute w-35 h-35  top-[500px] right-[1px] sm:top-[500px] sm:right-[15px] sm:w-80 sm:h-80 rotate-[25deg] opacity-75"
+        className="right-img absolute w-35 h-35 z-10  bottom-[10px] sm:bottom-[0px] right-[1px] sm:top-[520px] sm:right-[15px] sm:w-[17vw] sm:h-[17vw] rotate-[25deg] opacity-75"
       />
-
-      {/* Video */}
-      <video
+     <div className="w-full h-full row-start-6 row-span-6 sm:row-start-4 sm:row-span-8 flex justify-center">
+        <div className="sm:w-2/7 w-full h-full flex justify-center items-center ">
+          <video
         src="/videos/MashalVideo.mp4"
         autoPlay
         loop
@@ -98,37 +98,43 @@ const Loader = forwardRef((props, ref) => {
         playsInline
         onContextMenu={(e) => e.preventDefault()}
         disablePictureInPicture
-        className="w-40 h-40 absolute z-0 sm:static top-[170px]   sm:w-80 sm:h-80 object-cover rounded-2xl shadow-lg sm:mb-5 "
+        className="w-[50vw] h-[50vw] absolute z-0 sm:static    sm:w-full sm:h-full object-cover rounded-2xl shadow-lg "
       />
-
-      {/* Logo */}
-      <div className="relative top-[-20px] sm:top-[-19px] w-[230px] h-[70px] sm:w-[230px] sm:h-[70px] overflow-hidden z-10">
-        <img src="./ZEST-26.png" className="w-full h-full object-contain" />
-        <div
+        </div>
+     </div>
+      
+      <div className=" w-full h-full  row-start-12 z-0 row-span-3  flex justify-center">
+        <div className="sm:w-2/7 w-[50vw] h-full  relative">
+         <img src="./ZEST-26.png" className="w-full absolute h-full object-contain" />
+          <div
           ref={overlayRef}
-          className="absolute top-0 left-0 w-full h-full bg-black shadow-[0_0_40px_15px_rgba(0,0,0,1)]"
+          className="absolute  w-full   h-full bg-black shadow-[0_0_40px_15px_rgba(0,0,0,1)]"
         />
+         </div>
       </div>
 
-      {/* Coming Soon Text */}
-      <div
-        ref={textRef}
-        className="flex mt-4 absolute top-[380px] sm:top-[580px] text-[25px] text-white font-bold z-10"
-      >
-        {"Coming Soon".split("").map((char, index) => (
+      <div className=" w-full h-full   row-start-15 row-span-2 flex justify-center">
+        <div className="sm:w-2/8 w-[50vw] h-full ">
+              <div ref={textRef} className="w-full h-full text-[clamp(10px,8vw,25px)] sm:text-[clamp(10px,8vw,30px)] text-white flex justify-center items-center ">
+                    {"Coming Soon".split("").map((char, index) => (
           <span
             key={index}
-            className="inline-block opacity-0 translate-y-[-20px]"
+            className="inline-block opacity-0 "
           >
             {char === " " ? "\u00A0" : char}
           </span>
         ))}
+              </div>
+        </div>
       </div>
+      
+
+    
 
       {/* Blackout Overlay */}
       <div
         ref={blackoutRef}
-        className="blackout absolute inset-0 bg-black opacity-0 z-20"
+        className="blackout absolute inset-0 bg-black opacity-0 z-0"
       />
     </div>
   );

@@ -14,14 +14,16 @@ import Sports from './pages/Sports'
 import Accomodations from './pages/Accomodations'
 import Sponsers from './pages/Sponsers'
 import Cyclothon from './pages/cyclothon'
+import CycloCertificate from './pages/cycloCertificate'
 
 function AnimatedRoutes() {
   const [isLoading, setIsLoading] = useState(true)
   const loaderRef = useRef(null)
   const location = useLocation()
+  const footerRef = useRef(null);
 
   useEffect(() => {
-     if (location.pathname === "/cyclothon") {
+     if (location.pathname === "/cyclothon" || location.pathname === "/cycloCertificate") {
     setIsLoading(false);
     return;
   }
@@ -90,10 +92,11 @@ function AnimatedRoutes() {
           <Route path="/Sports" element={<Sports />} />
           <Route path="/Accomodations" element={<Accomodations />} />
           <Route path="/Sponsers" element={<Sponsers />} />
-          <Route path="/cyclothon" element={<Cyclothon />} />
+          <Route path="/cyclothon" footerRef={footerRef} element={<Cyclothon />} />
+          <Route path="/cycloCertificate" element={<CycloCertificate />} />
         </Routes>
       </main>
-      <Footer />
+      <Footer ref={footerRef} />
     </div>
   )
 }

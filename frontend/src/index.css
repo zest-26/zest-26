@@ -21,6 +21,13 @@
 }
 
 @font-face {
+  font-family: 'goodrace'; /* name you'll use in CSS */
+  src: url('/fonts/goodrace.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'SharpAxe'; /* name you'll use in CSS */
   src: url('/fonts/SharpAxe.ttf') format('truetype');
   font-weight: normal;
@@ -61,7 +68,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-color: black;
-  
+   
 }
 
 /* hide scrollbar for all browsers */
@@ -72,10 +79,6 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-
-
-
-
 
 
 @media (prefers-color-scheme: light) {
