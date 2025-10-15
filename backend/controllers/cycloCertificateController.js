@@ -54,7 +54,7 @@ export const generateCycloCertificate = async (req, res) => {
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader(
       "Content-Disposition",
-      `attachment; filename=certificate_${BIB_ID}.pdf`
+      `attachment; filename=CyclothonCertificate_${BIB_ID}.pdf`
     );
 
     // Send file
