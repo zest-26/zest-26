@@ -4,7 +4,7 @@ import {Phone,Mail,MapPin,Linkedin,Github,Instagram, Twitter,Facebook,X} from 'l
 
 const Footer = () => {
   return (
-    <div className='bg-black w-full  min-h-1/3'>
+    <div className='bg-black w-full overflow-x-hidden  min-h-1/3'>
       <h1 className='text-5xl font-bold text-center py-6 '>
   <span className='bg-gradient-to-r from-orange-600 to-white text-transparent bg-clip-text'>Get In</span><span className='bg-gradient-to-r from-white to-orange-600 text-transparent bg-clip-text'> Touch</span>
 </h1>

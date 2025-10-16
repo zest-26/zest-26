@@ -3,7 +3,7 @@ import "@fontsource/sour-gummy/800.css";
 
 const Home = () => {
   return (
-     <div className='relative h-screen w-screen  flex'>
+     <div className='relative h-screen w-full  flex'>
       {/* Background image with opacity */}
       <div 
         className="absolute inset-0 bg-cover bg-center" 
