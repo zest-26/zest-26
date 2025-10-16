@@ -412,7 +412,7 @@ export default function cyclothon() {
   return (
     <div className="w-full min-h-screen overflow-x-hidden">
       {showArrow && (
-        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 animate-bounce">
+        <div className="fixed z-50 bottom-6 right-6 animate-bounce">
           <ArrowDown size={45} className="text-white opacity-80" />
         </div>
       )}
@@ -437,7 +437,7 @@ export default function cyclothon() {
         </Canvas>
       </div>
 
-      <div className=" absolute inset-0 z-10 flex items-center justify-center">
+      <div className="absolute inset-0 z-10 flex items-center justify-center ">
   <div className="movable h-[300px] w-[300px] sm:h-[690px] sm:w-[690px]">
     <Canvas camera={{ position: [-27, 25, -43], fov: 50 }}>
       <ambientLight intensity={1.3} />
@@ -497,9 +497,9 @@ export default function cyclothon() {
   </div>
 </div>
 
-<div className="hidden sm:block absolute h-full w-4/7">
-    <div className="h-full w-full grid grid-rows-12">
-        <div className="row-start-2 row-span-2 flex items-center justify-center">
+<div className="absolute hidden h-full sm:block w-4/7">
+    <div className="grid w-full h-full grid-rows-12">
+        <div className="flex items-center justify-center row-span-2 row-start-2">
      <div ref={coepLogoRef}>
     <img
       src="/CoepLogo.png"
@@ -519,7 +519,7 @@ export default function cyclothon() {
   </div>
 
   {/* Rows 4–5 empty */}
-  <div className="row-start-5 row-span-2 flex items-center justify-center">
+  <div className="flex items-center justify-center row-span-2 row-start-5">
     <div
     ref={textRef}
     style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }}
@@ -530,7 +530,7 @@ export default function cyclothon() {
   </div>
 
   {/* You can keep going like this */}
-  <div className="row-start-7 row-span-1 flex items-center justify-center">
+  <div className="flex items-center justify-center row-span-1 row-start-7">
     <div
     ref={sloganRef}
     style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.3)' }}
@@ -541,7 +541,7 @@ export default function cyclothon() {
 
   </div>
 
-  <div className="row-start-10 z-50 row-span-1 flex items-center justify-center">
+  <div className="z-50 flex items-center justify-center row-span-1 row-start-10">
     <Link
     to="/cycloCertificate"
     ref={sindoorRef}
@@ -607,32 +607,32 @@ export default function cyclothon() {
     </div>
 
       <div className="bg-black hidden sm:block relative w-full  h-[1500px]">
-      <div className="w-full h-full  absolute grid grid-rows-30">
-        <div className=" row-start-2 row-span-2 flex justify-center">
-          <div className=" relative h-full w-2/11"><img src="/categoryTab.jpg" className="w-full z-0  absolute h-full"/>
+      <div className="absolute grid w-full h-full grid-rows-30">
+        <div className="flex justify-center row-span-2 row-start-2 ">
+          <div className="relative h-full w-2/11"><img src="/categoryTab.jpg" className="absolute z-0 w-full h-full"/>
           <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,28px)] flex justify-center absolute items-center z-10">CATEGORIES</div>
           </div>
         </div>
         <div className=" row-start-5 flex gap-[8vw] justify-center row-span-9 ">
-             <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
-                  <div className="w-full h-full absolute grid grid-rows-10">
+             <div className="grid h-full grid-rows-5 w-3/9 "><div className="relative row-span-4 row-start-1 "> <img src="/categoryTab.jpg" className="absolute w-full h-full"/>
+                  <div className="absolute grid w-full h-full grid-rows-10">
                     <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] flex justify-center items-center row-span-3 ">
                      15 KM
                     </div>
-                    <div className=" row-start-7 flex row-span-3 ">
-                       <div className="h-full w-1/2 relative  ">
+                    <div className="flex row-span-3 row-start-7 ">
+                       <div className="relative w-1/2 h-full ">
                          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">499</div>
-                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                         <div className="absolute flex items-center justify-center w-full h-full"><img src="redLine.png" className="w-1/2"/></div>
                        </div>
-                       <div className="h-full w-1/2 ">
+                       <div className="w-1/2 h-full ">
                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 449</div>
                        </div>
                     </div>
                   </div>
              </div> 
-             <div className="row-start-5  row-span-1 flex justify-center">
+             <div className="flex justify-center row-span-1 row-start-5">
                 
-                <div  className="w-1/2  h-full  border-2  rounded-4xl">
+                <div  className="w-1/2 h-full border-2 rounded-4xl">
                 <a href="https://unstop.com/o/sHZkuV8?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer ">
                   
                  <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
@@ -640,25 +640,25 @@ export default function cyclothon() {
                 </div>
              </div>
              </div>
-             <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
-                  <div className="w-full h-full absolute grid grid-rows-10">
+             <div className="grid h-full grid-rows-5 w-3/9 "><div className="relative row-span-4 row-start-1 "> <img src="/categoryTab.jpg" className="absolute w-full h-full"/>
+                  <div className="absolute grid w-full h-full grid-rows-10">
                     <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] text-center flex justify-center items-center row-span-3 ">
                      15 KM [Corporate]
                     </div>
-                    <div className=" row-start-7 flex row-span-3 ">
-                       <div className="h-full w-1/2 relative  ">
+                    <div className="flex row-span-3 row-start-7 ">
+                       <div className="relative w-1/2 h-full ">
                          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">499</div>
-                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                         <div className="absolute flex items-center justify-center w-full h-full"><img src="redLine.png" className="w-1/2"/></div>
                        </div>
-                       <div className="h-full w-1/2 ">
+                       <div className="w-1/2 h-full ">
                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 449</div>
                        </div>
                     </div>
                   </div>
              </div> 
-             <div className="row-start-5  row-span-1 flex justify-center">
+             <div className="flex justify-center row-span-1 row-start-5">
                 
-                <div  className="w-1/2  h-full  border-2  rounded-4xl">
+                <div  className="w-1/2 h-full border-2 rounded-4xl">
                 <a href="https://unstop.com/o/SFZjqcl?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
                  <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
                  </a>
@@ -666,34 +666,34 @@ export default function cyclothon() {
              </div>
              </div>
         </div>
-        <div className=" row-start-15 row-span-9 flex justify-center">
-         <div className="h-full w-3/9   grid grid-rows-5 "><div className="  relative row-start-1 row-span-4  "> <img src="/categoryTab.jpg" className="h-full w-full  absolute"/>
-                  <div className="w-full h-full absolute grid grid-rows-10">
+        <div className="flex justify-center row-start-15 row-span-9">
+         <div className="grid h-full grid-rows-5 w-3/9 "><div className="relative row-span-4 row-start-1 "> <img src="/categoryTab.jpg" className="absolute w-full h-full"/>
+                  <div className="absolute grid w-full h-full grid-rows-10">
                     <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="row-start-2 text-[clamp(10px,25vw,35px)] flex justify-center items-center row-span-3 ">
                      30 KM
                     </div>
-                    <div className=" row-start-7 flex row-span-3 ">
-                       <div className="h-full w-1/2 relative  ">
+                    <div className="flex row-span-3 row-start-7 ">
+                       <div className="relative w-1/2 h-full ">
                          <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] flex justify-center absolute items-center">699</div>
-                         <div className="w-full h-full flex justify-center absolute items-center"><img src="redLine.png" className="w-1/2"/></div>
+                         <div className="absolute flex items-center justify-center w-full h-full"><img src="redLine.png" className="w-1/2"/></div>
                        </div>
-                       <div className="h-full w-1/2 ">
+                       <div className="w-1/2 h-full ">
                         <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center"> 549</div>
                        </div>
                     </div>
                   </div>
              </div> 
-             <div className="row-start-5  row-span-1 flex justify-center">
+             <div className="flex justify-center row-span-1 row-start-5">
                 
-                <div  className="w-1/2  h-full  border-2  rounded-4xl">
+                <div  className="w-1/2 h-full border-2 rounded-4xl">
                 <a href="https://unstop.com/o/QZTjaIL?lb=GzoB9Yag" target="_blank" rel="noopener noreferrer">
                  <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full flex justify-center text-[clamp(10px,25vw,35px)] items-center">Register</div>
                  </a>
                 </div>
              </div>
              </div></div>
-        <div className="  row-start-24  row-span-7 flex justify-center">
-          <div className="w-5/9 h-full "><img src='/Jet.png' className="w-full h-full"/>   </div>
+        <div className="flex justify-center row-start-24 row-span-7">
+          <div className="h-full w-5/9 "><img src='/Jet.png' className="w-full h-full"/>   </div>
         </div>
       </div>
     </div>
@@ -731,16 +731,16 @@ export default function cyclothon() {
     </div>
 
    <div className="relative hidden sm:block w-screen h-[800px] sm:h-[1000px] bg-[#070811]" >
-         <div className=" flex w-full h-2/3 absolute bottom-0">
-           <div className="h-full w-1/2 "><img 
+         <div className="absolute bottom-0 flex w-full h-2/3">
+           <div className="w-1/2 h-full "><img 
     src="/cloud.png" 
     alt="cloud" 
-    className="w-full h-full   z-0 " 
+    className="z-0 w-full h-full " 
   /></div>
-           <div className="h-full w-1/2 "><img src="/cloud-1.png" className="w-full h-full z-0" alt="cloud" /></div>
+           <div className="w-1/2 h-full "><img src="/cloud-1.png" className="z-0 w-full h-full" alt="cloud" /></div>
          </div>
-         <div className="w-full h-full flex justify-center items-center">
-         <div className="w-1/2 h-1/2  ">
+         <div className="flex items-center justify-center w-full h-full">
+         <div className="w-1/2 h-1/2 ">
          <p className="text-center sm:text-[clamp(10px,8vw,17px)]" ref={discriptionRef} style={{ fontFamily: 'cyclothonSloganFont', transform: 'scaleY(1.9)' }}>
     “Every mile you ride is a salute, every turn of the pedal a tribute.<br/>
     This Cyclothon is for those who stood for us—brave hearts who inspire us <br/>
@@ -753,7 +753,7 @@ export default function cyclothon() {
    </div>
 
     <div  ref={dtlContainerRef} className="relative w-full h-[800px] sm:h-[800px] bg-[#070811]">
-      <div className="absolute  sm:block"><img src="/cloud.png" className=" h-[500px] block sm:hidden w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
+      <div className="absolute sm:block"><img src="/cloud.png" className=" h-[500px] block sm:hidden w-[761px] ml-[760px] mt-[-130px] z-0 rotate-180" alt="cloud" /></div>
      <div className="absolute mt-[-1px] sm:mt-[0px] w-full">
     <img
     src="/cloud-1.png"
@@ -762,13 +762,13 @@ export default function cyclothon() {
   />
 </div>
    
-   <div className="hidden sm:flex   w-full h-2/3 absolute top-0">
+   <div className="absolute top-0 hidden w-full sm:flex h-2/3">
           
-           <div className="h-full w-1/2 "><img src="/cloud-1.png" className="w-full rotate-180 h-full z-0" alt="cloud" /></div>
-            <div className="h-full w-1/2 "><img 
+           <div className="w-1/2 h-full "><img src="/cloud-1.png" className="z-0 w-full h-full rotate-180" alt="cloud" /></div>
+            <div className="w-1/2 h-full "><img 
     src="/cloud.png" 
     alt="cloud" 
-    className="w-full h-full rotate-180  z-0 " 
+    className="z-0 w-full h-full rotate-180 " 
   /></div>
          </div>
 
@@ -836,36 +836,36 @@ export default function cyclothon() {
     </div>
 
     <div className="hidden sm:block bg-black h-[900px] w-full">
-      <div className="w-full h-full  grid grid-rows-10">
-        <div className="w-full row-start-2 relative flex justify-center row-span-1 ">
-              <div className="w-2/10 border-2 rounded-2xl relative h-full ">
+      <div className="grid w-full h-full grid-rows-10">
+        <div className="relative flex justify-center w-full row-span-1 row-start-2 ">
+              <div className="relative h-full border-2 w-2/10 rounded-2xl ">
                 
                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full absolute flex justify-center text-[clamp(10px,25vw,45px)] items-center"> goodies</div>
               </div>
         </div>
 
-        <div className=" row-start-5 row-span-3 flex justify-center gap-6 w-full h-full ">
-          <div className="w-1/5 h-full relative  ">
+        <div className="flex justify-center w-full h-full row-span-3 row-start-5 gap-6 ">
+          <div className="relative w-1/5 h-full ">
                 
-                  <img src="useGoodies1.jpg" className="w-full  absolute h-full"/>
+                  <img src="useGoodies1.jpg" className="absolute w-full h-full"/>
               
                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] absolute text-center flex justify-center items-center">Welcome Kit</div>
           </div>
-           <div className="w-1/5 h-full relative  ">
+           <div className="relative w-1/5 h-full ">
                 
-                  <img src="useGoodies1.jpg" className="w-full  absolute h-full"/>
+                  <img src="useGoodies1.jpg" className="absolute w-full h-full"/>
               
                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full text-[clamp(10px,25vw,35px)] absolute text-center flex justify-center items-center">T-Shirt</div>
           </div>
-          <div className="w-1/5 h-full relative">
+          <div className="relative w-1/5 h-full">
                 
-                  <img src="useGoodies1.jpg" className="w-full  absolute h-full"/>
+                  <img src="useGoodies1.jpg" className="absolute w-full h-full"/>
               
                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full absolute text-[clamp(10px,25vw,35px)] flex justify-center text-center items-center">Medal</div>
           </div>
-           <div className="w-1/5 h-full relative  ">
+           <div className="relative w-1/5 h-full ">
                 
-                  <img src="useGoodies1.jpg" className="w-full  absolute h-full"/>
+                  <img src="useGoodies1.jpg" className="absolute w-full h-full"/>
               
                 <div style={{ fontFamily: 'cyclothonFont', transform: 'scaleY(1.3)' }} className="w-full h-full absolute text-[clamp(10px,25vw,35px)] flex justify-center text-center items-center">Refreshment</div>
           </div>

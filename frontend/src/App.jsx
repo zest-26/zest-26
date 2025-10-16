@@ -71,9 +71,9 @@ function AnimatedRoutes() {
   }
 
   return (
-    <div className='h-screen w-screen'>
+    <div className='w-screen h-screen'>
       {location.pathname === "/" && <Header />}
-      <main className='mt-0 min-h-screen w-full scroll-smooth'>
+      <main className='w-full min-h-screen mt-0 scroll-smooth'>
         <Routes location={location} key={location.pathname}>
           <Route 
             path="/" 
@@ -96,7 +96,6 @@ function AnimatedRoutes() {
           <Route path="/cycloCertificate" element={<CycloCertificate />} />
         </Routes>
       </main>
-      <Footer ref={footerRef} />
     </div>
   )
 }
