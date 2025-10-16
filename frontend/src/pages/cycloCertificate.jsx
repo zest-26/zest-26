@@ -5,6 +5,9 @@ const CycloCertificate = () => {
   const [bibId, setBibId] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+
   const handleGenerate = async (e) => {
     e.preventDefault();
     if (!bibId.trim()) {
@@ -17,7 +20,7 @@ const CycloCertificate = () => {
 
       // Call backend API
       const response = await axios.post(
-        "http://localhost:5000/api/cycloCertificate/generateCycloCertificate",
+        `${API_BASE_URL}/api/cycloCertificate/generateCycloCertificate`,
         { BIB_ID: bibId },
         { responseType: "blob" } // important for downloading binary file
       );

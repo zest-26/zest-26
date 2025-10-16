@@ -3,6 +3,12 @@ import cors from "cors";
 import cycloCertificateRoutes from "./routes/cycloCertificateRoutes.js";
 
 const app = express();
+
+const allowedOrigins = [
+  "http://localhost:5173",               // local frontend (Vite)
+  "https://coeptechzest.org/"     // deployed frontend on Hostinger
+];
+
 app.use(cors());
 app.use(express.json());
 
