@@ -47,9 +47,10 @@ const CycloCertificate = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-4">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">
+    <div className="flex flex-col items-center gap-15 justify-center min-h-screen bg-gradient-to-br from-orange-300 via-orange-600 to-red-500 p-4">
+      <div className="text-[clamp(20px,6vw,40px)] font-semibold">Your E-Certificate is ready</div>
+      <div className="bg-orange-400 shadow-[0_14px_15px_rgba(355,355,355,0.9)]  rounded-2xl p-8 w-full max-w-md sm:transform sm:transition-transform sm:duration-500 sm:hover:scale-105 sm:hover:shadow-[0_18px_20px_rgba(255,255,255,1)]">
+        <h2 className="text-2xl font-semibold text-center text-white mb-6">
           Generate Your E-Certificate
         </h2>
 
@@ -57,7 +58,7 @@ const CycloCertificate = () => {
           <div>
             <label
               htmlFor="bibId"
-              className="block text-gray-700 font-medium mb-2"
+              className="block text-white font-medium mb-2"
             >
               Enter Your BIB ID
             </label>
@@ -67,7 +68,7 @@ const CycloCertificate = () => {
               value={bibId}
               onChange={(e) => setBibId(e.target.value)}
               placeholder="e.g., BIB123"
-              className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border text-white border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
