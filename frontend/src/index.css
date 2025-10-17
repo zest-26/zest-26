@@ -1,5 +1,6 @@
 @import "tailwindcss";
-
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
   font-family: 'cyclothonFont'; /* name you'll use in CSS */
@@ -42,6 +43,10 @@
   font-style: normal;
 }
 
+@font-face {
+    font-family: 'cdr';
+    src: url('/fonts/cdr.ttf') format('truetype');
+}
 
 
 :root {
