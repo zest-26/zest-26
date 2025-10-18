@@ -67,10 +67,10 @@ const Tabs = () => {
   "3. Adarsh Sanap",
   "4. Ansh Nerkar"
 ] },
-{ id: 8,icon: CircuitBoard, title: "ESM", people: ["1. Khushwant Nandkmar",
-"2. Parth Rathour",
-"3. Ninad Patil",
-"4. Rughved Ranadive",
+{ id: 8,icon: CircuitBoard, title: "ESM", people: [
+  "1. Achyut Kamble",
+  "2. Vijay Sinde",
+  "3. Vedant Mahajan"
 ] },
 { id: 9,icon: CalendarSync, title: "Events", people: [
   "1. Parth Kamlakar",
@@ -138,11 +138,12 @@ const Tabs = () => {
   "4. Aishwarya Prakash"
 ] },
 
-   { id: 16,icon: ShieldCheck, title: "Safety and Dispute", people: ["1. Prashant Patil",
-"2. Parth Shinde",
-"3. Arpita Wagh",
-"4. Mayuresh Bhalerao",
-"5. Shreyas Patil"] },
+   { id: 16,icon: ShieldCheck, title: "Safety and Dispute", people: [
+  "1. Tushar",
+  "2. Manas",
+  "3. Janvhi",
+  "4. Riya"
+] },
 
     { id: 17,icon: Video, title: "VFX", people: [
   "1. Abhishek Bijaraya",

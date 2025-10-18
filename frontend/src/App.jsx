@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
 import About from './pages/about'
-import CoordinatorResults from './pages/coordinatorResults'
+import VolunteerResults from './pages/coordinatorResults'
 import ContactUs from './pages/contactUs'
 import Gallery from './pages/Gallery'
 import CoreTeam from './pages/coreTeam'
@@ -84,7 +84,7 @@ function AnimatedRoutes() {
               </>
             }
           />
-          <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+          <Route path="/VolunteerResults" element={<VolunteerResults />} />
           <Route path="/about" element={<About />} />
           <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/Gallery" element={<Gallery />} />
