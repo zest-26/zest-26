@@ -1,0 +1,6 @@
+{
+    "window.autoDetectColorScheme": true,
+    "editor.cursorBlinking": "blink",
+    "editor.cursorStyle": "underline",
+    "editor.minimap.autohide": "none"
+}

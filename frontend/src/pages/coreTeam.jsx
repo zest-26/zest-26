@@ -191,14 +191,36 @@ const EnhancedTeamPage = () => {
       .animate-float { animation: float 6s ease-in-out infinite; }
       .animate-grid { animation: grid-move 20s linear infinite; }
       .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
-      .sparkle::before {
-        content: '✨';
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        animation: sparkle 2s ease-in-out infinite;
-        font-size: 20px;
+
+      @keyframes gradient-shift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
       }
+      .gradient-text {
+        background: linear-gradient(-45deg, #f97316, #fb923c, #fdba74, #f97316, #fb923c);
+        background-size: 400% 400%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: #f97316;
+        animation: gradient-shift 3s ease infinite;
+      }
+      @keyframes split-in {
+        0% {
+          opacity: 0;
+          transform: translateY(20px) rotateX(90deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) rotateX(0deg);
+        }
+      }
+      .split-text span {
+        display: inline-block;
+        opacity: 0;
+        animation: split-in 0.6s ease forwards;
+      }
+
     `;
     document.head.appendChild(styleElement);
 
@@ -310,11 +332,24 @@ const EnhancedTeamPage = () => {
         </div>
       </div>
       
-      {/* Fixed Page Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-br from-black/95 via-gray-900/95 to-gray-800/95 backdrop-blur-md border-b border-orange-500/20">
-        <div className="text-center py-4 sm:py-6">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent mb-2">Core Team</h1>
-          <div className="w-16 sm:w-24 h-0.5 bg-gradient-to-r from-orange-400 to-orange-600 mx-auto rounded-full"></div>
+      {/* Enhanced Core Team Title */}
+      <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
+        <div className="relative">
+          <div className="absolute -inset-2 bg-gradient-to-r from-orange-500/20 via-orange-400/10 to-orange-500/20 blur-xl rounded-lg"></div>
+          <div className="relative bg-black/30 backdrop-blur-sm px-8 py-3 rounded-lg border border-orange-500/30">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text tracking-wide split-text">
+              <span style={{animationDelay: '0ms'}}>C</span>
+              <span style={{animationDelay: '100ms'}}>o</span>
+              <span style={{animationDelay: '200ms'}}>r</span>
+              <span style={{animationDelay: '300ms'}}>e</span>
+              <span style={{animationDelay: '400ms'}}>&nbsp;</span>
+              <span style={{animationDelay: '500ms'}}>T</span>
+              <span style={{animationDelay: '600ms'}}>e</span>
+              <span style={{animationDelay: '700ms'}}>a</span>
+              <span style={{animationDelay: '800ms'}}>m</span>
+            </h1>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-transparent via-orange-500 to-transparent animate-pulse"></div>
+          </div>
         </div>
       </div>
 
@@ -322,7 +357,7 @@ const EnhancedTeamPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         
         {/* Core Team Section */}
-        <section className="mb-12 sm:mb-20 pt-24 sm:pt-28">
+        <section className="mb-12 sm:mb-20 pt-20 sm:pt-24">
           <div className="text-center mb-12">
             <p className="text-gray-300 text-lg animate-in fade-in slide-in-from-bottom-4 duration-1000">Leading with passion and excellence</p>
           </div>
@@ -340,21 +375,16 @@ const EnhancedTeamPage = () => {
                     }
                   }}
                   data-card-id={cardId}
-                  className={`transform transition-all duration-1000 hover:scale-125 hover:-translate-y-4 ${index % 2 === 0 ? 'hover:-rotate-6' : 'hover:rotate-6'} group relative sparkle ${
+                  className={`transform transition-all duration-1000 ${
                     isVisible 
-                      ? 'opacity-100 translate-x-0 translate-y-0 scale-100 rotate-0' 
-                      : `opacity-0 scale-75 ${index % 2 === 0 ? '-translate-x-20 -rotate-12' : 'translate-x-20 rotate-12'} translate-y-10`
+                      ? 'opacity-100 translate-x-0 translate-y-0 scale-100' 
+                      : `opacity-0 scale-75 ${
+                          index % 2 === 0 ? '-translate-x-20' : 'translate-x-20'
+                        } translate-y-10`
                   }`}
                   style={{ 
                     transitionDelay: `${index * 100}ms`,
                     filter: isVisible ? 'none' : 'blur(3px)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, rgba(249,115,22,0.2), rgba(251,146,60,0.1), rgba(254,215,170,0.05))';
-                    e.currentTarget.style.borderRadius = '20px';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'transparent';
                   }}
                 >
                   <TeamCard
@@ -400,33 +430,28 @@ const EnhancedTeamPage = () => {
                         }
                       }}
                       data-card-id={cardId}
-                      className={`transform transition-all duration-1000 hover:scale-125 hover:-translate-y-4 ${index % 2 === 0 ? 'hover:-rotate-6' : 'hover:rotate-6'} group relative sparkle ${
+                      className={`transform transition-all duration-1000 ${
                         isVisible 
-                          ? 'opacity-100 translate-x-0 translate-y-0 scale-100 rotate-0' 
-                          : `opacity-0 scale-75 ${index % 2 === 0 ? '-translate-x-20 -rotate-12' : 'translate-x-20 rotate-12'} translate-y-10`
+                          ? 'opacity-100 translate-x-0 translate-y-0 scale-100' 
+                          : `opacity-0 scale-75 ${
+                              index % 2 === 0 ? '-translate-x-20' : 'translate-x-20'
+                            } translate-y-10`
                       }`}
                       style={{ 
                         transitionDelay: `${index * 100}ms`,
                         filter: isVisible ? 'none' : 'blur(3px)'
                       }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'linear-gradient(135deg, rgba(249,115,22,0.2), rgba(251,146,60,0.1), rgba(254,215,170,0.05))';
-                        e.currentTarget.style.borderRadius = '20px';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'transparent';
-                      }}
                     >
-                    <TeamCard
-                      cardId={`${portfolioName}-${index}`}
-                      role={member.role}
-                      name={member.name}
-                      image={member.image}
-                      bio={member.bio}
-                      email={member.email}
-                      linkedin={member.linkedin}
-                      instagram={member.instagram}
-                    />
+                      <TeamCard
+                        cardId={cardId}
+                        role={member.role}
+                        name={member.name}
+                        image={member.image}
+                        bio={member.bio}
+                        email={member.email}
+                        linkedin={member.linkedin}
+                        instagram={member.instagram}
+                      />
                     </div>
                   );
                 })}
