@@ -15,6 +15,7 @@ import Accomodations from './pages/Accomodations'
 import Sponsers from './pages/Sponsers'
 import Cyclothon from './pages/cyclothon'
 import CycloCertificate from './pages/cycloCertificate'
+import Volresults from './pages/volResults'
 
 function AnimatedRoutes() {
   const [isLoading, setIsLoading] = useState(true)
@@ -85,6 +86,8 @@ function AnimatedRoutes() {
             }
           />
           <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+          
+          <Route path="/VolunteerResults" element={<Volresults />} />
           <Route path="/about" element={<About />} />
           <Route path="/contactUs" element={<ContactUs />} />
           <Route path="/Gallery" element={<Gallery />} />

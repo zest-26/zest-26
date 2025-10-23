@@ -382,7 +382,6 @@ const CycloCertificate = () => {
         ['30298', { name: 'Ashish Funde' }],
         ['30299', { name: 'Sanjay Kuche' }],
         ['30310', { name: 'Tanaji Gore' }],
-
     ]);
 
     const generatePDF = async (participant) => {
