@@ -5,7 +5,7 @@ const Tabs = () => {
   const [activeTab, setActiveTab] = useState(null);
   const containerRef = useRef(null); // ref for detecting outside clicks
   const peopleRefs = useRef([]); // refs for each tab's people
-  const tabs = [
+const tabs = [
     { id: 1,icon: IndianRupee, title: "Accounts", people: ["1. Samarth Phartade",
 "2. Mayuresh Jadhav",
 "3. Aditi Manwadkar",
@@ -25,18 +25,12 @@ const Tabs = () => {
   "5. Sharyu Sonawane",
   "6. Shreya Dalmal",
   "7. Lokesh Suryawanshi",
-  "8. Arjun Atul Hivarkar",
-  "9. Varad Pandurang Vankar",
-  "10. Akshay Susar",
-  "11. Neeraj Rahte",
-  "12. Ranjeet Wakde"
+  "8. Arjun Atul Hivarkar"
 ] },
 { id: 4,icon: Trophy, title: "Championship", people: [
   "1. Alraza Shaikh",
   "2. Aditi Manwadkar",
-  "3. Ayush Phad",
-  "4. Manya Yadav",
-  "5. Kunal Gangurde"
+  "3. Ayush Phad"
 ] },
 { id: 5,icon: Users, title: "CRN", people: [
   "1. Aanchal Sourabh Kulkarni",
@@ -87,9 +81,7 @@ const Tabs = () => {
   "12. Atharva Vyas",
   "13. Janvi Shende",
   "14. Archie Meshram",
-  "15. Vedhika Matey",
-  "16. Anisha Kamble",
-  "17. Rahul Shinde"
+  "15. Vedhika Matey"
 ] },
 
     
@@ -101,11 +93,7 @@ const Tabs = () => {
   "5. Aditya Jadhav",
   "6. Vedika Bhagat",
   "7. Tanishq Bhirud",
-  "8. Samrudhi Wayal",
-  "9. Anisha Gadkari",
-  "10. Mustafa",
-  "11. Shreyash Wathore",
-  "12. Ruturaj Dhotre"
+  "8. Samrudhi Wayal"
 ] },
 
       { id: 11,icon: Hotel, title: "Hospitality", people: [
@@ -122,9 +110,7 @@ const Tabs = () => {
     { id: 13,icon: Boxes, title: "Logistics", people: [
   "1. Aditya Shergave",
   "2. Shubham Pawar",
-  "3. Pranav Katkar",
-  "4. Harsh Wathare",
-  "5. Shambhavi Sachin Jagtap"
+  "3. Pranav Katkar"
 ] },
 { id: 14,icon: Share2, title: "Media", people: [
   "1. Pawan Devtale",
@@ -134,15 +120,13 @@ const Tabs = () => {
  { id: 15,icon: Coffee, title: "Refreshment", people: [
   "1. Shreyash Wathore",
   "2. Saksham Betal",
-  "3. Ketan Roplekar",
-  "4. Aishwarya Prakash"
+  "3. Ketan Roplekar"
 ] },
 
    { id: 16,icon: ShieldCheck, title: "Safety and Dispute", people: [
   "1. Tushar",
   "2. Manas",
-  "3. Janvhi",
-  "4. Riya"
+  "3. Janvhi"
 ] },
 
     { id: 17,icon: Video, title: "VFX", people: [
