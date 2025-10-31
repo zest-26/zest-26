@@ -82,7 +82,6 @@ const CycloCertificate = () => {
         ['15023', { name: 'Aditya Salokhe' }],
         ['15024', { name: 'Sarthak Dupare' }],
         ['15025', { name: 'Prakash Mayane' }],
-        ['15025', { name: 'TALHA SHAIKH' }],
         ['15027', { name: 'Kedar Kulkarni' }],
         ['15028', { name: 'Nirupama Bhave' }],
         ['15029', { name: 'Pratham Nigade' }],
@@ -314,7 +313,7 @@ const CycloCertificate = () => {
         ['30154', { name: 'Rupesh Sharma' }],
         ['30156', { name: 'chhatarpal DANGI' }],
         ['30157', { name: 'Devanand Patil' }],
-        ['30158', { name: 'Rahul Khadekar' }],
+        ['30158', { name: 'Rahul Khandekar' }],
         ['30160', { name: 'Yash Kumar' }],
         ['30161', { name: 'Shishir Kulkarni' }],
         ['30162', { name: 'Yogendra Jagtap' }],
@@ -361,7 +360,7 @@ const CycloCertificate = () => {
         ['30250', { name: 'Nirvan Mehta' }],
         ['30254', { name: 'Adwaay Ranade' }],
         ['30258', { name: 'Rishi Mulay' }],
-        ['30261', { name: 'Priyanka Rajesh Porte' }],
+        ['30261', { name: 'Aryakee Sachin Sorte' }],
         ['30262', { name: 'Adheesh Subhedar' }],
         ['30265', { name: 'Yash Bhavale' }],
         ['30266', { name: 'Anil Katore' }],
@@ -382,6 +381,7 @@ const CycloCertificate = () => {
         ['30298', { name: 'Ashish Funde' }],
         ['30299', { name: 'Sanjay Kuche' }],
         ['30310', { name: 'Tanaji Gore' }],
+        
     ]);
 
     const generatePDF = async (participant) => {
@@ -494,21 +494,21 @@ const CycloCertificate = () => {
     <div className="pt-4 text-center">
         {/* The original error message */}
         <p className="font-medium text-red-400">{error}</p>
-        
-        {/* The new WhatsApp contact info */}
-        <p className="mt-2 text-sm text-gray-400">
-            If you believe this is an error, contact us on{' '}
-            <a
-                href="https://wa.me/919370984236"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-orange-400 underline transition-colors hover:text-orange-300"
-            >
-                WhatsApp
-            </a>.
-        </p>
     </div>
 )}
+
+{/* ✅ WhatsApp contact info — now always visible */}
+<div className="mt-2 text-sm text-center text-gray-400">
+    If you believe this is an error, contact us on{' '}
+    <a
+        href="https://wa.me/919370984236"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-orange-400 underline transition-colors hover:text-orange-300"
+    >
+        WhatsApp
+    </a>.
+</div>
                         {downloadUrl && (
                             <div className="pt-4 text-sm text-center text-gray-400">
                                 Download didn't start?{' '}
