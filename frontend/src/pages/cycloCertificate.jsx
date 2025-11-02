@@ -178,6 +178,7 @@ const CycloCertificate = () => {
         ['15149', { name: 'Surabhi Nene' }],
         ['15150', { name: 'Anurag Bhute' }],
         ['15151', { name: 'Kunal Gangurde' }],
+        ['15160', { name: 'Talha Shaikh' }],
         ['30004', { name: 'Santosh Gogave' }],
         ['30006', { name: 'Rohan Musale' }],
         ['30007', { name: 'Aditya Gagare' }],
@@ -201,7 +202,7 @@ const CycloCertificate = () => {
         ['30027', { name: 'Ajit Purohit' }],
         ['30028', { name: 'Kuldip Kulkarni' }],
         ['30029', { name: 'Khush Gandhi' }],
-        ['30031', { name: 'Nilesh Chincholkar' }],
+        ['30031', { name: 'Nimish Chincholkar' }],
         ['30032', { name: 'Gaurav Mothekadam' }],
         ['30033', { name: 'Sandip Malode' }],
         ['30034', { name: 'Rakesh Sonawane' }],
@@ -381,7 +382,7 @@ const CycloCertificate = () => {
         ['30298', { name: 'Ashish Funde' }],
         ['30299', { name: 'Sanjay Kuche' }],
         ['30310', { name: 'Tanaji Gore' }],
-        
+        ['300000', { name: 'Suhas Kulkarni' }],
     ]);
 
     const generatePDF = async (participant) => {
