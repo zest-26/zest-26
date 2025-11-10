@@ -179,6 +179,7 @@ const CycloCertificate = () => {
         ['15150', { name: 'Anurag Bhute' }],
         ['15151', { name: 'Kunal Gangurde' }],
         ['15160', { name: 'Talha Shaikh' }],
+        ['15161', {name : 'Saurish Dange'}],
         ['30004', { name: 'Santosh Gogave' }],
         ['30006', { name: 'Rohan Musale' }],
         ['30007', { name: 'Aditya Gagare' }],
