@@ -14,7 +14,7 @@ const io = new Server(server, {
   cors: { origin: "*" },
 });
 
-// FETCH MATCHES WITH TEAM DETAILS
+// ---------- DB FETCH FUNCTION ----------
 async function getMatches() {
   const [rows] = await pool.query(
     `SELECT m.*,
@@ -34,26 +34,41 @@ async function getMatches() {
     potm: r.potm,
     is_live: !!r.is_live,
     team1: { id: r.team1_id, name: r.team1_name, logo: r.team1_logo },
-    team2: { id: r.team2_id, name: r.team2_name, logo: r.team2_logo }
+    team2: { id: r.team2_id, name: r.team2_name, logo: r.team2_logo },
   }));
 }
 
-async function broadcastMatches() {
-  io.emit("matches", await getMatches());
+// ---------- SAFE SOCKET EMIT (prevents Render crashes) ----------
+async function safeBroadcast(socket) {
+  try {
+    const matches = await getMatches();
+    socket.emit("matches", matches);
+  } catch (err) {
+    console.log("⚠ DB not ready yet, retrying...");
+  }
 }
 
-// ROUTES
+// ---------- ROUTES ----------
 app.get("/", (_, res) => res.send("Tournament Backend Running"));
 
 app.get("/teams", async (_, res) => {
-  const [rows] = await pool.query("SELECT * FROM teams ORDER BY name ASC");
-  res.json(rows);
+  try {
+    const [rows] = await pool.query("SELECT * FROM teams ORDER BY name ASC");
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch teams" });
+  }
 });
 
 app.get("/matches", async (_, res) => {
-  res.json(await getMatches());
+  try {
+    res.json(await getMatches());
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch matches" });
+  }
 });
 
+// Add match
 app.post("/matches", async (req, res) => {
   const { match_no, team1_id, team2_id, match_type, score_summary, potm, is_live } = req.body;
 
@@ -61,9 +76,7 @@ app.post("/matches", async (req, res) => {
   try {
     await conn.beginTransaction();
 
-    if (is_live) {
-      await conn.query("UPDATE matches SET is_live = 0");
-    }
+    if (is_live) await conn.query("UPDATE matches SET is_live = 0");
 
     await conn.query(
       `INSERT INTO matches (match_no, team1_id, team2_id, match_type, score_summary, potm, is_live)
@@ -73,15 +86,16 @@ app.post("/matches", async (req, res) => {
 
     await conn.commit();
     res.json({ success: true });
-    broadcastMatches();
+    io.emit("matches", await getMatches());
   } catch (err) {
     await conn.rollback();
-    res.status(500).json({ error: "Failed" });
+    res.status(500).json({ error: "Failed to add match" });
   } finally {
     conn.release();
   }
 });
 
+// Update match
 app.put("/matches/:id", async (req, res) => {
   const id = req.params.id;
   const { match_no, match_type, score_summary, potm, is_live } = req.body;
@@ -90,9 +104,7 @@ app.put("/matches/:id", async (req, res) => {
   try {
     await conn.beginTransaction();
 
-    if (is_live) {
-      await conn.query("UPDATE matches SET is_live = 0 WHERE id != ?", [id]);
-    }
+    if (is_live) await conn.query("UPDATE matches SET is_live = 0 WHERE id != ?", [id]);
 
     await conn.query(
       `UPDATE matches
@@ -103,26 +115,42 @@ app.put("/matches/:id", async (req, res) => {
 
     await conn.commit();
     res.json({ success: true });
-    broadcastMatches();
+    io.emit("matches", await getMatches());
   } catch (err) {
     await conn.rollback();
-    res.status(500).json({ error: "Failed" });
+    res.status(500).json({ error: "Failed to update match" });
   } finally {
     conn.release();
   }
 });
 
+// Delete match
 app.delete("/matches/:id", async (req, res) => {
-  await pool.query("DELETE FROM matches WHERE id=?", [req.params.id]);
-  res.json({ success: true });
-  broadcastMatches();
+  try {
+    await pool.query("DELETE FROM matches WHERE id=?", [req.params.id]);
+    res.json({ success: true });
+    io.emit("matches", await getMatches());
+  } catch {
+    res.status(500).json({ error: "Failed to delete match" });
+  }
 });
 
-// SOCKET
-io.on("connection", async (socket) => {
-  socket.emit("matches", await getMatches());
+// ---------- SOCKET CONNECTION (robust & retry safe) ----------
+io.on("connection", (socket) => {
+  console.log("Client connected:", socket.id);
+
+  // First emit attempt
+  safeBroadcast(socket);
+
+  // Emit every 3 seconds to guarantee sync
+  const interval = setInterval(() => safeBroadcast(socket), 3000);
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected:", socket.id);
+    clearInterval(interval);
+  });
 });
 
-server.listen(process.env.PORT || 10000, () => {
-  console.log("Backend running on port", process.env.PORT);
-});
+// ---------- START SERVER ----------
+const PORT = process.env.PORT || 10000;
+server.listen(PORT, () => console.log("Backend running on port", PORT));
