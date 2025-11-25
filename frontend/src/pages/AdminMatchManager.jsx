@@ -19,12 +19,16 @@ export default function AdminMatchManager() {
     is_live: false,
   });
 
+  // load teams + matches + next match number
   const loadData = async () => {
-    const t = await axios.get(`${API}/teams`);
-    setTeams(t.data);
-
-    const m = await axios.get(`${API}/matches`);
-    setMatches(m.data);
+    const [tRes, mRes, nextRes] = await Promise.all([
+      axios.get(`${API}/teams`),
+      axios.get(`${API}/matches`),
+      axios.get(`${API}/next-match-no`),
+    ]);
+    setTeams(tRes.data);
+    setMatches(mRes.data);
+    setForm((prev) => ({ ...prev, match_no: nextRes.data.next }));
   };
 
   useEffect(() => {
@@ -42,15 +46,24 @@ export default function AdminMatchManager() {
   };
 
   const addOrUpdate = async () => {
+    if (!form.team1_id || !form.team2_id || !form.match_no) return;
+    if (form.team1_id === form.team2_id) {
+      alert("Team 1 and Team 2 cannot be same");
+      return;
+    }
+
     if (form.id) {
       await axios.put(`${API}/matches/${form.id}`, form);
     } else {
       await axios.post(`${API}/matches`, form);
     }
 
+    // get next match no
+    const next = await axios.get(`${API}/next-match-no`);
+
     setForm({
       id: null,
-      match_no: "",
+      match_no: next.data.next,
       team1_id: "",
       team2_id: "",
       match_type: "League",
@@ -61,21 +74,31 @@ export default function AdminMatchManager() {
   };
 
   const edit = (m) => {
-    setForm(m);
+    setForm({
+      id: m.id,
+      match_no: m.match_no,
+      team1_id: m.team1.id,
+      team2_id: m.team2.id,
+      match_type: m.match_type,
+      score_summary: m.score_summary || "",
+      potm: m.potm || "",
+      is_live: m.is_live,
+    });
   };
 
   const remove = async (id) => {
+    if (!confirm("Delete this match?")) return;
     await axios.delete(`${API}/matches/${id}`);
   };
 
   return (
-    <div className="min-h-screen p-6 bg-gray-900">
-      <h1 className="mb-8 text-3xl font-bold text-center text-white">
-        Admin Match Control
+    <div className="bg-gray-900 min-h-screen p-6">
+      <h1 className="text-center text-3xl font-bold text-white mb-8">
+        Tournament Admin
       </h1>
 
-      {/* FORM */}
-      <div className="max-w-3xl p-6 mx-auto mb-10 space-y-4 bg-gray-800 shadow-lg rounded-2xl">
+      {/* FORM CARD */}
+      <div className="bg-gray-800 max-w-3xl mx-auto rounded-2xl shadow-lg p-6 mb-10 space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <input
             type="number"
@@ -83,14 +106,14 @@ export default function AdminMatchManager() {
             placeholder="Match Number"
             value={form.match_no}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="p-2 rounded border w-full"
           />
 
           <select
             name="match_type"
             value={form.match_type}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="p-2 rounded border w-full"
           >
             <option>League</option>
             <option>Semi Final</option>
@@ -101,7 +124,7 @@ export default function AdminMatchManager() {
             name="team1_id"
             value={form.team1_id}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="p-2 rounded border w-full"
           >
             <option value="">Select Team 1</option>
             {teams.map((t) => (
@@ -115,7 +138,7 @@ export default function AdminMatchManager() {
             name="team2_id"
             value={form.team2_id}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="p-2 rounded border w-full"
           >
             <option value="">Select Team 2</option>
             {teams.map((t) => (
@@ -129,7 +152,7 @@ export default function AdminMatchManager() {
         <textarea
           name="score_summary"
           rows={3}
-          placeholder="Score Summary"
+          placeholder="Score Summary (optional)"
           value={form.score_summary}
           onChange={handleChange}
           className="w-full p-2 border rounded"
@@ -137,38 +160,40 @@ export default function AdminMatchManager() {
 
         <input
           name="potm"
-          placeholder="Player of the Match"
+          placeholder="Player of the Match (optional)"
           value={form.potm}
           onChange={handleChange}
           className="w-full p-2 border rounded"
         />
 
-        <label className="flex items-center gap-2 text-white">
+        <label className="text-white flex items-center gap-2">
           <input
             type="checkbox"
             name="is_live"
             checked={form.is_live}
             onChange={handleChange}
           />
-          Set as LIVE (others will automatically stop live)
+          Set as LIVE (only one live match at a time)
         </label>
 
         <button
           onClick={addOrUpdate}
-          className="w-full p-3 font-semibold text-white transition bg-blue-600 rounded-xl hover:bg-blue-700"
+          className="bg-blue-600 text-white w-full p-3 rounded-xl hover:bg-blue-700 font-semibold transition"
         >
           {form.id ? "Update Match" : "Add Match"}
         </button>
       </div>
 
       {/* MATCH LIST */}
-      <h2 className="mb-4 text-xl font-bold text-white">All Matches</h2>
+      <h2 className="text-xl font-bold text-white mb-4 max-w-3xl mx-auto">
+        All Matches
+      </h2>
 
-      <div className="max-w-3xl mx-auto space-y-3">
+      <div className="space-y-3 max-w-3xl mx-auto">
         {matches.map((m) => (
           <div
             key={m.id}
-            className="flex items-center justify-between p-4 text-white bg-gray-800 shadow-md rounded-xl"
+            className="bg-gray-800 text-white p-4 rounded-xl flex justify-between items-center shadow-md"
           >
             <span className="font-semibold">
               #{m.match_no} — {m.team1.name} vs {m.team2.name}{" "}
@@ -178,19 +203,22 @@ export default function AdminMatchManager() {
             <div className="flex gap-3">
               <button
                 onClick={() => edit(m)}
-                className="px-3 py-1 text-black bg-yellow-400 rounded hover:bg-yellow-500"
+                className="px-3 py-1 bg-yellow-400 text-black rounded hover:bg-yellow-500"
               >
                 Edit
               </button>
               <button
                 onClick={() => remove(m.id)}
-                className="px-3 py-1 text-white bg-red-600 rounded hover:bg-red-700"
+                className="px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700"
               >
                 Delete
               </button>
             </div>
           </div>
         ))}
+        {matches.length === 0 && (
+          <p className="text-center text-white/60">No matches yet</p>
+        )}
       </div>
     </div>
   );

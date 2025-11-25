@@ -68,6 +68,17 @@ app.get("/matches", async (_, res) => {
   }
 });
 
+app.get("/next-match-no", async (_, res) => {
+  try {
+    const [rows] = await pool.query("SELECT MAX(match_no) AS max_no FROM matches");
+    const nextNo = rows[0].max_no ? rows[0].max_no + 1 : 1;
+    res.json({ next: nextNo });
+  } catch {
+    res.status(500).json({ error: "Failed to fetch next match number" });
+  }
+});
+
+
 // Add match
 app.post("/matches", async (req, res) => {
   const { match_no, team1_id, team2_id, match_type, score_summary, potm, is_live } = req.body;
