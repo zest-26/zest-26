@@ -16,8 +16,8 @@ import Sponsers from './pages/Sponsers'
 import Cyclothon from './pages/cyclothon'
 import CycloCertificate from './pages/cycloCertificate'
 import Volresults from './pages/volResults'
-import LiveMatches from "./pages/LiveMatches";
-import AdminMatchManager from "./pages/AdminMatchManager";
+import Scores from './pages/Scores'
+
 
 function AnimatedRoutes() {
   const [isLoading, setIsLoading] = useState(true)
@@ -99,8 +99,8 @@ function AnimatedRoutes() {
           <Route path="/Sponsers" element={<Sponsers />} />
           <Route path="/cyclothon" footerRef={footerRef} element={<Cyclothon />} />
           <Route path="/cycloCertificate" element={<CycloCertificate />} />
-          <Route path="/tournament-live" element={<LiveMatches />} />
-          <Route path="/tournament-admin" element={<AdminMatchManager />} />
+          <Route path="/Scores" element={<Scores />} />
+          
         </Routes>
       </main>
     </div>
