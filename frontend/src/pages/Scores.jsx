@@ -26,37 +26,59 @@ import { initializeApp } from 'firebase/app';
 import {
   getAuth,
   signInAnonymously,
-  signInWithCustomToken,
   onAuthStateChanged,
 } from 'firebase/auth';
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  serverTimestamp,
-  arrayUnion,
-} from 'firebase/firestore';
 
 import './Scores.css';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyDfVEF4OnbYEXZCkjg0957WDMQF_Ms0zeg',
-  authDomain: 'sports-live-hub.firebaseapp.com',
-  projectId: 'sports-live-hub',
-  storageBucket: 'sports-live-hub.firebasestorage.app',
-  messagingSenderId: '898208210644',
-  appId: '1:898208210644:web:8188f740a07f021dbb6541',
+
+apiKey: "AIzaSyBerP5NfqI-F8_6njssqT7lmvPA_iwIA1Q",
+
+authDomain: "sports-live-hub-5d910.firebaseapp.com",
+
+projectId: "sports-live-hub-5d910",
+
+storageBucket: "sports-live-hub-5d910.firebasestorage.app",
+
+messagingSenderId: "202068940126",
+
+appId: "1:202068940126:web:d85521fa71459c98c9abcf"
+
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const db = getFirestore(app);
 
-const APP_ID = 'zest-live-ultimate';
+export async function apiCall(endpoint, options = {}) {
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  let headers = options.headers || { "Content-Type": "application/json" };
+
+  // Add token if a user is logged in
+  if (user) {
+    const idToken = await user.getIdToken();
+    headers = {
+      ...headers,
+      Authorization: `Bearer ${idToken}`,
+    };
+  }
+
+  const response = await fetch(`http://localhost:5000/api${endpoint}`, {
+    ...options,
+    headers,
+  });
+
+  if (!response.ok) {
+    throw new Error('API error');
+  }
+
+  return await response.json();
+}
+
+// API Configuration
+const API_BASE_URL = 'http://localhost:5000/api';
 
 const StatusBadge = ({ status }) => {
   const normalized = (status || '').toLowerCase();
@@ -305,11 +327,11 @@ const EditMatchModal = ({ match, onClose, onSave, onDelete, onComment }) => {
 
 export default function Scores() {
   const [user, setUser] = useState(null);
+  const [userToken, setUserToken] = useState(null);
   const [matches, setMatches] = useState([]);
   const [sports, setSports] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Default to dark theme
   const [theme, setTheme] = useState('dark');
   const [isCoordinator, setIsCoordinator] = useState(false);
   const [activeTab, setActiveTab] = useState('matches');
@@ -329,78 +351,108 @@ export default function Scores() {
     status: 'upcoming',
   });
 
+  // API Helper Function
+  const apiCall = async (endpoint, options = {}) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    };
+
+    if (userToken) {
+      headers['Authorization'] = `Bearer ${userToken}`;
+    }
+
+    if (isCoordinator) {
+      headers['x-coordinator-pin'] = '1213';
+    }
+
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      ...options,
+      headers,
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'API request failed');
+    }
+
+    return response.json();
+  };
+
   useEffect(() => {
     const body = document.body;
     body.classList.remove('light', 'dark');
     body.classList.add(theme);
   }, [theme]);
 
+  // Initialize Firebase Auth
   useEffect(() => {
     const initAuth = async () => {
       try {
-        if (typeof window !== 'undefined' && window.__initial_auth_token) {
-          await signInWithCustomToken(auth, window.__initial_auth_token);
-        } else {
-          await signInAnonymously(auth);
-        }
-      } catch {
-        // ignore for spectators
+        await signInAnonymously(auth);
+      } catch (error) {
+        console.error('Auth error:', error);
       }
     };
     initAuth();
-    return onAuthStateChanged(auth, (u) => setUser(u));
+
+    const unsubscribe = onAuthStateChanged(auth, async (u) => {
+      setUser(u);
+      if (u) {
+        const token = await u.getIdToken();
+        setUserToken(token);
+      }
+    });
+
+    return unsubscribe;
   }, []);
 
+  // Fetch matches and sports from API
   useEffect(() => {
     if (!user) return;
 
-    const matchesRef = collection(db, 'artifacts', APP_ID, 'matches');
-    const sportsRef = collection(db, 'artifacts', APP_ID, 'sports');
-
-    const unsubMatches = onSnapshot(matchesRef, (snap) => {
-      const data = snap.docs.map((d) => ({
-        id: d.id,
-        ...d.data(),
-      }));
-      const statusOrder = {
-        live: 0,
-        break: 1,
-        upcoming: 2,
-        finished: 3,
-      };
-      data.sort((a, b) => {
-        const sa = statusOrder[(a.status || '').toLowerCase()] ?? 99;
-        const sb = statusOrder[(b.status || '').toLowerCase()] ?? 99;
-        if (sa !== sb) return sa - sb;
-        return (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0);
-      });
-      setMatches(data);
-      setLoading(false);
-    });
-
-    const unsubSports = onSnapshot(sportsRef, (snap) => {
-      setSports(
-        snap.docs.map((d) => ({
-          id: d.id,
-          ...d.data(),
-        })),
-      );
-    });
-
-    return () => {
-      unsubMatches();
-      unsubSports();
+    const fetchData = async () => {
+      try {
+        const [matchesData, sportsData] = await Promise.all([
+          apiCall('/matches'),
+          apiCall('/sports'),
+        ]);
+        setMatches(matchesData);
+        setSports(sportsData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch data:', error);
+        setLoading(false);
+      }
     };
-  }, [user]);
 
-  const handleLogin = (e) => {
+    fetchData();
+
+    // Poll for updates every 5 seconds
+    const interval = setInterval(fetchData, 5000);
+    return () => clearInterval(interval);
+  }, [user, userToken]);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (loginPin === '1213') {
-      setIsCoordinator(true);
-      setShowLoginModal(false);
-      setActiveTab('matches');
-    } else {
-      alert('Incorrect PIN');
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/verify-pin`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin: loginPin }),
+      });
+
+      const data = await response.json();
+
+      if (data.valid) {
+        setIsCoordinator(true);
+        setShowLoginModal(false);
+        setActiveTab('matches');
+      } else {
+        alert('Incorrect PIN');
+      }
+    } catch (error) {
+      alert('Login failed');
     }
     setLoginPin('');
   };
@@ -408,73 +460,109 @@ export default function Scores() {
   const handleCreateSport = async () => {
     const name = newSportName.trim();
     if (!name) return;
-    await addDoc(collection(db, 'artifacts', APP_ID, 'sports'), {
-      name,
-      createdAt: serverTimestamp(),
-    });
-    setNewSportName('');
+    
+    try {
+      await apiCall('/sports', {
+        method: 'POST',
+        body: JSON.stringify({ name }),
+      });
+      setNewSportName('');
+      
+      // Refresh sports list
+      const sportsData = await apiCall('/sports');
+      setSports(sportsData);
+    } catch (error) {
+      alert('Failed to create sport');
+    }
   };
 
   const handleDeleteSport = async (sportId) => {
     if (!window.confirm('Delete this sport category?')) return;
-    await deleteDoc(doc(db, 'artifacts', APP_ID, 'sports', sportId));
+    
+    try {
+      await apiCall(`/sports/${sportId}`, { method: 'DELETE' });
+      
+      // Refresh sports list
+      const sportsData = await apiCall('/sports');
+      setSports(sportsData);
+    } catch (error) {
+      alert('Failed to delete sport');
+    }
   };
 
   const handleCreateMatch = async (e) => {
     e.preventDefault();
     if (!newMatch.teamA.trim() || !newMatch.teamB.trim()) return;
-    await addDoc(collection(db, 'artifacts', APP_ID, 'matches'), {
-      sportId: newMatch.sportId || '',
-      teamA: newMatch.teamA.trim(),
-      teamB: newMatch.teamB.trim(),
-      playersA: newMatch.playersA.trim(),
-      playersB: newMatch.playersB.trim(),
-      status: newMatch.status || 'upcoming',
-      scoreA: 0,
-      scoreB: 0,
-      detail: '00:00',
-      commentary: [],
-      createdAt: serverTimestamp(),
-      lastUpdated: serverTimestamp(),
-    });
-    setNewMatch({
-      ...newMatch,
-      teamA: '',
-      teamB: '',
-      playersA: '',
-      playersB: '',
-      sportId: newMatch.sportId,
-    });
-    setActiveTab('matches');
+    
+    try {
+      await apiCall('/matches', {
+        method: 'POST',
+        body: JSON.stringify(newMatch),
+      });
+
+      setNewMatch({
+        ...newMatch,
+        teamA: '',
+        teamB: '',
+        playersA: '',
+        playersB: '',
+        sportId: newMatch.sportId,
+      });
+      setActiveTab('matches');
+      
+      // Refresh matches list
+      const matchesData = await apiCall('/matches');
+      setMatches(matchesData);
+    } catch (error) {
+      alert('Failed to create match');
+    }
   };
 
   const handleDeleteMatch = async (matchId) => {
     if (!window.confirm('Are you sure you want to delete this match?')) return;
-    await deleteDoc(doc(db, 'artifacts', APP_ID, 'matches', matchId));
-    setEditingMatch(null);
+    
+    try {
+      await apiCall(`/matches/${matchId}`, { method: 'DELETE' });
+      setEditingMatch(null);
+      
+      // Refresh matches list
+      const matchesData = await apiCall('/matches');
+      setMatches(matchesData);
+    } catch (error) {
+      alert('Failed to delete match');
+    }
   };
 
   const handleUpdateMatch = async (matchId, updates) => {
-    await updateDoc(doc(db, 'artifacts', APP_ID, 'matches', matchId), {
-      ...updates,
-      lastUpdated: serverTimestamp(),
-    });
+    try {
+      await apiCall(`/matches/${matchId}`, {
+        method: 'PUT',
+        body: JSON.stringify(updates),
+      });
+      
+      // Refresh matches list
+      const matchesData = await apiCall('/matches');
+      setMatches(matchesData);
+    } catch (error) {
+      alert('Failed to update match');
+    }
   };
 
   const handleAddCommentary = async (matchId, text) => {
     if (!text.trim()) return;
-    const newComment = {
-      id: Date.now(),
-      text,
-      time: new Date().toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      }),
-    };
-    await updateDoc(doc(db, 'artifacts', APP_ID, 'matches', matchId), {
-      commentary: arrayUnion(newComment),
-      lastUpdated: serverTimestamp(),
-    });
+    
+    try {
+      await apiCall(`/matches/${matchId}/commentary`, {
+        method: 'POST',
+        body: JSON.stringify({ text }),
+      });
+      
+      // Refresh matches list
+      const matchesData = await apiCall('/matches');
+      setMatches(matchesData);
+    } catch (error) {
+      alert('Failed to add commentary');
+    }
   };
 
   const getSportName = (sportId) =>
@@ -638,7 +726,6 @@ export default function Scores() {
       <div className="hero-gradient-bg " />
       <header className="header">
         <div className="header-content container">
-          {/* Mobile hamburger on the opposite side of ZEST LIVE */}
           <button
             type="button"
             className="btn-icon show-mobile header-menu-left"
