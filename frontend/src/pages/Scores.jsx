@@ -65,7 +65,7 @@ export async function apiCall(endpoint, options = {}) {
     };
   }
 
-  const response = await fetch(`http://localhost:5000/api${endpoint}`, {
+  const response = await fetch(`https://us-central1-sports-live-hub-5d910.cloudfunctions.net/api${endpoint}`, {
     ...options,
     headers,
   });
@@ -78,7 +78,7 @@ export async function apiCall(endpoint, options = {}) {
 }
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = 'https://us-central1-sports-live-hub-5d910.cloudfunctions.net/api';
 
 const StatusBadge = ({ status }) => {
   const normalized = (status || '').toLowerCase();
@@ -457,24 +457,43 @@ export default function Scores() {
     setLoginPin('');
   };
 
-  const handleCreateSport = async () => {
-    const name = newSportName.trim();
-    if (!name) return;
-    
-    try {
-      await apiCall('/sports', {
-        method: 'POST',
-        body: JSON.stringify({ name }),
-      });
-      setNewSportName('');
-      
-      // Refresh sports list
-      const sportsData = await apiCall('/sports');
-      setSports(sportsData);
-    } catch (error) {
-      alert('Failed to create sport');
+ const handleCreateSport = async () => {
+  const name = newSportName.trim();
+  if (!name) return;
+
+  try {
+    // Get Firebase ID token for coordinator
+    const user = auth.currentUser; // Make sure user is signed in as coordinator
+    if (!user) {
+      alert("Please log in as coordinator");
+      return;
     }
-  };
+
+    const token = await user.getIdToken();
+
+    // Call API with Authorization header
+    await apiCall('/sports', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+        'x-coordinator-pin': '1213',  // required by middleware
+      },
+      body: JSON.stringify({ name }),
+    });
+
+    setNewSportName('');
+
+    // Refresh sports list
+    const sportsData = await apiCall('/sports');
+    setSports(sportsData);
+
+  } catch (error) {
+    console.error(error);
+    alert('Failed to create sport');
+  }
+};
+
 
   const handleDeleteSport = async (sportId) => {
     if (!window.confirm('Delete this sport category?')) return;
@@ -498,6 +517,7 @@ export default function Scores() {
       await apiCall('/matches', {
         method: 'POST',
         body: JSON.stringify(newMatch),
+        'x-coordinator-pin': '1213',
       });
 
       setNewMatch({

@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import express from "express";
 import cors from "cors";
-import { admin, db } from "./config/firebase.js";
+import { admin, db, auth } from "./firebase.js";
 
 import authRoutes from "./routes/auth.js";
 import matchesRoutes from "./routes/matches.js";
@@ -31,9 +31,9 @@ app.use(
 app.use(express.json());
 
 // Mount routes
-app.use("/api/auth", authRoutes);
-app.use("/api/matches", matchesRoutes);
-app.use("/api/sports", sportsRoutes);
+app.use("/auth", authRoutes);
+app.use("/matches", matchesRoutes);
+app.use("/sports", sportsRoutes);
 
 // Health & Root
 app.get("/health", (req, res) => {
@@ -43,6 +43,10 @@ app.get("/health", (req, res) => {
     environment: "firebase",
     modules: "ES6",
   });
+});
+
+app.get("/api/test", (req, res) => {
+  res.json({ message: "Test route works" });
 });
 
 app.get("/", (req, res) => {
@@ -72,14 +76,21 @@ export const api = functions
     minInstances: 1, // keep function warm
   })
   .https.onRequest(app);
+  
+
+
+  //deployment= comment this out and enable above code for blaze plan mininstances
+  //export const api = functions.https.onRequest(app);
 
 // Keep-warm function pinging health endpoint
+//deployment remove cooment from below if fastness is required, requires paid plan
+
 export const keepWarm = functions.pubsub
   .schedule("every 5 minutes")
   .onRun(async () => {
     const https = await import("https");
     const functionUrl =
-      "https://us-central1-YOUR_PROJECT_ID.cloudfunctions.net/api/health";
+      "https://us-central1-sports-live-hub.cloudfunctions.net/api/health";
 
     return new Promise((resolve) => {
       https.default
