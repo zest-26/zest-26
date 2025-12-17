@@ -75,7 +75,7 @@ function AnimatedRoutes() {
 
   return (
     <div className='w-screen h-screen'>
-      {location.pathname === "/" && <Header />}
+      
       <main className='w-full min-h-screen mt-0 scroll-smooth'>
         <Routes location={location} key={location.pathname}>
           <Route 

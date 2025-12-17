@@ -69,6 +69,7 @@ app.use((err, req, res, next) => {
 });
 
 // Export as Firebase Function with minInstances
+/*
 export const api = functions
   .runWith({
     timeoutSeconds: 300, // 5 minutes
@@ -77,14 +78,15 @@ export const api = functions
   })
   .https.onRequest(app);
   
-
+*/
 
   //deployment= comment this out and enable above code for blaze plan mininstances
-  //export const api = functions.https.onRequest(app);
+  export const api = functions.https.onRequest(app);
 
 // Keep-warm function pinging health endpoint
 //deployment remove cooment from below if fastness is required, requires paid plan
 
+/*
 export const keepWarm = functions.pubsub
   .schedule("every 5 minutes")
   .onRun(async () => {
@@ -104,3 +106,4 @@ export const keepWarm = functions.pubsub
         });
     });
   });
+*/

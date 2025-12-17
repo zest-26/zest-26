@@ -64,6 +64,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Internal server error" });
 });
 
+/*
+
 // Export as Firebase Function with minInstances
 export const api = functions
   .runWith({
@@ -93,3 +95,10 @@ export const keepWarm = functions.pubsub
         });
     });
   });
+
+  */
+
+  const PORT = 5000;
+app.listen(PORT, () => {
+  console.log(`Backend listening on http://localhost:${PORT}`);
+});
