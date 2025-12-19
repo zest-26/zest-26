@@ -5,6 +5,18 @@ import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
+function GoalPost() {
+  const { scene } = useGLTF("/3DModels/football_goal.glb");
+
+  return (
+    <primitive
+      object={scene}
+      position={[270.5, -380, -600]}
+      scale={1.1}
+      rotation={[0, Math.PI, 0]} // X, Y, Z in radians
+    />
+  );
+}
 
 
 function Model() {
@@ -109,14 +121,14 @@ const Home = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden grid grid-cols-12 bg-black">
       {/* 🟨 LEFT COLUMN */}
-  <div className="col-span-3 flex items-center h-full justify-center bg-gray-950 text-white">
+  <div className="col-span-3 flex items-center h-full justify-center  text-white">
     <div className="pointer-events-auto">
       LEFT CONTENT
     </div>
   </div>
-     <div className="col-span-6 bg-amber-400 h-full grid grid-rows-12 min-w-0 min-h-0 relative">
+     <div className="col-span-6  h-full grid grid-rows-12 min-w-0 min-h-0 relative">
 
-  <div className="row-span-2 bg-gray-950 overflow-hidden flex items-center justify-center min-w-0">
+  <div className="row-span-2 overflow-hidden flex items-center justify-center min-w-0">
     <img
       src="/mindsparkLogo.png"
       alt="header"
@@ -124,14 +136,19 @@ const Home = () => {
     />
   </div>
 
-  <div className="row-span-10 min-w-0 min-h-0 overflow-hidden flex justify-center items-center bg-red-500">
-    <Canvas
-      className="w-full h-full max-w-full max-h-full"
-      camera={{ position: [0, 1.5, 5], fov: 50 }}
-    >
+ <div className="row-span-10 min-w-0 min-h-0 relative overflow-hidden ">
+ 
+
+  
+
+  
+  <div className="absolute inset-0 z-10 w-full h-full pointer-events-none">
+    <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
       <Suspense fallback={null}>
         <Model />
       </Suspense>
+
+      
 
       <EffectComposer>
         <Bloom intensity={2.5} luminanceThreshold={0} luminanceSmoothing={0.9} />
@@ -140,12 +157,15 @@ const Home = () => {
       <OrbitControls enableZoom={false} />
     </Canvas>
   </div>
+  
+</div>
+
 
 </div>
 
 
       {/* 🟩 RIGHT COLUMN */}
-  <div className="col-span-3 flex h-full items-center justify-center bg-gray-950 text-white">
+  <div className="col-span-3 flex h-full items-center justify-center  text-white">
     <div className="pointer-events-auto">
       RIGHT CONTENT
     </div>
