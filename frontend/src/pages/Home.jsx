@@ -4,6 +4,8 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import ElectricBorder from "@/components/ElectricBorder";
+
 
 function GoalPost() {
   const { scene } = useGLTF("/3DModels/football_goal.glb");
@@ -121,10 +123,16 @@ const Home = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden grid grid-cols-12 bg-black">
       {/* 🟨 LEFT COLUMN */}
-  <div className="col-span-3 flex items-center h-full justify-center  text-white">
-    <div className="pointer-events-auto">
+  <div className="col-span-3 flex items-center h-full justify-center bg-amber-300  text-white">
+    <ElectricBorder className="h-5/8 w-5/6" color="#00ffff"
+  strokeWidth={4}
+  chaos={0.7}
+  speed={1.2}
+  glow={1.3}>
+    <div className="pointer-events-auto bg-red-300 h-full w-full flex items-center justify-center">
       LEFT CONTENT
     </div>
+  </ElectricBorder>
   </div>
      <div className="col-span-6  h-full grid grid-rows-12 min-w-0 min-h-0 relative">
 
@@ -142,7 +150,7 @@ const Home = () => {
   
 
   
-  <div className="absolute inset-0 z-10 w-full h-full pointer-events-none">
+  <div className="absolute inset-0 z-10 w-full h-full bg-amber-800 pointer-events-none">
     <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
       <Suspense fallback={null}>
         <Model />
@@ -165,10 +173,16 @@ const Home = () => {
 
 
       {/* 🟩 RIGHT COLUMN */}
-  <div className="col-span-3 flex h-full items-center justify-center  text-white">
-    <div className="pointer-events-auto">
-      RIGHT CONTENT
+ <div className="col-span-3 flex items-center h-full justify-center bg-amber-300  text-white">
+    <ElectricBorder className="h-5/8 w-5/6" color="#00ffff"
+  strokeWidth={4}
+  chaos={0.7}
+  speed={1.2}
+  glow={1.3}>
+    <div className="pointer-events-auto bg-red-300 h-full w-full flex items-center justify-center">
+      LEFT CONTENT
     </div>
+  </ElectricBorder>
   </div>
     </div>
   );
