@@ -5,6 +5,11 @@ import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import ElectricBorder from "@/components/ElectricBorder";
+import {GridScan} from "@/components/GridScan";
+import GradientText from '@/components/GradientText'
+import './HomeButton.css';
+import { useNavigate } from "react-router-dom";
+
 
 
 function GoalPost() {
@@ -120,21 +125,290 @@ useGLTF.preload("/3DModels/football3D.glb");
 
 
 const Home = () => {
+
+const navigate = useNavigate();
+
   return (
-    <div className="relative h-screen w-full overflow-hidden grid grid-cols-12 bg-black">
+    <div className="relative h-screen w-full overflow-hidden grid grid-cols-40 bg-black">
+
+    <div className="col-span-1 flex items-center h-full justify-center "></div>
       {/* 🟨 LEFT COLUMN */}
-  <div className="col-span-3 flex items-center h-full justify-center bg-amber-300  text-white">
-    <ElectricBorder className="h-5/8 w-5/6" color="#00ffff"
-  strokeWidth={4}
-  chaos={0.7}
-  speed={1.2}
-  glow={1.3}>
-    <div className="pointer-events-auto bg-red-300 h-full w-full flex items-center justify-center">
-      LEFT CONTENT
+ <div className="col-span-8 flex items-center h-full justify-center text-white">
+  <div className="h-5/8 w-5/6 flex flex-col justify-between ">
+ 
+
+<div         onClick={() => navigate("/Sports")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">
+  <div className="home-container w-full h-full -skew-x-24">
+    <div className="home-canvas w-full h-full relative">
+      <div className="home-tracker home-tr-1"></div>
+      <div className="home-tracker home-tr-2"></div>
+      <div className="home-tracker home-tr-3"></div>
+      <div className="home-tracker home-tr-4"></div>
+      <div className="home-tracker home-tr-5"></div>
+      <div className="home-tracker home-tr-6"></div>
+      <div className="home-tracker home-tr-7"></div>
+      <div className="home-tracker home-tr-8"></div>
+      <div className="home-tracker home-tr-9"></div>
+      <div className="home-tracker home-tr-10"></div>
+      <div className="home-tracker home-tr-11"></div>
+      <div className="home-tracker home-tr-12"></div>
+      <div className="home-tracker home-tr-13"></div>
+      <div className="home-tracker home-tr-14"></div>
+      <div className="home-tracker home-tr-15"></div>
+      <div className="home-tracker home-tr-16"></div>
+      <div className="home-tracker home-tr-17"></div>
+      <div className="home-tracker home-tr-18"></div>
+      <div className="home-tracker home-tr-19"></div>
+      <div className="home-tracker home-tr-20"></div>
+      <div className="home-tracker home-tr-21"></div>
+      <div className="home-tracker home-tr-22"></div>
+      <div className="home-tracker home-tr-23"></div>
+      <div className="home-tracker home-tr-24"></div>
+      <div className="home-tracker home-tr-25"></div>
+
+      <div
+
+        className="bg-red-600  home-card w-full h-full relative"
+      >
+        <div className="home-card-content w-full h-full relative">
+          <div className="home-card-glare"></div>
+
+          <div className="home-cyber-lines w-full h-full relative">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-title skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
+            SPORTS
+          </div>
+
+          <div className="home-glowing-elements absolute inset-0">
+            <div className="home-glow-1"></div>
+            <div className="home-glow-2"></div>
+            <div className="home-glow-3"></div>
+          </div>
+
+          <div className="home-card-particles absolute inset-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-corner-elements absolute inset-0">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-scan-line absolute inset-0"></div>
+        </div>
+      </div>
     </div>
-  </ElectricBorder>
   </div>
-     <div className="col-span-6  h-full grid grid-rows-12 min-w-0 min-h-0 relative">
+</div>
+
+
+
+
+ <div         onClick={() => navigate("/Accomodations")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">
+  <div className="home-container w-full h-full -skew-x-24">
+    <div className="home-canvas w-full h-full relative">
+      <div className="home-tracker home-tr-1"></div>
+      <div className="home-tracker home-tr-2"></div>
+      <div className="home-tracker home-tr-3"></div>
+      <div className="home-tracker home-tr-4"></div>
+      <div className="home-tracker home-tr-5"></div>
+      <div className="home-tracker home-tr-6"></div>
+      <div className="home-tracker home-tr-7"></div>
+      <div className="home-tracker home-tr-8"></div>
+      <div className="home-tracker home-tr-9"></div>
+      <div className="home-tracker home-tr-10"></div>
+      <div className="home-tracker home-tr-11"></div>
+      <div className="home-tracker home-tr-12"></div>
+      <div className="home-tracker home-tr-13"></div>
+      <div className="home-tracker home-tr-14"></div>
+      <div className="home-tracker home-tr-15"></div>
+      <div className="home-tracker home-tr-16"></div>
+      <div className="home-tracker home-tr-17"></div>
+      <div className="home-tracker home-tr-18"></div>
+      <div className="home-tracker home-tr-19"></div>
+      <div className="home-tracker home-tr-20"></div>
+      <div className="home-tracker home-tr-21"></div>
+      <div className="home-tracker home-tr-22"></div>
+      <div className="home-tracker home-tr-23"></div>
+      <div className="home-tracker home-tr-24"></div>
+      <div className="home-tracker home-tr-25"></div>
+
+      <div
+
+        className="bg-red-600  home-card w-full h-full relative"
+      >
+        <div className="home-card-content w-full h-full relative">
+          <div className="home-card-glare"></div>
+
+          <div className="home-cyber-lines w-full h-full relative">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-title skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
+            ACCOMODATION
+          </div>
+
+          <div className="home-glowing-elements absolute inset-0">
+            <div className="home-glow-1"></div>
+            <div className="home-glow-2"></div>
+            <div className="home-glow-3"></div>
+          </div>
+
+          <div className="home-card-particles absolute inset-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-corner-elements absolute inset-0">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-scan-line absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+     <div         onClick={() => navigate("/Scores")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">
+  <div className="home-container w-full h-full -skew-x-24">
+    <div className="home-canvas w-full h-full relative">
+      <div className="home-tracker home-tr-1"></div>
+      <div className="home-tracker home-tr-2"></div>
+      <div className="home-tracker home-tr-3"></div>
+      <div className="home-tracker home-tr-4"></div>
+      <div className="home-tracker home-tr-5"></div>
+      <div className="home-tracker home-tr-6"></div>
+      <div className="home-tracker home-tr-7"></div>
+      <div className="home-tracker home-tr-8"></div>
+      <div className="home-tracker home-tr-9"></div>
+      <div className="home-tracker home-tr-10"></div>
+      <div className="home-tracker home-tr-11"></div>
+      <div className="home-tracker home-tr-12"></div>
+      <div className="home-tracker home-tr-13"></div>
+      <div className="home-tracker home-tr-14"></div>
+      <div className="home-tracker home-tr-15"></div>
+      <div className="home-tracker home-tr-16"></div>
+      <div className="home-tracker home-tr-17"></div>
+      <div className="home-tracker home-tr-18"></div>
+      <div className="home-tracker home-tr-19"></div>
+      <div className="home-tracker home-tr-20"></div>
+      <div className="home-tracker home-tr-21"></div>
+      <div className="home-tracker home-tr-22"></div>
+      <div className="home-tracker home-tr-23"></div>
+      <div className="home-tracker home-tr-24"></div>
+      <div className="home-tracker home-tr-25"></div>
+
+      <div
+
+        className="bg-red-600  home-card w-full h-full relative"
+      >
+        <div className="home-card-content w-full h-full relative">
+          <div className="home-card-glare"></div>
+
+          <div className="home-cyber-lines w-full h-full relative">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-title skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
+            SCORES
+          </div>
+
+          <div className="home-glowing-elements absolute inset-0">
+            <div className="home-glow-1"></div>
+            <div className="home-glow-2"></div>
+            <div className="home-glow-3"></div>
+          </div>
+
+          <div className="home-card-particles absolute inset-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-corner-elements absolute inset-0">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-scan-line absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+   <div         onClick={() => navigate("/about")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">
+  <div className="home-container w-full h-full -skew-x-24">
+    <div className="home-canvas w-full h-full relative">
+      <div className="home-tracker home-tr-1"></div>
+      <div className="home-tracker home-tr-2"></div>
+      <div className="home-tracker home-tr-3"></div>
+      <div className="home-tracker home-tr-4"></div>
+      <div className="home-tracker home-tr-5"></div>
+      <div className="home-tracker home-tr-6"></div>
+      <div className="home-tracker home-tr-7"></div>
+      <div className="home-tracker home-tr-8"></div>
+      <div className="home-tracker home-tr-9"></div>
+      <div className="home-tracker home-tr-10"></div>
+      <div className="home-tracker home-tr-11"></div>
+      <div className="home-tracker home-tr-12"></div>
+      <div className="home-tracker home-tr-13"></div>
+      <div className="home-tracker home-tr-14"></div>
+      <div className="home-tracker home-tr-15"></div>
+      <div className="home-tracker home-tr-16"></div>
+      <div className="home-tracker home-tr-17"></div>
+      <div className="home-tracker home-tr-18"></div>
+      <div className="home-tracker home-tr-19"></div>
+      <div className="home-tracker home-tr-20"></div>
+      <div className="home-tracker home-tr-21"></div>
+      <div className="home-tracker home-tr-22"></div>
+      <div className="home-tracker home-tr-23"></div>
+      <div className="home-tracker home-tr-24"></div>
+      <div className="home-tracker home-tr-25"></div>
+
+      <div
+
+        className="bg-red-600  home-card w-full h-full relative"
+      >
+        <div className="home-card-content w-full h-full relative">
+          <div className="home-card-glare"></div>
+
+          <div className="home-cyber-lines w-full h-full relative">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-title skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
+            ABOUT US
+          </div>
+
+          <div className="home-glowing-elements absolute inset-0">
+            <div className="home-glow-1"></div>
+            <div className="home-glow-2"></div>
+            <div className="home-glow-3"></div>
+          </div>
+
+          <div className="home-card-particles absolute inset-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-corner-elements absolute inset-0">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-scan-line absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+     <div className="col-span-22  h-full grid grid-rows-12 min-w-0 min-h-0 relative">
 
   <div className="row-span-2 overflow-hidden flex items-center justify-center min-w-0">
     <img
@@ -150,7 +424,8 @@ const Home = () => {
   
 
   
-  <div className="absolute inset-0 z-10 w-full h-full bg-amber-800 pointer-events-none">
+  <div className="absolute inset-0 z-10 w-full h-full  pointer-events-none">
+    
     <Canvas camera={{ position: [0, 1.5, 5], fov: 50 }}>
       <Suspense fallback={null}>
         <Model />
@@ -164,6 +439,7 @@ const Home = () => {
 
       <OrbitControls enableZoom={false} />
     </Canvas>
+    
   </div>
   
 </div>
@@ -173,17 +449,281 @@ const Home = () => {
 
 
       {/* 🟩 RIGHT COLUMN */}
- <div className="col-span-3 flex items-center h-full justify-center bg-amber-300  text-white">
-    <ElectricBorder className="h-5/8 w-5/6" color="#00ffff"
-  strokeWidth={4}
-  chaos={0.7}
-  speed={1.2}
-  glow={1.3}>
-    <div className="pointer-events-auto bg-red-300 h-full w-full flex items-center justify-center">
-      LEFT CONTENT
+ <div className="col-span-8 flex items-center h-full justify-center text-white">
+  <div className="h-5/8 w-5/6 flex flex-col justify-between ">
+ 
+    {/* Rhomboid container */}
+    <div         onClick={() => navigate("/Gallery")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">
+  <div className="home-container w-full h-full skew-x-24">
+    <div className="home-canvas w-full h-full relative">
+      <div className="home-tracker home-tr-1"></div>
+      <div className="home-tracker home-tr-2"></div>
+      <div className="home-tracker home-tr-3"></div>
+      <div className="home-tracker home-tr-4"></div>
+      <div className="home-tracker home-tr-5"></div>
+      <div className="home-tracker home-tr-6"></div>
+      <div className="home-tracker home-tr-7"></div>
+      <div className="home-tracker home-tr-8"></div>
+      <div className="home-tracker home-tr-9"></div>
+      <div className="home-tracker home-tr-10"></div>
+      <div className="home-tracker home-tr-11"></div>
+      <div className="home-tracker home-tr-12"></div>
+      <div className="home-tracker home-tr-13"></div>
+      <div className="home-tracker home-tr-14"></div>
+      <div className="home-tracker home-tr-15"></div>
+      <div className="home-tracker home-tr-16"></div>
+      <div className="home-tracker home-tr-17"></div>
+      <div className="home-tracker home-tr-18"></div>
+      <div className="home-tracker home-tr-19"></div>
+      <div className="home-tracker home-tr-20"></div>
+      <div className="home-tracker home-tr-21"></div>
+      <div className="home-tracker home-tr-22"></div>
+      <div className="home-tracker home-tr-23"></div>
+      <div className="home-tracker home-tr-24"></div>
+      <div className="home-tracker home-tr-25"></div>
+
+      <div
+
+        className="bg-red-600  home-card w-full h-full relative"
+      >
+        <div className="home-card-content w-full h-full relative">
+          <div className="home-card-glare"></div>
+
+          <div className="home-cyber-lines w-full h-full relative">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-title -skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
+            GALLERY
+          </div>
+
+          <div className="home-glowing-elements absolute inset-0">
+            <div className="home-glow-1"></div>
+            <div className="home-glow-2"></div>
+            <div className="home-glow-3"></div>
+          </div>
+
+          <div className="home-card-particles absolute inset-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-corner-elements absolute inset-0">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-scan-line absolute inset-0"></div>
+        </div>
+      </div>
     </div>
-  </ElectricBorder>
   </div>
+</div>
+     
+<div         onClick={() => navigate("/coreTeam")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">
+  <div className="home-container w-full h-full skew-x-24">
+    <div className="home-canvas w-full h-full relative">
+      <div className="home-tracker home-tr-1"></div>
+      <div className="home-tracker home-tr-2"></div>
+      <div className="home-tracker home-tr-3"></div>
+      <div className="home-tracker home-tr-4"></div>
+      <div className="home-tracker home-tr-5"></div>
+      <div className="home-tracker home-tr-6"></div>
+      <div className="home-tracker home-tr-7"></div>
+      <div className="home-tracker home-tr-8"></div>
+      <div className="home-tracker home-tr-9"></div>
+      <div className="home-tracker home-tr-10"></div>
+      <div className="home-tracker home-tr-11"></div>
+      <div className="home-tracker home-tr-12"></div>
+      <div className="home-tracker home-tr-13"></div>
+      <div className="home-tracker home-tr-14"></div>
+      <div className="home-tracker home-tr-15"></div>
+      <div className="home-tracker home-tr-16"></div>
+      <div className="home-tracker home-tr-17"></div>
+      <div className="home-tracker home-tr-18"></div>
+      <div className="home-tracker home-tr-19"></div>
+      <div className="home-tracker home-tr-20"></div>
+      <div className="home-tracker home-tr-21"></div>
+      <div className="home-tracker home-tr-22"></div>
+      <div className="home-tracker home-tr-23"></div>
+      <div className="home-tracker home-tr-24"></div>
+      <div className="home-tracker home-tr-25"></div>
+
+      <div
+
+        className="bg-red-600  home-card w-full h-full relative"
+      >
+        <div className="home-card-content w-full h-full relative">
+          <div className="home-card-glare"></div>
+
+          <div className="home-cyber-lines w-full h-full relative">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-title -skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
+            CORE TEAM
+          </div>
+
+          <div className="home-glowing-elements absolute inset-0">
+            <div className="home-glow-1"></div>
+            <div className="home-glow-2"></div>
+            <div className="home-glow-3"></div>
+          </div>
+
+          <div className="home-card-particles absolute inset-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-corner-elements absolute inset-0">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-scan-line absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+     
+<div         onClick={() => navigate("/Sponsers")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">
+  <div className="home-container w-full h-full skew-x-24">
+    <div className="home-canvas w-full h-full relative">
+      <div className="home-tracker home-tr-1"></div>
+      <div className="home-tracker home-tr-2"></div>
+      <div className="home-tracker home-tr-3"></div>
+      <div className="home-tracker home-tr-4"></div>
+      <div className="home-tracker home-tr-5"></div>
+      <div className="home-tracker home-tr-6"></div>
+      <div className="home-tracker home-tr-7"></div>
+      <div className="home-tracker home-tr-8"></div>
+      <div className="home-tracker home-tr-9"></div>
+      <div className="home-tracker home-tr-10"></div>
+      <div className="home-tracker home-tr-11"></div>
+      <div className="home-tracker home-tr-12"></div>
+      <div className="home-tracker home-tr-13"></div>
+      <div className="home-tracker home-tr-14"></div>
+      <div className="home-tracker home-tr-15"></div>
+      <div className="home-tracker home-tr-16"></div>
+      <div className="home-tracker home-tr-17"></div>
+      <div className="home-tracker home-tr-18"></div>
+      <div className="home-tracker home-tr-19"></div>
+      <div className="home-tracker home-tr-20"></div>
+      <div className="home-tracker home-tr-21"></div>
+      <div className="home-tracker home-tr-22"></div>
+      <div className="home-tracker home-tr-23"></div>
+      <div className="home-tracker home-tr-24"></div>
+      <div className="home-tracker home-tr-25"></div>
+
+      <div
+
+        className="bg-red-600  home-card w-full h-full relative"
+      >
+        <div className="home-card-content w-full h-full relative">
+          <div className="home-card-glare"></div>
+
+          <div className="home-cyber-lines w-full h-full relative">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-title -skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
+            SPONSERS
+          </div>
+
+          <div className="home-glowing-elements absolute inset-0">
+            <div className="home-glow-1"></div>
+            <div className="home-glow-2"></div>
+            <div className="home-glow-3"></div>
+          </div>
+
+          <div className="home-card-particles absolute inset-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-corner-elements absolute inset-0">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-scan-line absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div         onClick={() => navigate("/contactUs")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">
+  <div className="home-container w-full h-full skew-x-24">
+    <div className="home-canvas w-full h-full relative">
+      <div className="home-tracker home-tr-1"></div>
+      <div className="home-tracker home-tr-2"></div>
+      <div className="home-tracker home-tr-3"></div>
+      <div className="home-tracker home-tr-4"></div>
+      <div className="home-tracker home-tr-5"></div>
+      <div className="home-tracker home-tr-6"></div>
+      <div className="home-tracker home-tr-7"></div>
+      <div className="home-tracker home-tr-8"></div>
+      <div className="home-tracker home-tr-9"></div>
+      <div className="home-tracker home-tr-10"></div>
+      <div className="home-tracker home-tr-11"></div>
+      <div className="home-tracker home-tr-12"></div>
+      <div className="home-tracker home-tr-13"></div>
+      <div className="home-tracker home-tr-14"></div>
+      <div className="home-tracker home-tr-15"></div>
+      <div className="home-tracker home-tr-16"></div>
+      <div className="home-tracker home-tr-17"></div>
+      <div className="home-tracker home-tr-18"></div>
+      <div className="home-tracker home-tr-19"></div>
+      <div className="home-tracker home-tr-20"></div>
+      <div className="home-tracker home-tr-21"></div>
+      <div className="home-tracker home-tr-22"></div>
+      <div className="home-tracker home-tr-23"></div>
+      <div className="home-tracker home-tr-24"></div>
+      <div className="home-tracker home-tr-25"></div>
+
+      <div
+
+        className="bg-red-600  home-card w-full h-full relative"
+      >
+        <div className="home-card-content w-full h-full relative">
+          <div className="home-card-glare"></div>
+
+          <div className="home-cyber-lines w-full h-full relative">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-title -skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
+            CONTACT US
+          </div>
+
+          <div className="home-glowing-elements absolute inset-0">
+            <div className="home-glow-1"></div>
+            <div className="home-glow-2"></div>
+            <div className="home-glow-3"></div>
+          </div>
+
+          <div className="home-card-particles absolute inset-0">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-corner-elements absolute inset-0">
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div className="home-scan-line absolute inset-0"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    
+  </div>
+</div>
+
+<div className="col-span-1 flex items-center h-full justify-center "></div>
+
     </div>
   );
 };
