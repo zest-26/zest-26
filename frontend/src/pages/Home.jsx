@@ -7,6 +7,10 @@ import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import ElectricBorder from "@/components/ElectricBorder";
 import {GridScan} from "@/components/GridScan";
 import GradientText from '@/components/GradientText'
+import LightRays from "@/components/LightRays"; 
+import Galaxy from "@/components/Galaxy";
+
+
 import './HomeButton.css';
 import { useNavigate } from "react-router-dom";
 import {
@@ -137,7 +141,45 @@ const Home = () => {
 const navigate = useNavigate();
 
   return (
-    <div className="relative h-screen w-full overflow-hidden grid grid-cols-40 bg-black">
+    <div className="relative h-screen w-full overflow-hidden bg-black">
+
+        {/* 🌌 GALAXY (Particles) */}
+  <div
+    className="
+      absolute inset-0 z-0 pointer-events-none
+      hue-rotate-[25deg] saturate-200 brightness-110
+    "
+  >
+    <Galaxy
+       density={0.4}
+      glowIntensity={0.15}
+      starSpeed={0.6}
+      twinkleIntensity={0.4}
+      rotationSpeed={0.08}
+      mouseInteraction={false}
+      mouseRepulsion={false}
+      transparent
+    />
+  </div>
+
+  {/* 🌈 LIGHT RAYS */}
+  <div className="absolute inset-0 z-10 pointer-events-none">
+    <LightRays
+      raysOrigin="top-center"
+      raysColor="#EE7F4F"
+      raysSpeed={1.5}
+      lightSpread={0.8}
+      rayLength={3}
+      followMouse
+      mouseInfluence={0.1}
+      noiseAmount={0.1}
+      distortion={0.05}
+      className="w-full h-full"
+    />
+  </div>
+
+   {/* 🧱 Page Content */}
+  <div className="relative z-10 grid grid-cols-40 h-full w-full">
 
     <div className="col-span-1 flex items-center h-full justify-center "></div>
       {/* 🟨 LEFT COLUMN */}
@@ -837,7 +879,7 @@ const navigate = useNavigate();
 </div>
 
 <div className="col-span-1 flex items-center h-full justify-center "></div>
-
+   </div>
     </div>
   );
 };
