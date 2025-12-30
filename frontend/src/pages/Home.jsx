@@ -9,6 +9,14 @@ import {GridScan} from "@/components/GridScan";
 import GradientText from '@/components/GradientText'
 import './HomeButton.css';
 import { useNavigate } from "react-router-dom";
+import {
+  Instagram,
+  Linkedin,
+  Twitter,
+  Facebook,
+  Youtube
+} from "lucide-react";
+
 
 
 
@@ -133,7 +141,7 @@ const navigate = useNavigate();
 
     <div className="col-span-1 flex items-center h-full justify-center "></div>
       {/* 🟨 LEFT COLUMN */}
- <div className="col-span-8 flex items-center h-full justify-center text-white">
+ <div className="col-span-8  flex items-center h-full justify-center text-white">
   <div className="h-5/8 w-5/6 flex flex-col justify-between ">
  
 
@@ -418,7 +426,7 @@ const navigate = useNavigate();
     />
   </div>
 
- <div className="row-span-10 min-w-0 min-h-0 relative overflow-hidden ">
+ <div className="row-span-8  min-w-0 min-h-0 relative overflow-hidden ">
  
 
   
@@ -442,6 +450,112 @@ const navigate = useNavigate();
     
   </div>
   
+</div>
+
+<div className=" relative w-full h-full row-span-2 grid grid-rows-10">
+  <div className=" w-full h-full row-span-1"></div>
+
+<div className="w-full h-full row-span-4 flex items-stretch justify-center gap-6">
+  {/* Instagram */}
+  <div className="h-full aspect-square p-2">
+    <a
+      href="https://www.instagram.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full w-full"
+    >
+      <Instagram
+        className="
+          h-full w-full text-orange-300 hover:text-orange-200
+          [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
+          hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
+        "
+      />
+    </a>
+  </div>
+
+  {/* LinkedIn */}
+  <div className="h-full aspect-square p-2">
+    <a
+      href="https://www.linkedin.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full w-full"
+    >
+      <Linkedin
+        className="
+          h-full w-full text-orange-300 hover:text-orange-200
+          [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
+          hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
+        "
+      />
+    </a>
+  </div>
+
+  {/* X / Twitter */}
+  <div className="h-full aspect-square p-2">
+    <a
+      href="https://twitter.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full w-full"
+    >
+      <Twitter
+        className="
+          h-full w-full text-orange-300 hover:text-orange-200
+         [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
+          hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
+        "
+      />
+    </a>
+  </div>
+
+  {/* Facebook */}
+  <div className="h-full aspect-square p-2">
+    <a
+      href="https://www.facebook.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full w-full"
+    >
+      <Facebook
+        className="
+          h-full w-full text-orange-300 hover:text-orange-200
+         [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
+          hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
+        "
+      />
+    </a>
+  </div>
+
+  {/* YouTube */}
+  <div className="h-full aspect-square p-2">
+    <a
+      href="https://www.youtube.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full w-full"
+    >
+      <Youtube
+        className="
+          h-full w-full text-orange-300 hover:text-orange-200
+          [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
+          hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
+        "
+      />
+    </a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+  <div className=" w-full h-full row-span-5"></div>
+
 </div>
 
 

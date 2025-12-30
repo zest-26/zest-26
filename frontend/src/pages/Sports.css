@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&family=Inter:wght@300;400;600;800&display=swap');
+
+:root {
+  --zest-bg: #030303;
+  --zest-card-bg: #0f0f10;
+  --zest-orange: #FF5E00;
+  --zest-white: #ffffff;
+  --zest-grey: #a0a0a0;
+}
+
+/* PAGE WRAPPER */
+.zest-sports-page-wrapper {
+  background-color: var(--zest-bg);
+  min-height: 100vh;
+  padding: 120px 5% 50px;
+  color: var(--zest-white);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  perspective: 1000px; /* Essential for 3D effects */
+}
+
+/* BACKGROUND MARQUEE */
+.zest-bg-marquee {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+  transform: rotate(-5deg);
+}
+
+.zest-bg-marquee-text {
+  white-space: nowrap;
+  font-family: 'Teko', sans-serif;
+  font-size: 15rem;
+  font-weight: 700;
+  color: #fff;
+  will-change: transform;
+}
+
+/* 1. HEADER */
+.zest-sports-header {
+  text-align: center;
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.zest-sports-pill {
+  border: 1px solid var(--zest-orange);
+  color: var(--zest-orange);
+  padding: 6px 18px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(5px);
+}
+
+.icon-pulse {
+  animation: pulseOrange 2s infinite;
+}
+
+@keyframes pulseOrange {
+  0% { text-shadow: 0 0 0 rgba(255, 94, 0, 0); }
+  50% { text-shadow: 0 0 20px rgba(255, 94, 0, 1); filter: drop-shadow(0 0 5px #FF5E00); }
+  100% { text-shadow: 0 0 0 rgba(255, 94, 0, 0); }
+}
+
+.zest-sports-main-title {
+  font-family: 'Teko', sans-serif;
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.85;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+  color: #FF5E00;
+  font-weight: 700;
+  text-shadow: 0 0 40px rgba(0,0,0,0.8);
+}
+
+.zest-sports-text-stroke {
+  -webkit-text-stroke: 2px #ffffff;
+  color: transparent;
+  transition: all 0.5s;
+}
+
+.zest-sports-main-title:hover .zest-sports-text-stroke {
+  color: rgba(255,255,255,0.1);
+  text-shadow: 0 0 20px rgba(255,255,255,0.2);
+}
+
+.zest-sports-subtitle {
+  color: var(--zest-grey);
+  max-width: 600px;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* 2. FILTER TABS */
+.zest-sports-filter-container {
+  margin-top: 40px;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.zest-sports-filter-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  padding: 12px 35px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-family: 'Teko', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.zest-sports-filter-btn:hover, 
+.zest-sports-filter-btn.active {
+  background: var(--zest-orange);
+  border-color: var(--zest-orange);
+  color: #000;
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(255, 94, 0, 0.3);
+}
+
+/* 3. MASONRY GRID */
+.zest-sports-masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-auto-rows: 300px;
+  gap: 30px;
+  margin-bottom: 100px;
+  perspective: 1000px;
+  position: relative;
+  z-index: 2;
+}
+
+.zest-sports-card.h-short { grid-row: span 1; }
+.zest-sports-card.h-med   { grid-row: span 2; }
+.zest-sports-card.h-tall  { grid-row: span 2; }
+
+@media (max-width: 768px) {
+  .zest-sports-card.h-tall, .zest-sports-card.h-med { 
+    grid-row: span 1; height: 400px; 
+  }
+}
+
+/* 4. CARD STYLES & ANIMATIONS */
+.zest-sports-card {
+  background: var(--zest-card-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  /* 3D Transform Defaults handled by JS, but smoothing helps */
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.zest-sports-img-wrapper {
+  width: 100%; height: 100%;
+  position: relative;
+}
+
+.zest-sports-img-wrapper img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  filter: grayscale(20%);
+}
+
+.zest-sports-card:hover img {
+  transform: scale(1.1);
+  filter: grayscale(0%);
+}
+
+.zest-sports-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #000 0%, transparent 50%, rgba(0,0,0,0.3) 100%);
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.zest-sports-card:hover .zest-sports-img-overlay {
+  opacity: 0.9;
+  background: linear-gradient(to top, #000 0%, rgba(0,0,0,0.8) 50%, transparent 100%);
+}
+
+/* CONTENT REVEAL */
+.zest-sports-card-content {
+  position: absolute;
+  bottom: 0; left: 0; width: 100%;
+  padding: 30px;
+  z-index: 2;
+  transform: translateY(40px); /* Push text down initially */
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.zest-sports-card:hover .zest-sports-card-content {
+  transform: translateY(0);
+}
+
+.zest-sports-category {
+  font-size: 0.8rem;
+  color: var(--zest-orange);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.zest-sports-card-title {
+  font-family: 'Teko', sans-serif;
+  font-size: 3.5rem;
+  margin: 0;
+  line-height: 0.9;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.zest-content-hidden {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin-top: 0;
+}
+
+.zest-sports-card:hover .zest-content-hidden {
+  height: auto;
+  opacity: 1;
+  margin-top: 15px;
+}
+
+.zest-content-hidden p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.zest-explore-btn {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.zest-explore-btn:hover {
+  background: var(--zest-orange);
+  border-color: var(--zest-orange);
+  color: #000;
+}
+
+/* 5. FOOTER SECTION */
+.zest-sports-footer {
+  text-align: center;
+  padding: 50px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.zest-sports-divider {
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--zest-orange));
+  margin: 0 auto 30px;
+}
+
+.zest-sports-footer h2 {
+  font-family: 'Teko', sans-serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.zest-text-highlight { 
+  color: var(--zest-orange); 
+  text-shadow: 0 0 30px rgba(255, 94, 0, 0.4);
+}
+
+.zest-sports-icon-row {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.zest-sports-cta-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.5);
+  padding: 18px 50px;
+  font-family: 'Teko', sans-serif;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.zest-sports-cta-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 0%; height: 100%;
+  background: #fff;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.zest-sports-cta-btn:hover::before {
+  width: 100%;
+}
+
+.zest-sports-cta-btn:hover {
+  color: #000;
+  box-shadow: 0 0 40px rgba(255,255,255,0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .zest-sports-masonry-grid {
+    grid-template-columns: 1fr;
+  }
+}
