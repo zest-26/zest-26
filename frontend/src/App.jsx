@@ -64,7 +64,7 @@ function AnimatedRoutes() {
         duration: 1.3,
         ease: "power2.inOut"
       }, 1.1);
-    }, 2300);
+    }, 1300);
 
     return () => clearTimeout(timer)
   }, [location.pathname])
