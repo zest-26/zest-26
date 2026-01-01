@@ -9,6 +9,7 @@ import {GridScan} from "@/components/GridScan";
 import GradientText from '@/components/GradientText'
 import LightRays from "@/components/LightRays"; 
 import Galaxy from "@/components/Galaxy";
+import { Menu } from "lucide-react";
 
 
 import './HomeButton.css';
@@ -181,9 +182,9 @@ const navigate = useNavigate();
    {/* 🧱 Page Content */}
   <div className="relative z-10 grid grid-cols-40 h-full w-full">
 
-    <div className="col-span-1 flex items-center h-full justify-center "></div>
+    <div className="hidden md:col-span-1 md:flex items-center h-full justify-center "></div>
       {/* 🟨 LEFT COLUMN */}
- <div className="col-span-8  flex items-center h-full justify-center text-white">
+ <div className="col-span-8  hidden md:flex items-center h-full justify-center  text-white">
   <div className="h-5/8 w-5/6 flex flex-col justify-between ">
  
 
@@ -458,14 +459,53 @@ const navigate = useNavigate();
 </div>
 
 
-     <div className="col-span-22  h-full grid grid-rows-12 min-w-0 min-h-0 relative">
+     <div className="col-span-40 md:col-span-22  h-full grid grid-rows-12 min-w-0 min-h-0 relative">
 
-  <div className="row-span-2 overflow-hidden flex items-center justify-center min-w-0">
-    <img
-      src="/mindsparkLogo.png"
-      alt="header"
-      className="max-w-full max-h-full object-contain"
-    />
+  {/* INNER CONTAINER */}
+  <div className="
+    row-span-2
+    overflow-hidden
+    min-w-0
+     md:flex
+    grid grid-cols-10 md:grid-cols-1
+    items-center
+  ">
+
+    {/* START DIV – mobile only */}
+    <div className="col-span-2  md:hidden h-full flex items-center justify-center">
+      {/* optional content */}
+    </div>
+
+    {/* IMAGE */}
+    <div className="col-span-6 md:col-span-1 flex items-center justify-center">
+      <img 
+        src="/mindsparkLogo.png"
+        alt="header"
+        className="max-w-full max-h-full object-contain"
+      />
+    </div>
+
+    {/* END DIV – mobile only */}
+    <div className="col-span-2 pr-2 md:hidden h-full flex items-center justify-end">
+  <div className="h-1/3 border-2 border-amber-950 flex justify-center items-center rounded-sm aspect-square p-0">
+    <button
+      type="button"
+      className="block h-3/4 aspect-square"
+      aria-label="Open menu"
+    >
+      <Menu
+        className="
+          h-full w-full
+          text-orange-300 hover:text-orange-200
+          [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
+          hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
+        "
+        strokeWidth={2}
+      />
+    </button>
+  </div>
+</div>
+
   </div>
 
  <div className="row-span-8  min-w-0 min-h-0 relative overflow-hidden ">
@@ -495,20 +535,20 @@ const navigate = useNavigate();
 </div>
 
 <div className=" relative w-full h-full row-span-2 grid grid-rows-10">
-  <div className=" w-full h-full row-span-1"></div>
+  <div className=" w-full h-full row-span-1 "></div>
 
-<div className="w-full h-full row-span-4 flex items-stretch justify-center gap-6">
+<div className="w-full h-full  row-span-4 flex items-stretch justify-center gap-6">
   {/* Instagram */}
-  <div className="h-full aspect-square p-2">
+  <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
       href="https://www.instagram.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="block h-full w-full"
+      className="flex justify-center items-center md:block h-full  w-full"
     >
       <Instagram
         className="
-          h-full w-full text-orange-300 hover:text-orange-200
+         h-8/10 w-8/10 md:h-full md:w-full text-orange-300 hover:text-orange-200
           [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
           hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
         "
@@ -517,16 +557,16 @@ const navigate = useNavigate();
   </div>
 
   {/* LinkedIn */}
-  <div className="h-full aspect-square p-2">
+  <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
       href="https://www.linkedin.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="block h-full w-full"
+      className="flex justify-center items-center md:block h-full  w-full"
     >
       <Linkedin
         className="
-          h-full w-full text-orange-300 hover:text-orange-200
+        h-8/10 w-8/10 md:h-full md:w-full text-orange-300 hover:text-orange-200
           [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
           hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
         "
@@ -535,16 +575,16 @@ const navigate = useNavigate();
   </div>
 
   {/* X / Twitter */}
-  <div className="h-full aspect-square p-2">
+  <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
       href="https://twitter.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="block h-full w-full"
+      className="flex justify-center items-center md:block h-full  w-full"
     >
       <Twitter
         className="
-          h-full w-full text-orange-300 hover:text-orange-200
+         h-8/10 w-8/10 md:h-full md:w-full text-orange-300 hover:text-orange-200
          [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
           hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
         "
@@ -553,16 +593,16 @@ const navigate = useNavigate();
   </div>
 
   {/* Facebook */}
-  <div className="h-full aspect-square p-2">
+  <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
       href="https://www.facebook.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="block h-full w-full"
+      className="flex justify-center items-center md:block h-full  w-full"
     >
       <Facebook
         className="
-          h-full w-full text-orange-300 hover:text-orange-200
+         h-8/10 w-8/10 md:h-full md:w-full text-orange-300 hover:text-orange-200
          [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
           hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
         "
@@ -571,16 +611,16 @@ const navigate = useNavigate();
   </div>
 
   {/* YouTube */}
-  <div className="h-full aspect-square p-2">
+  <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
       href="https://www.youtube.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className="block h-full w-full"
+      className="flex justify-center items-center md:block h-full  w-full"
     >
       <Youtube
         className="
-          h-full w-full text-orange-300 hover:text-orange-200
+          h-8/10 w-8/10 md:h-full md:w-full text-orange-300 hover:text-orange-200
           [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
           hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
         "
@@ -605,7 +645,7 @@ const navigate = useNavigate();
 
 
       {/* 🟩 RIGHT COLUMN */}
- <div className="col-span-8 flex items-center h-full justify-center text-white">
+ <div className="col-span-8 hidden md:flex  items-center h-full justify-center text-white">
   <div className="h-5/8 w-5/6 flex flex-col justify-between ">
  
     {/* Rhomboid container */}
@@ -878,7 +918,7 @@ const navigate = useNavigate();
   </div>
 </div>
 
-<div className="col-span-1 flex items-center h-full justify-center "></div>
+<div className="hidden md:col-span-1 md:flex items-center h-full justify-center "></div>
    </div>
     </div>
   );
