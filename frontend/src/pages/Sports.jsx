@@ -103,11 +103,7 @@ const Sports = () => {
       {/* 1. HERO HEADER */}
       <header className="zest-sports-header">
                   {/* Breadcrumbs moved INSIDE content to prevent overlap */}
-          <div className="zest-about-breadcrumbs">
-            <span className="zest-about-home-link">HOME</span>
-            <span className="zest-about-slash">/</span>
-            <span className="zest-about-current-page">Sports</span>
-          </div>
+         
         <div className="zest-sports-pill">
           <Flame size={14} className="icon-pulse" /> THE ARENA
         </div>

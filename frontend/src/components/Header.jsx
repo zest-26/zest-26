@@ -1,25 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
-const menuVariants = {
-  hidden: { opacity: 0, y: "-100%", transition: { duration: 0.3 } },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, staggerChildren: 0.08 } },
-};
-const linkVariants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
-};
+import { Menu, X } from "lucide-react";
+import {ArrowLeft} from 'lucide-react';
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
     { to: "/cyclothon", label: "Cyclothon" },
@@ -34,84 +20,35 @@ const Header = () => {
   ];
 
   return (
-    <>
-      {/* NAVBAR — DESKTOP + MOBILE */}
-      <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 
-        ${scrolled || isMenuOpen ? "bg-black/80 backdrop-blur-md border-b border-orange-500/20" : "bg-transparent"}
-      `}>
-        <div className="flex items-center justify-between w-full px-6 py-3 mx-auto max-w-7xl">
-
-          {/* Logo */}
-          <NavLink to="/" className="z-50">
-            <img src="./ZEST-26.png" className="w-[110px] h-[45px] object-contain" />
-          </NavLink>
-
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex flex-1 justify-between ml-12 bg-gradient-to-r from-purple-200 to-blue-200 text-transparent bg-clip-text font-bold text-[20px]">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  "relative font-semibold uppercase transition duration-200 " +
-                  (isActive ? "text-white" : "text-orange-500 hover:text-white")
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {isActive && (
-                      <motion.div
-                        layoutId="active-pill"
-                        className="absolute bg-orange-500 rounded-lg -inset-1 -z-10"
-                        transition={{ type: "spring", stiffness: 300, damping: 28 }}
-                      />
-                    )}
-                    <span className="relative">{link.label}</span>
-                  </>
-                )}
-              </NavLink>
-            ))}
-          </nav>
-
-          {/* Hamburger (Mobile) */}
-          <button
-            className="z-50 text-3xl text-white md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <motion.div animate={{ rotate: isMenuOpen ? 45 : 0, y: isMenuOpen ? 6 : 0 }} className="w-6 h-1 mb-1 bg-orange-500 rounded"></motion.div>
-            <motion.div animate={{ opacity: isMenuOpen ? 0 : 1 }} className="w-6 h-1 mb-1 bg-orange-500 rounded"></motion.div>
-            <motion.div animate={{ rotate: isMenuOpen ? -45 : 0, y: isMenuOpen ? -6 : 0 }} className="w-6 h-1 bg-orange-500 rounded"></motion.div>
-          </button>
+    <header className="fixed grid grid-cols-20 top-0 left-0 w-full md:h-12/100 h-10/100 z-50  backdrop-blur-md">
+     <div className="w-full h-full flex justify-center items-center col-span-4 md:col-span-2 ">
+      <div className="h-1/2 w-1/2 border-2 border-amber-950 rounded-sm  aspect-square ">
+          <NavLink
+  to="/"
+  className="flex justify-center items-center md:block h-full w-full"
+>
+            <ArrowLeft
+              className="
+               h-8/10 w-8/10 md:h-full md:w-full text-orange-300 hover:text-orange-200
+               [filter:drop-shadow(0_0_4px_#E8560E)_drop-shadow(0_0_10px_#E8560E)_drop-shadow(0_0_20px_#E8560E)]
+                hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1
+              "
+            />
+</NavLink>
         </div>
-      </header>
+     </div>
+     
+    <div className="w-full h-full col-span-12 md:col-span-16 flex items-center justify-center">
+  <img
+    src="/mindsparkLogo.png"
+    alt="MinSpark"
+    className="h-full w-8/10 md:w-5/10 object-contain"
+  />
+</div>
 
-      {/* MOBILE MENU DROPDOWN */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            variants={menuVariants}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className="fixed inset-0 z-40 flex items-center justify-center bg-black/95 backdrop-blur-lg md:hidden"
-          >
-            <nav className="flex flex-col items-center gap-8">
-              {navLinks.map((link) => (
-                <motion.div key={link.to} variants={linkVariants}>
-                  <NavLink
-                    to={link.to}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="text-3xl font-bold uppercase text-neutral-200 hover:text-orange-500"
-                  >
-                    {link.label}
-                  </NavLink>
-                </motion.div>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+     <div className="w-full h-full col-span-4 md:col-span-2"></div>
+     
+    </header>
   );
 };
 

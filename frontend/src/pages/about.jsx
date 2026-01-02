@@ -121,11 +121,6 @@ const about = () => {
         {/* Hero Content Layer */}
         <div className="zest-about-hero-content">
           
-          <div className="zest-about-breadcrumbs">
-            <span className="zest-about-home-link">HOME</span>
-            <span className="zest-about-slash">/</span>
-            <span className="zest-about-current-page">ABOUT US</span>
-          </div>
 
           <h1 className="zest-about-hero-title" ref={heroTextRef}>
             <span className="zest-about-outline-text">IGNITE</span> <br />
