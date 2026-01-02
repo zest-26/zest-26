@@ -74,37 +74,39 @@ function AnimatedRoutes() {
   }
 
   return (
-    <div className='w-screen h-screen'>
-      
-      <main className='w-full min-h-screen mt-0 scroll-smooth'>
-        <Routes location={location} key={location.pathname}>
-          <Route 
-            path="/" 
-            element={
-              <>
-                <section id="home"><Home /></section>
-                
-              </>
-            }
-          />
-          <Route path="/coordinatorResults" element={<CoordinatorResults />} />
-          
-          <Route path="/VolunteerResults" element={<Volresults />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contactUs" element={<ContactUs />} />
-          <Route path="/Gallery" element={<Gallery />} />
-          <Route path="/coreTeam" element={<CoreTeam />} />
-          <Route path="/Sports" element={<Sports />} />
-          <Route path="/Accomodations" element={<Accomodations />} />
-          <Route path="/Sponsers" element={<Sponsers />} />
-          <Route path="/cyclothon" footerRef={footerRef} element={<Cyclothon />} />
-          <Route path="/cycloCertificate" element={<CycloCertificate />} />
-          <Route path="/Scores" element={<Scores />} />
-          
-        </Routes>
-      </main>
-    </div>
-  )
+  <div className="w-screen h-screen">
+
+    {/* HEADER — hidden on Home & Loader */}
+    {!isLoading && location.pathname !== "/" && <Header />}
+
+    <main className="w-full min-h-screen mt-0 scroll-smooth">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <section id="home">
+              <Home />
+            </section>
+          }
+        />
+
+        <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+        <Route path="/VolunteerResults" element={<Volresults />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contactUs" element={<ContactUs />} />
+        <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/coreTeam" element={<CoreTeam />} />
+        <Route path="/Sports" element={<Sports />} />
+        <Route path="/Accomodations" element={<Accomodations />} />
+        <Route path="/Sponsers" element={<Sponsers />} />
+        <Route path="/cyclothon" element={<Cyclothon />} />
+        <Route path="/cycloCertificate" element={<CycloCertificate />} />
+        <Route path="/Scores" element={<Scores />} />
+      </Routes>
+    </main>
+  </div>
+)
+
 }
 
 function App() {
