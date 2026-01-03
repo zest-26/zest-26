@@ -1,71 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Custom cursor hook
-const useCustomCursor = () => {
-  useEffect(() => {
-    const styleElement = document.createElement('style');
-    styleElement.textContent = `
-      * { cursor: none !important; }
-      
-      .cursor-dot {
-        position: fixed;
-        width: 8px;
-        height: 8px;
-        background: #f97316;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-      }
-      .cursor-circle {
-        position: fixed;
-        width: 40px;
-        height: 40px;
-        border: 2px solid rgba(249, 115, 22, 0.5);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-      }
-    `;
-    document.head.appendChild(styleElement);
-
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor-dot';
-    document.body.appendChild(cursor);
-
-    const circle = document.createElement('div');
-    circle.className = 'cursor-circle';
-    document.body.appendChild(circle);
-
-    let mouseX = 0, mouseY = 0;
-    let circleX = 0, circleY = 0;
-
-    const handleMouseMove = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      
-      cursor.style.left = mouseX - 4 + 'px';
-      cursor.style.top = mouseY - 4 + 'px';
-    };
-
-    const animateCircle = () => {
-      circleX += (mouseX - circleX) * 0.1;
-      circleY += (mouseY - circleY) * 0.1;
-      circle.style.left = circleX - 20 + 'px';
-      circle.style.top = circleY - 20 + 'px';
-      requestAnimationFrame(animateCircle);
-    };
-    animateCircle();
-
-    document.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      cursor.remove();
-      circle.remove();
-      styleElement.remove();
-    };
-  }, []);
-};
 import { ChevronLeft, ChevronRight, Search, Filter } from 'lucide-react';
 import TeamCard from '../components/TeamCard';
 
@@ -73,7 +7,7 @@ const coreTeamMembers = [
   { 
     role: "Secretary", 
     name: "xyz", 
-    image: "#",
+    image: "/badmintonLoader.avif",
     bio: "Leading Zest2026 with vision and dedication. Computer Science student passionate about technology and innovation.",
     email: "arjun.sharma@zest.com",
     linkedin: "https://linkedin.com/in/arjunsharma"
@@ -81,7 +15,7 @@ const coreTeamMembers = [
   { 
     role: "Overall Coordinator", 
     name: "abc", 
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face",
+    image: "/badmintonLoader.avif",
     bio: "Supporting organizational excellence and team coordination. Electronics Engineering student with leadership experience.",
     email: "priya.patel@zest.com",
     linkedin: "https://linkedin.com/in/priyapatel"
@@ -89,7 +23,7 @@ const coreTeamMembers = [
 ];
 //real data to be updated
 const portfolioHeads = [ 
-  { role: "Accounts Head", name: "Rajesh Kumar", image: "#", bio: "Managing financial operations.", email: "rajesh.kumar@zest.com", linkedin: "https://linkedin.com/in/rajeshkumar", instagram: "https://instagram.com/rajeshkumar", portfolio: "Accounts" },
+  { role: "Accounts Head", name: "Rajesh Kumar", image: "/badmintonLoader.avif", bio: "Managing financial operations.", email: "rajesh.kumar@zest.com", linkedin: "https://linkedin.com/in/rajeshkumar", instagram: "https://instagram.com/rajeshkumar", portfolio: "Accounts" },
   { role: "Accounts Head", name: "Sneha Reddy", image: "#", bio: "Financial planning specialist.", email: "sneha.reddy@zest.com", linkedin: "https://linkedin.com/in/snehareddy", instagram: "https://instagram.com/snehareddy", portfolio: "Accounts" },
   { role: "AOG Head", name: "Vikram Singh", image: "#", bio: "AOG operations manager.", email: "vikram.singh@zest.com", linkedin: "https://linkedin.com/in/vikramsingh", instagram: "https://instagram.com/vikramsingh", portfolio: "AOG" },
   { role: "AOG Head", name: "Ananya Gupta", image: "#", bio: "AOG coordination expert.", email: "ananya.gupta@zest.com", linkedin: "https://linkedin.com/in/ananyagupta", instagram: "https://instagram.com/ananyagupta", portfolio: "AOG" },
@@ -136,8 +70,7 @@ const coreTeam = () => {
    const touchStartX = useRef(0);
    const touchEndX = useRef(0);
    const cardRefs = useRef([]);
-   // Use custom cursor
-   useCustomCursor();
+   
  
    useEffect(() => {
      const observer = new IntersectionObserver(
@@ -295,73 +228,57 @@ const coreTeam = () => {
          }}></div>
        </div>
        
-       {/* Floating Background Elements */}
-       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mix-blend-screen filter blur-xl opacity-20 animate-float"></div>
-         <div className="absolute top-40 right-10 w-96 h-96 bg-gradient-to-r from-orange-400 to-orange-700 rounded-full mix-blend-screen filter blur-xl opacity-15 animate-float" style={{animationDelay: '2s'}}></div>
-         <div className="absolute bottom-20 left-1/3 w-80 h-80 bg-gradient-to-r from-orange-300 to-orange-800 rounded-full mix-blend-screen filter blur-xl opacity-10 animate-float" style={{animationDelay: '4s'}}></div>
-         <div className="absolute top-60 left-1/2 w-64 h-64 bg-gradient-to-r from-orange-600 to-orange-500 rounded-full mix-blend-screen filter blur-xl opacity-12 animate-float" style={{animationDelay: '1s'}}></div>
-         <div className="absolute bottom-40 right-1/4 w-56 h-56 bg-gradient-to-r from-orange-700 to-orange-400 rounded-full mix-blend-screen filter blur-xl opacity-18 animate-float" style={{animationDelay: '3s'}}></div>
-         <div className="absolute top-1/3 left-20 w-48 h-48 bg-gradient-to-r from-orange-300 to-orange-600 rounded-full mix-blend-screen filter blur-xl opacity-14 animate-float" style={{animationDelay: '5s'}}></div>
-         
-         {/* Geometric Shapes */}
-         <div className="absolute top-1/4 right-1/4 w-32 h-32 border-2 border-orange-500/20 rotate-45 animate-spin" style={{animationDuration: '20s'}}></div>
-         <div className="absolute bottom-1/4 left-1/4 w-24 h-24 bg-gradient-to-r from-orange-600/10 to-transparent transform rotate-12 animate-pulse"></div>
-         <div className="absolute top-3/4 right-1/3 w-16 h-16 border border-orange-400/30 rounded-full animate-bounce" style={{animationDuration: '3s'}}></div>
-         <div className="absolute top-1/2 right-10 w-20 h-20 border-2 border-orange-300/25 rotate-12 animate-spin" style={{animationDuration: '15s'}}></div>
-         <div className="absolute bottom-1/3 left-10 w-12 h-12 bg-orange-500/20 rounded-full animate-bounce" style={{animationDelay: '2s', animationDuration: '4s'}}></div>
-         <div className="absolute top-2/3 left-1/2 w-28 h-28 border border-orange-600/30 rounded-full animate-pulse" style={{animationDelay: '1.5s'}}></div>
-         
-         {/* Interesting Elements */}
-         <div className="absolute top-10 right-1/2 w-6 h-6 bg-orange-400 transform rotate-45 animate-ping" style={{animationDelay: '0.5s'}}></div>
-         <div className="absolute bottom-10 left-1/4 w-4 h-4 bg-orange-300 rounded-full animate-bounce" style={{animationDelay: '1.2s', animationDuration: '2s'}}></div>
-         <div className="absolute top-1/3 right-20 w-8 h-8 border-2 border-orange-500/40 rounded-full animate-spin" style={{animationDuration: '8s'}}></div>
-         <div className="absolute bottom-1/2 left-1/3 w-14 h-2 bg-gradient-to-r from-orange-400/30 to-transparent animate-pulse" style={{animationDelay: '2.8s'}}></div>
-         <div className="absolute top-1/5 left-10 w-10 h-10 bg-orange-600/15 transform skew-x-12 animate-bounce" style={{animationDelay: '3.2s', animationDuration: '5s'}}></div>
-         <div className="absolute bottom-1/5 right-1/3 w-6 h-20 bg-gradient-to-t from-orange-500/20 to-transparent animate-pulse" style={{animationDelay: '1.8s'}}></div>
-         <div className="absolute top-1/2 left-1/4 w-3 h-3 bg-orange-300 animate-ping" style={{animationDelay: '4s'}}></div>
-         <div className="absolute bottom-2/3 right-10 w-16 h-16 border-4 border-orange-400/25 border-dashed rounded-full animate-spin" style={{animationDuration: '12s'}}></div>
-         <div className="absolute top-3/5 right-1/4 w-12 h-1 bg-orange-500/30 animate-pulse" style={{animationDelay: '2.5s'}}></div>
-         <div className="absolute bottom-1/4 left-1/2 w-5 h-5 bg-orange-600 transform rotate-12 animate-bounce" style={{animationDelay: '3.8s', animationDuration: '3.5s'}}></div>
-         
-         {/* Diagonal Lines */}
-         <div className="absolute top-0 left-0 w-full h-full">
-           <div className="absolute top-1/4 -left-20 w-96 h-0.5 bg-gradient-to-r from-transparent via-orange-500/20 to-transparent rotate-12 animate-pulse"></div>
-           <div className="absolute bottom-1/3 -right-20 w-80 h-0.5 bg-gradient-to-r from-transparent via-orange-400/15 to-transparent -rotate-12 animate-pulse" style={{animationDelay: '1s'}}></div>
-           <div className="absolute top-1/2 -left-10 w-72 h-0.5 bg-gradient-to-r from-transparent via-orange-600/18 to-transparent rotate-6 animate-pulse" style={{animationDelay: '2.5s'}}></div>
-           <div className="absolute bottom-1/2 -right-15 w-88 h-0.5 bg-gradient-to-r from-transparent via-orange-300/22 to-transparent -rotate-8 animate-pulse" style={{animationDelay: '3.5s'}}></div>
-         </div>
-       </div>
+      
        
        {/* Enhanced Core Team Title */}
-       <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50">
-         <div className="relative">
-           <div className="absolute -inset-2 bg-gradient-to-r from-orange-500/20 via-orange-400/10 to-orange-500/20 blur-xl rounded-lg"></div>
-           <div className="relative bg-black/30 backdrop-blur-sm px-8 py-3 rounded-lg border border-orange-500/30">
-             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold gradient-text tracking-wide split-text">
-               <span style={{animationDelay: '0ms'}}>C</span>
-               <span style={{animationDelay: '100ms'}}>o</span>
-               <span style={{animationDelay: '200ms'}}>r</span>
-               <span style={{animationDelay: '300ms'}}>e</span>
-               <span style={{animationDelay: '400ms'}}>&nbsp;</span>
-               <span style={{animationDelay: '500ms'}}>T</span>
-               <span style={{animationDelay: '600ms'}}>e</span>
-               <span style={{animationDelay: '700ms'}}>a</span>
-               <span style={{animationDelay: '800ms'}}>m</span>
-             </h1>
-             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-transparent via-orange-500 to-transparent animate-pulse"></div>
-           </div>
-         </div>
-       </div>
- 
+      <div className="fixed top-24 md:top-34 left-1/2 transform -translate-x-1/2 z-50">
+  <div className="relative">
+    <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-orange-500/20 via-orange-400/10 to-orange-500/20 blur-lg sm:blur-xl rounded-lg"></div>
+
+    <div className="
+      relative
+      bg-black/30 backdrop-blur-sm
+      px-4 py-2           /* 👈 mobile */
+      sm:px-8 sm:py-3     /* 👈 desktop */
+      rounded-md sm:rounded-lg
+      border border-orange-500/30
+    ">
+      <h1 className="
+        text-xl            /* 👈 mobile */
+        sm:text-3xl
+        lg:text-5xl
+        font-bold
+        gradient-text
+        tracking-wide
+        split-text
+      ">
+        <span style={{ animationDelay: '0ms' }}>C</span>
+        <span style={{ animationDelay: '100ms' }}>o</span>
+        <span style={{ animationDelay: '200ms' }}>r</span>
+        <span style={{ animationDelay: '300ms' }}>e</span>
+        <span style={{ animationDelay: '400ms' }}>&nbsp;</span>
+        <span style={{ animationDelay: '500ms' }}>T</span>
+        <span style={{ animationDelay: '600ms' }}>e</span>
+        <span style={{ animationDelay: '700ms' }}>a</span>
+        <span style={{ animationDelay: '800ms' }}>m</span>
+      </h1>
+
+      <div className="
+        absolute bottom-0 left-1/2 transform -translate-x-1/2
+        w-10 sm:w-16 h-0.5
+        bg-gradient-to-r from-transparent via-orange-500 to-transparent
+        animate-pulse
+      "></div>
+    </div>
+  </div>
+</div>
+
        {/* Main Content */}
        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
          
          {/* Core Team Section */}
-         <section className="mb-12 sm:mb-20 pt-20 sm:pt-24">
-           <div className="text-center mb-12">
-             <p className="text-gray-300 text-lg animate-in fade-in slide-in-from-bottom-4 duration-1000">Leading with passion and excellence</p>
-           </div>
+         <section className="mb-12 sm:mb-20 pt-40 sm:pt-54">
+          
            <div className="flex flex-col items-center gap-8 sm:gap-12 max-w-2xl mx-auto">
              {coreTeamMembers.map((member, index) => {
                const cardId = `core-${index}`;
@@ -393,7 +310,8 @@ const coreTeam = () => {
                      role={member.role}
                      name={member.name}
                      image={member.image}
-                     bio={member.bio}
+                     
+
                      email={member.email}
                      linkedin={member.linkedin}
                      instagram={member.instagram}
@@ -448,7 +366,7 @@ const coreTeam = () => {
                          role={member.role}
                          name={member.name}
                          image={member.image}
-                         bio={member.bio}
+                  
                          email={member.email}
                          linkedin={member.linkedin}
                          instagram={member.instagram}
