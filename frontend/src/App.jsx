@@ -104,6 +104,11 @@ function AnimatedRoutes() {
         <Route path="/Scores" element={<Scores />} />
       </Routes>
     </main>
+    {/* FOOTER */}
+    {!isLoading &&
+      location.pathname !== "/" &&
+      location.pathname !== "/Scores" && <Footer />}
+
   </div>
 )
 

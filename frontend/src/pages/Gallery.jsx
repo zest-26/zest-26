@@ -24,9 +24,9 @@ const GlobalStyles = () => (
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
     :root {
-      --primary-color: #F39C12;
+      --primary-color: #D35400; 
       --secondary-color: #E67E22;
-      --accent-color: #00A8FF;
+      --accent-color: #FF9F43; 
       --dark-bg: #0f0f10;
       --light-text: #E0E0E0;
       --dark-text: #1a1a1a;
@@ -48,17 +48,50 @@ const GlobalStyles = () => (
     .app { width: 100%; display: flex; flex-direction: column; min-height: 100vh; }
     main.main { flex-grow: 1; }
     .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
-    .category-grid-container { width: 100%; max-width: 1400px; margin: 0 auto; }
+    .category-grid-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;   
+  padding-top: 100px; /* adjust as needed */
+}
 
     .category-grid {
       display: flex;
-      flex-wrap: nowrap;
+      flex-wrap: nowrap;   
       overflow-x: auto;
       justify-content: center;
       gap: 25px;
       padding: 2rem 1.5rem;
       -webkit-overflow-scrolling: touch;
     }
+
+    @media (max-width: 768px) {
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+    justify-items: center;
+     place-content: center;   /* ⭐ THIS LINE */
+    overflow: hidden;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .tilt-card {
+    width: 140px;
+    height: 120px;
+  }
+
+  .card-icon {
+    font-size: 1.5rem;
+  }
+
+  .card-text {
+    font-size: 0.85rem;
+  }
+}
+
+
     .category-grid::-webkit-scrollbar { height: 8px; }
     .category-grid::-webkit-scrollbar-track { background: #202022; border-radius: 4px; }
     .category-grid::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 4px; }
@@ -115,7 +148,17 @@ const GlobalStyles = () => (
       border-radius: inherit; opacity: 0; transition: opacity 0.4s ease;
     }
     .tilt-card:hover .spotlight { opacity: 1; }
-    .card-content { color: #FFFFFF; transform: translateZ(20px); position: relative; z-index: 1; }
+    .card-content {
+  color: #FFFFFF;
+  transform: translateZ(20px);
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* 👈 horizontal center */
+  text-align: center;      /* 👈 text center */
+}
     .card-icon {
       font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 0.75rem; color: var(--primary-color);
       transition: color 0.3s ease, transform 0.3s ease;
@@ -128,6 +171,24 @@ const GlobalStyles = () => (
       text-transform: uppercase; letter-spacing: 1px;
       text-align: center; padding: 0 0.5rem; word-wrap: break-word;
     }
+
+    @media (max-width: 768px) {
+  .category-grid .tilt-card {
+    width: 90px !important;
+    height: 90px !important;
+    flex-shrink: 1 !important;
+  }
+
+  .card-icon {
+    font-size: 1.4rem;
+  }
+
+  .card-text {
+    font-size: 0.6rem;
+    letter-spacing: 0.5px;
+  }
+}
+
     
     .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.95); display: flex; justify-content: center; align-items: center; z-index: 1000; padding: 1rem; }
     .modal-content { position: relative; max-width: 90vw; max-height: 90vh; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; }
@@ -139,20 +200,42 @@ const GlobalStyles = () => (
     .prev-button { left: 20px; top: 50%; transform: translateY(-50%); }
     .next-button { right: 20px; top: 50%; transform: translateY(-50%); }
 
-    footer { background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9)); padding: 4rem 0; margin-top: auto; width: 100%; border-top: 1px solid var(--border-color); }
-    footer .container { max-width: 1200px; display: flex; flex-direction: column; align-items: center; }
-    footer h1 { font-size: clamp(2.5rem, 5vw, 4rem); text-align: center; margin-bottom: 2rem; }
-    footer .social-links { display: flex; justify-content: center; gap: 2rem; margin: 2rem 0; }
-    footer .social-links a { color: white; padding: 1rem; border-radius: 50%; background: rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
-    footer .social-links a:hover { background: var(--primary-color); transform: translateY(-5px); }
-    footer p { text-align: center; max-width: 600px; margin: 0.5rem auto; }
+   
 
-    .gallery-landing-header { text-align: center; padding: 4rem 0; border-bottom: 1px solid var(--border-color); margin-bottom: 1rem; }
-    @keyframes gradient-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .gallery-landing-header {
+  display: grid;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+  min-height: 15vh; /* optional, sets overall height */
+  padding: 0; /* remove top/bottom padding since spacing is via grid rows */
+   
+}
+
+
+  
+.gallery-landing-header .container {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center content inside container */
+  
+}
+
+
+
+@keyframes gradient-animation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
     .title { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; background: linear-gradient(90deg, var(--primary-color), #fff, var(--secondary-color)); background-size: 200% auto; color: transparent; background-clip: text; -webkit-background-clip: text; animation: gradient-animation 6s ease infinite; }
     .subtitle { font-size: clamp(1rem, 2.5vw, 1.2rem); max-width: 700px; margin: 1rem auto 0; color: #BDBDBD; line-height: 1.6; }
-    .category-title { text-align: center; font-size: 3rem; color: var(--primary-color); margin: 2rem 0 3rem; text-shadow: 0 0 10px var(--primary-color); }
-    .image-grid { display: grid; padding: 2rem; max-width: 1800px; margin: 0 auto; }
+       .image-grid {
+  display: grid;
+  padding: 2rem;
+  max-width: 1800px;
+  margin: 0 auto;
+
+  background-color: black;
+}
+
     .image-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5); background-color: var(--card-bg); background-size: cover; background-position: center; }
     .image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 30%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; color: white; }
     .image-title { font-size: 1.2rem; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.7); }
@@ -160,7 +243,7 @@ const GlobalStyles = () => (
     @media (max-width: 768px) {
       .title { font-size: clamp(2.5rem, 10vw, 3.5rem); }
       .image-grid { padding: 1rem; }
-      .category-title { font-size: 2.5rem; margin: 1rem 0 2rem; }
+      
     }
     @media (max-width: 480px) {
       .container { padding: 0 1rem; }
@@ -195,11 +278,11 @@ const GlobalStyles = () => (
 
 // --- DYNAMIC IMAGE DATA ---
 const categories = {
-    "Cyclothon": { icon: FaBicycle, images: [ { id: 'cy1', src: 'https://placehold.co/800x600/FF6B6B/white?text=Cyclothon+1', title: 'Morning Ride' }, { id: 'cy2', src: 'https://placehold.co/800x600/FF8787/white?text=Cyclothon+2', title: 'Team Event' }, { id: 'cy3', src: 'https://placehold.co/800x600/FF6B6B/white?text=Cyclothon+3', title: 'Race Start' }, { id: 'cy4', src: 'https://placehold.co/800x600/FF8787/white?text=Cyclothon+4', title: 'Winners' }, { id: 'cy5', src: 'https://placehold.co/800x600/FF6B6B/white?text=Cyclothon+5', title: 'Group Photo' }, ] },
+    "Cyclothon": { icon: FaBicycle, images: [ { id: 'cy1', src: '/vollyballLoader.jpg', title: 'Morning Ride' }, { id: 'cy2', src: '/basketballLoader.png', title: 'Team Event' }, { id: 'cy3', src: '/badmintonLoader.avif', title: 'Race Start' }, { id: 'cy4', src: '/fencngLoader.jpg', title: 'Winners' }, { id: 'cy5', src: 'https://placehold.co/800x600/FF6B6B/white?text=Cyclothon+5', title: 'Group Photo' }, ] },
     "Sports": { icon: FaFutbol, images: [ { id: 'sp1', src: 'https://placehold.co/800x600/4ECDC4/white?text=Sports+1', title: 'Cricket Match' }, { id: 'sp2', src: 'https://placehold.co/800x600/45B7AF/white?text=Sports+2', title: 'Football' }, { id: 'sp3', src: 'https://placehold.co/800x600/4ECDC4/white?text=Sports+3', title: 'Basketball' }, ] },
     "Marathon": { icon: FaRunning, images: [ { id: 'ma1', src: 'https://placehold.co/800x600/FFD93D/white?text=Marathon+1', title: 'Marathon Start' }, { id: 'ma2', src: 'https://placehold.co/800x600/FFC53D/white?text=Marathon+2', title: 'Mid Race' }, { id: 'ma3', src: 'https://placehold.co/800x600/FFD93D/white?text=Marathon+3', title: 'Finish Line' }, ] },
     "Sportify": { icon: FaMedal, images: [ { id: 'sf1', src: 'https://placehold.co/800x600/6C5CE7/white?text=Sportify+1', title: 'Indoor Games' }, { id: 'sf2', src: 'https://placehold.co/800x600/5F52D1/white?text=Sportify+2', title: 'Team Sports' }, ] },
-    "Zest": { icon: FaBolt, images: [ { id: 'ze1', src: 'https://placehold.co/800x600/A8E6CF/white?text=Zest+1', title: 'Opening Ceremony' }, { id: 'ze2', src: 'https://placehold.co/800x600/8FD9B6/white?text=Zest+2', title: 'Main Events' }, { id: 'ze3', src: 'https://placehold.co/800x600/A8E6CF/white?text=Zest+3', title: 'Celebrations' }, ] }
+    
 };
 const allImages = Object.values(categories).flatMap(category => category.images);
 
@@ -261,39 +344,46 @@ function GalleryPage() {
     <div className="app">
       <GlobalStyles />
       <main className="main">
-        <div className="gallery-landing-header">
-          <div className="container">
-            <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="title">
-              ZEST FEST 26 GALLERY
-            </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="subtitle">
-              Capturing the energy, passion, and unforgettable moments of our annual sports extravaganza.
-            </motion.p>
-          </div>
-        </div>
-        <motion.div className="category-grid-container" initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
+
+<motion.div className="category-grid-container " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
           <CategorySelector categories={categories} onCategoryClick={setSelectedCategory} selectedCategory={selectedCategory} />
         </motion.div>
-        <motion.h2 className="category-title" initial={{ opacity: 0, y: -20 }} animate={titleControls}>
-            {selectedCategory === "All" ? "All Events" : selectedCategory}
-        </motion.h2>
-        <ImageGallery images={displayedImages} onImageClick={(index) => openModal(displayedImages, index)} />
+
+       <div className="gallery-landing-header">
+  
+  <div className="container">
+    
+    <motion.h1
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="title"
+    >
+      GALLERY
+    </motion.h1>
+  </div>
+  
+</div>
+
+        
+       
+        <ImageGallery images={displayedImages} onImageClick={(index) => openModal(displayedImages, index)}  />
       </main>
       <AnimatePresence>
         {modalState.isOpen && (
           <ModalLightbox image={modalState.images[modalState.index]} onClose={closeModal} onNext={showNextImage} onPrev={showPrevImage} />
         )}
       </AnimatePresence>
-      <Footer />
+      
     </div>
   );
 }
 
 const CategorySelector = ({ categories, onCategoryClick, selectedCategory }) => (
-  <motion.div className="category-grid" variants={gridContainerVariants} initial="hidden" animate="show">
+  <motion.div className="category-grid " variants={gridContainerVariants} initial="hidden" animate="show">
     <motion.div variants={cardVariants}>
       <TiltCard onClick={() => onCategoryClick("All")} className={selectedCategory === "All" ? "active" : ""}>
-        <div className="card-content"><FaTrophy className="card-icon" /><p className="card-text">All Events</p></div>
+        <div className="card-content "><FaTrophy className="card-icon" /><p className="card-text">All Events</p></div>
       </TiltCard>
     </motion.div>
     {Object.keys(categories).map(cat => (

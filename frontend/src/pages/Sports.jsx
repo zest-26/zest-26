@@ -8,13 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const sportsData = [
   { id: 1, title: "CYCLOTHON", category: "Flagship", desc: "Pedal through the heart of Pune.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-tall" },
-  { id: 2, title: "CRICKET", category: "Outdoor", desc: "The gentleman's game, reimagined.", img: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&q=80&w=800", height: "h-short" },
-  { id: 3, title: "MARATHON", category: "Flagship", desc: "Test your endurance limits.", img: "https://images.unsplash.com/photo-1552674605-469523fbaf4d?auto=format&fit=crop&q=80&w=800", height: "h-med" },
-  { id: 4, title: "BADMINTON", category: "Indoor", desc: "Smash your way to victory.", img: "https://images.unsplash.com/photo-1626224583764-84786c713044?auto=format&fit=crop&q=80&w=800", height: "h-tall" },
-  { id: 5, title: "FOOTBALL", category: "Outdoor", desc: "Passion, grit, and glory.", img: "https://images.unsplash.com/photo-1579952363873-27f3bde9be51?auto=format&fit=crop&q=80&w=800", height: "h-med" },
-  { id: 6, title: "CHESS", category: "Indoor", desc: "Checkmate in style.", img: "https://images.unsplash.com/photo-1580541832626-d297a73aa934?auto=format&fit=crop&q=80&w=800", height: "h-short" },
-  { id: 7, title: "KABADDI", category: "Outdoor", desc: "The soil of strength.", img: "https://images.unsplash.com/photo-1615303923985-78484e030b76?auto=format&fit=crop&q=80&w=800", height: "h-tall" },
-  { id: 8, title: "SPORTIFY", category: "Fun", desc: "Fun meets fitness.", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800", height: "h-med" },
+  { id: 2, title: "CRICKET", category: "Outdoor", desc: "The gentleman's game, reimagined.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-short" },
+  { id: 3, title: "MARATHON", category: "Flagship", desc: "Test your endurance limits.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-med" },
+  { id: 4, title: "BADMINTON", category: "Indoor", desc: "Smash your way to victory.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-tall" },
+  { id: 5, title: "FOOTBALL", category: "Outdoor", desc: "Passion, grit, and glory.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-med" },
+  { id: 6, title: "CHESS", category: "Indoor", desc: "Checkmate in style.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-short" },
+  { id: 7, title: "KABADDI", category: "Outdoor", desc: "The soil of strength.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-tall" },
+  { id: 8, title: "SPORTIFY", category: "Fun", desc: "Fun meets fitness.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-med" },
 ];
 
 const categories = ["All", "Flagship", "Outdoor", "Indoor"];
@@ -111,10 +111,6 @@ const Sports = () => {
         <h1 className="zest-sports-main-title">
           BATTLE <span className="zest-sports-text-stroke">GROUNDS</span>
         </h1>
-        
-        <p className="zest-sports-subtitle">
-          Where champions are forged. Choose your battlefield.
-        </p>
 
         {/* 2. FILTER TABS */}
         <div className="zest-sports-filter-container">
@@ -152,9 +148,7 @@ const Sports = () => {
                 
                 <div className="zest-content-hidden">
                   <p>{item.desc}</p>
-                  <button className="zest-explore-btn">
-                    EXPLORE <ArrowUpRight size={18} />
-                  </button>
+                 
                 </div>
               </div>
 

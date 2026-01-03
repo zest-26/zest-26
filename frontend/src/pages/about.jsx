@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MapPin, Calendar, Trophy, Users, Zap, Play, ArrowRight, MousePointer2, X } from 'lucide-react';
+import { MapPin, Calendar, Trophy, Users, Zap, Play, ArrowRight,ArrowLeft, MousePointer2, X } from 'lucide-react';
 import './AboutUs.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -129,7 +129,7 @@ const about = () => {
           
           <div className="zest-about-hero-meta">
             <div className="zest-about-meta-pill">
-              <Calendar size={16} /> JAN 24-25, 2026
+              <Calendar size={16} /> JAN 23-25, 2026
             </div>
             <div className="zest-about-meta-pill">
               <MapPin size={16} /> COEP TECH
@@ -168,9 +168,7 @@ const about = () => {
               With a heritage spanning over <strong>170 years</strong>, the institute continues to 
               shape the future of engineering, fostering a culture where tradition meets cutting-edge technology.
             </p>
-            <button className="zest-about-btn-modern" onClick={() => window.open("https://youtu.be/_q3H7Wnearc?si=W4XKCzgCQ7iEJ2-X", "_blank")}>
-              <span>CAMPUS TOUR</span> <ArrowRight size={18} />
-            </button>
+           
           </div>
           <div className="zest-about-info-img-wrapper">
             <img src="https://www.coeptech.ac.in/wp-content/uploads/elementor/thumbs/COEP-Website-Pic-1-r4qfk1ygvn7y9y1tf4vppvonlurjzsbf6jrltou9w8.jpg" alt="COEP Main Building" />
@@ -226,7 +224,7 @@ const about = () => {
         <div className="zest-about-highlights-intro">
           <h2 className="zest-about-big-text">PAST <br /> <span className="zest-about-text-orange">GLORY</span></h2>
           <div className="zest-about-swipe-hint">
-            <MousePointer2 className="animate-bounce" /> DRAG TO EXPLORE
+            <ArrowLeft className="animate-bounce" /> DRAG TO EXPLORE
           </div>
         </div>
 
