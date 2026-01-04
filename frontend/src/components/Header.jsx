@@ -20,8 +20,8 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed grid grid-cols-20 top-0 left-0 w-full md:h-12/100 h-10/100 z-50  backdrop-blur-md">
-     <div className="w-full h-full flex justify-center items-center col-span-4 md:col-span-2 ">
+    <header className="fixed grid grid-cols-20  top-0 left-0 w-full md:h-12/100 h-10/100 z-50  backdrop-blur-md">
+     <div className="w-full h-full  flex justify-center items-center col-span-4 md:col-span-2 ">
       <div className="h-1/2 w-1/2 border-2 border-amber-950 rounded-sm  aspect-square ">
           <NavLink
   to="/"
@@ -38,11 +38,17 @@ const Header = () => {
         </div>
      </div>
      
-    <div className="w-full h-full col-span-12 md:col-span-16 flex items-center justify-center">
+    <div className="w-full h-full    col-span-12 md:col-span-16 flex items-center justify-center">
   <img
-    src="/mindsparkLogo.png"
+    src="/Zest26Logo4.png"
     alt="MinSpark"
-    className="h-full w-8/10 md:w-5/10 object-contain"
+    className="h-full hidden md:block  w-full md:w-5/10 object-contain"
+  />
+
+  <img
+    src="/Zest26Logo.png"
+    alt="MinSpark"
+    className="h-full  block md:hidden  w-full md:w-5/10 object-contain"
   />
 </div>
 

@@ -17,7 +17,7 @@ const contactUs = () => {
           linesColor="#F3A96C"
           gridScale={0.1}
           scanColor="#F5BF5A"
-scanOpacity={0.2}
+scanOpacity={0.1}
           enablePost
           bloomIntensity={0.6}
           chromaticAberration={0.002}

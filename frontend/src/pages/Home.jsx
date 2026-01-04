@@ -472,21 +472,21 @@ const navigate = useNavigate();
   ">
 
     {/* START DIV – mobile only */}
-    <div className="col-span-2  md:hidden h-full flex items-center justify-center">
+    <div className="col-span-2   md:hidden h-full flex items-center justify-center">
       {/* optional content */}
     </div>
 
     {/* IMAGE */}
-    <div className="col-span-6 md:col-span-1 flex items-center justify-center">
+    <div className="col-span-6 w-full h-full  md:col-span-1 flex items-center justify-center">
       <img 
-        src="/mindsparkLogo.png"
+        src="/Zest26Logo.png"
         alt="header"
-        className="max-w-full max-h-full object-contain"
+        className="w-full  h-full object-contain"
       />
     </div>
 
     {/* END DIV – mobile only */}
-    <div className="col-span-2 pr-2 md:hidden h-full flex items-center justify-end">
+    <div className="col-span-2  pr-2 md:hidden h-full flex items-center justify-end">
   <div className="h-1/3 border-2 border-amber-950 flex justify-center items-center rounded-sm aspect-square p-0">
     <button
       type="button"
@@ -534,8 +534,8 @@ const navigate = useNavigate();
   
 </div>
 
-<div className=" relative w-full h-full row-span-2 grid grid-rows-10">
-  <div className=" w-full h-full row-span-1 "></div>
+<div className=" relative w-full h-full row-span-2  grid grid-rows-10">
+  <div className=" w-full h-full bg-amber-300 hidden md:row-span-1 "></div>
 
 <div className="w-full h-full  row-span-4 flex items-stretch justify-center gap-6">
   {/* Instagram */}

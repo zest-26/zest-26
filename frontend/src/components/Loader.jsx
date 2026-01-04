@@ -85,7 +85,7 @@ const Loader = forwardRef((props, ref) => {
 
 
   {/* FOREGROUND CONTENT */}
-  <div className="relative z-10 aspect-square h-2/5 md:h-1/2 grid grid-rows-20">
+  <div className="relative   mt-[-3rem] md:mt-0 z-10 aspect-square h-2/5 md:h-1/2 grid grid-rows-20">
     
     {/* TOP SECTION */}
     <div className="row-span-19 h-full w-full flex justify-center items-center">
