@@ -8,10 +8,12 @@ import gsap from "gsap";
 const Header = () => {
  const [menuOpen, setMenuOpen] = useState(false);
 const [renderOverlay, setRenderOverlay] = useState(false);
-
+const navigate = useNavigate(); // ✅ MISSING LINE
 const overlayRef = useRef(null);
 const menuItemsRef = useRef([]);
 const tlRef = useRef(null);
+const isNavigatingRef = useRef(false);
+
 
 const openMenu = () => {
   setRenderOverlay(true);
@@ -35,19 +37,48 @@ const closeMenu = () => {
 };
 
 const handleMenuClick = (path) => {
-  if (!tlRef.current) {
-    navigate(path);
-    return;
-  }
+  if (isNavigatingRef.current) return;
+  isNavigatingRef.current = true;
 
-  tlRef.current.reverse();
-  tlRef.current.eventCallback("onReverseComplete", () => {
+  if (!tlRef.current) {
     navigate(path);
     setMenuOpen(false);
     setRenderOverlay(false);
+    return;
+  }
+
+  // Navigate FIRST
+  navigate(path);
+
+  // Then play reverse animation over the NEW page
+  tlRef.current.eventCallback("onReverseComplete", () => {
+    setMenuOpen(false);
+    setRenderOverlay(false);
     tlRef.current.eventCallback("onReverseComplete", null);
+    isNavigatingRef.current = false;
   });
+
+  tlRef.current.reverse();
 };
+
+
+
+
+// BODY SCROLL LOCK
+useEffect(() => {
+  if (renderOverlay) {
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100vh";
+  } else {
+    document.body.style.overflow = "";
+    document.body.style.height = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+    document.body.style.height = "";
+  };
+}, [renderOverlay]);
 
 
 
@@ -181,10 +212,10 @@ const handleMenuClick = (path) => {
                pt-8 pb-8 pointer-events-auto"
   >
     {/* CLOSE */}
-    <div className="h-10 w-10 border-2 border-amber-950 rounded-sm p-1">
+    <div className="h-10  w-10 border-2 border-amber-950 rounded-sm p-1">
       <button
         onClick={closeMenu}
-        className="flex justify-center items-center h-full w-full"
+        className="flex justify-center bg-red-400 items-center h-full w-full"
       >
         <X className="h-full w-full text-orange-300
           [filter:drop-shadow(0_0_6px_#E8560E)_drop-shadow(0_0_16px_#E8560E)]" />
@@ -194,12 +225,12 @@ const handleMenuClick = (path) => {
     {/* MENU */}
     <div className="flex items-center flex-col gap-4 mt-2">
       {[
-        ["SPORTS", "/Sports"],
-        ["ACCOMODATIONS", "/Accomodations"],
-        ["SCORES", "/Scores"],
         ["ABOUT US", "/about"],
-        ["GALLERY", "/Gallery"],
-        ["CORE TEAM", "/coreTeam"],
+         ["GALLERY", "/Gallery"],
+        ["SPORTS", "/Sports"],
+        ["SCORES", "/Scores"],
+         ["CORE TEAM", "/coreTeam"],
+        ["ACCOMODATIONS", "/Accomodations"],
         ["SPONSERS", "/Sponsers"],
         ["CONTACT US", "/contactUs"],
       ].map(([label, path], i) => (

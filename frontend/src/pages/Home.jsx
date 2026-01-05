@@ -196,12 +196,14 @@ const handleMenuClick = (path) => {
     return;
   }
 
-  // Reverse animation first
+  // Navigate FIRST
+  navigate(path);
+
+  // Then reverse animation
   tlRef.current.reverse();
 
-  // Navigate after reverse completes
+  // Clean up after reverse completes
   tlRef.current.eventCallback("onReverseComplete", () => {
-    navigate(path);
     tlRef.current.eventCallback("onReverseComplete", null); // reset callback
   });
 };
@@ -1035,12 +1037,12 @@ const handleMenuClick = (path) => {
  {/* MOBILE MENU OVERLAY */}
 <div
   ref={overlayRef}
-  className="fixed inset-0 z-[9999] bg-black bg-opacity-95
+  className="fixed md:hidden inset-0 z-[9999] bg-black bg-opacity-95
              flex flex-col items-center justify-around
              pt-8 pb-8 pointer-events-auto"
 >
   {/* Close button */}
-  <div className="h-10 w-10 border-2 border-amber-950 rounded-sm p-1">
+  <div className="h-10 w-10 border-2 bg-green-400 border-amber-950 rounded-sm p-1">
     <button
       onClick={() => setIsMenuOpen(false)}
       className="flex justify-center items-center h-full w-full"
@@ -1057,14 +1059,14 @@ const handleMenuClick = (path) => {
   {/* MENU BUTTONS */}
  <div className="flex items-center flex-col gap-4 mt-2">
   {[
-    ["SPORTS", "/Sports"],
-    ["ACCOMODATIONS", "/Accomodations"],
-    ["SCORES", "/Scores"],
-    ["ABOUT US", "/about"],
-    ["GALLERY", "/Gallery"],
-    ["CORE TEAM", "/coreTeam"],
-    ["SPONSERS", "/Sponsers"],
-    ["CONTACT US", "/contactUs"],
+     ["ABOUT US", "/about"],
+         ["GALLERY", "/Gallery"],
+        ["SPORTS", "/Sports"],
+        ["SCORES", "/Scores"],
+         ["CORE TEAM", "/coreTeam"],
+        ["ACCOMODATIONS", "/Accomodations"],
+        ["SPONSERS", "/Sponsers"],
+        ["CONTACT US", "/contactUs"],
   ].map(([label, path], i) => (
     <button
       key={i}
