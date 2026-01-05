@@ -146,8 +146,8 @@ const about = () => {
       {/* SECTION 2: MARQUEE */}
       <div className="zest-about-marquee">
         <div className="zest-about-marquee-content">
-           ZEST '26 • UNLEASH THE SPIRIT • COEP TECHNOLOGICAL UNIVERSITY • INDIA'S LARGEST COLLEGE FESTIVAL • 
-           ZEST '26 • UNLEASH THE SPIRIT • COEP TECHNOLOGICAL UNIVERSITY • INDIA'S LARGEST COLLEGE FESTIVAL •
+           ZEST '26 • UNLEASH THE SPIRIT • COEP TECHNOLOGICAL UNIVERSITY • INDIA'S 5th LARGEST COLLEGE SPORTS FESTIVAL • 
+           ZEST '26 • UNLEASH THE SPIRIT • COEP TECHNOLOGICAL UNIVERSITY • INDIA'S 5th LARGEST COLLEGE SPORTS FESTIVAL •
         </div>
       </div>
 
@@ -187,7 +187,7 @@ const about = () => {
               Hosting over <strong>20,000+ athletes</strong> and <strong>50+ sporting events</strong>, 
               Zest transforms the campus into a high-octane arena where stamina meets strategy.
               <br/><br/>
-              From the grueling Marathon to the precision of Chess, every event is a testament 
+              From the grueling Cyclothon to the precision of Chess, every event is a testament 
               to resilience. Zest '26 promises to be bigger, louder, and bolder, inviting 
               champions from across the nation to etch their names in history.
             </p>

@@ -160,16 +160,7 @@ body {
             box-shadow: 0 0 10px #ff8c00;
         }
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #ff8c00;
-            border-radius: 10px;
-        }
+       
 
         .section-visible {
             opacity: 1;
@@ -199,7 +190,9 @@ body {
           Sports Fest.
         </p>
         <a
-          href="#booking-form"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdF4fdir8_cDYQuA6O0O1Zqa_iYlx_YGqVKvpIDN-WK7Oymfg/viewform"
+           target="_blank"
+  rel="noopener noreferrer"
           className="mt-8 px-10 py-4 bg-orange-600 text-black font-bold rounded-full hover:bg-orange-400 transition-all transform hover:scale-105 neon-border"
         >
           BOOK YOUR STAY

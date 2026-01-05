@@ -141,15 +141,24 @@ const Sports = () => {
               
               {/* Revealed Content on Hover */}
               <div className="zest-sports-card-content">
-                <div className="zest-content-top">
+                <div className="zest-content-top mb-6 md:mb-4">
                   <div className="zest-sports-category">{item.category}</div>
                   <h3 className="zest-sports-card-title">{item.title}</h3>
+                    <a
+    href="#"
+    className="zest-register-btn md:ml-3"
+    onClick={(e) => e.preventDefault()} // prevents jump for now
+  >
+    REGISTER
+    <ArrowUpRight size={16} />
+  </a>
                 </div>
                 
-                <div className="zest-content-hidden">
-                  <p>{item.desc}</p>
-                 
-                </div>
+               <div className="zest-content-hidden">
+  <p>{item.desc}</p>
+
+
+</div>
               </div>
 
             </div>

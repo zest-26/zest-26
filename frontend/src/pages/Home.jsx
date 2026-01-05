@@ -9,7 +9,8 @@ import {GridScan} from "@/components/GridScan";
 import GradientText from '@/components/GradientText'
 import LightRays from "@/components/LightRays"; 
 import Galaxy from "@/components/Galaxy";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import gsap from "gsap";
 
 
 import './HomeButton.css';
@@ -140,8 +141,116 @@ useGLTF.preload("/3DModels/football3D.glb");
 const Home = () => {
 
 const navigate = useNavigate();
+const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+const overlayRef = useRef(null);
+const menuItemsRef = useRef([]);
+const tlRef = useRef(null); // store timeline
+
+useEffect(() => {
+  if (!overlayRef.current) return;
+
+  // Create timeline only once
+  const tl = gsap.timeline({ paused: true });
+
+  // Set initial hidden state
+  gsap.set(overlayRef.current, { x: "100%" });
+  gsap.set(menuItemsRef.current, { x: 80, opacity: 0 });
+
+  // Enter animation
+  tl.to(overlayRef.current, {
+    x: "0%",
+    duration: 0.6,
+    ease: "power4.out",
+  }).to(
+    menuItemsRef.current,
+    {
+      x: 0,
+      opacity: 1,
+      stagger: 0.05,
+      duration: 0.45,
+      ease: "power3.out",
+    },
+    "-=0.2"
+  );
+
+  tlRef.current = tl;
+
+  return () => tl.kill();
+}, []);
+
+// Play or reverse timeline when isMenuOpen changes
+useEffect(() => {
+  if (!tlRef.current) return;
+
+  if (isMenuOpen) {
+    tlRef.current.play();
+  } else {
+    tlRef.current.reverse();
+  }
+}, [isMenuOpen]);
+
+// Function to handle menu button click
+const handleMenuClick = (path) => {
+  if (!tlRef.current) {
+    navigate(path); // fallback
+    return;
+  }
+
+  // Reverse animation first
+  tlRef.current.reverse();
+
+  // Navigate after reverse completes
+  tlRef.current.eventCallback("onReverseComplete", () => {
+    navigate(path);
+    tlRef.current.eventCallback("onReverseComplete", null); // reset callback
+  });
+};
+
+
+
 
   return (
+
+    <>
+
+    <style>
+{`
+
+
+.menu-glow-btn {
+  display: inline-block; /* shrink to content */
+  position: relative;
+  padding: 0.5rem 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fdba74; /* orange-300 */
+  border: 1px solid rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 18px rgba(232, 86, 14, 0.55);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* optional: rounded edges */
+  border-radius: 0.25rem;
+
+  /* shrink in flex column */
+  width: fit-content;
+}
+
+
+.menu-glow-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 32px rgba(232, 86, 14, 0.85);
+}
+
+.menu-glow-text {
+  text-shadow:
+    0 0 6px rgba(232, 86, 14, 0.7),
+    0 0 14px rgba(232, 86, 14, 0.55),
+    0 0 26px rgba(255, 140, 66, 0.45);
+}
+`}
+</style>
+
+
     <div className="relative h-screen w-full overflow-hidden bg-black">
 
         {/* 🌌 GALAXY (Particles) */}
@@ -486,12 +595,13 @@ const navigate = useNavigate();
     </div>
 
     {/* END DIV – mobile only */}
-    <div className="col-span-2  pr-2 md:hidden h-full flex items-center justify-end">
+    <div className="col-span-2  pr-6 md:hidden h-full flex items-center justify-end">
   <div className="h-1/3 border-2 border-amber-950 flex justify-center items-center rounded-sm aspect-square p-0">
     <button
       type="button"
       className="block h-3/4 aspect-square"
       aria-label="Open menu"
+      onClick={() => setIsMenuOpen(true)}
     >
       <Menu
         className="
@@ -541,7 +651,7 @@ const navigate = useNavigate();
   {/* Instagram */}
   <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
-      href="https://www.instagram.com/"
+      href=" https://www.instagram.com/coepzest/?hl=en"
       target="_blank"
       rel="noopener noreferrer"
       className="flex justify-center items-center md:block h-full  w-full"
@@ -559,7 +669,7 @@ const navigate = useNavigate();
   {/* LinkedIn */}
   <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
-      href="https://www.linkedin.com/"
+      href=" https://www.linkedin.com/company/zest-coep/?originalSubdomain=in"
       target="_blank"
       rel="noopener noreferrer"
       className="flex justify-center items-center md:block h-full  w-full"
@@ -577,7 +687,7 @@ const navigate = useNavigate();
   {/* X / Twitter */}
   <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
-      href="https://twitter.com/"
+      href=" https://x.com/zest_coep"
       target="_blank"
       rel="noopener noreferrer"
       className="flex justify-center items-center md:block h-full  w-full"
@@ -595,7 +705,7 @@ const navigate = useNavigate();
   {/* Facebook */}
   <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
-      href="https://www.facebook.com/"
+      href=" https://www.facebook.com/share/16dd5rFCFF/?mibextid=wwXIfr"
       target="_blank"
       rel="noopener noreferrer"
       className="flex justify-center items-center md:block h-full  w-full"
@@ -613,7 +723,7 @@ const navigate = useNavigate();
   {/* YouTube */}
   <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
-      href="https://www.youtube.com/"
+      href=" https://www.youtube.com/@coepzest2271"
       target="_blank"
       rel="noopener noreferrer"
       className="flex justify-center items-center md:block h-full  w-full"
@@ -920,7 +1030,58 @@ const navigate = useNavigate();
 
 <div className="hidden md:col-span-1 md:flex items-center h-full justify-center "></div>
    </div>
+
+   {/* MOBILE MENU OVERLAY */}
+ {/* MOBILE MENU OVERLAY */}
+<div
+  ref={overlayRef}
+  className="fixed inset-0 z-[9999] bg-black bg-opacity-95
+             flex flex-col items-center justify-around
+             pt-8 pb-8 pointer-events-auto"
+>
+  {/* Close button */}
+  <div className="h-10 w-10 border-2 border-amber-950 rounded-sm p-1">
+    <button
+      onClick={() => setIsMenuOpen(false)}
+      className="flex justify-center items-center h-full w-full"
+    >
+      <X
+        className="
+          h-full w-full text-orange-300
+          [filter:drop-shadow(0_0_6px_#E8560E)_drop-shadow(0_0_16px_#E8560E)]
+        "
+      />
+    </button>
+  </div>
+
+  {/* MENU BUTTONS */}
+ <div className="flex items-center flex-col gap-4 mt-2">
+  {[
+    ["SPORTS", "/Sports"],
+    ["ACCOMODATIONS", "/Accomodations"],
+    ["SCORES", "/Scores"],
+    ["ABOUT US", "/about"],
+    ["GALLERY", "/Gallery"],
+    ["CORE TEAM", "/coreTeam"],
+    ["SPONSERS", "/Sponsers"],
+    ["CONTACT US", "/contactUs"],
+  ].map(([label, path], i) => (
+    <button
+      key={i}
+      ref={(el) => (menuItemsRef.current[i] = el)}
+      onClick={() => handleMenuClick(path)}
+      className="menu-glow-btn text-xl md:text-4xl"
+    >
+      <span className="menu-glow-text">{label}</span>
+    </button>
+  ))}
+</div>
+
+</div>
+
     </div>
+
+    </>
   );
 };
 

@@ -26,48 +26,53 @@ function AnimatedRoutes() {
   const footerRef = useRef(null);
 
   useEffect(() => {
-     if (location.pathname === "/cyclothon" || location.pathname === "/cycloCertificate") {
+  // Show loader ONLY for home page
+  if (location.pathname !== "/") {
     setIsLoading(false);
     return;
   }
 
-    setIsLoading(true) // show loader on every route change
+  setIsLoading(true);
 
-    const timer = setTimeout(() => {
-      const tl = gsap.timeline({
-        onComplete: () => {
-          setIsLoading(false)  // hide loader when done
-        }
-      });
+  const timer = setTimeout(() => {
+    const tl = gsap.timeline({
+      onComplete: () => setIsLoading(false),
+    });
 
-      // Step 1: Exit left images
-      tl.to(loaderRef.current.querySelectorAll(".left-img"), {
-        x: "-150%",
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.3,
-        ease: "power3.in"
-      });
+    tl.to(loaderRef.current.querySelectorAll(".left-img"), {
+      x: "-150%",
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.3,
+      ease: "power3.in",
+    });
 
-      // Step 2: Exit right images
-      tl.to(loaderRef.current.querySelectorAll(".right-img"), {
+    tl.to(
+      loaderRef.current.querySelectorAll(".right-img"),
+      {
         x: "150%",
         opacity: 0,
         duration: 0.8,
         stagger: 0.3,
-        ease: "power3.in"
-      }, "<");
+        ease: "power3.in",
+      },
+      "<"
+    );
 
-      // Step 3: Fade in blackout
-      tl.to(loaderRef.current.querySelector(".blackout"), {
+    tl.to(
+      loaderRef.current.querySelector(".blackout"),
+      {
         opacity: 1,
         duration: 1.3,
-        ease: "power2.inOut"
-      }, 1.1);
-    }, 1300);
+        ease: "power2.inOut",
+      },
+      1.1
+    );
+  }, 1300);
 
-    return () => clearTimeout(timer)
-  }, [location.pathname])
+  return () => clearTimeout(timer);
+}, [location.pathname]);
+
 
   if (isLoading) {
     return <Loader ref={loaderRef} />
@@ -105,9 +110,8 @@ function AnimatedRoutes() {
       </Routes>
     </main>
     {/* FOOTER */}
-    {!isLoading &&
-      location.pathname !== "/" &&
-      location.pathname !== "/Scores" && <Footer />}
+   {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && <Footer />}
+
 
   </div>
 )

@@ -65,7 +65,16 @@ const TeamCard = ({
   return (
     <div 
       ref={cardRef}
-      className="relative h-80 w-64 rounded-xl shadow-2xl overflow-hidden transition-transform duration-300 ease-out"
+      className=" relative h-80 w-64 rounded-xl
+    overflow-hidden
+
+    border border-orange-500/30        
+    shadow-[0_0_15px_rgba(249,115,22,0.35)]   
+    transition-all duration-300 ease-out   
+
+    hover:border-orange-500/70         
+    hover:shadow-[0_0_35px_rgba(249,115,22,0.35)] 
+    hover:-translate-y-1                "
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ transformStyle: 'preserve-3d' }}
@@ -140,15 +149,7 @@ const TeamCard = ({
       )}
 
       <div className="flex space-x-4 my-6">
-        {email && (
-          <a
-            href={`mailto:${email}`}
-            className="p-3 bg-white/20 backdrop-blur-md rounded-full hover:bg-white/30 transition-all"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <Mail size={22} className="text-white" />
-          </a>
-        )}
+        
         {linkedin && (
           <a
             href={linkedin}

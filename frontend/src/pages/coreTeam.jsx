@@ -9,7 +9,7 @@ const coreTeamMembers = [
     name: "xyz", 
     image: "/badmintonLoader.avif",
     bio: "Leading Zest2026 with vision and dedication. Computer Science student passionate about technology and innovation.",
-    email: "arjun.sharma@zest.com",
+    instagram: "arjun.sharma@zest.com",
     linkedin: "https://linkedin.com/in/arjunsharma"
   },
   { 
@@ -17,7 +17,7 @@ const coreTeamMembers = [
     name: "abc", 
     image: "/badmintonLoader.avif",
     bio: "Supporting organizational excellence and team coordination. Electronics Engineering student with leadership experience.",
-    email: "priya.patel@zest.com",
+    instagram: "priya.patel@zest.com",
     linkedin: "https://linkedin.com/in/priyapatel"
   }
 ];
