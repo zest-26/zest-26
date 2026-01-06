@@ -173,7 +173,11 @@ const Sports = () => {
         <div className="zest-sports-icon-row">
           <Activity size={30} /> <Target size={30} /> <Zap size={30} />
         </div>
-        <button className="zest-sports-cta-btn">DOWNLOAD RULEBOOK</button>
+        <a href="/RuleBook.pdf" download>
+    <button className="zest-sports-cta-btn">
+      DOWNLOAD RULEBOOK
+    </button>
+  </a>
       </section>
 
     </div>

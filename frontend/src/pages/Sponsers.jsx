@@ -8,8 +8,8 @@ const Sponsers = () => {
 
   const titlesponsor = [
   {
-    name: "Company One",
-    logo: "/badmintonLoader.avif",
+    name: "EMOTORAD",
+    logo: "/sponsers/EMOTORAD.png",
     link: "https://companyone.com",
   },
   {
@@ -175,8 +175,8 @@ const Sponsers = () => {
           overflow-hidden
 
           /* FIXED CARD SIZE */
-          w-[300px] md:w-[320px] lg:w-[340px]
-          h-[300px] md:h-[360px] lg:h-[420px]
+          w-[300px] md:w-[320px] lg:w-[320px]
+          h-[300px] md:h-[360px] lg:h-[320px]
 
           /* SHINY ORANGE BASE */
           bg-gradient-to-br
@@ -248,8 +248,8 @@ const Sponsers = () => {
           overflow-hidden
 
           /* FIXED CARD SIZE */
-          w-[300px] md:w-[320px] lg:w-[340px]
-          h-[300px] md:h-[360px] lg:h-[420px]
+          w-[300px] md:w-[320px] lg:w-[320px]
+          h-[300px] md:h-[360px] lg:h-[320px]
 
           /* SHINY ORANGE BASE */
           bg-gradient-to-br
