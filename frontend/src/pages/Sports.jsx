@@ -164,7 +164,7 @@ const Sports = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> 
 
       {/* 4. FOOTER CTA */}
       <section className="zest-sports-footer">
