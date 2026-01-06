@@ -146,6 +146,8 @@ const overlayRef = useRef(null);
 const menuItemsRef = useRef([]);
 const tlRef = useRef(null); // store timeline
 
+
+
 useEffect(() => {
   if (!overlayRef.current) return;
 
@@ -196,14 +198,12 @@ const handleMenuClick = (path) => {
     return;
   }
 
-  // Navigate FIRST
-  navigate(path);
-
-  // Then reverse animation
+  // Reverse animation first
   tlRef.current.reverse();
 
-  // Clean up after reverse completes
+  // Navigate after reverse completes
   tlRef.current.eventCallback("onReverseComplete", () => {
+    navigate(path);
     tlRef.current.eventCallback("onReverseComplete", null); // reset callback
   });
 };
@@ -1039,10 +1039,11 @@ const handleMenuClick = (path) => {
   ref={overlayRef}
   className="fixed md:hidden inset-0 z-[9999] bg-black bg-opacity-95
              flex flex-col items-center justify-around
-             pt-8 pb-8 pointer-events-auto"
+             pt-8 pb-8 pointer-events-auto
+             translate-x-full"
 >
   {/* Close button */}
-  <div className="h-10 w-10 border-2 bg-green-400 border-amber-950 rounded-sm p-1">
+  <div className="h-10 w-10 border-2  border-amber-950 rounded-sm p-1">
     <button
       onClick={() => setIsMenuOpen(false)}
       className="flex justify-center items-center h-full w-full"

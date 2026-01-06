@@ -14,7 +14,7 @@ const contactUs = () => {
         <GridScan
           sensitivity={0.55}
           lineThickness={1}
-          linesColor="#F3A96C"
+          linesColor="#612D08"
           gridScale={0.1}
           scanColor="#F5BF5A"
 scanOpacity={0.1}

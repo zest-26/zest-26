@@ -7,7 +7,7 @@ import './Sports.css';
 gsap.registerPlugin(ScrollTrigger);
 
 const sportsData = [
-  { id: 1, title: "CYCLOTHON", category: "Flagship", desc: "Pedal through the heart of Pune.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-tall" },
+  { id: 1, title: "CYCLOTHON", category: "Flagship", desc: "Pedal through the heart of Pune.", img: "/badmintonLoader.avif", height: "h-tall" },
   { id: 2, title: "CRICKET", category: "Outdoor", desc: "The gentleman's game, reimagined.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-short" },
   { id: 3, title: "MARATHON", category: "Flagship", desc: "Test your endurance limits.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-med" },
   { id: 4, title: "BADMINTON", category: "Indoor", desc: "Smash your way to victory.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-tall" },

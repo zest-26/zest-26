@@ -16,10 +16,21 @@ const about = () => {
 
   // DATA FOR HIGHLIGHTS
   const highlights = [
-    { title: "MARATHON", videoId: "dlQJL3vGo9I" },
-    { title: "CYCLOTHON", videoId: "dlQJL3vGo9I" },
-    { title: "FITNESS", videoId: "dlQJL3vGo9I" },
+    { title: "Zest'25 After Movie", videoId: "dlQJL3vGo9I" },
+    { title: "Zest'24 After Movie", videoId: "6MoFsI-h3Mw" },
+    { title: "Zest'23 After Movie", videoId: "OtJkPUMhHGE" },
   ];
+
+  const isMobile = window.matchMedia('(max-width: 899px)').matches;
+
+const handlePlay = (videoId) => {
+  if (isMobile) {
+    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+  } else {
+    setActiveVideo(videoId);
+  }
+};
+
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -100,8 +111,7 @@ const about = () => {
 
   return (
     <div className="zest-about-main-wrapper" ref={componentRef}>
-      <div className="zest-about-noise-overlay"></div>
-
+      
       {/* SECTION 1: HERO */}
       <section className="zest-about-hero">
         
@@ -184,7 +194,7 @@ const about = () => {
             <p className="zest-about-desc">
               Recognized as one of India's largest annual inter-collegiate sports festivals, 
               Zest is not merely a competition—it is a celebration of human potential. 
-              Hosting over <strong>20,000+ athletes</strong> and <strong>50+ sporting events</strong>, 
+              Hosting over <strong>5,000+ athletes</strong> and <strong>50+ sporting events</strong>, 
               Zest transforms the campus into a high-octane arena where stamina meets strategy.
               <br/><br/>
               From the grueling Cyclothon to the precision of Chess, every event is a testament 
@@ -193,7 +203,7 @@ const about = () => {
             </p>
           </div>
           <div className="zest-about-info-img-wrapper">
-            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1000" alt="Zest Sports Action" />
+            <img src="/aboutUs/zestByNumbers.jpeg" alt="Zest Sports Action" />
             <div className="zest-about-img-overlay"></div>
           </div>
         </section>
@@ -201,21 +211,21 @@ const about = () => {
 
       {/* SECTION 4: IMPACT STATS */}
       <section className="zest-about-stats-container">
-        <div className="zest-about-stats-bg-blur"></div>
+        
         <div className="zest-about-stat-box">
-          <Users size={40} className="zest-about-stat-icon" />
-          <h3 className="zest-about-stat-number">20000+</h3>
-          <p>ANNUAL FOOTFALL</p>
-        </div>
+  <Users size={40} className="zest-about-stat-icon" />
+  <h3 className="zest-about-stat-number">25000+</h3>
+  <p>FOOTFALL</p>
+</div>
         <div className="zest-about-stat-box">
           <Zap size={40} className="zest-about-stat-icon" />
-          <h3 className="zest-about-stat-number">55+</h3>
-          <p>SPORTING EVENTS</p>
+          <h3 className="zest-about-stat-number">200+</h3>
+          <p>COLLEGES</p>
         </div>
         <div className="zest-about-stat-box">
           <Trophy size={40} className="zest-about-stat-icon" />
-          <h3 className="zest-about-stat-number">170+</h3>
-          <p>YEARS OF LEGACY</p>
+          <h3 className="zest-about-stat-number">5000+</h3>
+          <p>PARTICIPANTS</p>
         </div>
       </section>
 
@@ -229,8 +239,8 @@ const about = () => {
         </div>
 
         {highlights.map((item, index) => (
-          <div className="zest-about-highlight-card" key={index}>
-            <div className="zest-about-card-inner" onClick={() => setActiveVideo(item.videoId)}>
+          <div className="zest-about-highlight-card m-2" key={index}>
+            <div className="zest-about-card-inner"  onClick={() => handlePlay(item.videoId)}>
               <img src={`https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`} alt={item.title} />
               <div className="zest-about-card-content">
                 <h3>{item.title}</h3>

@@ -105,7 +105,43 @@ const Accomodations = () => {
     <>
       {/* CSS (kept intact) */}
       <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+         /* ORBITRON */
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/fonts/orbitron/Orbitron-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('/fonts/orbitron/Orbitron-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* RAJDHANI */
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/rajdhani/Rajdhani-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/rajdhani/Rajdhani-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Rajdhani';
+  src: url('/fonts/rajdhani/Rajdhani-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
 
         html,
 body {

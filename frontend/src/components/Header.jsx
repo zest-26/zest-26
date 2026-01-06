@@ -215,7 +215,7 @@ useEffect(() => {
     <div className="h-10  w-10 border-2 border-amber-950 rounded-sm p-1">
       <button
         onClick={closeMenu}
-        className="flex justify-center bg-red-400 items-center h-full w-full"
+        className="flex justify-center items-center h-full w-full"
       >
         <X className="h-full w-full text-orange-300
           [filter:drop-shadow(0_0_6px_#E8560E)_drop-shadow(0_0_16px_#E8560E)]" />
