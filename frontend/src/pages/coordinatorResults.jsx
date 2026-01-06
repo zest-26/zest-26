@@ -49,7 +49,7 @@ const CoordinatorResults = () => {
           </div>
 
           <h1 className="absolute top-[120px] sm:top-[155px] text-2xl  sm:text-4xl font-bold " ref={textRef}>
-            {"Coordinator Results".split("").map((char, index) => (
+            {"Volunteer Results".split("").map((char, index) => (
           <span
             key={index}
             className="inline-block text-white opacity-0 translate-y-[-20px]"

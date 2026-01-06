@@ -103,6 +103,7 @@ body {
   overflow-x: hidden;
 }
 
+
 /* hide scrollbar for all browsers */
 .scrollbar-none::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */

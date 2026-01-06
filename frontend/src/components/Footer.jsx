@@ -4,6 +4,7 @@ import {Phone,Mail,MapPin,Linkedin,Github,Instagram, Twitter,Facebook,X} from 'l
 
 const Footer = () => {
   return (
+
     <div className="bg-black w-full py-10 flex flex-col items-center gap-8">
 
   {/* Heading */}
@@ -41,6 +42,7 @@ const Footer = () => {
   </p>
 
 </div>
+
 
   )
 }

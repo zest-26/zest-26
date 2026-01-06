@@ -16,6 +16,7 @@
     "@react-three/fiber": "^9.3.0",
     "@react-three/postprocessing": "^3.0.4",
     "@tailwindcss/vite": "^4.1.12",
+
     "axios": "^1.13.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -30,6 +31,7 @@
     "ogl": "^1.0.11",
     "pdf-lib": "^1.17.1",
     "postprocessing": "^6.38.2",
+
     "react": "^19.1.1",
     "react-bits": "^1.0.5",
     "react-dom": "^19.1.1",
