@@ -40,17 +40,18 @@ const handleMenuClick = (path) => {
   if (isNavigatingRef.current) return;
   isNavigatingRef.current = true;
 
+  // 🔥 Scroll to top BEFORE navigation
+  window.scrollTo({ top: 0, behavior: "instant" });
+
+  navigate(path);
+
   if (!tlRef.current) {
-    navigate(path);
     setMenuOpen(false);
     setRenderOverlay(false);
+    isNavigatingRef.current = false;
     return;
   }
 
-  // Navigate FIRST
-  navigate(path);
-
-  // Then play reverse animation over the NEW page
   tlRef.current.eventCallback("onReverseComplete", () => {
     setMenuOpen(false);
     setRenderOverlay(false);
@@ -60,6 +61,7 @@ const handleMenuClick = (path) => {
 
   tlRef.current.reverse();
 };
+
 
 
 
