@@ -175,13 +175,13 @@ useEffect(() => {
     <div className="w-full h-full    col-span-12 md:col-span-16 flex items-center justify-center">
   <img
     src="/Zest26Logo4.png"
-    alt="MinSpark"
+    alt="Zest26Logo"
     className="h-full hidden md:block  w-full md:w-5/10 object-contain"
   />
 
   <img
     src="/Zest26Logo.png"
-    alt="MinSpark"
+    alt="Zest26Logo"
     className="h-full  block md:hidden  w-full md:w-5/10 object-contain"
   />
 </div>
