@@ -1,9 +1,47 @@
-import React from 'react'
+import React, { useState } from "react";
 import Orb from "@/components/Orb";
 import {GridScan} from "@/components/GridScan";
 
 
 const contactUs = () => {
+   const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  message: "",
+});
+
+const handleChange = (e) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
+
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const form = new FormData();
+  form.append("name", formData.name);
+  form.append("email", formData.email);
+  form.append("message", formData.message);
+
+  try {
+    await fetch(
+      "https://script.google.com/macros/s/AKfycbzU5NPLC735DUfqhMV6gt-oEIYnOcLK8dtcsVkT8tqSjGfuwMd_I_sur9yDAENZoa_h/exec",
+      {
+        method: "POST",
+        body: form, // ✅ NO headers
+      }
+    );
+
+    alert("Message sent 🚀");
+    setFormData({ name: "", email: "", message: "" });
+
+  } catch (error) {
+    alert("Submission failed ❌");
+  }
+};
+
+
+
   return (
     <div className="relative h-screen w-full bg-black overflow-hidden">
 
@@ -58,7 +96,7 @@ scanOpacity={0.1}
           >
             {/* YOUR FORM (unchanged) */}
             {/* keep your existing form here */}
-           <form className="w-4/5 h-4/5 flex flex-col justify-center text-white">
+           <form onSubmit={handleSubmit} className="w-4/5 h-4/5 flex flex-col justify-center text-white">
   <div className="w-full h-full grid grid-rows-20 gap-2 justify-items-center">
 
     {/* FULL NAME */}
@@ -81,6 +119,9 @@ scanOpacity={0.1}
           focus:ring-2 focus:ring-orange-400
           focus:shadow-[0_0_25px_rgba(251,146,60,0.8)]
         "
+         name="name"
+  value={formData.name}
+  onChange={handleChange}
       />
     </div>
 
@@ -104,6 +145,9 @@ scanOpacity={0.1}
           focus:ring-2 focus:ring-orange-400
           focus:shadow-[0_0_25px_rgba(251,146,60,0.8)]
         "
+        name="email"
+  value={formData.email}
+  onChange={handleChange}
       />
     </div>
 
@@ -126,6 +170,9 @@ scanOpacity={0.1}
           focus:ring-2 focus:ring-orange-400
           focus:shadow-[0_0_25px_rgba(251,146,60,0.8)]
         "
+        name="message"
+  value={formData.message}
+  onChange={handleChange}
       />
     </div>
 
