@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
 import About from './pages/about'
-import CoordinatorResults from './pages/coordinatorResults'
+import VolunteerResults from './pages/coordinatorResults'
 import ContactUs from './pages/contactUs'
 import Gallery from './pages/Gallery'
 import CoreTeam from './pages/coreTeam'
@@ -14,88 +14,108 @@ import Sports from './pages/Sports'
 import Accomodations from './pages/Accomodations'
 import Sponsers from './pages/Sponsers'
 import Cyclothon from './pages/cyclothon'
+import CycloCertificate from './pages/cycloCertificate'
+import Volresults from './pages/volResults'
+import Scores from './pages/Scores'
+
 
 function AnimatedRoutes() {
   const [isLoading, setIsLoading] = useState(true)
   const loaderRef = useRef(null)
   const location = useLocation()
+  const footerRef = useRef(null);
 
   useEffect(() => {
-     if (location.pathname === "/cyclothon") {
+  // Show loader ONLY for home page
+  if (location.pathname !== "/") {
     setIsLoading(false);
     return;
   }
 
-    setIsLoading(true) // show loader on every route change
+  setIsLoading(true);
 
-    const timer = setTimeout(() => {
-      const tl = gsap.timeline({
-        onComplete: () => {
-          setIsLoading(false)  // hide loader when done
-        }
-      });
+  const timer = setTimeout(() => {
+    const tl = gsap.timeline({
+      onComplete: () => setIsLoading(false),
+    });
 
-      // Step 1: Exit left images
-      tl.to(loaderRef.current.querySelectorAll(".left-img"), {
-        x: "-150%",
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.3,
-        ease: "power3.in"
-      });
+    tl.to(loaderRef.current.querySelectorAll(".left-img"), {
+      x: "-150%",
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.3,
+      ease: "power3.in",
+    });
 
-      // Step 2: Exit right images
-      tl.to(loaderRef.current.querySelectorAll(".right-img"), {
+    tl.to(
+      loaderRef.current.querySelectorAll(".right-img"),
+      {
         x: "150%",
         opacity: 0,
         duration: 0.8,
         stagger: 0.3,
-        ease: "power3.in"
-      }, "<");
+        ease: "power3.in",
+      },
+      "<"
+    );
 
-      // Step 3: Fade in blackout
-      tl.to(loaderRef.current.querySelector(".blackout"), {
+    tl.to(
+      loaderRef.current.querySelector(".blackout"),
+      {
         opacity: 1,
         duration: 1.3,
-        ease: "power2.inOut"
-      }, 1.1);
-    }, 2300);
+        ease: "power2.inOut",
+      },
+      1.1
+    );
+  }, 1300);
 
-    return () => clearTimeout(timer)
-  }, [location.pathname])
+  return () => clearTimeout(timer);
+}, [location.pathname]);
+
 
   if (isLoading) {
     return <Loader ref={loaderRef} />
   }
 
   return (
-    <div className='h-screen w-screen'>
-      {location.pathname === "/" && <Header />}
-      <main className='mt-0 min-h-screen w-full scroll-smooth'>
-        <Routes location={location} key={location.pathname}>
-          <Route 
-            path="/" 
-            element={
-              <>
-                <section id="home"><Home /></section>
-                
-              </>
-            }
-          />
-          <Route path="/coordinatorResults" element={<CoordinatorResults />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contactUs" element={<ContactUs />} />
-          <Route path="/Gallery" element={<Gallery />} />
-          <Route path="/coreTeam" element={<CoreTeam />} />
-          <Route path="/Sports" element={<Sports />} />
-          <Route path="/Accomodations" element={<Accomodations />} />
-          <Route path="/Sponsers" element={<Sponsers />} />
-          <Route path="/cyclothon" element={<Cyclothon />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
-  )
+  <div className="w-screen h-screen">
+
+    {/* HEADER — hidden on Home & Loader */}
+    {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && <Header />}
+
+    <main className="w-full min-h-screen mt-0 scroll-smooth">
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={
+            <section id="home">
+              <Home />
+            </section>
+          }
+        />
+
+        <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+        <Route path="/VolunteerResults" element={<Volresults />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contactUs" element={<ContactUs />} />
+        <Route path="/Gallery" element={<Gallery />} />
+        <Route path="/coreTeam" element={<CoreTeam />} />
+        <Route path="/Sports" element={<Sports />} />
+        <Route path="/Accomodations" element={<Accomodations />} />
+        <Route path="/Sponsers" element={<Sponsers />} />
+        <Route path="/cyclothon" element={<Cyclothon />} />
+        <Route path="/cycloCertificate" element={<CycloCertificate />} />
+        <Route path="/Scores" element={<Scores />} />
+      </Routes>
+    </main>
+    {/* FOOTER */}
+   {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && <Footer />}
+
+
+  </div>
+)
+
 }
 
 function App() {
