@@ -1,210 +1,138 @@
 import React, { useState } from "react";
-import Orb from "@/components/Orb";
-import {GridScan} from "@/components/GridScan";
 
+const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-const contactUs = () => {
-   const [formData, setFormData] = useState({
-  name: "",
-  email: "",
-  message: "",
-});
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-const handleChange = (e) => {
-  setFormData({ ...formData, [e.target.name]: e.target.value });
-};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    const form = new FormData();
+    form.append("name", formData.name);
+    form.append("email", formData.email);
+    form.append("message", formData.message);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+    try {
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzU5NPLC735DUfqhMV6gt-oEIYnOcLK8dtcsVkT8tqSjGfuwMd_I_sur9yDAENZoa_h/exec",
+        {
+          method: "POST",
+          body: form,
+        }
+      );
 
-  const form = new FormData();
-  form.append("name", formData.name);
-  form.append("email", formData.email);
-  form.append("message", formData.message);
-
-  try {
-    await fetch(
-      "https://script.google.com/macros/s/AKfycbzU5NPLC735DUfqhMV6gt-oEIYnOcLK8dtcsVkT8tqSjGfuwMd_I_sur9yDAENZoa_h/exec",
-      {
-        method: "POST",
-        body: form, // ✅ NO headers
-      }
-    );
-
-    alert("Message sent 🚀");
-    setFormData({ name: "", email: "", message: "" });
-
-  } catch (error) {
-    alert("Submission failed ❌");
-  }
-};
-
-
+      alert("Message sent 🚀");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      alert("Submission failed ❌");
+    }
+  };
 
   return (
-    <div className="relative h-screen w-full bg-black overflow-hidden">
-
+    <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-900 via-black to-orange-950 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
       
-
-      {/* FULL SCREEN GRIDSCAN */}
-      <div className="absolute inset-0 z-0">
-        <GridScan
-          sensitivity={0.55}
-          lineThickness={1}
-          linesColor="#612D08"
-          gridScale={0.1}
-          scanColor="#F5BF5A"
-scanOpacity={0.1}
-          enablePost
-          bloomIntensity={0.6}
-          chromaticAberration={0.002}
-          noiseIntensity={0.01}
-        />
+      {/* Animated background orbs */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
-      {/* CENTER CONTENT */}
-      <div className="relative z-10 h-full w-full flex items-center justify-center">
-
-        {/* SQUARE CONTAINER */}
-        <div
-          className="
-            relative
-            h-[50%] md:h-[80%]
-            aspect-square
-            overflow-hidden
-            flex items-center justify-center
-          "
-        >
-          {/* ORB */}
-          <div className="absolute inset-0 z-10">
-            <Orb hoverIntensity={0.13} />
-          </div>
-
-          {/* FORM CIRCLE */}
-          <div
-            className="
-             absolute
-    top-1/2 left-1/2
-    -translate-x-1/2 -translate-y-1/2
-    h-2/3 w-2/3
-    rounded-full
-    z-20
-    flex items-center justify-center
-    bg-transparent
-            "
-          >
-            {/* YOUR FORM (unchanged) */}
-            {/* keep your existing form here */}
-           <form onSubmit={handleSubmit} className="w-4/5 h-4/5 flex flex-col justify-center text-white">
-  <div className="w-full h-full grid grid-rows-20 gap-2 justify-items-center">
-
-    {/* FULL NAME */}
-    <div className="row-span-5 flex items-center w-4/5 md:w-8/10">
-      <input
-        type="text"
-        placeholder="Full Name"
-        className="
-          w-full md:h-3/4 h-3/3
-          backdrop-blur-md
-          rounded-lg px-4
-          placeholder-white/70 text-white
-          outline-none
-          transition-all duration-300 ease-out
-          hover:scale-[1.03] 
-          border border-orange-400
-          shadow-[0_0_20px_rgba(251,146,60,0.6)]
-          focus:scale-[1.03] focus:bg-white/30
-          focus:border-orange-400
-          focus:ring-2 focus:ring-orange-400
-          focus:shadow-[0_0_25px_rgba(251,146,60,0.8)]
-        "
-         name="name"
-  value={formData.name}
-  onChange={handleChange}
-      />
-    </div>
-
-    {/* EMAIL */}
-    <div className="row-span-5 flex items-center w-4/5 md:w-8/10">
-      <input
-        type="email"
-        placeholder="Email"
-        className="
-          w-full md:h-3/4 h-3/3
+      {/* Main container */}
+      <div className="relative z-10 w-full mt-20 mb:mt-30 max-w-2xl">
         
-          rounded-lg px-4
-          placeholder-white/70 text-white
-          outline-none
-          transition-all duration-300 ease-out
-          hover:scale-[1.03] 
-          border border-orange-400
-          shadow-[0_0_20px_rgba(251,146,60,0.6)]
-          focus:scale-[1.03] focus:bg-white/30
-          focus:border-orange-400
-          focus:ring-2 focus:ring-orange-400
-          focus:shadow-[0_0_25px_rgba(251,146,60,0.8)]
-        "
-        name="email"
-  value={formData.email}
-  onChange={handleChange}
-      />
-    </div>
+        {/* Header section */}
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-3 sm:mb-4">
+            Contact{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
+              Us
+            </span>
+          </h1>
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg max-w-md mx-auto px-4">
+            Have a question or want to work together? Drop us a message and we'll get back to you soon.
+          </p>
+        </div>
 
-    {/* MESSAGE */}
-    <div className="row-span-5 flex items-center w-4/5 md:w-8/10">
-      <textarea
-        placeholder="Your Message"
-        className="
-         w-full md:h-3/4 h-3/3
-        
-          rounded-lg px-4
-          placeholder-white/70 text-white
-          outline-none
-          transition-all duration-300 ease-out
-          hover:scale-[1.03] 
-          border border-orange-400
-          shadow-[0_0_20px_rgba(251,146,60,0.6)]
-          focus:scale-[1.03] focus:bg-white/30
-          focus:border-orange-400
-          focus:ring-2 focus:ring-orange-400
-          focus:shadow-[0_0_25px_rgba(251,146,60,0.8)]
-        "
-        name="message"
-  value={formData.message}
-  onChange={handleChange}
-      />
-    </div>
+        {/* Form container */}
+        <div className="relative">
+          {/* Glow effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-orange-400 rounded-2xl blur-lg opacity-30"></div>
+          
+          {/* Form card */}
+          <div className="relative bg-black/40 backdrop-blur-xl border border-orange-500/30 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl">
+            <div className="space-y-5 sm:space-y-6">
+              
+              {/* Full Name */}
+              <div className="group">
+                <label className="block text-orange-400 text-sm font-semibold mb-2 transition-all group-focus-within:text-orange-300">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="John Doe"
+                  className="w-full h-12 sm:h-14 bg-white/5 backdrop-blur-sm border border-orange-500/40 rounded-xl px-4 sm:px-5 text-white placeholder-gray-500 outline-none transition-all duration-300 focus:bg-white/10 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/50 focus:shadow-[0_0_20px_rgba(251,146,60,0.3)] hover:border-orange-400/60"
+                />
+              </div>
 
-    {/* SEND BUTTON */}
-    <div className="row-span-5 flex items-center justify-center w-5/10 md:w-5/10">
-      <button
-        type="submit"
-        className="
-          w-full h-3/5
-          backdrop-blur-md
-          bg-orange-600/10
-          md:rounded-lg rounded-sm font-semibold
-          border border-orange-400
-          shadow-[0_0_20px_rgba(251,146,60,0.6)]
-          transition hover:scale-[1.03]
-          hover:bg-orange-950
-        "
-      >
-        Send
-      </button>
-    </div>
+              {/* Email */}
+              <div className="group">
+                <label className="block text-orange-400 text-sm font-semibold mb-2 transition-all group-focus-within:text-orange-300">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="john@example.com"
+                  className="w-full h-12 sm:h-14 bg-white/5 backdrop-blur-sm border border-orange-500/40 rounded-xl px-4 sm:px-5 text-white placeholder-gray-500 outline-none transition-all duration-300 focus:bg-white/10 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/50 focus:shadow-[0_0_20px_rgba(251,146,60,0.3)] hover:border-orange-400/60"
+                />
+              </div>
 
-  </div>
-</form>
+              {/* Message */}
+              <div className="group">
+                <label className="block text-orange-400 text-sm font-semibold mb-2 transition-all group-focus-within:text-orange-300">
+                  Your Message
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell us what's on your mind..."
+                  rows="5"
+                  className="w-full bg-white/5 backdrop-blur-sm border border-orange-500/40 rounded-xl px-4 sm:px-5 py-3 sm:py-4 text-white placeholder-gray-500 outline-none transition-all duration-300 focus:bg-white/10 focus:border-orange-400 focus:ring-2 focus:ring-orange-400/50 focus:shadow-[0_0_20px_rgba(251,146,60,0.3)] hover:border-orange-400/60 resize-none"
+                />
+              </div>
 
+              {/* Submit button */}
+              <button
+                onClick={handleSubmit}
+                className="w-full h-12 sm:h-14 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 text-white font-bold rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(251,146,60,0.5)] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-black/50"
+              >
+                Send Message
+              </button>
+            </div>
+
+            {/* Decorative corner accents */}
+            <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-orange-500/50 rounded-tl-2xl"></div>
+            <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-orange-500/50 rounded-br-2xl"></div>
           </div>
         </div>
+
+       
       </div>
     </div>
+  );
+};
 
-
-  )
-}
-
-export default contactUs
+export default ContactUs;
