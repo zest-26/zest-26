@@ -95,7 +95,7 @@ function AnimatedRoutes() {
           }
         />
 
-        <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+        {/* <Route path="/coordinatorResults" element={<CoordinatorResults />} /> */}
         <Route path="/VolunteerResults" element={<Volresults />} />
         <Route path="/about" element={<About />} />
         <Route path="/contactUs" element={<ContactUs />} />
