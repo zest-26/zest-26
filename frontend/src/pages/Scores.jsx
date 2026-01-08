@@ -20,7 +20,10 @@ import {
   X,
   Flag,
   Menu,
+  ArrowLeft
 } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
+
 
 import { initializeApp } from 'firebase/app';
 import {
@@ -90,7 +93,7 @@ const StatusBadge = ({ status }) => {
     label = 'Live';
     className = 'status-badge status-live';
   } else if (normalized === 'finished') {
-    label = 'Full Time';
+    label = 'Finished';
     className = 'status-badge status-finished';
   } else if (normalized === 'break') {
     label = 'Break';
@@ -350,6 +353,9 @@ export default function Scores() {
     playersB: '',
     status: 'upcoming',
   });
+
+  const navigate = useNavigate();
+
 
   // API Helper Function
   const apiCall = async (endpoint, options = {}) => {
@@ -640,25 +646,14 @@ export default function Scores() {
         </div>
 
         <div className="card-body">
-          {isFinished && (
-            <div className="winner-banner">
-              <span className="winner-flag">
-                <Flag size={14} />
-              </span>
-              {hasWinner ? (
-                <span className="winner-text">{winnerName} WIN</span>
-              ) : (
-                <span className="winner-text">Match Drawn</span>
-              )}
-            </div>
-          )}
+        
 
           <div className="score-display">
             <div className={`team-block ${winning === 'A' ? 'winning' : ''}`}>
               <p className="team-name">{match.teamA}</p>
               <div className="team-score score-pop">{scoreA}</div>
               {isFinished && winning === 'A' && (
-                <div className="team-result-chip">Winner</div>
+                <div className="team-result-chip">Wins</div>
               )}
             </div>
 
@@ -676,7 +671,7 @@ export default function Scores() {
               <p className="team-name">{match.teamB}</p>
               <div className="team-score score-pop">{scoreB}</div>
               {isFinished && winning === 'B' && (
-                <div className="team-result-chip">Winner</div>
+                <div className="team-result-chip">Wins</div>
               )}
             </div>
           </div>
@@ -746,14 +741,14 @@ export default function Scores() {
       <div className="hero-gradient-bg " />
       <header className="header">
         <div className="header-content container">
-          <button
-            type="button"
-            className="btn-icon show-mobile header-menu-left"
-            onClick={() => setIsMobileMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            <Menu size={18} />
-          </button>
+<button
+  type="button"
+  className="btn-icon show-mobile header-menu-left"
+  onClick={() => navigate("/")}
+  aria-label="Go to homepage"
+>
+  <ArrowLeft size={22} />
+</button>
 
           <div
             className="logo-section"
@@ -768,7 +763,7 @@ export default function Scores() {
                 <span className="accent-text">&nbsp;LIVE</span>
               </h1>
               <p className="tagline hide-mobile">
-                Bold. Fast. Live scores for Asia&apos;s 4th largest college
+                Bold. Fast. Live scores for Asia&apos;s 5th largest college
                 sports fest.
               </p>
             </div>
