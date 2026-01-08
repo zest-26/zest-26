@@ -4,20 +4,190 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowUpRight, Trophy, Zap, Activity, Target, Flame } from 'lucide-react';
 import './Sports.css';
 
+
 gsap.registerPlugin(ScrollTrigger);
 
-const sportsData = [
-  { id: 1, title: "CYCLOTHON", category: "Flagship", desc: "Pedal through the heart of Pune.", img: "/badmintonLoader.avif", height: "h-tall" },
-  { id: 2, title: "CRICKET", category: "Outdoor", desc: "The gentleman's game, reimagined.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-short" },
-  { id: 3, title: "MARATHON", category: "Flagship", desc: "Test your endurance limits.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-med" },
-  { id: 4, title: "BADMINTON", category: "Indoor", desc: "Smash your way to victory.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-tall" },
-  { id: 5, title: "FOOTBALL", category: "Outdoor", desc: "Passion, grit, and glory.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-med" },
-  { id: 6, title: "CHESS", category: "Indoor", desc: "Checkmate in style.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-short" },
-  { id: 7, title: "KABADDI", category: "Outdoor", desc: "The soil of strength.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-tall" },
-  { id: 8, title: "SPORTIFY", category: "Fun", desc: "Fun meets fitness.", img: "https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&q=80&w=800", height: "h-med" },
-];
-
+// Categories for filtering
 const categories = ["All", "Flagship", "Outdoor", "Indoor"];
+
+const sportsData = [
+  // --- FLAGSHIP / MAJOR OUTDOOR ---
+  { 
+    id: 1, 
+    title: "CRICKET", 
+    category: "Flagship", 
+    desc: "11 Players. The gentleman's game, reimagined. White ball tournament.", 
+    img: "/Sports/Cricket_converted.avif", 
+    height: "h-tall",
+    link: "https://unstop.com/p/coep-zest26-cricket-college-of-engineering-coep-pune-1608250?lb=GzoB9Yag&utm_medium=Share&utm_source=WhatsApp&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnldpSWdDOei0AQpL-ZmmOMnqCB9xCB9mgZd85WKAG44Hhr7DHU4_Gmn7nG5g_aem_rwS2JGW6idmfG6yqoX6IcQ" 
+  },
+  { 
+    id: 2, 
+    title: "FOOTBALL", 
+    category: "Flagship", 
+    desc: "11+7 Players. Passion, grit, and glory. Standard FIFA rules apply.", 
+    img: "/Sports/Football_converted.avif", 
+    height: "h-med",
+    link: "https://unstop.com/p/coep-zest26-football-college-of-engineering-coep-pune-1609189?lb=GzoB9Yag&utm_medium=Share&utm_source=WhatsApp&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnwFpECSzT8zNw6xRuo87ZbVclwZwx4C5io73DvqjLvmk2nibx1Y-S-RZ8_j4_aem_zqGMCWhUteMPiKdvfnj1hA" 
+  },
+  { 
+    id: 3, 
+    title: "BASKETBALL", 
+    category: "Flagship", 
+    desc: "FIBA Rules. Dribble, shoot, score. High intensity court action.", 
+    img: "/Sports/Basketball Basketball_converted.avif", 
+    height: "h-tall",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 4, 
+    title: "KABADDI", 
+    category: "Flagship", 
+    desc: "The soil of strength. Pro Kabaddi style mats and rules.", 
+    img: "/Sports/Kabaddi_converted.avif", 
+    height: "h-med",
+    link: "https://unstop.com/p/coep-zest25-kabaddi-college-of-engineering-coep-pune-1608275?lb=GzoB9Yag&utm_medium=Share&utm_source=WhatsApp&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnTM4ZqCWKrkbvgrjLkP283WQwY2RYp_GZiCEC9yqxTc_jSLQOQpjg4Ilm-K8_aem_Pb_fEAIdSK5C2ImRlHC3tQ" 
+  },
+
+  // --- OUTDOOR ---
+  { 
+    id: 5, 
+    title: "VOLLEYBALL", 
+    category: "Outdoor", 
+    desc: "Spike your way to victory. Standard FIVB rules.", 
+    img: "/Sports/Volleyball_converted.avif", 
+    height: "h-short",
+    link: "https://unstop.com/p/coep-zest26-volleyball-college-of-engineering-coep-pune-1608991?lb=GzoB9Yag&utm_medium=Share&utm_source=WhatsApp&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnwfGAEqIWE0OU_Wy9wANrB7Ri6jclUPnc_VLsTxCMwBgwb3nAIt5F5hMeKtc_aem_Lc06-E_y5YeYGEM28f39PQ" 
+  },
+  { 
+    id: 6, 
+    title: "KHO-KHO", 
+    category: "Outdoor", 
+    desc: "Chase and tag. A test of speed and agility.", 
+    img: "/Sports/Khokho_converted.avif", 
+    height: "h-med",
+    link: "https://unstop.com/p/coep-zest26-kho-kho-college-of-engineering-coep-pune-1609746?lb=GzoB9Yag&utm_medium=Share&utm_source=WhatsApp&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGn4wOUUp-UtpAXrcRbJn7s7Bqk3zFvqRPHOUfMKY1FQ8f-47yMdV0wCwV2xuY_aem_A2TvTg-xT0O8XZ8z4kbIuA" 
+  },
+  { 
+    id: 7, 
+    title: "HANDBALL", 
+    category: "Outdoor", 
+    desc: "Speed, stamina, and skill. 7 players per team.", 
+    img: "/Sports/Handball_converted.avif", 
+    height: "h-short",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 8, 
+    title: "HOCKEY", 
+    category: "Outdoor", 
+    desc: "The national pride. Field hockey tournament.", 
+    img: "/Sports/Hockey_converted.avif", 
+    height: "h-med",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 9, 
+    title: "ATHLETICS", 
+    category: "Outdoor", 
+    desc: "100m, 200m, Relay. Faster, Higher, Stronger.", 
+    img: "/Sports/Athletics_converted.avif", 
+    height: "h-tall",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 10, 
+    title: "ARCHERY", 
+    category: "Outdoor", 
+    desc: "Aim for the bullseye. Indian round (30m & 50m).", 
+    img: "/Sports/Archery_converted.avif", 
+    height: "h-med",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 11, 
+    title: "BOX CRICKET", 
+    category: "Outdoor", 
+    desc: "Short boundary, big thrill. Soft tennis ball tournament.", 
+    img: "/Sports/Box-Cricket_converted.avif", 
+    height: "h-short",
+    link: "https://unstop.com/" 
+  },
+
+  // --- INDOOR ---
+  { 
+    id: 12, 
+    title: "BADMINTON", 
+    category: "Indoor", 
+    desc: "Smash your way to victory. Singles, Doubles, and Mix.", 
+    img: "/Sports/Badminton_converted.avif", 
+    height: "h-tall",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 13, 
+    title: "TABLE TENNIS", 
+    category: "Indoor", 
+    desc: "Spin and smash. Team event format (A-B-C vs X-Y-Z).", 
+    img: "/Sports/Table Tennis_converted.avif", 
+    height: "h-short",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 14, 
+    title: "CHESS", 
+    category: "Indoor", 
+    desc: "Checkmate in style. Blitz, Rapid, and Classical formats.", 
+    img: "/Sports/Chess_converted.avif", 
+    height: "h-med",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 15, 
+    title: "CARROM", 
+    category: "Indoor", 
+    desc: "Strike and pocket. Singles and Doubles.", 
+    img: "/Sports/Carrom_converted.avif", 
+    height: "h-short",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 16, 
+    title: "FENCING", 
+    category: "Indoor", 
+    desc: "The art of swordplay. Epee, Sabre, and Foil.", 
+    img: "/Sports/Fencing_converted.avif", 
+    height: "h-tall",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 17, 
+    title: "INDOOR ROWING", 
+    category: "Indoor", 
+    desc: "Test your endurance. 1KM and 500m categories.", 
+    img: "/Sports/Indoor rowing_converted.avif", 
+    height: "h-med",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 18, 
+    title: "COEP SHREE", 
+    category: "Indoor", 
+    desc: "Bodybuilding championship. Defining Strength.", 
+    img: "/Sports/COEP Shree_converted.avif", 
+    height: "h-tall",
+    link: "https://unstop.com/" 
+  },
+  { 
+    id: 19, 
+    title: "YOGA", 
+    category: "Indoor", 
+    desc: "Harmony of mind and body.", 
+    img: "/Sports/yoga_converted.avif", 
+    height: "h-med",
+    link: "https://unstop.com/" 
+  },
+];
 
 const Sports = () => {
   const [filter, setFilter] = useState("All");
@@ -102,8 +272,6 @@ const Sports = () => {
 
       {/* 1. HERO HEADER */}
       <header className="zest-sports-header">
-                  {/* Breadcrumbs moved INSIDE content to prevent overlap */}
-         
         <div className="zest-sports-pill">
           <Flame size={14} className="icon-pulse" /> THE ARENA
         </div>
@@ -144,21 +312,20 @@ const Sports = () => {
                 <div className="zest-content-top mb-6 md:mb-4">
                   <div className="zest-sports-category">{item.category}</div>
                   <h3 className="zest-sports-card-title">{item.title}</h3>
-                    <a
-    href="#"
-    className="zest-register-btn md:ml-3"
-    onClick={(e) => e.preventDefault()} // prevents jump for now
-  >
-    REGISTER
-    <ArrowUpRight size={16} />
-  </a>
+                  <a
+                    href={item.link} // Changed to item.link from Unstop/Instagram
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="zest-register-btn md:ml-3"
+                  >
+                    REGISTER
+                    <ArrowUpRight size={16} />
+                  </a>
                 </div>
                 
-               <div className="zest-content-hidden">
-  <p>{item.desc}</p>
-
-
-</div>
+                <div className="zest-content-hidden">
+                  <p>{item.desc}</p>
+                </div>
               </div>
 
             </div>
@@ -174,10 +341,10 @@ const Sports = () => {
           <Activity size={30} /> <Target size={30} /> <Zap size={30} />
         </div>
         <a href="/RuleBook.pdf" download>
-    <button className="zest-sports-cta-btn">
-      DOWNLOAD RULEBOOK
-    </button>
-  </a>
+          <button className="zest-sports-cta-btn">
+            DOWNLOAD RULEBOOK
+          </button>
+        </a>
       </section>
 
     </div>
