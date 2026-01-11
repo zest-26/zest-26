@@ -741,6 +741,14 @@ export default function Scores() {
       <div className="hero-gradient-bg " />
       <header className="header">
         <div className="header-content container">
+           <button
+            type="button"
+            className="btn-icon show-mobile header-menu-left"
+            onClick={() => setIsMobileMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu size={18} />
+          </button>
 <button
   type="button"
   className="btn-icon show-mobile header-menu-left"

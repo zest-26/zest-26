@@ -117,14 +117,16 @@ const handlePlay = (videoId) => {
         
         {/* Background Video Wrapper */}
         <div className="zest-about-video-bg">
-          <iframe
-            className="zest-about-video-element"
-            src="https://www.youtube.com/embed/dlQJL3vGo9I?autoplay=1&mute=1&loop=1&playlist=dlQJL3vGo9I&controls=0&showinfo=0&rel=0&playsinline=1&enablejsapi=1&disablekb=1"
-            title="Campus Tour Background"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          ></iframe>
+           <video
+    className="zest-about-video-element"
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="metadata"
+  >
+    <source src="/videos/Aftermovie.webm" type="video/webm" />
+  </video>
           <div className="zest-about-gradient-overlay"></div>
         </div>
 
@@ -181,7 +183,7 @@ const handlePlay = (videoId) => {
            
           </div>
           <div className="zest-about-info-img-wrapper">
-            <img src="https://www.coeptech.ac.in/wp-content/uploads/elementor/thumbs/COEP-Website-Pic-1-r4qfk1ygvn7y9y1tf4vppvonlurjzsbf6jrltou9w8.jpg" alt="COEP Main Building" />
+            <img src="/aboutUs/coepCampus_compressed.avif" alt="COEP Main Building" />
             <div className="zest-about-img-overlay"></div>
           </div>
         </section>

@@ -591,7 +591,7 @@ const handleMenuClick = (path) => {
     {/* IMAGE */}
     <div className="col-span-6 w-full h-full  md:col-span-1 flex items-center justify-center">
       <img 
-        src="/Zest26Logo.png"
+        src="/Zest26Logo_compressed.avif"
         alt="header"
         className="w-full  h-full object-contain"
       />
