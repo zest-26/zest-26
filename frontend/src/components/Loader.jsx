@@ -91,7 +91,7 @@ const Loader = forwardRef((props, ref) => {
     <div className="row-span-19 h-full w-full flex justify-center items-center">
       <div className="h-full aspect-square overflow-hidden rounded-2xl">
         <video
-          src="/videos/MashalVideo.mp4"
+          src="/videos/MashalVideo.webm"
           autoPlay
           loop
           muted

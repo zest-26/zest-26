@@ -110,7 +110,7 @@ function AnimatedRoutes() {
       </Routes>
     </main>
     {/* FOOTER */}
-   {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && <Footer />}
+   {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/Gallery" && <Footer />}
 
 
   </div>

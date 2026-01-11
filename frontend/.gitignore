@@ -12,6 +12,8 @@ lerna-debug.log*
 
 node_modules
 dist
+build
+/public/videos/*.mp4
 dist-ssr
 *.local
 
