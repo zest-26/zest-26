@@ -15,7 +15,18 @@ const TeamCard = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const cardRef = useRef(null);
+
+  // Detect if device is mobile
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   React.useEffect(() => {
     const resetCard = (event) => {
@@ -40,7 +51,8 @@ const TeamCard = ({
   };
 
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
+    // Skip tilt effect on mobile
+    if (isMobile || !cardRef.current) return;
     
     const card = cardRef.current;
     const rect = card.getBoundingClientRect();
@@ -57,9 +69,10 @@ const TeamCard = ({
   };
 
   const handleMouseLeave = () => {
-    if (cardRef.current) {
-      cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    }
+    // Skip on mobile
+    if (isMobile || !cardRef.current) return;
+    
+    cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   };
 
   return (

@@ -172,6 +172,7 @@ const coreTeam = () => {
          opacity: 0;
          animation: split-in 0.6s ease forwards;
        }
+         
  
      `;
     document.head.appendChild(styleElement);

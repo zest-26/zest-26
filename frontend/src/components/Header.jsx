@@ -233,7 +233,7 @@ useEffect(() => {
         ["SCORES", "/Scores"],
          ["CORE TEAM", "/coreTeam"],
         ["ACCOMODATIONS", "/Accomodations"],
-        ["SPONSERS", "/Sponsers"],
+        ["SPONSORS", "/Sponsers"],
         ["CONTACT US", "/contactUs"],
       ].map(([label, path], i) => (
         <button

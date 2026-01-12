@@ -135,8 +135,8 @@ const handlePlay = (videoId) => {
           
 
           <h1 className="zest-about-hero-title" ref={heroTextRef}>
-            <span className="zest-about-outline-text">IGNITE</span> <br />
-            <span>THE</span> <span className="zest-about-text-orange zest-about-glow-text">FUTURE</span>
+            <span className="zest-about-outline-text">THE ROAR</span> <br />
+            <span>OF</span> <span className="zest-about-text-orange zest-about-glow-text">VICTORY</span>
           </h1>
           
           <div className="zest-about-hero-meta">
@@ -192,7 +192,7 @@ const handlePlay = (videoId) => {
         <section className="zest-about-info-section reverse">
           <div className="zest-about-info-text">
             <h4 className="zest-about-label">// THE PHENOMENON</h4>
-            <h2 className="zest-about-heading">ZEST '26: <br/>Unleash The <span className="zest-about-text-orange">Spirit</span></h2>
+            <h2 className="zest-about-heading">ZEST '26: <br/>The Victory of <span className="zest-about-text-orange">Roar</span></h2>
             <p className="zest-about-desc">
               Recognized as one of India's largest annual inter-collegiate sports festivals, 
               Zest is not merely a competition—it is a celebration of human potential. 

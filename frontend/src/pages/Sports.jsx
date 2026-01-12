@@ -8,14 +8,14 @@ import './Sports.css';
 gsap.registerPlugin(ScrollTrigger);
 
 // Categories for filtering
-const categories = ["All", "Flagship", "Outdoor", "Indoor"];
+const categories = ["All", "Outdoor", "Indoor"];
 
 const sportsData = [
   // --- FLAGSHIP / MAJOR OUTDOOR ---
   { 
     id: 1, 
     title: "CRICKET", 
-    category: "Flagship", 
+    category: "Outdoor", 
     desc: "11 Players. The gentleman's game, reimagined. White ball tournament.", 
     img: "/Sports/Cricket_converted.avif", 
     height: "h-tall",
@@ -24,7 +24,7 @@ const sportsData = [
   { 
     id: 2, 
     title: "FOOTBALL", 
-    category: "Flagship", 
+    category: "Outdoor", 
     desc: "11+7 Players. Passion, grit, and glory. Standard FIFA rules apply.", 
     img: "/Sports/Football_converted.avif", 
     height: "h-med",
@@ -33,7 +33,7 @@ const sportsData = [
   { 
     id: 3, 
     title: "BASKETBALL", 
-    category: "Flagship", 
+    category: "Outdoor", 
     desc: "FIBA Rules. Dribble, shoot, score. High intensity court action.", 
     img: "/Sports/Basketball Basketball_converted.avif", 
     height: "h-tall",
@@ -42,7 +42,7 @@ const sportsData = [
   { 
     id: 4, 
     title: "KABADDI", 
-    category: "Flagship", 
+    category: "Outdoor", 
     desc: "The soil of strength. Pro Kabaddi style mats and rules.", 
     img: "/Sports/Kabaddi_converted.avif", 
     height: "h-med",
@@ -238,8 +238,8 @@ const Sports = () => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg rotation
-    const rotateY = ((x - centerX) / centerX) * 10;
+    const rotateX = ((y - centerY) / centerY) * -1; // Max 10deg rotation
+    const rotateY = ((x - centerX) / centerX) * 1;
 
     gsap.to(card, {
       rotateX: rotateX,
@@ -295,13 +295,51 @@ const Sports = () => {
       </header>
 
       {/* 3. MASONRY GRID */}
-      <div className="zest-sports-masonry-grid">
+      <div className="zest-sports-masonry-grid hidden md:block">
         {filteredItems.map((item) => (
           <div 
             key={item.id} 
             className={`zest-sports-card ${item.height}`}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+          >
+            <div className="zest-sports-img-wrapper">
+              <img src={item.img} alt={item.title} loading="lazy" />
+              <div className="zest-sports-img-overlay"></div>
+              
+              {/* Revealed Content on Hover */}
+              <div className="zest-sports-card-content">
+                <div className="zest-content-top mb-6 md:mb-4">
+                  <div className="zest-sports-category">{item.category}</div>
+                  <h3 className="zest-sports-card-title">{item.title}</h3>
+                  <a
+                    href={item.link} // Changed to item.link from Unstop/Instagram
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="zest-register-btn md:ml-3"
+                  >
+                    REGISTER
+                    <ArrowUpRight size={16} />
+                  </a>
+                </div>
+                
+                <div className="zest-content-hidden">
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        ))}
+      </div> 
+
+       {/* 3. MASONRY GRID */}
+      <div className="zest-sports-masonry-grid block md:hidden">
+        {filteredItems.map((item) => (
+          <div 
+            key={item.id} 
+            className={`zest-sports-card ${item.height}`}
+           
           >
             <div className="zest-sports-img-wrapper">
               <img src={item.img} alt={item.title} loading="lazy" />

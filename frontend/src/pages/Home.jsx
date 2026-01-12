@@ -935,7 +935,7 @@ const handleMenuClick = (path) => {
           </div>
 
           <div className="home-title -skew-x-24 absolute inset-0 flex items-center justify-center text-white font-bold">
-            SPONSERS
+            SPONSORS
           </div>
 
           <div className="home-glowing-elements absolute inset-0">
@@ -1067,7 +1067,7 @@ const handleMenuClick = (path) => {
         ["SCORES", "/Scores"],
          ["CORE TEAM", "/coreTeam"],
         ["ACCOMODATIONS", "/Accomodations"],
-        ["SPONSERS", "/Sponsers"],
+        ["SPONSORS", "/Sponsers"],
         ["CONTACT US", "/contactUs"],
   ].map(([label, path], i) => (
     <button

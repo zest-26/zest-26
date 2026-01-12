@@ -20,58 +20,66 @@ import Scores from './pages/Scores'
 
 
 function AnimatedRoutes() {
-  const [isLoading, setIsLoading] = useState(true)
+   const location = useLocation()
+  
+  // Initialize isLoading to true if we're on home page and haven't loaded yet
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(false)
+  const [isLoading, setIsLoading] = useState(
+    location.pathname === "/" && !hasLoadedOnce
+  )
+  
   const loaderRef = useRef(null)
-  const location = useLocation()
-  const footerRef = useRef(null);
+  const footerRef = useRef(null)
 
   useEffect(() => {
-  // Show loader ONLY for home page
-  if (location.pathname !== "/") {
-    setIsLoading(false);
-    return;
-  }
+    // Show loader ONLY for home page AND only on first visit
+    if (location.pathname !== "/" || hasLoadedOnce) {
+      setIsLoading(false)
+      return
+    }
 
-  setIsLoading(true);
+    // isLoading is already true from initialization, just run the animation timer
+    const timer = setTimeout(() => {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          setIsLoading(false)
+          setHasLoadedOnce(true)
+        },
+      })
 
-  const timer = setTimeout(() => {
-    const tl = gsap.timeline({
-      onComplete: () => setIsLoading(false),
-    });
-
-    tl.to(loaderRef.current.querySelectorAll(".left-img"), {
-      x: "-150%",
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.3,
-      ease: "power3.in",
-    });
-
-    tl.to(
-      loaderRef.current.querySelectorAll(".right-img"),
-      {
-        x: "150%",
+      tl.to(loaderRef.current.querySelectorAll(".left-img"), {
+        x: "-150%",
         opacity: 0,
         duration: 0.8,
         stagger: 0.3,
         ease: "power3.in",
-      },
-      "<"
-    );
+      })
 
-    tl.to(
-      loaderRef.current.querySelector(".blackout"),
-      {
-        opacity: 1,
-        duration: 1.3,
-        ease: "power2.inOut",
-      },
-      1.1
-    );
-  }, 1300);
+      tl.to(
+        loaderRef.current.querySelectorAll(".right-img"),
+        {
+          x: "150%",
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.3,
+          ease: "power3.in",
+        },
+        "<"
+      )
 
-  return () => clearTimeout(timer);
-}, [location.pathname]);
+      tl.to(
+        loaderRef.current.querySelector(".blackout"),
+        {
+          opacity: 1,
+          duration: 1.3,
+          ease: "power2.inOut",
+        },
+        1.1
+      )
+    }, 1300)
+
+    return () => clearTimeout(timer)
+  }, [location.pathname, hasLoadedOnce])
 
 
   if (isLoading) {
@@ -79,43 +87,41 @@ function AnimatedRoutes() {
   }
 
   return (
-  <div className="w-screen h-screen">
+    <div className="w-screen h-screen">
 
-    {/* HEADER — hidden on Home & Loader */}
-    {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && <Header />}
+      {/* HEADER — hidden on Home & Loader */}
+      {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && <Header />}
 
-    <main className="w-full min-h-screen mt-0 scroll-smooth">
-      <Routes location={location} key={location.pathname}>
-        <Route
-          path="/"
-          element={
-            <section id="home">
-              <Home />
-            </section>
-          }
-        />
+      <main className="w-full min-h-screen mt-0 scroll-smooth">
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <section id="home">
+                <Home />
+              </section>
+            }
+          />
 
-        <Route path="/coordinatorResults" element={<CoordinatorResults />} />
-        <Route path="/VolunteerResults" element={<Volresults />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contactUs" element={<ContactUs />} />
-        <Route path="/Gallery" element={<Gallery />} />
-        <Route path="/coreTeam" element={<CoreTeam />} />
-        <Route path="/Sports" element={<Sports />} />
-        <Route path="/Accomodations" element={<Accomodations />} />
-        <Route path="/Sponsers" element={<Sponsers />} />
-        <Route path="/cyclothon" element={<Cyclothon />} />
-        <Route path="/cycloCertificate" element={<CycloCertificate />} />
-        <Route path="/Scores" element={<Scores />} />
-      </Routes>
-    </main>
-    {/* FOOTER */}
-   {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/Gallery" && <Footer />}
+          <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+          <Route path="/VolunteerResults" element={<Volresults />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contactUs" element={<ContactUs />} />
+          <Route path="/Gallery" element={<Gallery />} />
+          <Route path="/coreTeam" element={<CoreTeam />} />
+          <Route path="/Sports" element={<Sports />} />
+          <Route path="/Accomodations" element={<Accomodations />} />
+          <Route path="/Sponsers" element={<Sponsers />} />
+          <Route path="/cyclothon" element={<Cyclothon />} />
+          <Route path="/cycloCertificate" element={<CycloCertificate />} />
+          <Route path="/Scores" element={<Scores />} />
+        </Routes>
+      </main>
+      {/* FOOTER */}
+      {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/Gallery" && <Footer />}
 
-
-  </div>
-)
-
+    </div>
+  )
 }
 
 function App() {
