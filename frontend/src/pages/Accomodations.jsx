@@ -243,19 +243,19 @@ body {
                 <ul class="space-y-4 text-lg">
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3">01.</span>
-                        <span>Register your team on the official Zest portal.</span>
+                        <span>Click on the "Book Your Stay" button.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3">02.</span>
-                        <span>Select the 'Accommodation Required' option in the dashboard.</span>
+                        <span>Fill the required details.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3">03.</span>
-                        <span>Complete the nominal security deposit payment.</span>
+                        <span>Submit the form.</span>
                     </li>
                     <li class="flex items-start">
                         <span class="text-white font-bold mr-3">04.</span>
-                        <span>Receive your digital entry pass via email.</span>
+                        <span>Our team will contact you based on availability.</span>
                     </li>
                 </ul>
             </div>
@@ -303,9 +303,9 @@ body {
          <section class="glass-panel p-10 rounded-3xl border-l-4 border-orange-600 scroll-section">
             <h2 class="text-3xl mb-6">IMPORTANT GUIDELINES</h2>
             <div class="grid md:grid-cols-2 gap-8 text-orange-100">
-                <p>• Reporting time at the hostel is before 10:00 PM every night.</p>
+                <p>• Strict discipline must be maintained inside the accommodation area.</p>
                 <p>• Valid college ID and Zest registration pass are mandatory for entry.</p>
-                <p>• Participants must bring their own locks for the lockers provided.</p>
+                <p>• Alcohol, smoking, drugs, and any illegal substances are strictly prohibited.</p>
                 <p>• Any damage to college property will lead to immediate disqualification.</p>
             </div>
         </section>

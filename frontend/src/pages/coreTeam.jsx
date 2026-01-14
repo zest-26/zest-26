@@ -8,75 +8,75 @@ const coreTeamMembers = [
     role: "Secretary",
     name: "Aditya Dalvi",
     image: "/CoreTeam/Aaditya.avif",
-    instagram: "https://instagram.com/arjunsharma",
-    linkedin: "https://linkedin.com/in/arjunsharma"
+    instagram: "https://www.instagram.com/aditya_dalvi1207/",
+    linkedin: "https://www.linkedin.com/in/aditya-dalvi-a1b825259/"
   },
   {
     role: "Overall Coordinator",
     name: "Tushar Mahajan",
     image: "/CoreTeam/OC.avif",
-    instagram: "https://instagram.com/priyapatel",
-    linkedin: "https://linkedin.com/in/priyapatel"
+    instagram: "https://www.instagram.com/_tushar_0810/",
+    linkedin: "https://www.linkedin.com/in/tushar-mahajan-a8b720291/"
   }
 ];
 //real data to be updated
 const portfolioHeads = [
   //CRN 1 2
   { role: "CRN Head", name: "Bhumika Rawale", image: "/CoreTeam/Bhumika.avif", linkedin: "https://www.linkedin.com/in/bhumika-rawale-362983260?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/bhumika_rawale?igsh=dzdwczV2dGMwcmQ4", portfolio: "CRN" },
-  { role: "CRN Head", name: "Mokshank R. Gorwade", image: "/CoreTeam/Mokshank.avif", linkedin: "https://www.linkedin.com/in/mokshank-gorwade-8a2778335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/mokshank_7?igsh=MXVyZXY4azQ5OGdxcg==", portfolio: "CRN" },
+  { role: "CRN Head", name: "Mokshank Gorwade", image: "/CoreTeam/Mokshank.avif", linkedin: "https://www.linkedin.com/in/mokshank-gorwade-8a2778335?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/mokshank_7?igsh=MXVyZXY4azQ5OGdxcg==", portfolio: "CRN" },
    //FnM 1 2
   { role: "Finance and Marketing Head", name: "Utkarsh Wasade", image: "/CoreTeam/Utkarsh.avif", linkedin: "https://www.linkedin.com/in/utkarsh-wasade-b445672a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/utkarsh_wasade17?igsh=bGJiZzhlMWEyaDY0", portfolio: "Finance and Marketing" },
   { role: "Finance and Marketing Head", name: "Mrunal Khutemate", image: "/CoreTeam/Mrunal.avif", linkedin: "https://www.linkedin.com/in/mrunal-khutemate-593954290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/mrunal.khutemate_10?igsh=MWJlcjI2d2UzOWg0OA==", portfolio: "Finance and Marketing" },
    //vfx 1
   { role: "VFX Head", name: "Sneha Raut", image: "/CoreTeam/SnehaRaut.avif", linkedin: "https://www.linkedin.com/in/sneha-raut-a39539296?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/sneharaut_2137?igsh=ZDVtMDJ3eThvM3gx", portfolio: "VFX" },
-  { role: "VFX Head", name: "Arnav", image: "/CoreTeam/VFXArnav.avif", linkedin: "https://linkedin.com/in/priyamehta", instagram: "https://instagram.com/priyamehta", portfolio: "VFX" },
+  { role: "VFX Head", name: "Arnav", image: "/CoreTeam/VFXArnav.avif", linkedin: "https://www.linkedin.com/in/arnavwaske?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.linkedin.com/in/arnavwaske?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", portfolio: "VFX" },
  
   //accounts 1 2
   { role: "Accounts Head", name: "Sairaj Pawar", image: "/CoreTeam/Sairaj.avif", linkedin: "https://www.linkedin.com/in/sairaj-pawar-649b66363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/sairaj_pawar_7677?igsh=MTl5ZmlrcjRyZnNrYQ==", portfolio: "Accounts" },
-  { role: "Accounts Head", name: "Karan Khairnar", image: "#", linkedin: "https://www.linkedin.com/in/karankhairnar", instagram: "https://www.instagram.com/karankhairnar87?igsh=MTFwdXF6OHU2Y2xycw==", portfolio: "Accounts" },
+  { role: "Accounts Head", name: "Karan Khairnar", image: "/CoreTeam/KaranK_compressed.avif", linkedin: "https://www.linkedin.com/in/karankhairnar", instagram: "https://www.instagram.com/karankhairnar87?igsh=MTFwdXF6OHU2Y2xycw==", portfolio: "Accounts" },
   //AOG 1 2
   { role: "AOG Head", name: "Om Behare", image: "/CoreTeam/Om.avif", linkedin: "https://www.linkedin.com/in/om-behare-26517b292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/ombehare1513?igsh=MXU0b3V4N2kweTBvaQ==", portfolio: "AOG" },
-  { role: "AOG Head", name: "Riddhi Kamde", image: "#", linkedin: "https://www.linkedin.com/in/riddhi-kamde-8a2699290", instagram: "https://www.instagram.com/riddhi.kamde?igsh=bWZ2aTJkanJkZ2Vv", portfolio: "AOG" },
+  { role: "AOG Head", name: "Riddhi Kamde", image: "/CoreTeam/Ridhi_compressed.avif", linkedin: "https://www.linkedin.com/in/riddhi-kamde-8a2699290", instagram: "https://www.instagram.com/riddhi.kamde?igsh=bWZ2aTJkanJkZ2Vv", portfolio: "AOG" },
   //Campus 1
   { role: "Campus Head", name: "Ranjit Dattaji Shinde", image: "/CoreTeam/Ranjit.avif", linkedin: "https://www.linkedin.com/in/ranjit-shinde-02b70237b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/ranjit_shinde_108?igsh=YzVlbjVmMzl1N3hp", portfolio: "Campus" },
-  { role: "Campus Head", name: "Kavya Nair", image: "#", linkedin: "https://linkedin.com/in/kavyanair", instagram: "https://instagram.com/kavyanair", portfolio: "Campus" },
+  { role: "Campus Head", name: "Sudarshan Mane", image: "/CoreTeam/Sudarshan_compressed.avif", linkedin: "https://www.linkedin.com/in/sudarshan-mane-98a171292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.linkedin.com/in/sudarshan-mane-98a171292?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", portfolio: "Campus" },
   //Championship
-  { role: "Championship Head", name: "Arjun Sharma", image: "#", linkedin: "https://linkedin.com/in/arjunsharma", instagram: "https://instagram.com/arjunsharma", portfolio: "Championship" },
-  { role: "Championship Head", name: "Priya Patel", image: "#", linkedin: "https://linkedin.com/in/priyapatel", instagram: "https://instagram.com/priyapatel", portfolio: "Championship" },
+  { role: "Championship Head", name: "Ajit Patil", image: "/CoreTeam/Ajit_compressed.avif", linkedin: "https://www.linkedin.com/in/ajit-patil-a7282b331?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/ajit_patil_20?igsh=MXdmNHBmaHNtdDJmNQ%3D%3D", portfolio: "Championship" },
+ 
     //Design 1 2 3
   { role: "Design Head", name: "Atharv Barve", image: "/CoreTeam/DesignAtharv.avif", linkedin: "https://www.linkedin.com/in/atharv-barve-335196330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/atharv_barve04?igsh=YmtldXRsZzBkaXo0", portfolio: "Design" },
   { role: "Design Head", name: "Deep Vaidya", image: "#", linkedin: "https://www.linkedin.com/in/deep-vaidya-vaidya-0b9900317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/its.deeeeep?igsh=aDZ2YmFqYjljZGtn", portfolio: "Design" },
   { role: "Design Head", name: "Vaishnavi Pradhan", image: "#", linkedin: "https://in.linkedin.com/in/vaishnavi-pradhan-0885a039b", instagram: "https://www.instagram.com/vaish_h718?igsh=MmJteHhpdjRlazdl", portfolio: "Design" },
   //Documents 1
   { role: "Document Head", name: "Sahil Nandkumar Watharkar", image: "/CoreTeam/Sahil.avif", linkedin: "https://www.linkedin.com/in/sahil-watharkar-115a9433a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/sahil_watharkar?igsh=dXljMzc3ajllaGI5", portfolio: "Document" },
-  { role: "Document Head", name: "Pooja Nair", image: "#", linkedin: "https://linkedin.com/in/poojanair", instagram: "https://instagram.com/poojanair", portfolio: "Document" },
+  { role: "Document Head", name: "Mrunmayee", image: "/CoreTeam/MrunDocs_compressed.avif", linkedin: " https://www.linkedin.com/in/mrunmayi-sangle-878b8028b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/mrunmayisangle?igsh=MTFhdzR0cHp6dW53eQ==", portfolio: "Document" },
   //ESM 1
   { role: "ESM Head", name: "Pawan Satish Vaghule", image: "/CoreTeam/pawanWaghule.avif", linkedin: "https://www.linkedin.com/in/pawan-vaghule-59a318250?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/pavan_._._09?igsh=amh4NzdnbnVvd3Y3", portfolio: "ESM" },
-  { role: "ESM Head", name: "Meera Patel", image: "#", linkedin: "https://linkedin.com/in/meerapatel", instagram: "https://instagram.com/meerapatel", portfolio: "ESM" },
+  
   //Event 1 2
-  { role: "Event Head", name: "Varad Umardand ", image: "#", linkedin: "https://www.linkedin.com/in/varad-umardand-786168292", instagram: "https://www.instagram.com/varad_2655?igsh=MXI0c2gxMDBvNWlpcA==", portfolio: "Event" },
+  { role: "Event Head", name: "Varad Umardand ", image: "/CoreTeam/Varad_compressed.avif", linkedin: "https://www.linkedin.com/in/varad-umardand-786168292", instagram: "https://www.instagram.com/varad_2655?igsh=MXI0c2gxMDBvNWlpcA==", portfolio: "Event" },
   { role: "Event Head", name: "Shripad Pande", image: "/CoreTeam/shripad.avif", linkedin: "https://www.linkedin.com/in/shripad-pande-01181a293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/shripad_43?igsh=OXo2dGlobDdyaWdm", portfolio: "Event" },
   //Hospitality 1 2
-  { role: "Hospitality Head", name: "Karan Bonde", image: "#", linkedin: "https://www.linkedin.com/in/karan-bonde-bb0576293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/bonde.karan?igsh=MTc0dHNlamJwdGRhag==", portfolio: "Hospitality" },
+  { role: "Hospitality Head", name: "Karan Bonde", image: "/CoreTeam/KaranB.avif", linkedin: "https://www.linkedin.com/in/karan-bonde-bb0576293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/bonde.karan?igsh=MTc0dHNlamJwdGRhag==", portfolio: "Hospitality" },
   { role: "Hospitality Head", name: "Yash Wankhede", image: "/CoreTeam/YashWankhede.avif", linkedin: "https://www.linkedin.com/in/yash-wankhede-b50762216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/yashh__2_5?igsh=MWF0aDFrNnJrMzEwYg==", portfolio: "Hospitality" },
   //Infra 1 2
-  { role: "Infra Head", name: "Sujal Deshmukh", image: "#", linkedin: "https://www.linkedin.com/in/sujal-deshmukh-55a030383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", instagram: "", portfolio: "Infra" },
+  
   { role: "Infra Head", name: "Atharv Salunkhe", image: "#", linkedin: "https://www.linkedin.com/in/atharv-salunkhe-coep", instagram: "https://www.instagram.com/atharv_7.1?igsh=MWs4MXd0YjYydmJ2dQ==", portfolio: "Infra" },
   //logistics 1
   { role: "Logistics Head", name: "Kedar Patil", image: "/CoreTeam/kedarPatil.avif", linkedin: "https://www.linkedin.com/in/kedar-patil-18386833a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/kedar._.27?igsh=MTF5azRrOG11d2N2YQ==", portfolio: "Logistics" },
-  { role: "Logistics Head", name: "Geeta Gupta", image: "#", linkedin: "https://linkedin.com/in/geetagupta", instagram: "https://instagram.com/geetagupta", portfolio: "Logistics" },
+  
   //media 1
   { role: "Media Head", name: "Mrunmayee Jadhav", image: "#", linkedin: "https://www.linkedin.com/in/mrunmayee-jadhav-8a918b224?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/mrunmayeejadhav?igsh=MWk5OHAxMDFwMnoxdw==", portfolio: "Media" },
     //refreshment 1
   { role: "Refreshment Head", name: "Yash Ekhande", image: "/CoreTeam/RefreshmentYash.avif", linkedin: "https://www.linkedin.com/in/yash-ekhande-84296827b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", instagram: "https://www.instagram.com/michtohyashhh?igsh=MTVsdmN4ZzB4aHM4cA%3D%3D&utm_source=qr", portfolio: "Refreshment" },
-  { role: "Refreshment Head", name: "Rekha Patel", image: "#", linkedin: "https://linkedin.com/in/rekhapatel", instagram: "https://instagram.com/rekhapatel", portfolio: "Refreshment" },
+  
   //safety 1
-  { role: "Safety and Dispute Head", name: "Shrijeet Karandikar", image: "#", linkedin: "https://www.linkedin.com/in/shrijeet-karandikar-017570282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/shrik_04?igsh=cTlsaHZvdjB0b3li", portfolio: "Safety and Dispute" },
-  { role: "Safety and Dispute Head", name: "Nisha Singh", image: "#", linkedin: "https://linkedin.com/in/nishasingh", instagram: "https://instagram.com/nishasingh", portfolio: "Safety and Dispute" },
-  //web 1 2
+  { role: "Safety and Dispute Head", name: "Shrijeet Karandikar", image: "/CoreTeam/shreejit.avif", linkedin: "https://www.linkedin.com/in/shrijeet-karandikar-017570282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/shrik_04?igsh=cTlsaHZvdjB0b3li", portfolio: "Safety and Dispute" },
+  
+  //web 1 2  
    { role: "Web Head", name: "Palak Kongale", image: "/CoreTeam/WEBPalak.avif", linkedin: "https://in.linkedin.com/in/palak-kongale-b212aa290", instagram: "https://www.instagram.com/_palakkongale_?igsh=MTVodDVqdWszMzc3MQ==", portfolio: "Web" },
   { role: "Web Head", name: "Vitthal Karanjkar", image: "#", linkedin: "https://www.linkedin.com/in/vitthal-karanjkar-a90836226/.", instagram: "https://www.instagram.com/vitthal_karanjkar?igsh=MWdsMDVtNHpnZWpueA==", portfolio: "Web" },
- 
+     
 ];
 
 
@@ -302,7 +302,7 @@ const coreTeam = () => {
             {coreTeamMembers.map((member, index) => {
               const cardId = `core-${index}`;
               const isVisible = visibleCards.has(cardId);
-
+              
               return (
                 <div
                   key={index}

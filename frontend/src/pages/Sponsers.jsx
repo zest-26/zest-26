@@ -152,7 +152,48 @@ const Sponsors = () => {
       
       <AnimatedBackground />
 
-     
+       {/* ================= AUTO-SCROLLING PHOTO CAROUSEL ================= */}
+<div className="w-full h-[12vh] sm:h-[20vh] md:h-[20vh] lg:h-[20vh] mt-15 sm:mt-15 md:mt-15 lg:mt-20 mb-8 sm:mb-12 md:mb-16 overflow-hidden relative">
+  {/* Gradient Overlays */}
+  <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-[#030303] to-transparent z-10" />
+  <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-[#030303] to-transparent z-10" />
+  
+  {/* Scrolling Container */}
+  <motion.div
+    className="flex gap-3 sm:gap-4 md:gap-6 h-full"
+    animate={{
+      x: [0, -1920],
+    }}
+    transition={{
+      x: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 30,
+        ease: "linear",
+      },
+    }}
+  >
+    {/* Duplicate the images twice for seamless loop */}
+    {[...Array(2)].map((_, setIndex) => (
+      <React.Fragment key={setIndex}>
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+          <div
+            key={`${setIndex}-${num}`}
+            className="relative h-full w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px] flex-shrink-0 rounded-lg overflow-hidden group"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <img
+              src={`/sponsers/photos${num}.avif`}
+              alt={`Gallery ${num}`}
+              className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 border border-white/10 rounded-lg pointer-events-none" />
+          </div>
+        ))}
+      </React.Fragment>
+    ))}
+  </motion.div>
+</div>
 
       {/* ================= TITLE SPONSORS ================= */}
       <SectionTitle title="E Mobility Partner"  />

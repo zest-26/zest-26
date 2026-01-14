@@ -192,7 +192,7 @@ const handlePlay = (videoId) => {
         <section className="zest-about-info-section reverse">
           <div className="zest-about-info-text">
             <h4 className="zest-about-label">// THE PHENOMENON</h4>
-            <h2 className="zest-about-heading">ZEST '26: <br/>The Victory of <span className="zest-about-text-orange">Roar</span></h2>
+            <h2 className="zest-about-heading">ZEST '26: <br/>The Roar of <span className="zest-about-text-orange">Victory</span></h2>
             <p className="zest-about-desc">
               Recognized as one of India's largest annual inter-collegiate sports festivals, 
               Zest is not merely a competition—it is a celebration of human potential. 

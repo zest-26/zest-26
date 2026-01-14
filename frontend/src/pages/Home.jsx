@@ -257,6 +257,7 @@ const handleMenuClick = (path) => {
     <div className="relative h-screen w-full overflow-hidden bg-black">
 
         {/* 🌌 GALAXY (Particles) */}
+        
   <div
     className="
       absolute inset-0 z-0 pointer-events-none
@@ -758,8 +759,9 @@ const handleMenuClick = (path) => {
 
 
       {/* 🟩 RIGHT COLUMN */}
- <div className="col-span-8 hidden md:flex  items-center h-full justify-center text-white">
-  <div className="h-5/8 w-5/6 flex flex-col justify-between ">
+ <div className="col-span-8 hidden md:flex relative  items-center h-full justify-center text-white">
+
+  <div className="h-5/8 w-5/6 flex flex-col justify-between">
  
     {/* Rhomboid container */}
     <div         onClick={() => navigate("/Gallery")} className="pointer-events-auto h-1/6 w-full flex items-center justify-center">

@@ -14,35 +14,35 @@ const contacts = [
     portfolio: "Secretary",
     name: "Aditya Dalvi",
     phone: "+91 7756020782",
-    email: "overall@zest.coep.ac.in",
+    email: "zs.zest@coeptech.ac.in ",
   },
   {
     portfolio: "Overall Coordinator",
     name: "Tushar Mahajan",
     phone: "+91 8080348011",
-    email: "tech@zest.coep.ac.in",
+    email: "oc.zest@coeptech.ac.in",
   },
   {
     portfolio: "Finance and Marketing Team",
-    phone: "+91 99887 66554",
-    email: "marketing@zest.coep.ac.in",
+    phone: "+91 7741874850",
+    email: " coepzest26.financeandmarketing@gmail.com ",
   },
   {
     portfolio: "Alumini Outreach Team",
-    phone: "+91 90123 45678",
-    email: "events@zest.coep.ac.in",
+    phone: "+91 93221 92419",
+    email: "coepzest26cog@gamil.com",
   },
   {
     portfolio: "Events Team",
   
-    phone: "+91 93456 78901",
-    email: "sponsor@zest.coep.ac.in",
+    phone: "+91 9021469094",
+    email: "events.zest@coeptech.ac.in",
   },
   {
     portfolio: "Media Team",
   
-    phone: "+91 95678 12345",
-    email: "media@zest.coep.ac.in",
+    phone: "+91 9405439006",
+    email: "media.zest@coeptech.ac.in",
   },
 ];
 
@@ -74,7 +74,7 @@ const Footer = () => {
 <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
   {contacts.map((contact, idx) => {
     // Desktop layout logic
-    let colSpan = "lg:col-span-1";
+    let colSpan = "lg:col-span-2";
 
     // First row → 2 cards, each 50%
     if (idx === 0 || idx === 1) {
@@ -183,7 +183,7 @@ const Footer = () => {
                 hover:scale-110 transition-transform duration-300 ease-out hover:-translate-y-1" size={16} /> by <span className="text-orange-600"> Web and App Team</span>
           </p>
           <p className="text-xs sm:text-sm text-gray-400">
-            © 2025 <span className="text-orange-400 font-semibold">ZEST'26</span>. All rights reserved.
+            © 2026 <span className="text-orange-400 font-semibold">ZEST'26</span>. All rights reserved.
           </p>
         </div>
 
