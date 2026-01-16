@@ -575,7 +575,7 @@ const handleMenuClick = (path) => {
      <div className="col-span-40 md:col-span-22  h-full grid grid-rows-12 min-w-0 min-h-0 relative">
 
   {/* INNER CONTAINER */}
-  <div className="
+ <div className="
     row-span-2
     overflow-hidden
     min-w-0
@@ -648,10 +648,10 @@ const handleMenuClick = (path) => {
   
 </div>
 
-<div className=" relative w-full h-full row-span-2  grid grid-rows-10">
+<div className=" relative w-full h-full row-span-2   grid grid-rows-10">
   <div className=" w-full h-full bg-amber-300 hidden md:row-span-1 "></div>
 
-<div className="w-full h-full  row-span-4 flex items-stretch justify-center gap-6">
+ <div className="w-full h-full  row-span-4 flex items-stretch justify-center gap-6">
   {/* Instagram */}
   <div className="h-full border-2 border-amber-950 rounded-sm  aspect-square p-2">
     <a
@@ -741,21 +741,81 @@ const handleMenuClick = (path) => {
       />
     </a>
   </div>
+ </div>
+
+
+
+
+{/* get app button */}
+
+ <div className="w-full h-full hidden pt-5 md:flex row-span-4 items-center justify-center relative overflow-hidden">
+
+  {/* Dark sparkly background */}
+  <div className="absolute inset-0 bg-gradient-to-br from-orange-600/10 via-black/20 to-orange-800/15 blur-3xl" />
+  
+  {/* Floating sparkles */}
+  <div className="absolute inset-0 opacity-40">
+    <div className="absolute top-[20%] left-[30%] w-1 h-1 bg-orange-400 rounded-full animate-pulse" />
+    <div className="absolute top-[60%] left-[70%] w-1.5 h-1.5 bg-orange-300 rounded-full animate-pulse delay-75" />
+    <div className="absolute top-[40%] left-[50%] w-1 h-1 bg-orange-500 rounded-full animate-pulse delay-150" />
+  </div>
+
+ {/* Button structure */}
+<div className="group relative h-full w-[10%] min-w-[140px]
+                bg-gradient-to-b from-orange-950/40 via-black/60 to-orange-950/40
+                backdrop-blur-sm
+                border border-orange-600/50
+                text-orange-300 font-bold tracking-wide
+                flex items-center justify-center
+                overflow-hidden
+                shadow-[0_0_25px_rgba(255,165,0,0.45)]
+                cursor-pointer transition-all duration-300
+                hover:border-orange-300
+                hover:shadow-[0_0_45px_rgba(255,165,0,0.85)]">
+
+  {/* Strong glow overlay */}
+  <span className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,180,0,0.25),transparent_65%)]
+                   opacity-60 group-hover:opacity-100 transition duration-500" />
+
+  {/* Vertical sliding shine line */}
+  <span className="absolute left-[-100%] top-0 h-full w-[3px]
+                   bg-gradient-to-b from-transparent via-orange-300 to-transparent
+                   shadow-[0_0_35px_rgba(255,180,0,1)]
+                   group-hover:left-[100%]
+                   transition-all duration-700 ease-in-out" />
+
+  {/* Color wave */}
+  <span className="absolute left-[-100%] top-0 h-full w-[120px]
+                   bg-gradient-to-r from-transparent via-orange-400/30 to-transparent
+                   group-hover:left-[100%]
+                   transition-all duration-700 ease-in-out" />
+
+  {/* Inner glowing border */}
+  <span className="absolute inset-[2px] border border-orange-300/10
+                   group-hover:border-orange-200/70
+                   transition duration-500" />
+
+  {/* TEXT – extra shiny */}
+  <span className="relative z-10 text-lg tracking-wide
+                   bg-gradient-to-r from-orange-200 via-yellow-300 to-orange-200
+                   bg-clip-text text-transparent
+                   drop-shadow-[0_0_12px_rgba(255,200,0,0.9)]
+                   group-hover:tracking-widest
+                   group-hover:drop-shadow-[0_0_22px_rgba(255,220,0,1)]
+                   transition-all duration-500">
+    GET APP
+  </span>
+</div>
+
 </div>
 
 
+  <div className=" w-full h-full row-span-5 md:row-span-1"></div>
+
+ </div>
 
 
-
-
-
-
-  <div className=" w-full h-full row-span-5"></div>
-
-</div>
-
-
-</div>
+ </div>
 
 
       {/* 🟩 RIGHT COLUMN */}
@@ -1046,7 +1106,11 @@ const handleMenuClick = (path) => {
              translate-x-full"
 >
   {/* Close button */}
-  <div className="h-10 w-10 border-2  border-amber-950 rounded-sm p-1">
+  {/* Top bar: Close (LHS) + Get App (RHS) */}
+<div className="w-full px-6 flex items-center justify-between">
+
+  {/* Close button (LHS) */}
+  <div className="h-10 w-10 border border-amber-950 rounded-sm p-1">
     <button
       onClick={() => setIsMenuOpen(false)}
       className="flex justify-center items-center h-full w-full"
@@ -1059,6 +1123,23 @@ const handleMenuClick = (path) => {
       />
     </button>
   </div>
+
+  {/* GET APP button (RHS) */}
+  <button
+    className="relative px-4 py-2 text-sm font-semibold tracking-wide
+               border border-orange-500/40
+               text-orange-300
+               bg-black/40 backdrop-blur-sm
+               rounded-[5px]
+               shadow-[0_0_18px_rgba(232,86,14,0.55)]
+               hover:shadow-[0_0_28px_rgba(255,165,0,0.85)]
+               transition-all duration-300"
+  >
+    GET APP
+  </button>
+
+</div>
+
 
   {/* MENU BUTTONS */}
  <div className="flex items-center flex-col gap-4 mt-2">
