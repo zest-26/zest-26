@@ -272,7 +272,7 @@ const Scores = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#020202] text-white font-sans selection:bg-yellow-500/30">
+    <div className="min-h-screen bg-[#020202] text-white font-sans selection:bg-yellow-500/30 pt-6">
       {/* Header */}
       <div className="sticky top-0 z-40 bg-black/95 backdrop-blur-lg border-b border-white/10">
         <div className="container mx-auto max-w-4xl px-4 py-2.5 flex justify-between items-center">
