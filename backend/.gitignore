@@ -1,8 +1,0 @@
-
-src/config/serviceAccountKey.json
-.env
-
-node_modules
-dist
-dist-ssr
-*.local
