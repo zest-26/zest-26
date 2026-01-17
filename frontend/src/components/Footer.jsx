@@ -30,12 +30,12 @@ const contacts = [
   {
     portfolio: "Alumini Outreach Team",
     phone: "+91 93221 92419",
-    email: "coepzest26cog@gamil.com",
+    email: "coepzest26cog@gmail.com",
   },
   {
     portfolio: "Events Team",
   
-    phone: "+91 9021469094",
+    phone: "+91 7276246346",
     email: "events.zest@coeptech.ac.in",
   },
   {

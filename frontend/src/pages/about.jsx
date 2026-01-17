@@ -71,12 +71,25 @@ const handlePlay = (videoId) => {
         y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)"
       });
 
-      gsap.utils.toArray(".zest-about-stat-number").forEach((el) => {
-        gsap.from(el, {
-          textContent: 0, duration: 2.5, ease: "power1.out", snap: { textContent: 1 },
-          scrollTrigger: { trigger: el, start: "top 85%" }
-        });
-      });
+    gsap.utils.toArray(".count").forEach((el) => {
+  gsap.fromTo(
+    el,
+    { textContent: 0 },
+    {
+      textContent: el.dataset.count,
+      duration: 2.5,
+      ease: "power1.out",
+      snap: { textContent: 1 },
+      scrollTrigger: {
+        trigger: el.closest(".zest-about-stat-box"), // ✅ IMPORTANT
+        start: "top 85%",
+        once: true, // animate only once
+      }
+    }
+  );
+});
+
+
 
       // 4. HIGHLIGHTS HORIZONTAL SCROLL
       mm.add("(min-width: 900px)", () => {
@@ -216,17 +229,24 @@ const handlePlay = (videoId) => {
         
         <div className="zest-about-stat-box">
   <Users size={40} className="zest-about-stat-icon" />
-  <h3 className="zest-about-stat-number">25000+</h3>
+ <h3 className="zest-about-stat-number">
+  <span className="count" data-count="25000">0</span>+
+</h3>
+
   <p>FOOTFALL</p>
 </div>
         <div className="zest-about-stat-box">
           <Zap size={40} className="zest-about-stat-icon" />
-          <h3 className="zest-about-stat-number">200+</h3>
+           <h3 className="zest-about-stat-number">
+  <span className="count" data-count="200">0</span>+
+</h3>
           <p>COLLEGES</p>
         </div>
         <div className="zest-about-stat-box">
           <Trophy size={40} className="zest-about-stat-icon" />
-          <h3 className="zest-about-stat-number">5000+</h3>
+          <h3 className="zest-about-stat-number">
+  <span className="count" data-count="5000">0</span>+
+</h3>
           <p>PARTICIPANTS</p>
         </div>
       </section>

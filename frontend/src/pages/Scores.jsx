@@ -279,7 +279,7 @@ const Scores = () => {
           <div className="flex items-center gap-4">
             <img onClick={() => navigate('/')} src="/CoepLogo.png" alt="COEP" className="h-9 w-auto object-contain cursor-pointer" />
             <div className="h-7 w-px bg-white/20"></div>
-            <img src="/ZEST-26.png" alt="Zest 26" className="h-10 w-auto object-contain" />
+            <img src="/ZEST-26_compressed.avif" alt="Zest 26" className="h-10 w-auto object-contain" />
           </div>
 
           <div className="flex gap-3">
