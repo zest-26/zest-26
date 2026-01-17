@@ -45,8 +45,9 @@ const portfolioHeads = [
  
     //Design 1 2 3
   { role: "Design Head", name: "Atharv Barve", image: "/CoreTeam/DesignAtharv.avif", linkedin: "https://www.linkedin.com/in/atharv-barve-335196330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/atharv_barve04?igsh=YmtldXRsZzBkaXo0", portfolio: "Design" },
-  { role: "Design Head", name: "Deep Vaidya", image: "/CoreTeam/dummyProfile.avif", linkedin: "https://www.linkedin.com/in/deep-vaidya-vaidya-0b9900317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/its.deeeeep?igsh=aDZ2YmFqYjljZGtn", portfolio: "Design" },
-  { role: "Design Head", name: "Vaishnavi Pradhan", image: "/CoreTeam/dummyProfile.avif", linkedin: "https://in.linkedin.com/in/vaishnavi-pradhan-0885a039b", instagram: "https://www.instagram.com/vaish_h718?igsh=MmJteHhpdjRlazdl", portfolio: "Design" },
+  { role: "Design Head", name: "Vaishnavi Pradhan", image: "/CoreTeam/Vaishnavi_compressed.avif", linkedin: "https://in.linkedin.com/in/vaishnavi-pradhan-0885a039b", instagram: "https://www.instagram.com/vaish_h718?igsh=MmJteHhpdjRlazdl", portfolio: "Design" },
+  { role: "Design Head", name: "Deep Vaidya", image: "/CoreTeam/Deep_compressed.avif", linkedin: "https://www.linkedin.com/in/deep-vaidya-vaidya-0b9900317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/its.deeeeep?igsh=aDZ2YmFqYjljZGtn", portfolio: "Design" },
+  
   //Documents 1
   { role: "Document Head", name: "Sahil Nandkumar Watharkar", image: "/CoreTeam/Sahil.avif", linkedin: "https://www.linkedin.com/in/sahil-watharkar-115a9433a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/sahil_watharkar?igsh=dXljMzc3ajllaGI5", portfolio: "Document" },
   { role: "Document Head", name: "Mrunmayee", image: "/CoreTeam/MrunDocs_compressed.avif", linkedin: " https://www.linkedin.com/in/mrunmayi-sangle-878b8028b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/mrunmayisangle?igsh=MTFhdzR0cHp6dW53eQ==", portfolio: "Document" },
@@ -61,12 +62,12 @@ const portfolioHeads = [
   { role: "Hospitality Head", name: "Yash Wankhede", image: "/CoreTeam/YashWankhede.avif", linkedin: "https://www.linkedin.com/in/yash-wankhede-b50762216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/yashh__2_5?igsh=MWF0aDFrNnJrMzEwYg==", portfolio: "Hospitality" },
   //Infra 1 2
   
-  { role: "Infra Head", name: "Atharv Salunkhe", image: "/CoreTeam/dummyProfile.avif", linkedin: "https://www.linkedin.com/in/atharv-salunkhe-coep", instagram: "https://www.instagram.com/atharv_7.1?igsh=MWs4MXd0YjYydmJ2dQ==", portfolio: "Infra" },
+  { role: "Infra Head", name: "Atharv Salunkhe", image: "/CoreTeam/AtharvInfra_compressed.avif", linkedin: "https://www.linkedin.com/in/atharv-salunkhe-coep", instagram: "https://www.instagram.com/atharv_7.1?igsh=MWs4MXd0YjYydmJ2dQ==", portfolio: "Infra" },
   //logistics 1
   { role: "Logistics Head", name: "Kedar Patil", image: "/CoreTeam/kedarPatil.avif", linkedin: "https://www.linkedin.com/in/kedar-patil-18386833a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/kedar._.27?igsh=MTF5azRrOG11d2N2YQ==", portfolio: "Logistics" },
   
   //media 1
-  { role: "Media Head", name: "Mrunmayee Jadhav", image: "/CoreTeam/dummyProfile.avif", linkedin: "https://www.linkedin.com/in/mrunmayee-jadhav-8a918b224?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/mrunmayeejadhav?igsh=MWk5OHAxMDFwMnoxdw==", portfolio: "Media" },
+  { role: "Media Head", name: "Mrunmayee Jadhav", image: "/CoreTeam/MrunmayeeMedia_compressed.avif", linkedin: "https://www.linkedin.com/in/mrunmayee-jadhav-8a918b224?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/mrunmayeejadhav?igsh=MWk5OHAxMDFwMnoxdw==", portfolio: "Media" },
     //refreshment 1
   { role: "Refreshment Head", name: "Yash Ekhande", image: "/CoreTeam/RefreshmentYash.avif", linkedin: "https://www.linkedin.com/in/yash-ekhande-84296827b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app", instagram: "https://www.instagram.com/michtohyashhh?igsh=MTVsdmN4ZzB4aHM4cA%3D%3D&utm_source=qr", portfolio: "Refreshment" },
   
@@ -74,8 +75,8 @@ const portfolioHeads = [
   { role: "Safety and Dispute Head", name: "Shrijeet Karandikar", image: "/CoreTeam/shreejit.avif", linkedin: "https://www.linkedin.com/in/shrijeet-karandikar-017570282?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", instagram: "https://www.instagram.com/shrik_04?igsh=cTlsaHZvdjB0b3li", portfolio: "Safety and Dispute" },
   
   //web 1 2  
-   { role: "Web Head", name: "Palak Kongale", image: "/CoreTeam/WEBPalak.avif", linkedin: "https://in.linkedin.com/in/palak-kongale-b212aa290", instagram: "https://www.instagram.com/_palakkongale_?igsh=MTVodDVqdWszMzc3MQ==", portfolio: "Web" },
-  { role: "Web Head", name: "Vitthal Karanjkar", image: "/CoreTeam/dummyProfile.avif", linkedin: "https://www.linkedin.com/in/vitthal-karanjkar-a90836226/.", instagram: "https://www.instagram.com/vitthal_karanjkar?igsh=MWdsMDVtNHpnZWpueA==", portfolio: "Web" },
+   { role: "Web Head", name: "Palak Kongale", image: "/CoreTeam/Palak_compressed.avif", linkedin: "https://in.linkedin.com/in/palak-kongale-b212aa290", instagram: "https://www.instagram.com/_palakkongale_?igsh=MTVodDVqdWszMzc3MQ==", portfolio: "Web" },
+  { role: "Web Head", name: "Vitthal Karanjkar", image: "/CoreTeam/Vitthal_compressed.avif", linkedin: "https://www.linkedin.com/in/vitthal-karanjkar-a90836226/.", instagram: "https://www.instagram.com/vitthal_karanjkar?igsh=MWdsMDVtNHpnZWpueA==", portfolio: "Web" },
      
 ];
 

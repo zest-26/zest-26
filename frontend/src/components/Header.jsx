@@ -214,15 +214,48 @@ useEffect(() => {
                pt-8 pb-8 pointer-events-auto"
   >
     {/* CLOSE */}
-    <div className="h-10  w-10 border-2 border-amber-950 rounded-sm p-1">
-      <button
-        onClick={closeMenu}
-        className="flex justify-center items-center h-full w-full"
-      >
-        <X className="h-full w-full text-orange-300
-          [filter:drop-shadow(0_0_6px_#E8560E)_drop-shadow(0_0_16px_#E8560E)]" />
-      </button>
-    </div>
+    {/* TOP BAR : CLOSE (LHS) + GET APP (RHS) */}
+<div className="w-full px-6 flex items-center justify-between">
+  
+  {/* CLOSE BUTTON */}
+  <div className="h-10 w-10 border-2 border-amber-950 rounded-sm p-1">
+    <button
+      onClick={closeMenu}
+      className="flex justify-center items-center h-full w-full"
+    >
+      <X
+        className="h-full w-full text-orange-300
+        [filter:drop-shadow(0_0_6px_#E8560E)_drop-shadow(0_0_16px_#E8560E)]"
+      />
+    </button>
+  </div>
+
+  {/* GET APP BUTTON */}
+  <button
+   
+    className="
+      relative px-4 py-2 font-semibold text-sm tracking-wide
+      border border-orange-500/40 text-orange-300
+      rounded-[5px] overflow-hidden
+      hover:text-black transition-colors duration-300
+       shadow-[0_0_18px_rgba(232,86,14,0.55)]
+      group
+    "
+  >
+    {/* sliding glow */}
+    <span
+      className="
+        absolute inset-0 bg-orange-400
+        -translate-x-full group-hover:translate-x-0
+        transition-transform duration-300
+        z-0
+      "
+    />
+    <span className="relative z-10">GET APP</span>
+  </button>
+
+</div>
+
 
     {/* MENU */}
     <div className="flex items-center flex-col gap-4 mt-2">
