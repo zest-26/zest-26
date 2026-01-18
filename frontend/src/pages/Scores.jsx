@@ -141,11 +141,25 @@ const Scores = () => {
 
   const handleUpdateScore = async (e) => {
     e.preventDefault();
+
+    // Auto-calc winner details if marking as recent/finished and details are empty
+    let finalDetails = editingMatch.score_details;
+    if ((editingMatch.status === 'recent' || editingMatch.status === 'finished') && !finalDetails) {
+      const sa = parseFloat(editingMatch.score_a || 0);
+      const sb = parseFloat(editingMatch.score_b || 0);
+      if (sa > sb) finalDetails = `${editingMatch.team_a} Won`;
+      else if (sb > sa) finalDetails = `${editingMatch.team_b} Won`;
+      else finalDetails = "Draw";
+    }
+
     const res = await api.updateScore({
       ...editingMatch,
+      score_details: finalDetails,
       overs_a: editingMatch.overs_a || '0.0',
-      overs_b: editingMatch.overs_b || '0.0'
+      overs_b: editingMatch.overs_b || '0.0',
+      sets: editingMatch.sets
     }, adminPassword);
+
     if (res.success) {
       setEditingMatch(null);
       fetchMatches();
@@ -197,21 +211,9 @@ const Scores = () => {
       wickets_b: details.wickets_b || '0',
       overs_a: details.overs_a || '0.0',
       overs_b: details.overs_b || '0.0',
-      score_details: match.score_details, // Keep existing result text
-      // If the match is set-based, we might want to load set scores?
-      // The previous code had setScores logic?
-      // User: "for volleyball badmintion tt the sets...".
-      // If I plan to support Sets editing, I should populate that too.
-      // But currently the inputs for sets are handled inside renderScoreInputs?
-      // Wait, previous code added `setScores` state?
-      // Step 375 says "Implemented `handleEditClick` to parse `game_details` and initialize `setScores`".
-      // BUT I DON'T SEE `handleEditClick` OR `setScores` in the file view (Step 508).
-      // Did I overwrite it?
-      // Ah, I might have overwritten it in a Previous Turn or it was lost.
-      // The user said "return here only the file as you are unable to create the same"?
-      // No, the user prompts suggest I might have missed restoring some logic.
-      // I will re-implement set parsing logic here just in case.
-      game_details: details // Keep the object for set access if needed
+      score_details: match.score_details,
+      sets: details.sets || { set_1: { a: '', b: '' }, set_2: { a: '', b: '' }, set_3: { a: '', b: '' } }, // Default 3 sets structure
+      game_details: details
     });
   };
 
@@ -233,12 +235,24 @@ const Scores = () => {
   // --- Render Helpers ---
   const renderScoreInputs = () => {
     const sport = editingMatch.sport_name;
-    // ... Logic from AdminDashboard ...
-    let labelA = 'Score A', labelB = 'Score B', isChess = false;
-    if (['Football', 'Hockey', 'Handball', 'Kabaddi', 'Kho-kho'].includes(sport)) { labelA = 'Goals/Points A'; labelB = 'Goals/Points B'; }
-    else if (['Basketball', 'Volleyball', 'Badminton', 'Table Tennis'].includes(sport)) { labelA = 'Sets A'; labelB = 'Sets B'; }
-    else if (['Chess'].includes(sport)) { isChess = true; }
-    else if (['Archery', 'Fencing', 'Carrom'].includes(sport)) { labelA = 'Points A'; labelB = 'Points B'; }
+    const isCricket = ['Cricket', 'Box Cricket'].includes(sport);
+    const isSetBased = ['Badminton', 'Table Tennis', 'Volleyball'].includes(sport);
+    const isChess = ['Chess'].includes(sport);
+
+    // Helpers for dropdown generation
+    const range = (start, end, step = 1) => {
+      const arr = [];
+      for (let i = start; i <= end; i += step) arr.push(i);
+      return arr;
+    };
+    const rangeOvers = () => {
+      const overs = [];
+      for (let o = 0; o < 20; o++) {
+        for (let b = 0; b < 6; b++) overs.push(`${o}.${b}`);
+      }
+      overs.push('20.0');
+      return overs;
+    };
 
     if (isChess) {
       return (
@@ -255,17 +269,143 @@ const Scores = () => {
         </div>
       );
     }
+
+    if (isCricket) {
+      return (
+        <div className="space-y-4">
+          {/* Team A Cricket */}
+          <div className="bg-white/5 p-3 rounded border border-white/10">
+            <div className="text-sm font-bold text-orange-400 mb-2">{editingMatch.team_a} (Batting)</div>
+            <div className="grid grid-cols-3 gap-2">
+              <div>
+                <label className="text-[10px] text-gray-500 block mb-1">Runs</label>
+                <select className="w-full bg-black border border-gray-700 rounded p-2 text-white"
+                  value={editingMatch.score_a || '0'}
+                  onChange={e => setEditingMatch({ ...editingMatch, score_a: e.target.value })}>
+                  {range(0, 300).map(r => <option key={r} value={r}>{r}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-[10px] text-gray-500 block mb-1">Wickets</label>
+                <select className="w-full bg-black border border-gray-700 rounded p-2 text-white"
+                  value={editingMatch.wickets_a || '0'}
+                  onChange={e => setEditingMatch({ ...editingMatch, wickets_a: e.target.value })}>
+                  {range(0, 10).map(w => <option key={w} value={w}>{w}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-[10px] text-gray-500 block mb-1">Overs</label>
+                <select className="w-full bg-black border border-gray-700 rounded p-2 text-white"
+                  value={editingMatch.overs_a || '0.0'}
+                  onChange={e => setEditingMatch({ ...editingMatch, overs_a: e.target.value })}>
+                  {rangeOvers().map(o => <option key={o} value={o}>{o}</option>)}
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Team B Cricket */}
+          <div className="bg-white/5 p-3 rounded border border-white/10">
+            <div className="text-sm font-bold text-orange-400 mb-2">{editingMatch.team_b} (Batting)</div>
+            <div className="grid grid-cols-3 gap-2">
+              <div>
+                <label className="text-[10px] text-gray-500 block mb-1">Runs</label>
+                <select className="w-full bg-black border border-gray-700 rounded p-2 text-white"
+                  value={editingMatch.score_b || '0'}
+                  onChange={e => setEditingMatch({ ...editingMatch, score_b: e.target.value })}>
+                  {range(0, 300).map(r => <option key={r} value={r}>{r}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-[10px] text-gray-500 block mb-1">Wickets</label>
+                <select className="w-full bg-black border border-gray-700 rounded p-2 text-white"
+                  value={editingMatch.wickets_b || '0'}
+                  onChange={e => setEditingMatch({ ...editingMatch, wickets_b: e.target.value })}>
+                  {range(0, 10).map(w => <option key={w} value={w}>{w}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-[10px] text-gray-500 block mb-1">Overs</label>
+                <select className="w-full bg-black border border-gray-700 rounded p-2 text-white"
+                  value={editingMatch.overs_b || '0.0'}
+                  onChange={e => setEditingMatch({ ...editingMatch, overs_b: e.target.value })}>
+                  {rangeOvers().map(o => <option key={o} value={o}>{o}</option>)}
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (isSetBased || ['Basketball'].includes(sport)) {
+      return (
+        <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="text-xs text-gray-400 mb-1 block">Sets Won A</label>
+              <select className="w-full bg-black border border-gray-700 rounded p-2 text-white font-bold text-lg"
+                value={editingMatch.score_a || '0'}
+                onChange={e => setEditingMatch({ ...editingMatch, score_a: e.target.value })}>
+                {range(0, 5).map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+            <div>
+              <label className="text-xs text-gray-400 mb-1 block">Sets Won B</label>
+              <select className="w-full bg-black border border-gray-700 rounded p-2 text-white font-bold text-lg"
+                value={editingMatch.score_b || '0'}
+                onChange={e => setEditingMatch({ ...editingMatch, score_b: e.target.value })}>
+                {range(0, 5).map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+            </div>
+          </div>
+
+          <div className="bg-white/5 p-3 rounded border border-white/10">
+            <h4 className="text-xs font-bold text-gray-400 mb-2 uppercase">Set Scores (Points)</h4>
+            {['set_1', 'set_2', 'set_3'].map((setKey, idx) => (
+              <div key={setKey} className="grid grid-cols-3 gap-2 items-center mb-2 last:mb-0">
+                <span className="text-xs text-gray-500 font-mono">Set {idx + 1}</span>
+                <select className="bg-black rounded border border-gray-700 text-center text-white p-2"
+                  value={editingMatch.sets?.[setKey]?.a || '0'}
+                  onChange={e => {
+                    const newSets = { ...editingMatch.sets, [setKey]: { ...editingMatch.sets?.[setKey], a: e.target.value } };
+                    setEditingMatch({ ...editingMatch, sets: newSets });
+                  }}>
+                  {range(0, 100).map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+                <select className="bg-black rounded border border-gray-700 text-center text-white p-2"
+                  value={editingMatch.sets?.[setKey]?.b || '0'}
+                  onChange={e => {
+                    const newSets = { ...editingMatch.sets, [setKey]: { ...editingMatch.sets?.[setKey], b: e.target.value } };
+                    setEditingMatch({ ...editingMatch, sets: newSets });
+                  }}>
+                  {range(0, 100).map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // Default (Football and others)
     return (
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="text-xs text-gray-400 mb-1 block">{labelA}</label>
-          <input className="w-full p-3 bg-black rounded border border-gray-700 text-center text-xl font-bold"
-            value={editingMatch.score_a} onChange={e => setEditingMatch({ ...editingMatch, score_a: e.target.value })} />
+          <label className="text-xs text-gray-400 mb-1 block">Score A (Goals/Points)</label>
+          <select className="w-full bg-black border border-gray-700 rounded p-2 text-white font-bold text-lg"
+            value={editingMatch.score_a || '0'}
+            onChange={e => setEditingMatch({ ...editingMatch, score_a: e.target.value })}>
+            {range(0, 200).map(s => <option key={s} value={s}>{s}</option>)}
+          </select>
         </div>
         <div>
-          <label className="text-xs text-gray-400 mb-1 block">{labelB}</label>
-          <input className="w-full p-3 bg-black rounded border border-gray-700 text-center text-xl font-bold"
-            value={editingMatch.score_b} onChange={e => setEditingMatch({ ...editingMatch, score_b: e.target.value })} />
+          <label className="text-xs text-gray-400 mb-1 block">Score B (Goals/Points)</label>
+          <select className="w-full bg-black border border-gray-700 rounded p-2 text-white font-bold text-lg"
+            value={editingMatch.score_b || '0'}
+            onChange={e => setEditingMatch({ ...editingMatch, score_b: e.target.value })}>
+            {range(0, 200).map(s => <option key={s} value={s}>{s}</option>)}
+          </select>
         </div>
       </div>
     );
@@ -279,7 +419,7 @@ const Scores = () => {
           <div className="flex items-center gap-4">
             <img onClick={() => navigate('/')} src="/CoepLogo.png" alt="COEP" className="h-9 w-auto object-contain cursor-pointer" />
             <div className="h-7 w-px bg-white/20"></div>
-            <img src="/ZEST-26_compressed.avif" alt="Zest 26" className="h-10 w-auto object-contain" />
+            <img src="/ZEST-26.png" alt="Zest 26" className="h-10 w-auto object-contain" />
           </div>
 
           <div className="flex gap-3">
@@ -410,49 +550,7 @@ const Scores = () => {
             <form onSubmit={handleUpdateScore} className="space-y-4">
               <div className="flex justify-between text-sm text-gray-400 mb-2"><span>{editingMatch.team_a}</span><span>{editingMatch.team_b}</span></div>
               {renderScoreInputs()}
-              {/* Cricket Extras */}
-              {['Cricket', 'Box Cricket'].includes(editingMatch.sport_name) && (
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs text-gray-500">Wickets A</label>
-                    <select className="w-full bg-black border border-gray-700 rounded p-2 text-white" value={editingMatch.wickets_a || '0'} onChange={e => setEditingMatch({ ...editingMatch, wickets_a: e.target.value })}>
-                      {Array.from({ length: 11 }, (_, i) => i).map(w => <option key={w} value={w}>{w}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-xs text-gray-500">Overs A</label>
-                    <select className="w-full bg-black border border-gray-700 rounded p-2 text-white" value={editingMatch.overs_a || '0.0'} onChange={e => setEditingMatch({ ...editingMatch, overs_a: e.target.value })}>
-                      {(() => {
-                        const overs = [];
-                        for (let o = 0; o < 20; o++) {
-                          for (let b = 0; b < 6; b++) overs.push(`${o}.${b}`);
-                        }
-                        overs.push('20.0');
-                        return overs.map(ov => <option key={ov} value={ov}>{ov}</option>);
-                      })()}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-xs text-gray-500">Wickets B</label>
-                    <select className="w-full bg-black border border-gray-700 rounded p-2 text-white" value={editingMatch.wickets_b || '0'} onChange={e => setEditingMatch({ ...editingMatch, wickets_b: e.target.value })}>
-                      {Array.from({ length: 11 }, (_, i) => i).map(w => <option key={w} value={w}>{w}</option>)}
-                    </select>
-                  </div>
-                  <div>
-                    <label className="text-xs text-gray-500">Overs B</label>
-                    <select className="w-full bg-black border border-gray-700 rounded p-2 text-white" value={editingMatch.overs_b || '0.0'} onChange={e => setEditingMatch({ ...editingMatch, overs_b: e.target.value })}>
-                      {(() => {
-                        const overs = [];
-                        for (let o = 0; o < 20; o++) {
-                          for (let b = 0; b < 6; b++) overs.push(`${o}.${b}`);
-                        }
-                        overs.push('20.0');
-                        return overs.map(ov => <option key={ov} value={ov}>{ov}</option>);
-                      })()}
-                    </select>
-                  </div>
-                </div>
-              )}
+              {/* Cricket Extras - REMOVED (Handled in renderScoreInputs) */}
               <input placeholder="Score Details / Result" className="w-full p-3 bg-black rounded border border-gray-700 font-bold text-white" value={editingMatch.score_details || ''} onChange={e => setEditingMatch({ ...editingMatch, score_details: e.target.value })} />
               <select className="w-full p-3 bg-black rounded border border-gray-700 text-white font-bold" value={editingMatch.match_type || 'League Stage'} onChange={e => setEditingMatch({ ...editingMatch, match_type: e.target.value })}>
                 <option value="League Stage">League Stage</option>

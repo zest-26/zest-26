@@ -65,14 +65,21 @@ const ScoreCard = ({ match, isAdmin, onEdit }) => {
     };
 
     // Parse game details
-    let setScoreString = "";
-    if (isSetBased && match.game_details) {
+    let setScores = [];
+    if (isSetBased && details.sets) {
+        // details.sets is expected to be an object { set1: {a:1, b:2}, ... } or array
+        // Adapt to whatever backend saves. Plan said { set_1: {a:x,b:y} }
+        // Let's handle object iteration
         try {
-            const det = typeof match.game_details === 'string' ? JSON.parse(match.game_details) : match.game_details;
-            if (det.sets && Array.isArray(det.sets)) {
-                // Filter out empty sets
-                const validSets = det.sets.filter(s => s.a && s.b);
-                setScoreString = validSets.map(s => `${s.a}-${s.b}`).join(', ');
+            const setsObj = details.sets;
+            // flexible parsing: if array use map, if object use keys
+            if (Array.isArray(setsObj)) {
+                setScores = setsObj.filter(s => s && (s.a || s.b));
+            } else if (typeof setsObj === 'object') {
+                // Sort keys set_1, set_2 etc
+                Object.keys(setsObj).sort().forEach(k => {
+                    setScores.push(setsObj[k]);
+                });
             }
         } catch (e) { }
     }
@@ -151,11 +158,13 @@ const ScoreCard = ({ match, isAdmin, onEdit }) => {
             </div>
 
             {/* Detailed Set Scores */}
-            {setScoreString && (
-                <div className="text-center mb-3">
-                    <div className="inline-block px-3 py-1 bg-white/5 rounded border border-white/10 text-xs font-mono text-gray-300 tracking-wider">
-                        {setScoreString}
-                    </div>
+            {setScores.length > 0 && (
+                <div className="flex justify-center gap-2 mb-3 flex-wrap">
+                    {setScores.map((s, idx) => (
+                        <div key={idx} className="px-2 py-1 bg-white/5 rounded border border-white/10 text-[10px] font-mono text-gray-300 tracking-wider">
+                            S{idx + 1}: <span className={s.a > s.b ? 'text-orange-400 font-bold' : ''}>{s.a}</span>-<span className={s.b > s.a ? 'text-orange-400 font-bold' : ''}>{s.b}</span>
+                        </div>
+                    ))}
                 </div>
             )}
 
