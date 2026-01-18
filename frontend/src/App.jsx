@@ -90,7 +90,7 @@ function AnimatedRoutes() {
     <div className="w-screen h-screen">
 
       {/* HEADER — hidden on Home & Loader */}
-      {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && <Header />}
+      {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/scores" && <Header />}
 
       <main className="w-full min-h-screen mt-0 scroll-smooth">
         <Routes location={location} key={location.pathname}>
