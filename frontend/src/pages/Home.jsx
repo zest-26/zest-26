@@ -781,7 +781,7 @@ const Home = () => {
                 </div>
 
                 {/* Button structure */}
-                <div className="group relative h-full w-[10%] min-w-[140px]
+                <a href="/ZEST 26.apk" download="ZEST 26.apk" className="group relative h-full w-[10%] min-w-[140px]
                 bg-gradient-to-b from-orange-950/40 via-black/60 to-orange-950/40
                 backdrop-blur-sm
                 border border-orange-600/50
@@ -825,7 +825,7 @@ const Home = () => {
                    transition-all duration-500">
                     GET APP
                   </span>
-                </div>
+                </a>
 
               </div>
 
@@ -1145,7 +1145,9 @@ const Home = () => {
             </div>
 
             {/* GET APP button (RHS) */}
-            <button
+            <a
+              href="/ZEST 26.apk"
+              download="ZEST 26.apk"
               className="relative px-4 py-2 text-sm font-semibold tracking-wide
                border border-orange-500/40
                text-orange-300
@@ -1153,10 +1155,11 @@ const Home = () => {
                rounded-[5px]
                shadow-[0_0_18px_rgba(232,86,14,0.55)]
                hover:shadow-[0_0_28px_rgba(255,165,0,0.85)]
-               transition-all duration-300"
+               transition-all duration-300
+               flex items-center justify-center"
             >
               GET APP
-            </button>
+            </a>
 
           </div>
 
