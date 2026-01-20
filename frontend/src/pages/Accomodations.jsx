@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import * as THREE from "three";
+import SEO from '@/components/SEO';
 
 const Accomodations = () => {
   useEffect(() => {
@@ -103,6 +104,7 @@ const Accomodations = () => {
 
   return (
     <>
+      <SEO title="Accommodation" description="Stay comfortably at the historic COEP Hostel during Zest 2026." />
       {/* CSS (kept intact) */}
       <style>{`
          /* ORBITRON */
@@ -227,89 +229,89 @@ body {
         </p>
         <a
           href="https://docs.google.com/forms/d/e/1FAIpQLSdF4fdir8_cDYQuA6O0O1Zqa_iYlx_YGqVKvpIDN-WK7Oymfg/viewform"
-           target="_blank"
-  rel="noopener noreferrer"
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-8 px-10 py-4 bg-orange-600 text-black font-bold rounded-full hover:bg-orange-400 transition-all transform hover:scale-105 neon-border"
         >
           BOOK YOUR STAY
         </a>
       </header>
 
-    
-        <main class="max-w-6xl  mx-auto px-6 py-20 space-y-32">
+
+      <main class="max-w-6xl  mx-auto px-6 py-20 space-y-32">
         <section class="grid  md:grid-cols-2  gap-12 items-center scroll-section">
-            <div class="glass-panel p-4 sm:p-6 md:p-8 rounded-lg neon-border">
-                <h2 class="text-3xl mb-6">REGISTRATION PROCESS</h2>
-                <ul class="space-y-4 text-lg">
-                    <li class="flex items-start">
-                        <span class="text-white font-bold mr-3">01.</span>
-                        <span>Click on the "Book Your Stay" button.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-white font-bold mr-3">02.</span>
-                        <span>Fill the required details.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-white font-bold mr-3">03.</span>
-                        <span>Submit the form.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-white font-bold mr-3">04.</span>
-                        <span>Our team will contact you based on availability.</span>
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-4xl mb-4 mr-1 font-bold">STAY AT THE HISTORIC COEP HOSTEL</h3>
-                <p class="text-orange-200 mr-2 leading-relaxed mb-6">
-                    Located in the heart of Pune, our hostels provide a comfortable environment for athletes to rest and strategize. With 24/7 security and proximity to the main grounds, you're always in the center of the action.
-                </p>
-            </div>
+          <div class="glass-panel p-4 sm:p-6 md:p-8 rounded-lg neon-border">
+            <h2 class="text-3xl mb-6">REGISTRATION PROCESS</h2>
+            <ul class="space-y-4 text-lg">
+              <li class="flex items-start">
+                <span class="text-white font-bold mr-3">01.</span>
+                <span>Click on the "Book Your Stay" button.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-white font-bold mr-3">02.</span>
+                <span>Fill the required details.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-white font-bold mr-3">03.</span>
+                <span>Submit the form.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-white font-bold mr-3">04.</span>
+                <span>Our team will contact you based on availability.</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-4xl mb-4 mr-1 font-bold">STAY AT THE HISTORIC COEP HOSTEL</h3>
+            <p class="text-orange-200 mr-2 leading-relaxed mb-6">
+              Located in the heart of Pune, our hostels provide a comfortable environment for athletes to rest and strategize. With 24/7 security and proximity to the main grounds, you're always in the center of the action.
+            </p>
+          </div>
         </section>
 
-         <section class="scroll-section">
-            <h2 class="text-4xl text-center mb-16 neon-text">AMENITIES PROVIDED</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass-panel p-8 text-center hover:border-orange-400 transition-all group">
-                    <div class="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl mb-2">High-Speed Wi-Fi</h3>
-                    <p class="text-orange-200">Stay connected and share your victories with the world instantly.</p>
-                </div>
-                <div class="glass-panel p-8 text-center hover:border-orange-400 transition-all group">
-                    <div class="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl mb-2">24/7 Support</h3>
-                    <p class="text-orange-200">Our dedicated hospitality team is available round the clock for your needs.</p>
-                </div>
-                <div class="glass-panel p-8 text-center hover:border-orange-400 transition-all group">
-                    <div class="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl mb-2">Nutritious Meals</h3>
-                    <p class="text-orange-200">Balanced meals designed for athletes to maintain peak energy levels.</p>
-                </div>
+        <section class="scroll-section">
+          <h2 class="text-4xl text-center mb-16 neon-text">AMENITIES PROVIDED</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass-panel p-8 text-center hover:border-orange-400 transition-all group">
+              <div class="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              </div>
+              <h3 class="text-xl mb-2">High-Speed Wi-Fi</h3>
+              <p class="text-orange-200">Stay connected and share your victories with the world instantly.</p>
             </div>
+            <div class="glass-panel p-8 text-center hover:border-orange-400 transition-all group">
+              <div class="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-xl mb-2">24/7 Support</h3>
+              <p class="text-orange-200">Our dedicated hospitality team is available round the clock for your needs.</p>
+            </div>
+            <div class="glass-panel p-8 text-center hover:border-orange-400 transition-all group">
+              <div class="text-orange-500 mb-4 group-hover:scale-110 transition-transform">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+              </div>
+              <h3 class="text-xl mb-2">Nutritious Meals</h3>
+              <p class="text-orange-200">Balanced meals designed for athletes to maintain peak energy levels.</p>
+            </div>
+          </div>
         </section>
 
-         <section class="glass-panel p-10 rounded-3xl border-l-4 border-orange-600 scroll-section">
-            <h2 class="text-3xl mb-6">IMPORTANT GUIDELINES</h2>
-            <div class="grid md:grid-cols-2 gap-8 text-orange-100">
-                <p>• Strict discipline must be maintained inside the accommodation area.</p>
-                <p>• Valid college ID and Zest registration pass are mandatory for entry.</p>
-                <p>• Alcohol, smoking, drugs, and any illegal substances are strictly prohibited.</p>
-                <p>• Any damage to college property will lead to immediate disqualification.</p>
-            </div>
+        <section class="glass-panel p-10 rounded-3xl border-l-4 border-orange-600 scroll-section">
+          <h2 class="text-3xl mb-6">IMPORTANT GUIDELINES</h2>
+          <div class="grid md:grid-cols-2 gap-8 text-orange-100">
+            <p>• Strict discipline must be maintained inside the accommodation area.</p>
+            <p>• Valid college ID and Zest registration pass are mandatory for entry.</p>
+            <p>• Alcohol, smoking, drugs, and any illegal substances are strictly prohibited.</p>
+            <p>• Any damage to college property will lead to immediate disqualification.</p>
+          </div>
         </section>
-        </main>
+      </main>
 
 
     </>

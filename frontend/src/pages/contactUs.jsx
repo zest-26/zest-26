@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SEO from '@/components/SEO';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -37,7 +38,8 @@ const ContactUs = () => {
 
   return (
     <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-900 via-black to-orange-950 overflow-hidden flex items-center justify-center p-4 sm:p-6 md:p-8">
-      
+      <SEO title="Contact Us" description="Get in touch with the COEP ZEST 2026 team for any queries or collaborations." />
+
       {/* Animated background orbs */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl animate-pulse"></div>
@@ -46,7 +48,7 @@ const ContactUs = () => {
 
       {/* Main container */}
       <div className="relative z-10 w-full mt-20 mb:mt-30 max-w-2xl">
-        
+
         {/* Header section */}
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-3 sm:mb-4">
@@ -64,11 +66,11 @@ const ContactUs = () => {
         <div className="relative">
           {/* Glow effect */}
           <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-orange-400 rounded-2xl blur-lg opacity-30"></div>
-          
+
           {/* Form card */}
           <div className="relative bg-black/40 backdrop-blur-xl border border-orange-500/30 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl">
             <div className="space-y-5 sm:space-y-6">
-              
+
               {/* Full Name */}
               <div className="group">
                 <label className="block text-orange-400 text-sm font-semibold mb-2 transition-all group-focus-within:text-orange-300">
@@ -129,7 +131,7 @@ const ContactUs = () => {
           </div>
         </div>
 
-       
+
       </div>
     </div>
   );

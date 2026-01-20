@@ -1,13 +1,67 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/Mashal.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ZEST'26</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <!-- Basic -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#000000" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/Mashal.png" />
+
+  <!-- Title (MOST IMPORTANT) -->
+  <title>
+    COEP ZEST 2026 | ZEST’26
+  </title>
+
+  <!-- Meta Description -->
+  <meta name="description"
+    content="COEP ZEST 2026 (ZEST’26) is the official annual sports festival of COEP Technological University, Pune. Explore events, registrations, schedules, results, and live updates." />
+
+  <!-- Keywords (low weight but ok for branding) -->
+  <meta name="keywords"
+    content="coep zest, zest 26, coeptech zest, coepzest, coep sports fest, zest coep, coep technological university sports fest" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://coeptechzest.org/" />
+
+  <!-- Open Graph (WhatsApp / Instagram / LinkedIn) -->
+  <meta property="og:title" content="COEP ZEST 2026 – Official Sports Fest of COEP Technological University" />
+  <meta property="og:description"
+    content="ZEST’26 is the official sports festival of COEP Technological University, Pune. Participate in competitions, view schedules, and stay updated." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://coeptechzest.org/" />
+  <meta property="og:image" content="https://coeptechzest.org/Mashal.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="COEP ZEST 2026 – Official COEP Sports Fest" />
+  <meta name="twitter:description"
+    content="Official website of COEP ZEST’26, the annual sports festival of COEP Technological University." />
+  <meta name="twitter:image" content="https://coeptechzest.org/Mashal.png" />
+
+  <!-- Structured Data (Event Schema) -->
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SportsEvent",
+        "name": "COEP ZEST 2026",
+        "alternateName": "ZEST’26",
+        "description": "COEP ZEST 2026 is the official annual sports festival of COEP Technological University, Pune.",
+        "organizer": {
+          "@type": "Organization",
+          "name": "COEP Technological University"
+        },
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled"
+      }
+    </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

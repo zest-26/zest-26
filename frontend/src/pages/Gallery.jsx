@@ -7,16 +7,17 @@ import {
   AnimatePresence,
   useAnimationControls,
 } from "framer-motion";
-import { 
-  FaBicycle, 
+import {
+  FaBicycle,
   FaRunning,
-  FaFutbol, 
+  FaFutbol,
   FaTimes,
   FaTrophy,
   FaMedal, // New Icon
   FaBolt,   // New Icon
 } from "react-icons/fa";
 import { Instagram, Facebook, Linkedin, X as TwitterX } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 // --- STYLES COMPONENT ---
 const GlobalStyles = () => (
@@ -301,85 +302,93 @@ const GlobalStyles = () => (
 
 // --- DYNAMIC IMAGE DATA ---
 const categories = {
-   "Sports": { icon: FaFutbol, images: [ { id: 'sp1', src: '/gallery/allSports/AGP00920_compressed.avif' },
-     { id: 'sp2', src: '/gallery/allSports/AGP00999_compressed.avif',  }, 
-     { id: 'sp3', src: '/gallery/allSports/DSC07636_compressed.avif', },
-     { id: 'sp4', src: '/gallery/allSports/DSC07680_compressed.avif',  },
-     { id: 'sp5', src: '/gallery/allSports/DSC07813_compressed.avif',  },
-     { id: 'sp6', src: '/gallery/allSports/DSC07864_compressed.avif',  },
-     { id: 'sp7', src: '/gallery/allSports/DSC08050_compressed.avif',  },
-     { id: 'sp8', src: '/gallery/allSports/DSC08117_compressed.avif', },
-     { id: 'sp9', src: '/gallery/allSports/DSC08448_compressed.avif', },
-     { id: 'sp10', src: '/gallery/allSports/DSC08539_compressed.avif', },
-     { id: 'sp11', src: '/gallery/allSports/DSC08546_compressed.avif', },
-     { id: 'sp12', src: '/gallery/allSports/DSC08609_compressed.avif',  },
-     { id: 'sp13', src: '/gallery/allSports/DSC08618_compressed.avif', },
-     { id: 'sp14', src: '/gallery/allSports/DSC08635_compressed.avif',  },
-     { id: 'sp15', src: '/gallery/allSports/DSC09134_compressed.avif', },
-     { id: 'sp16', src: '/gallery/allSports/IMG_5264_compressed.avif',  },
-     { id: 'sp17', src: '/gallery/allSports/IMG_5680_compressed.avif',  },
-     { id: 'sp18', src: '/gallery/allSports/IMG_5713_compressed.avif', },
-     { id: 'sp19', src: '/gallery/allSports/IMG_6509_compressed.avif',  },
-     { id: 'sp20', src: '/gallery/allSports/IMG_20230211_102722_compressed.avif', },
-    ] },
+  "Sports": {
+    icon: FaFutbol, images: [{ id: 'sp1', src: '/gallery/allSports/AGP00920_compressed.avif' },
+    { id: 'sp2', src: '/gallery/allSports/AGP00999_compressed.avif', },
+    { id: 'sp3', src: '/gallery/allSports/DSC07636_compressed.avif', },
+    { id: 'sp4', src: '/gallery/allSports/DSC07680_compressed.avif', },
+    { id: 'sp5', src: '/gallery/allSports/DSC07813_compressed.avif', },
+    { id: 'sp6', src: '/gallery/allSports/DSC07864_compressed.avif', },
+    { id: 'sp7', src: '/gallery/allSports/DSC08050_compressed.avif', },
+    { id: 'sp8', src: '/gallery/allSports/DSC08117_compressed.avif', },
+    { id: 'sp9', src: '/gallery/allSports/DSC08448_compressed.avif', },
+    { id: 'sp10', src: '/gallery/allSports/DSC08539_compressed.avif', },
+    { id: 'sp11', src: '/gallery/allSports/DSC08546_compressed.avif', },
+    { id: 'sp12', src: '/gallery/allSports/DSC08609_compressed.avif', },
+    { id: 'sp13', src: '/gallery/allSports/DSC08618_compressed.avif', },
+    { id: 'sp14', src: '/gallery/allSports/DSC08635_compressed.avif', },
+    { id: 'sp15', src: '/gallery/allSports/DSC09134_compressed.avif', },
+    { id: 'sp16', src: '/gallery/allSports/IMG_5264_compressed.avif', },
+    { id: 'sp17', src: '/gallery/allSports/IMG_5680_compressed.avif', },
+    { id: 'sp18', src: '/gallery/allSports/IMG_5713_compressed.avif', },
+    { id: 'sp19', src: '/gallery/allSports/IMG_6509_compressed.avif', },
+    { id: 'sp20', src: '/gallery/allSports/IMG_20230211_102722_compressed.avif', },
+    ]
+  },
 
-    "Cyclothon": { icon: FaBicycle, images: [ { id: 'cy1', src: '/gallery/cyclothon/IMG_20221231_032215_compressed.avif' }, 
-      { id: 'cy2', src: '/gallery/cyclothon/IMG_20221231_053445_compressed.avif' }, 
-      { id: 'cy3', src: '/gallery/cyclothon/IMG_20221231_054613_compressed.avif' }, 
-      { id: 'cy4', src: '/gallery/cyclothon/IMG_20221231_062528_compressed.avif'  }, 
-      { id: 'cy5', src: '/gallery/cyclothon/IMG_20221231_063442_compressed.avif' },
-      { id: 'cy6', src: '/gallery/cyclothon/IMG_20221231_063540_compressed.avif' },  
-      { id: 'cy7', src: '/gallery/cyclothon/IMG_20221231_070816_1_compressed.avif' }, 
-      { id: 'cy8', src: '/gallery/cyclothon/1.avif' },  
-      { id: 'cy9', src: '/gallery/cyclothon/3.avif' },
-      { id: 'cy10', src: '/gallery/cyclothon/4.avif' },     
-      { id: 'cy11', src: '/gallery/cyclothon/5.avif' }, 
-      { id: 'cy12', src: '/gallery/cyclothon/6.avif' },   
-      { id: 'cy13', src: '/gallery/cyclothon/7.avif' }, 
-      { id: 'cy14', src: '/gallery/cyclothon/8.avif' },   
-      { id: 'cy15', src: '/gallery/cyclothon/9.avif' },
-{ id: 'cy16', src: '/gallery/cyclothon/10.avif' },
-{ id: 'cy17', src: '/gallery/cyclothon/11.avif' },
-{ id: 'cy18', src: '/gallery/cyclothon/12.avif' },
-{ id: 'cy19', src: '/gallery/cyclothon/13.avif' },
-    ] },
-        "Sportify": { icon: FaMedal, images: [ { id: 'sf1', src: '/gallery/sportify/IMG_2063_compressed.avif'}, 
-          { id: 'sf2', src: '/gallery/sportify/IMG_1106_compressed.avif' },
-        { id: 'sf3', src: '/gallery/sportify/IMG_1117_compressed.avif' }, 
-         { id: 'sf4', src: '/gallery/sportify/IMG_2074_compressed.avif' },
-          { id: 'sf5', src: '/gallery/sportify/sportify-1.avif' },
-            { id: 'sf6', src: '/gallery/sportify/sportify-2.avif' },
-             { id: 'sf7', src: '/gallery/sportify/1.avif' },
-              { id: 'sf8', src: '/gallery/sportify/2.avif' },
-              { id: 'sf9', src: '/gallery/sportify/3.avif' },
-{ id: 'sf10', src: '/gallery/sportify/4.avif' },
-{ id: 'sf11', src: '/gallery/sportify/5.avif' },
-{ id: 'sf12', src: '/gallery/sportify/6.avif' },
-{ id: 'sf13', src: '/gallery/sportify/7.avif' },
-{ id: 'sf14', src: '/gallery/sportify/8.avif' },
-{ id: 'sf15', src: '/gallery/sportify/9.avif' },
-{ id: 'sf16', src: '/gallery/sportify/10.avif' },
-{ id: 'sf17', src: '/gallery/sportify/11.avif' },
+  "Cyclothon": {
+    icon: FaBicycle, images: [{ id: 'cy1', src: '/gallery/cyclothon/IMG_20221231_032215_compressed.avif' },
+    { id: 'cy2', src: '/gallery/cyclothon/IMG_20221231_053445_compressed.avif' },
+    { id: 'cy3', src: '/gallery/cyclothon/IMG_20221231_054613_compressed.avif' },
+    { id: 'cy4', src: '/gallery/cyclothon/IMG_20221231_062528_compressed.avif' },
+    { id: 'cy5', src: '/gallery/cyclothon/IMG_20221231_063442_compressed.avif' },
+    { id: 'cy6', src: '/gallery/cyclothon/IMG_20221231_063540_compressed.avif' },
+    { id: 'cy7', src: '/gallery/cyclothon/IMG_20221231_070816_1_compressed.avif' },
+    { id: 'cy8', src: '/gallery/cyclothon/1.avif' },
+    { id: 'cy9', src: '/gallery/cyclothon/3.avif' },
+    { id: 'cy10', src: '/gallery/cyclothon/4.avif' },
+    { id: 'cy11', src: '/gallery/cyclothon/5.avif' },
+    { id: 'cy12', src: '/gallery/cyclothon/6.avif' },
+    { id: 'cy13', src: '/gallery/cyclothon/7.avif' },
+    { id: 'cy14', src: '/gallery/cyclothon/8.avif' },
+    { id: 'cy15', src: '/gallery/cyclothon/9.avif' },
+    { id: 'cy16', src: '/gallery/cyclothon/10.avif' },
+    { id: 'cy17', src: '/gallery/cyclothon/11.avif' },
+    { id: 'cy18', src: '/gallery/cyclothon/12.avif' },
+    { id: 'cy19', src: '/gallery/cyclothon/13.avif' },
+    ]
+  },
+  "Sportify": {
+    icon: FaMedal, images: [{ id: 'sf1', src: '/gallery/sportify/IMG_2063_compressed.avif' },
+    { id: 'sf2', src: '/gallery/sportify/IMG_1106_compressed.avif' },
+    { id: 'sf3', src: '/gallery/sportify/IMG_1117_compressed.avif' },
+    { id: 'sf4', src: '/gallery/sportify/IMG_2074_compressed.avif' },
+    { id: 'sf5', src: '/gallery/sportify/sportify-1.avif' },
+    { id: 'sf6', src: '/gallery/sportify/sportify-2.avif' },
+    { id: 'sf7', src: '/gallery/sportify/1.avif' },
+    { id: 'sf8', src: '/gallery/sportify/2.avif' },
+    { id: 'sf9', src: '/gallery/sportify/3.avif' },
+    { id: 'sf10', src: '/gallery/sportify/4.avif' },
+    { id: 'sf11', src: '/gallery/sportify/5.avif' },
+    { id: 'sf12', src: '/gallery/sportify/6.avif' },
+    { id: 'sf13', src: '/gallery/sportify/7.avif' },
+    { id: 'sf14', src: '/gallery/sportify/8.avif' },
+    { id: 'sf15', src: '/gallery/sportify/9.avif' },
+    { id: 'sf16', src: '/gallery/sportify/10.avif' },
+    { id: 'sf17', src: '/gallery/sportify/11.avif' },
 
-          
-          
-          ] },
 
 
-     "Marathon": { icon: FaRunning, images: [ { id: 'ma1', src: '/gallery/marathon/IMG_20230108_044304_compressed.avif',  }, 
-      { id: 'ma2', src: '/gallery/marathon/IMG_20230108_045406_compressed.avif',  }, 
-      { id: 'ma3', src: '/gallery/marathon/IMG_20230108_045431_compressed.avif',  },
-    { id: 'ma4', src: '/gallery/marathon/IMG_20230108_050031_compressed.avif',  },
-  { id: 'ma5', src: '/gallery/marathon/IMG_20230108_050215_compressed.avif',  },
-{ id: 'ma6', src: '/gallery/marathon/IMG_20230108_050604_compressed.avif',  },
-{ id: 'ma7', src: '/gallery/marathon/IMG_20230108_051655_compressed.avif',  },
-{ id: 'ma8', src: '/gallery/marathon/IMG_20230108_051819_compressed.avif',  },
-{ id: 'ma9', src: '/gallery/marathon/IMG_20230108_052214_compressed.avif',  },
-{ id: 'ma10', src: '/gallery/marathon/IMG_20230108_052446_compressed.avif',  },
-{ id: 'ma11', src: '/gallery/marathon/IMG_20230108_053604_compressed.avif',  },
-{ id: 'ma12', src: '/gallery/marathon/IMG_20230108_055254_compressed.avif',  },
-{ id: 'ma13', src: '/gallery/marathon/IMG_20230108_055410_compressed.avif',  }, ] },
-  
+    ]
+  },
+
+
+  "Marathon": {
+    icon: FaRunning, images: [{ id: 'ma1', src: '/gallery/marathon/IMG_20230108_044304_compressed.avif', },
+    { id: 'ma2', src: '/gallery/marathon/IMG_20230108_045406_compressed.avif', },
+    { id: 'ma3', src: '/gallery/marathon/IMG_20230108_045431_compressed.avif', },
+    { id: 'ma4', src: '/gallery/marathon/IMG_20230108_050031_compressed.avif', },
+    { id: 'ma5', src: '/gallery/marathon/IMG_20230108_050215_compressed.avif', },
+    { id: 'ma6', src: '/gallery/marathon/IMG_20230108_050604_compressed.avif', },
+    { id: 'ma7', src: '/gallery/marathon/IMG_20230108_051655_compressed.avif', },
+    { id: 'ma8', src: '/gallery/marathon/IMG_20230108_051819_compressed.avif', },
+    { id: 'ma9', src: '/gallery/marathon/IMG_20230108_052214_compressed.avif', },
+    { id: 'ma10', src: '/gallery/marathon/IMG_20230108_052446_compressed.avif', },
+    { id: 'ma11', src: '/gallery/marathon/IMG_20230108_053604_compressed.avif', },
+    { id: 'ma12', src: '/gallery/marathon/IMG_20230108_055254_compressed.avif', },
+    { id: 'ma13', src: '/gallery/marathon/IMG_20230108_055410_compressed.avif', },]
+  },
+
 };
 const allImages = Object.values(categories).flatMap(category => category.images);
 
@@ -392,15 +401,15 @@ const cardVariants = { hidden: { y: 20, opacity: 0 }, show: { y: 0, opacity: 1 }
 const Footer = () => (
   <footer>
     <div className='container'>
-      <h1><span style={{background: 'linear-gradient(to right, #F39C12, #E67E22)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>Get In Touch</span></h1>
+      <h1><span style={{ background: 'linear-gradient(to right, #F39C12, #E67E22)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Get In Touch</span></h1>
       <div className='social-links'>
         <a href='https://www.instagram.com/coepzest/' target="_blank" rel="noopener noreferrer"><Instagram size={30} /></a>
         <a href='https://www.facebook.com/people/Coep-Zest/61571312685575/' target="_blank" rel="noopener noreferrer"><Facebook size={30} /></a>
         <a href='https://www.linkedin.com/company/zest-coep/?originalSubdomain=in' target="_blank" rel="noopener noreferrer"><Linkedin size={30} /></a>
         <a href='https://x.com/zest_coep' target="_blank" rel="noopener noreferrer"><TwitterX size={30} /></a>
       </div>
-      <p style={{color: '#9CA3AF'}}>© {new Date().getFullYear()} ZEST'26. All rights reserved.</p>
-      <p style={{color: '#6B7280', fontSize: '0.875rem'}}>Made with ❤️ in Shivajinager, Pune, Maharashtra</p>
+      <p style={{ color: '#9CA3AF' }}>© {new Date().getFullYear()} ZEST'26. All rights reserved.</p>
+      <p style={{ color: '#6B7280', fontSize: '0.875rem' }}>Made with ❤️ in Shivajinager, Pune, Maharashtra</p>
     </div>
   </footer>
 );
@@ -410,7 +419,7 @@ function GalleryPage() {
   const [modalState, setModalState] = useState({ isOpen: false, images: [], index: 0 });
   const titleControls = useAnimationControls();
   const displayedImages = selectedCategory === "All" ? allImages : categories[selectedCategory]?.images || [];
-  
+
   const openModal = (images, index) => setModalState({ isOpen: true, images, index });
   const closeModal = () => setModalState(prevState => ({ ...prevState, isOpen: false }));
 
@@ -439,39 +448,40 @@ function GalleryPage() {
 
   return (
     <div className="app">
+      <SEO title="Gallery" description="Explore the vibrant moments of COEP Zest 2026 in our gallery." />
       <GlobalStyles />
       <main className="main">
 
-<motion.div className="category-grid-container " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
+        <motion.div className="category-grid-container " initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
           <CategorySelector categories={categories} onCategoryClick={setSelectedCategory} selectedCategory={selectedCategory} />
         </motion.div>
 
-       <div className="gallery-landing-header">
-  
-  <div className="container">
-    
-    <motion.h1
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="title"
-    >
-      GALLERY
-    </motion.h1>
-  </div>
-  
-</div>
+        <div className="gallery-landing-header">
 
-        
-       
-        <ImageGallery images={displayedImages} onImageClick={(index) => openModal(displayedImages, index)}  />
+          <div className="container">
+
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="title"
+            >
+              GALLERY
+            </motion.h1>
+          </div>
+
+        </div>
+
+
+
+        <ImageGallery images={displayedImages} onImageClick={(index) => openModal(displayedImages, index)} />
       </main>
       <AnimatePresence>
         {modalState.isOpen && (
           <ModalLightbox image={modalState.images[modalState.index]} onClose={closeModal} onNext={showNextImage} onPrev={showPrevImage} />
         )}
       </AnimatePresence>
-      
+
     </div>
   );
 }
@@ -494,87 +504,87 @@ const CategorySelector = ({ categories, onCategoryClick, selectedCategory }) => 
 );
 
 const TiltCard = ({ children, onClick, className = '' }) => {
-    const ref = useRef(null);
-    const x = useMotionValue(0), y = useMotionValue(0);
-    const mouseX = useMotionValue(0), mouseY = useMotionValue(0);
+  const ref = useRef(null);
+  const x = useMotionValue(0), y = useMotionValue(0);
+  const mouseX = useMotionValue(0), mouseY = useMotionValue(0);
 
-    const xSpring = useSpring(x, { stiffness: 300, damping: 20 });
-    const ySpring = useSpring(y, { stiffness: 300, damping: 20 });
-    const transform = useMotionTemplate`perspective(1000px) rotateX(${xSpring}deg) rotateY(${ySpring}deg) scale(1.05)`;
-    
-    const handleMouseMove = (e) => {
-        if (!ref.current) return;
-        const rect = ref.current.getBoundingClientRect();
-        
-        const rX = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2) * -14;
-        const rY = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2) * 14;
-        x.set(rX); y.set(rY);
-        
-        const mouseXVal = e.clientX - rect.left;
-        const mouseYVal = e.clientY - rect.top;
-        mouseX.set(mouseXVal);
-        mouseY.set(mouseYVal);
-        ref.current.style.setProperty("--mouse-x", `${mouseXVal}px`);
-        ref.current.style.setProperty("--mouse-y", `${mouseYVal}px`);
-    };
+  const xSpring = useSpring(x, { stiffness: 300, damping: 20 });
+  const ySpring = useSpring(y, { stiffness: 300, damping: 20 });
+  const transform = useMotionTemplate`perspective(1000px) rotateX(${xSpring}deg) rotateY(${ySpring}deg) scale(1.05)`;
 
-    const handleMouseLeave = () => { x.set(0); y.set(0); };
+  const handleMouseMove = (e) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
 
-    return (
-        <motion.div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} onClick={onClick} style={{ transform, transformStyle: "preserve-3d" }} className={`tilt-card ${className}`}>
-            <div className="tilt-card-inner">
-                {children}
-                <motion.div
-                    className="spotlight"
-                    style={{
-                        background: useMotionTemplate`radial-gradient(circle at ${mouseX}px ${mouseY}px, rgba(255, 255, 255, 0.3) 0%, transparent 50%)`
-                    }}
-                />
-            </div>
-        </motion.div>
-    );
+    const rX = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2) * -14;
+    const rY = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2) * 14;
+    x.set(rX); y.set(rY);
+
+    const mouseXVal = e.clientX - rect.left;
+    const mouseYVal = e.clientY - rect.top;
+    mouseX.set(mouseXVal);
+    mouseY.set(mouseYVal);
+    ref.current.style.setProperty("--mouse-x", `${mouseXVal}px`);
+    ref.current.style.setProperty("--mouse-y", `${mouseYVal}px`);
+  };
+
+  const handleMouseLeave = () => { x.set(0); y.set(0); };
+
+  return (
+    <motion.div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} onClick={onClick} style={{ transform, transformStyle: "preserve-3d" }} className={`tilt-card ${className}`}>
+      <div className="tilt-card-inner">
+        {children}
+        <motion.div
+          className="spotlight"
+          style={{
+            background: useMotionTemplate`radial-gradient(circle at ${mouseX}px ${mouseY}px, rgba(255, 255, 255, 0.3) 0%, transparent 50%)`
+          }}
+        />
+      </div>
+    </motion.div>
+  );
 };
 
 const ImageGallery = ({ images, onImageClick }) => {
-    const [columnCount, setColumnCount] = useState(6);
-    useEffect(() => {
-        const getColumnCount = () => {
-            const width = window.innerWidth;
-            if (width < 480) return 2; if (width < 768) return 3; if (width < 1200) return 4;
-            return 6;
-        };
-        const handleResize = () => setColumnCount(getColumnCount());
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-    const getSpans = (index) => {
-        const patterns = [ { col: 2, row: 2 }, { col: 1, row: 1 }, { col: 1, row: 2 }, { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 1, row: 1 }, { col: 1, row: 2 }, { col: 2, row: 2 }, { col: 1, row: 1 } ];
-        let { col, row } = patterns[index % patterns.length];
-        if (col > columnCount) col = columnCount;
-        return { col, row };
+  const [columnCount, setColumnCount] = useState(6);
+  useEffect(() => {
+    const getColumnCount = () => {
+      const width = window.innerWidth;
+      if (width < 480) return 2; if (width < 768) return 3; if (width < 1200) return 4;
+      return 6;
     };
-    return (
-        <motion.div className="image-grid" variants={gridContainerVariants} initial="hidden" animate="show" style={{ gap: '15px', gridAutoFlow: 'dense', gridAutoRows: '200px', gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}>
-            <AnimatePresence>
-                {images.map((img, index) => {
-                    const { col, row } = getSpans(index);
-                    return (
-                        <motion.div key={img.id} className="image-item" onClick={() => onImageClick(index)} layout variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1 }, exit: { opacity: 0, scale: 0.8 } }} transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                            style={{ gridColumn: `span ${col}`, gridRow: `span ${row}`, backgroundImage: `url(${img.src})` }}
-                            initial="rest" whileHover="hover" animate="rest"
-                        >
-                            <motion.div className="image-overlay" variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }} transition={{ duration: 0.3 }} >
-                                <motion.h3 className="image-title" variants={{ rest: { y: 20 }, hover: { y: 0 } }} transition={{ duration: 0.3, ease: "easeOut" }} >
-                                    {img.title}
-                                </motion.h3>
-                            </motion.div>
-                        </motion.div>
-                    );
-                })}
-            </AnimatePresence>
-        </motion.div>
-    );
+    const handleResize = () => setColumnCount(getColumnCount());
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  const getSpans = (index) => {
+    const patterns = [{ col: 2, row: 2 }, { col: 1, row: 1 }, { col: 1, row: 2 }, { col: 1, row: 1 }, { col: 2, row: 1 }, { col: 1, row: 1 }, { col: 1, row: 2 }, { col: 2, row: 2 }, { col: 1, row: 1 }];
+    let { col, row } = patterns[index % patterns.length];
+    if (col > columnCount) col = columnCount;
+    return { col, row };
+  };
+  return (
+    <motion.div className="image-grid" variants={gridContainerVariants} initial="hidden" animate="show" style={{ gap: '15px', gridAutoFlow: 'dense', gridAutoRows: '200px', gridTemplateColumns: `repeat(${columnCount}, 1fr)` }}>
+      <AnimatePresence>
+        {images.map((img, index) => {
+          const { col, row } = getSpans(index);
+          return (
+            <motion.div key={img.id} className="image-item" onClick={() => onImageClick(index)} layout variants={{ hidden: { opacity: 0, scale: 0.8 }, show: { opacity: 1, scale: 1 }, exit: { opacity: 0, scale: 0.8 } }} transition={{ type: "spring", stiffness: 260, damping: 20 }}
+              style={{ gridColumn: `span ${col}`, gridRow: `span ${row}`, backgroundImage: `url(${img.src})` }}
+              initial="rest" whileHover="hover" animate="rest"
+            >
+              <motion.div className="image-overlay" variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }} transition={{ duration: 0.3 }} >
+                <motion.h3 className="image-title" variants={{ rest: { y: 20 }, hover: { y: 0 } }} transition={{ duration: 0.3, ease: "easeOut" }} >
+                  {img.title}
+                </motion.h3>
+              </motion.div>
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
+    </motion.div>
+  );
 };
 
 const ModalLightbox = ({ image, onClose, onNext, onPrev }) => (

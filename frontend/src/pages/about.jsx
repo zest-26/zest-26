@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { MapPin, Calendar, Trophy, Users, Zap, Play, ArrowRight,ArrowLeft, MousePointer2, X } from 'lucide-react';
+import { MapPin, Calendar, Trophy, Users, Zap, Play, ArrowRight, ArrowLeft, MousePointer2, X } from 'lucide-react';
+import SEO from '@/components/SEO';
 import './AboutUs.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -10,7 +11,7 @@ const about = () => {
   const componentRef = useRef(null);
   const sliderRef = useRef(null);
   const heroTextRef = useRef(null);
-  
+
   // STATE FOR VIDEO MODAL
   const [activeVideo, setActiveVideo] = useState(null);
 
@@ -23,19 +24,19 @@ const about = () => {
 
   const isMobile = window.matchMedia('(max-width: 899px)').matches;
 
-const handlePlay = (videoId) => {
-  if (isMobile) {
-    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
-  } else {
-    setActiveVideo(videoId);
-  }
-};
+  const handlePlay = (videoId) => {
+    if (isMobile) {
+      window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+    } else {
+      setActiveVideo(videoId);
+    }
+  };
 
 
   useEffect(() => {
     let ctx = gsap.context(() => {
       let mm = gsap.matchMedia();
-      
+
       // 0. GLOBAL: Fade in
       gsap.to(componentRef.current, { opacity: 1, duration: 1 });
 
@@ -71,23 +72,23 @@ const handlePlay = (videoId) => {
         y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "back.out(1.7)"
       });
 
-    gsap.utils.toArray(".count").forEach((el) => {
-  gsap.fromTo(
-    el,
-    { textContent: 0 },
-    {
-      textContent: el.dataset.count,
-      duration: 2.5,
-      ease: "power1.out",
-      snap: { textContent: 1 },
-      scrollTrigger: {
-        trigger: el.closest(".zest-about-stat-box"), // ✅ IMPORTANT
-        start: "top 85%",
-        once: true, // animate only once
-      }
-    }
-  );
-});
+      gsap.utils.toArray(".count").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { textContent: 0 },
+          {
+            textContent: el.dataset.count,
+            duration: 2.5,
+            ease: "power1.out",
+            snap: { textContent: 1 },
+            scrollTrigger: {
+              trigger: el.closest(".zest-about-stat-box"), // ✅ IMPORTANT
+              start: "top 85%",
+              once: true, // animate only once
+            }
+          }
+        );
+      });
 
 
 
@@ -124,34 +125,39 @@ const handlePlay = (videoId) => {
 
   return (
     <div className="zest-about-main-wrapper" ref={componentRef}>
-      
+      <SEO
+        title="About Us"
+        description="Learn about the legacy of COEP Tech and ZEST, India's 5th largest college sports festival."
+        url="https://coeptechzest.org/about"
+      />
+
       {/* SECTION 1: HERO */}
       <section className="zest-about-hero">
-        
+
         {/* Background Video Wrapper */}
         <div className="zest-about-video-bg">
-           <video
-    className="zest-about-video-element"
-    autoPlay
-    muted
-    loop
-    playsInline
-    preload="metadata"
-  >
-    <source src="/videos/Aftermovie.webm" type="video/webm" />
-  </video>
+          <video
+            className="zest-about-video-element"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+          >
+            <source src="/videos/Aftermovie.webm" type="video/webm" />
+          </video>
           <div className="zest-about-gradient-overlay"></div>
         </div>
 
         {/* Hero Content Layer */}
         <div className="zest-about-hero-content">
-          
+
 
           <h1 className="zest-about-hero-title" ref={heroTextRef}>
             <span className="zest-about-outline-text">THE ROAR</span> <br />
             <span>OF</span> <span className="zest-about-text-orange zest-about-glow-text">VICTORY</span>
           </h1>
-          
+
           <div className="zest-about-hero-meta">
             <div className="zest-about-meta-pill">
               <Calendar size={16} /> JAN 23-25, 2026
@@ -171,29 +177,29 @@ const handlePlay = (videoId) => {
       {/* SECTION 2: MARQUEE */}
       <div className="zest-about-marquee">
         <div className="zest-about-marquee-content">
-           ZEST '26 • UNLEASH THE SPIRIT • COEP TECHNOLOGICAL UNIVERSITY • INDIA'S 5th LARGEST COLLEGE SPORTS FESTIVAL • 
-           ZEST '26 • UNLEASH THE SPIRIT • COEP TECHNOLOGICAL UNIVERSITY • INDIA'S 5th LARGEST COLLEGE SPORTS FESTIVAL •
+          ZEST '26 • UNLEASH THE SPIRIT • COEP TECHNOLOGICAL UNIVERSITY • INDIA'S 5th LARGEST COLLEGE SPORTS FESTIVAL •
+          ZEST '26 • UNLEASH THE SPIRIT • COEP TECHNOLOGICAL UNIVERSITY • INDIA'S 5th LARGEST COLLEGE SPORTS FESTIVAL •
         </div>
       </div>
 
       {/* SECTION 3: INFO GRID */}
       <div className="zest-about-content-body">
-        
+
         {/* ROW 1: COEP */}
         <section className="zest-about-info-section">
           <div className="zest-about-info-text">
             <h4 className="zest-about-label">// THE LEGACY</h4>
-            <h2 className="zest-about-heading">COEP Technological <br/><span className="zest-about-text-orange">University</span></h2>
+            <h2 className="zest-about-heading">COEP Technological <br /><span className="zest-about-text-orange">University</span></h2>
             <p className="zest-about-desc">
-              Standing tall as a monument to India's technical prowess since 1854, COEP Tech is the 
-              <strong> third-oldest engineering institute in Asia</strong>. A hub of academic excellence 
-              and innovation on the banks of the Mula River, it has been the alma mater of visionaries 
-              like Bharat Ratna Sir M. Visvesvaraya. 
-              <br/><br/>
-              With a heritage spanning over <strong>170 years</strong>, the institute continues to 
+              Standing tall as a monument to India's technical prowess since 1854, COEP Tech is the
+              <strong> third-oldest engineering institute in Asia</strong>. A hub of academic excellence
+              and innovation on the banks of the Mula River, it has been the alma mater of visionaries
+              like Bharat Ratna Sir M. Visvesvaraya.
+              <br /><br />
+              With a heritage spanning over <strong>170 years</strong>, the institute continues to
               shape the future of engineering, fostering a culture where tradition meets cutting-edge technology.
             </p>
-           
+
           </div>
           <div className="zest-about-info-img-wrapper">
             <img src="/aboutUs/coepCampus_compressed.avif" alt="COEP Main Building" />
@@ -205,15 +211,15 @@ const handlePlay = (videoId) => {
         <section className="zest-about-info-section reverse">
           <div className="zest-about-info-text">
             <h4 className="zest-about-label">// THE PHENOMENON</h4>
-            <h2 className="zest-about-heading">ZEST '26: <br/>The Roar of <span className="zest-about-text-orange">Victory</span></h2>
+            <h2 className="zest-about-heading">ZEST '26: <br />The Roar of <span className="zest-about-text-orange">Victory</span></h2>
             <p className="zest-about-desc">
-              Recognized as one of India's largest annual inter-collegiate sports festivals, 
-              Zest is not merely a competition—it is a celebration of human potential. 
-              Hosting over <strong>5,000+ athletes</strong> and <strong>50+ sporting events</strong>, 
+              Recognized as one of India's largest annual inter-collegiate sports festivals,
+              Zest is not merely a competition—it is a celebration of human potential.
+              Hosting over <strong>5,000+ athletes</strong> and <strong>50+ sporting events</strong>,
               Zest transforms the campus into a high-octane arena where stamina meets strategy.
-              <br/><br/>
-              From the grueling Cyclothon to the precision of Chess, every event is a testament 
-              to resilience. Zest '26 promises to be bigger, louder, and bolder, inviting 
+              <br /><br />
+              From the grueling Cyclothon to the precision of Chess, every event is a testament
+              to resilience. Zest '26 promises to be bigger, louder, and bolder, inviting
               champions from across the nation to etch their names in history.
             </p>
           </div>
@@ -226,27 +232,27 @@ const handlePlay = (videoId) => {
 
       {/* SECTION 4: IMPACT STATS */}
       <section className="zest-about-stats-container">
-        
-        <div className="zest-about-stat-box">
-  <Users size={40} className="zest-about-stat-icon" />
- <h3 className="zest-about-stat-number">
-  <span className="count" data-count="25000">0</span>+
-</h3>
 
-  <p>FOOTFALL</p>
-</div>
+        <div className="zest-about-stat-box">
+          <Users size={40} className="zest-about-stat-icon" />
+          <h3 className="zest-about-stat-number">
+            <span className="count" data-count="25000">0</span>+
+          </h3>
+
+          <p>FOOTFALL</p>
+        </div>
         <div className="zest-about-stat-box">
           <Zap size={40} className="zest-about-stat-icon" />
-           <h3 className="zest-about-stat-number">
-  <span className="count" data-count="200">0</span>+
-</h3>
+          <h3 className="zest-about-stat-number">
+            <span className="count" data-count="200">0</span>+
+          </h3>
           <p>COLLEGES</p>
         </div>
         <div className="zest-about-stat-box">
           <Trophy size={40} className="zest-about-stat-icon" />
           <h3 className="zest-about-stat-number">
-  <span className="count" data-count="5000">0</span>+
-</h3>
+            <span className="count" data-count="5000">0</span>+
+          </h3>
           <p>PARTICIPANTS</p>
         </div>
       </section>
@@ -262,7 +268,7 @@ const handlePlay = (videoId) => {
 
         {highlights.map((item, index) => (
           <div className="zest-about-highlight-card m-2" key={index}>
-            <div className="zest-about-card-inner"  onClick={() => handlePlay(item.videoId)}>
+            <div className="zest-about-card-inner" onClick={() => handlePlay(item.videoId)}>
               <img src={`https://img.youtube.com/vi/${item.videoId}/maxresdefault.jpg`} alt={item.title} />
               <div className="zest-about-card-content">
                 <h3>{item.title}</h3>
@@ -273,9 +279,9 @@ const handlePlay = (videoId) => {
         ))}
 
         <div className="zest-about-highlight-card zest-about-end-card">
-           <h1 className="zest-about-final-msg">JOIN THE <br/> REVOLUTION</h1>
+          <h1 className="zest-about-final-msg">JOIN THE <br /> REVOLUTION</h1>
         </div>
-        
+
         {/* EXTRA BLANK SPACE */}
         <div className="zest-about-highlight-spacer"></div>
       </section>
