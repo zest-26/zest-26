@@ -30,15 +30,10 @@ const Scores = () => {
   const [lastRefresh, setLastRefresh] = useState(0);
   const [updatedAt, setUpdatedAt] = useState(null);
   const [refreshMessage, setRefreshMessage] = useState('');
+  const [showRefreshHint, setShowRefreshHint] = useState(false);
 
   const fetchMatches = async (force = false) => {
     const now = Date.now();
-    if (!force && lastRefresh > 0 && now - lastRefresh < 15000) {
-      const remaining = Math.ceil((15000 - (now - lastRefresh)) / 1000);
-      setRefreshMessage(`Wait ${remaining}s`);
-      setTimeout(() => setRefreshMessage(''), 2000);
-      return;
-    }
 
     setLoading(true);
     const data = await api.getMatches(activeTab);
@@ -107,6 +102,13 @@ const Scores = () => {
         }
       });
     }
+
+    // Show "Tap to Refresh" hint on every load
+    setShowRefreshHint(true);
+    // Auto-hide after 5 seconds if not clicked
+    setTimeout(() => {
+      setShowRefreshHint(false);
+    }, 5000);
   }, []);
 
   const handleLogin = async (e) => {
@@ -440,7 +442,24 @@ const Scores = () => {
                   {refreshMessage}
                 </div>
               )}
-              <button onClick={() => fetchMatches(false)} className={`p-2.5 rounded-full bg-white/5 hover:bg-orange-500 hover:text-white border border-white/10 text-gray-400 transition-all duration-300 ${loading ? 'animate-spin' : 'hover:rotate-180'}`} title="Refresh">
+              {showRefreshHint && (
+                <div className="absolute top-14 right-0 min-w-[140px] z-50 pointer-events-none select-none">
+                  <div className="bg-transparent backdrop-blur-sm text-white text-[10px] font-bold px-4 py-2 rounded-lg shadow-[0_0_15px_rgba(255,69,0,0.3)] animate-bounce relative tracking-wide uppercase text-center border border-orange-500">
+                    Tap to Refresh
+                    <div className="absolute -top-1.5 right-4 w-3 h-3 bg-[#020202] rotate-45 border-t border-l border-orange-500"></div>
+                  </div>
+                </div>
+              )}
+              <button
+                onClick={() => {
+                  fetchMatches(false);
+                  if (showRefreshHint) {
+                    setShowRefreshHint(false);
+                  }
+                }}
+                className={`p-2.5 rounded-full bg-white/5 hover:bg-orange-500 hover:text-white border border-white/10 text-gray-400 transition-all duration-300 ${loading ? 'animate-spin' : 'hover:rotate-180'}`}
+                title="Refresh"
+              >
                 <RefreshCw size={18} />
               </button>
             </div>
