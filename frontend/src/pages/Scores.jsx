@@ -65,23 +65,23 @@ const Scores = () => {
   // --- Safe Storage Helpers ---
   const getStorage = (key) => {
     try {
-      if (typeof window !== 'undefined' && window.localStorage) {
-        return window.localStorage.getItem(key);
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        return window.sessionStorage.getItem(key);
       }
     } catch (e) { console.warn('Storage error', e); }
     return null;
   };
   const setStorage = (key, val) => {
     try {
-      if (typeof window !== 'undefined' && window.localStorage) {
-        window.localStorage.setItem(key, val);
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        window.sessionStorage.setItem(key, val);
       }
     } catch (e) { console.warn('Storage error', e); }
   };
   const removeStorage = (key) => {
     try {
-      if (typeof window !== 'undefined' && window.localStorage) {
-        window.localStorage.removeItem(key);
+      if (typeof window !== 'undefined' && window.sessionStorage) {
+        window.sessionStorage.removeItem(key);
       }
     } catch (e) { console.warn('Storage error', e); }
   };
