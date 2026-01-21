@@ -1,33 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import gsap from 'gsap'
-import Home from './pages/Home'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
-import About from './pages/about'
-import CoordinatorResults from './pages/coordinatorResults'
-import ContactUs from './pages/contactUs'
-import Gallery from './pages/Gallery'
-import CoreTeam from './pages/coreTeam'
-import Sports from './pages/Sports'
-import Accomodations from './pages/Accomodations'
-import Sponsers from './pages/Sponsers'
-import Cyclothon from './pages/cyclothon'
-import CycloCertificate from './pages/cycloCertificate'
-import Volresults from './pages/volResults'
-import Scores from './pages/Scores'
+
+const Home = React.lazy(() => import('./pages/Home'));
+const About = React.lazy(() => import('./pages/about'));
+const CoordinatorResults = React.lazy(() => import('./pages/coordinatorResults'));
+const ContactUs = React.lazy(() => import('./pages/contactUs'));
+const Gallery = React.lazy(() => import('./pages/Gallery'));
+const CoreTeam = React.lazy(() => import('./pages/coreTeam'));
+const Sports = React.lazy(() => import('./pages/Sports'));
+const Accomodations = React.lazy(() => import('./pages/Accomodations'));
+const Sponsers = React.lazy(() => import('./pages/Sponsers'));
+const Cyclothon = React.lazy(() => import('./pages/cyclothon'));
+const CycloCertificate = React.lazy(() => import('./pages/cycloCertificate'));
+const Volresults = React.lazy(() => import('./pages/volResults'));
+const Scores = React.lazy(() => import('./pages/Scores'));
 
 
 function AnimatedRoutes() {
-   const location = useLocation()
-  
+  const location = useLocation()
+
   // Initialize isLoading to true if we're on home page and haven't loaded yet
   const [hasLoadedOnce, setHasLoadedOnce] = useState(false)
   const [isLoading, setIsLoading] = useState(
     location.pathname === "/" && !hasLoadedOnce
   )
-  
+
   const loaderRef = useRef(null)
   const footerRef = useRef(null)
 
@@ -93,29 +94,31 @@ function AnimatedRoutes() {
       {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/scores" && <Header />}
 
       <main className="w-full min-h-screen mt-0 scroll-smooth">
-        <Routes location={location} key={location.pathname}>
-          <Route
-            path="/"
-            element={
-              <section id="home">
-                <Home />
-              </section>
-            }
-          />
+        <React.Suspense fallback={<Loader />}>
+          <Routes location={location} key={location.pathname}>
+            <Route
+              path="/"
+              element={
+                <section id="home">
+                  <Home />
+                </section>
+              }
+            />
 
-          <Route path="/coordinatorResults" element={<CoordinatorResults />} />
-          <Route path="/VolunteerResults" element={<Volresults />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contactUs" element={<ContactUs />} />
-          <Route path="/Gallery" element={<Gallery />} />
-          <Route path="/coreTeam" element={<CoreTeam />} />
-          <Route path="/Sports" element={<Sports />} />
-          <Route path="/Accomodations" element={<Accomodations />} />
-          <Route path="/Sponsers" element={<Sponsers />} />
-          <Route path="/cyclothon" element={<Cyclothon />} />
-          <Route path="/cycloCertificate" element={<CycloCertificate />} />
-          <Route path="/Scores" element={<Scores />} />
-        </Routes>
+            <Route path="/coordinatorResults" element={<CoordinatorResults />} />
+            <Route path="/VolunteerResults" element={<Volresults />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contactUs" element={<ContactUs />} />
+            <Route path="/Gallery" element={<Gallery />} />
+            <Route path="/coreTeam" element={<CoreTeam />} />
+            <Route path="/Sports" element={<Sports />} />
+            <Route path="/Accomodations" element={<Accomodations />} />
+            <Route path="/Sponsers" element={<Sponsers />} />
+            <Route path="/cyclothon" element={<Cyclothon />} />
+            <Route path="/cycloCertificate" element={<CycloCertificate />} />
+            <Route path="/Scores" element={<Scores />} />
+          </Routes>
+        </React.Suspense>
       </main>
       {/* FOOTER */}
       {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/Gallery" && <Footer />}
