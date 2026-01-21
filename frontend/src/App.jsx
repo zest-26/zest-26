@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Loader from './components/Loader'
+import NotFound from './pages/NotFound'
 
 const Home = React.lazy(() => import('./pages/Home'));
 const About = React.lazy(() => import('./pages/about'));
@@ -18,6 +19,7 @@ const Cyclothon = React.lazy(() => import('./pages/cyclothon'));
 const CycloCertificate = React.lazy(() => import('./pages/cycloCertificate'));
 const Volresults = React.lazy(() => import('./pages/volResults'));
 const Scores = React.lazy(() => import('./pages/Scores'));
+
 
 
 function AnimatedRoutes() {
@@ -93,6 +95,7 @@ function AnimatedRoutes() {
             <Route path="/cyclothon" element={<Cyclothon />} />
             <Route path="/cycloCertificate" element={<CycloCertificate />} />
             <Route path="/Scores" element={<Scores />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </React.Suspense>
       </main>
