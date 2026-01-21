@@ -339,7 +339,7 @@ const Scores = () => {
       );
     }
 
-    if (isSetBased || ['Basketball'].includes(sport)) {
+    if (isSetBased) {
       return (
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
