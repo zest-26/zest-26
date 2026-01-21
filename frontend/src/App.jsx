@@ -48,35 +48,11 @@ function AnimatedRoutes() {
         },
       })
 
-      tl.to(loaderRef.current.querySelectorAll(".left-img"), {
-        x: "-150%",
+      tl.to(loaderRef.current, {
         opacity: 0,
         duration: 0.8,
-        stagger: 0.3,
-        ease: "power3.in",
+        ease: "power2.inOut",
       })
-
-      tl.to(
-        loaderRef.current.querySelectorAll(".right-img"),
-        {
-          x: "150%",
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.3,
-          ease: "power3.in",
-        },
-        "<"
-      )
-
-      tl.to(
-        loaderRef.current.querySelector(".blackout"),
-        {
-          opacity: 1,
-          duration: 1.3,
-          ease: "power2.inOut",
-        },
-        1.1
-      )
     }, 1300)
 
     return () => clearTimeout(timer)
@@ -94,7 +70,7 @@ function AnimatedRoutes() {
       {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/scores" && <Header />}
 
       <main className="w-full min-h-screen mt-0 scroll-smooth">
-        <React.Suspense fallback={<Loader />}>
+        <React.Suspense fallback={<div className="flex items-center justify-center min-h-screen bg-black text-white">Loading...</div>}>
           <Routes location={location} key={location.pathname}>
             <Route
               path="/"
@@ -121,7 +97,7 @@ function AnimatedRoutes() {
         </React.Suspense>
       </main>
       {/* FOOTER */}
-      {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/Gallery" && <Footer />}
+      {!isLoading && location.pathname !== "/" && location.pathname !== "/Scores" && location.pathname !== "/scores" && location.pathname !== "/Gallery" && <Footer />}
 
     </div>
   )
